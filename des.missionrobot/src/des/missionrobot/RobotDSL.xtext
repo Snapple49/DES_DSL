@@ -4,7 +4,7 @@ generate robotDSL "http://www.missionrobot.des/RobotDSL"
 
 Behaviour:
 	'Behavior' name = ID
-	'priority' prio = INT
+	'priority' prios = INT
 	'movements:' moves = Movement 
 ;
 
