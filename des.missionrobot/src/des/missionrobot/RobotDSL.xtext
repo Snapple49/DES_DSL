@@ -1,0 +1,9 @@
+grammar des.missionrobot.RobotDSL with org.eclipse.xtext.common.Terminals
+
+generate robotDSL "http://www.missionrobot.des/RobotDSL"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
