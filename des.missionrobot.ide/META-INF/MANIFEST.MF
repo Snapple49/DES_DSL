@@ -9,3 +9,6 @@ Require-Bundle: des.missionrobot,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: des.missionrobot.ide.contentassist.antlr.internal,
+ des.missionrobot.ide.contentassist.antlr
+

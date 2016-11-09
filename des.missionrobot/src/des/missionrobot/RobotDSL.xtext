@@ -2,8 +2,27 @@ grammar des.missionrobot.RobotDSL with org.eclipse.xtext.common.Terminals
 
 generate robotDSL "http://www.missionrobot.des/RobotDSL"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Behaviour:
+	'Behavior' name = ID
+	'priority' prio = INT
+	'movements:' moves = Movement 
+;
+
+Movement: MoveForward |	MoveBackward | Turn | Stop
+;
+
+MoveForward: 
+	'ForwardSpeed:' fspeed = INT
+;
+
+MoveBackward: 
+	'BackwardSpeed:' bspeed = INT
+;
+
+Turn: 
+	'TurnAngle:' angle = INT
+;
+
+Stop:
+	'WaitFor:' duration = INT
+;
