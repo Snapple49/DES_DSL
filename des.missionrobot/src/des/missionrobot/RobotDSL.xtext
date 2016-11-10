@@ -2,14 +2,23 @@ grammar des.missionrobot.RobotDSL with org.eclipse.xtext.common.Terminals
 
 generate robotDSL "http://www.missionrobot.des/RobotDSL"
 
-Behaviour:
-	'Behavior' name = ID
-	'priority' prio = INT
-	'movements:' moves = Movement 
+Mission:
+	'Mission' name = ID
+	'Behaviours:' behaviourList += Behaviour+
+	'Goal:' goalCondition += Trigger+
 ;
 
-Movement: MoveForward |	MoveBackward | Turn | Stop
+Behaviour:
+	'Behavior:' name = ID
+	'priority:' prio = INT
+	'actions:' actionList += Action
+	'trigger:' triggerList = Trigger
+	'devices:' deviceList += Device
 ;
+
+Action: Movement | Sound | IO;
+
+Movement: MoveForward |	MoveBackward | Turn | Stop;
 
 MoveForward: 
 	'ForwardSpeed:' fspeed = INT
@@ -25,4 +34,20 @@ Turn:
 
 Stop:
 	'WaitFor:' duration = INT
+;
+
+Sound:
+	'PlaySound:' soundName = STRING
+;
+
+IO:
+	'PrintMessage' message = STRING
+;
+
+Trigger:
+	'Condition' condition = STRING
+;
+
+Device:
+	'Device:' type = STRING 
 ;
