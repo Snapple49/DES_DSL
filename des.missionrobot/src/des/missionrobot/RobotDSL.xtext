@@ -11,9 +11,9 @@ Mission:
 Behaviour:
 	'Behavior:' name = ID
 	'priority:' prio = INT
-	'actions:' actionList += Action
+	'devices:' deviceList += Device+
+	'actions:' actionList += Action+
 	'trigger:' triggerList = Trigger
-	'devices:' deviceList += Device
 ;
 
 Action: Movement | Sound | IO;
