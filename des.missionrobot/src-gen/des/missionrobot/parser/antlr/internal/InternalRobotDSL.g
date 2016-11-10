@@ -43,7 +43,7 @@ import des.missionrobot.services.RobotDSLGrammarAccess;
 
     @Override
     protected String getFirstRuleName() {
-    	return "Behaviour";
+    	return "Mission";
    	}
 
    	@Override
@@ -59,6 +59,93 @@ import des.missionrobot.services.RobotDSLGrammarAccess;
         appendSkippedTokens();
     }
 }
+
+// Entry rule entryRuleMission
+entryRuleMission returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMissionRule()); }
+	iv_ruleMission=ruleMission
+	{ $current=$iv_ruleMission.current; }
+	EOF;
+
+// Rule Mission
+ruleMission returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Mission'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getMissionAccess().getMissionKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getMissionAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMissionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='Behaviours:'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMissionAccess().getBehavioursKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMissionAccess().getBehaviourListBehaviourParserRuleCall_3_0());
+				}
+				lv_behaviourList_3_0=ruleBehaviour
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMissionRule());
+					}
+					add(
+						$current,
+						"behaviourList",
+						lv_behaviourList_3_0,
+						"des.missionrobot.RobotDSL.Behaviour");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_4='Goal:'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getMissionAccess().getGoalKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMissionAccess().getGoalConditionTriggerParserRuleCall_5_0());
+				}
+				lv_goalCondition_5_0=ruleTrigger
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMissionRule());
+					}
+					add(
+						$current,
+						"goalCondition",
+						lv_goalCondition_5_0,
+						"des.missionrobot.RobotDSL.Trigger");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+	)
+;
 
 // Entry rule entryRuleBehaviour
 entryRuleBehaviour returns [EObject current=null]:
@@ -76,7 +163,7 @@ ruleBehaviour returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Behavior'
+		otherlv_0='Behavior:'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getBehaviourAccess().getBehaviorKeyword_0());
 		}
@@ -98,7 +185,7 @@ ruleBehaviour returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2='priority'
+		otherlv_2='priority:'
 		{
 			newLeafNode(otherlv_2, grammarAccess.getBehaviourAccess().getPriorityKeyword_2());
 		}
@@ -120,29 +207,120 @@ ruleBehaviour returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_4='movements:'
+		otherlv_4='actions:'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getBehaviourAccess().getMovementsKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getBehaviourAccess().getActionsKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBehaviourAccess().getMovesMovementParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getBehaviourAccess().getActionListActionParserRuleCall_5_0());
 				}
-				lv_moves_5_0=ruleMovement
+				lv_actionList_5_0=ruleAction
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
+					}
+					add(
+						$current,
+						"actionList",
+						lv_actionList_5_0,
+						"des.missionrobot.RobotDSL.Action");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_6='trigger:'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getBehaviourAccess().getTriggerKeyword_6());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBehaviourAccess().getTriggerListTriggerParserRuleCall_7_0());
+				}
+				lv_triggerList_7_0=ruleTrigger
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
 					}
 					set(
 						$current,
-						"moves",
-						lv_moves_5_0,
-						"des.missionrobot.RobotDSL.Movement");
+						"triggerList",
+						lv_triggerList_7_0,
+						"des.missionrobot.RobotDSL.Trigger");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		otherlv_8='devices:'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getBehaviourAccess().getDevicesKeyword_8());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBehaviourAccess().getDeviceListDeviceParserRuleCall_9_0());
+				}
+				lv_deviceList_9_0=ruleDevice
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
+					}
+					add(
+						$current,
+						"deviceList",
+						lv_deviceList_9_0,
+						"des.missionrobot.RobotDSL.Device");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleAction
+entryRuleAction returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getActionRule()); }
+	iv_ruleAction=ruleAction
+	{ $current=$iv_ruleAction.current; }
+	EOF;
+
+// Rule Action
+ruleAction returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getActionAccess().getMovementParserRuleCall_0());
+		}
+		this_Movement_0=ruleMovement
+		{
+			$current = $this_Movement_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getActionAccess().getSoundParserRuleCall_1());
+		}
+		this_Sound_1=ruleSound
+		{
+			$current = $this_Sound_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getActionAccess().getIOParserRuleCall_2());
+		}
+		this_IO_2=ruleIO
+		{
+			$current = $this_IO_2.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -358,6 +536,170 @@ ruleStop returns [EObject current=null]
 						"duration",
 						lv_duration_1_0,
 						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleSound
+entryRuleSound returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSoundRule()); }
+	iv_ruleSound=ruleSound
+	{ $current=$iv_ruleSound.current; }
+	EOF;
+
+// Rule Sound
+ruleSound returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='PlaySound:'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getSoundAccess().getPlaySoundKeyword_0());
+		}
+		(
+			(
+				lv_soundName_1_0=RULE_STRING
+				{
+					newLeafNode(lv_soundName_1_0, grammarAccess.getSoundAccess().getSoundNameSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSoundRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"soundName",
+						lv_soundName_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleIO
+entryRuleIO returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getIORule()); }
+	iv_ruleIO=ruleIO
+	{ $current=$iv_ruleIO.current; }
+	EOF;
+
+// Rule IO
+ruleIO returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='PrintMessage'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getIOAccess().getPrintMessageKeyword_0());
+		}
+		(
+			(
+				lv_message_1_0=RULE_STRING
+				{
+					newLeafNode(lv_message_1_0, grammarAccess.getIOAccess().getMessageSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getIORule());
+					}
+					setWithLastConsumed(
+						$current,
+						"message",
+						lv_message_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleTrigger
+entryRuleTrigger returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTriggerRule()); }
+	iv_ruleTrigger=ruleTrigger
+	{ $current=$iv_ruleTrigger.current; }
+	EOF;
+
+// Rule Trigger
+ruleTrigger returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Condition'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getTriggerAccess().getConditionKeyword_0());
+		}
+		(
+			(
+				lv_condition_1_0=RULE_STRING
+				{
+					newLeafNode(lv_condition_1_0, grammarAccess.getTriggerAccess().getConditionSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTriggerRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"condition",
+						lv_condition_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleDevice
+entryRuleDevice returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDeviceRule()); }
+	iv_ruleDevice=ruleDevice
+	{ $current=$iv_ruleDevice.current; }
+	EOF;
+
+// Rule Device
+ruleDevice returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Device:'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getDeviceAccess().getDeviceKeyword_0());
+		}
+		(
+			(
+				lv_type_1_0=RULE_STRING
+				{
+					newLeafNode(lv_type_1_0, grammarAccess.getDeviceAccess().getTypeSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDeviceRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"type",
+						lv_type_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)

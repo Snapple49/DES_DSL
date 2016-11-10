@@ -5,10 +5,15 @@ package des.missionrobot.serializer;
 
 import com.google.inject.Inject;
 import des.missionrobot.robotDSL.Behaviour;
+import des.missionrobot.robotDSL.Device;
+import des.missionrobot.robotDSL.IO;
+import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.MoveBackward;
 import des.missionrobot.robotDSL.MoveForward;
 import des.missionrobot.robotDSL.RobotDSLPackage;
+import des.missionrobot.robotDSL.Sound;
 import des.missionrobot.robotDSL.Stop;
+import des.missionrobot.robotDSL.Trigger;
 import des.missionrobot.robotDSL.Turn;
 import des.missionrobot.services.RobotDSLGrammarAccess;
 import java.util.Set;
@@ -39,14 +44,29 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case RobotDSLPackage.BEHAVIOUR:
 				sequence_Behaviour(context, (Behaviour) semanticObject); 
 				return; 
+			case RobotDSLPackage.DEVICE:
+				sequence_Device(context, (Device) semanticObject); 
+				return; 
+			case RobotDSLPackage.IO:
+				sequence_IO(context, (IO) semanticObject); 
+				return; 
+			case RobotDSLPackage.MISSION:
+				sequence_Mission(context, (Mission) semanticObject); 
+				return; 
 			case RobotDSLPackage.MOVE_BACKWARD:
 				sequence_MoveBackward(context, (MoveBackward) semanticObject); 
 				return; 
 			case RobotDSLPackage.MOVE_FORWARD:
 				sequence_MoveForward(context, (MoveForward) semanticObject); 
 				return; 
+			case RobotDSLPackage.SOUND:
+				sequence_Sound(context, (Sound) semanticObject); 
+				return; 
 			case RobotDSLPackage.STOP:
 				sequence_Stop(context, (Stop) semanticObject); 
+				return; 
+			case RobotDSLPackage.TRIGGER:
+				sequence_Trigger(context, (Trigger) semanticObject); 
 				return; 
 			case RobotDSLPackage.TURN:
 				sequence_Turn(context, (Turn) semanticObject); 
@@ -61,27 +81,65 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Behaviour returns Behaviour
 	 *
 	 * Constraint:
-	 *     (name=ID prio=INT moves=Movement)
+	 *     (name=ID prio=INT actionList+=Action triggerList=Trigger deviceList+=Device)
 	 */
 	protected void sequence_Behaviour(ISerializationContext context, Behaviour semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Device returns Device
+	 *
+	 * Constraint:
+	 *     type=STRING
+	 */
+	protected void sequence_Device(ISerializationContext context, Device semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.BEHAVIOUR__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.BEHAVIOUR__NAME));
-			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.BEHAVIOUR__PRIO) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.BEHAVIOUR__PRIO));
-			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.BEHAVIOUR__MOVES) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.BEHAVIOUR__MOVES));
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.DEVICE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.DEVICE__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBehaviourAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getBehaviourAccess().getPrioINTTerminalRuleCall_3_0(), semanticObject.getPrio());
-		feeder.accept(grammarAccess.getBehaviourAccess().getMovesMovementParserRuleCall_5_0(), semanticObject.getMoves());
+		feeder.accept(grammarAccess.getDeviceAccess().getTypeSTRINGTerminalRuleCall_1_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     Action returns IO
+	 *     IO returns IO
+	 *
+	 * Constraint:
+	 *     message=STRING
+	 */
+	protected void sequence_IO(ISerializationContext context, IO semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.IO__MESSAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.IO__MESSAGE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIOAccess().getMessageSTRINGTerminalRuleCall_1_0(), semanticObject.getMessage());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Mission returns Mission
+	 *
+	 * Constraint:
+	 *     (name=ID behaviourList+=Behaviour+ goalCondition+=Trigger+)
+	 */
+	protected void sequence_Mission(ISerializationContext context, Mission semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Action returns MoveBackward
 	 *     Movement returns MoveBackward
 	 *     MoveBackward returns MoveBackward
 	 *
@@ -101,6 +159,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     Action returns MoveForward
 	 *     Movement returns MoveForward
 	 *     MoveForward returns MoveForward
 	 *
@@ -120,6 +179,26 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     Action returns Sound
+	 *     Sound returns Sound
+	 *
+	 * Constraint:
+	 *     soundName=STRING
+	 */
+	protected void sequence_Sound(ISerializationContext context, Sound semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.SOUND__SOUND_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.SOUND__SOUND_NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSoundAccess().getSoundNameSTRINGTerminalRuleCall_1_0(), semanticObject.getSoundName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Action returns Stop
 	 *     Movement returns Stop
 	 *     Stop returns Stop
 	 *
@@ -139,6 +218,25 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     Trigger returns Trigger
+	 *
+	 * Constraint:
+	 *     condition=STRING
+	 */
+	protected void sequence_Trigger(ISerializationContext context, Trigger semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.TRIGGER__CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.TRIGGER__CONDITION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTriggerAccess().getConditionSTRINGTerminalRuleCall_1_0(), semanticObject.getCondition());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Action returns Turn
 	 *     Movement returns Turn
 	 *     Turn returns Turn
 	 *

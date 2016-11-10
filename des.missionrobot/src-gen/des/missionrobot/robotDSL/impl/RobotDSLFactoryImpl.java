@@ -65,15 +65,32 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     switch (eClass.getClassifierID())
     {
+      case RobotDSLPackage.MISSION: return createMission();
       case RobotDSLPackage.BEHAVIOUR: return createBehaviour();
+      case RobotDSLPackage.ACTION: return createAction();
       case RobotDSLPackage.MOVEMENT: return createMovement();
       case RobotDSLPackage.MOVE_FORWARD: return createMoveForward();
       case RobotDSLPackage.MOVE_BACKWARD: return createMoveBackward();
       case RobotDSLPackage.TURN: return createTurn();
       case RobotDSLPackage.STOP: return createStop();
+      case RobotDSLPackage.SOUND: return createSound();
+      case RobotDSLPackage.IO: return createIO();
+      case RobotDSLPackage.TRIGGER: return createTrigger();
+      case RobotDSLPackage.DEVICE: return createDevice();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Mission createMission()
+  {
+    MissionImpl mission = new MissionImpl();
+    return mission;
   }
 
   /**
@@ -85,6 +102,17 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     BehaviourImpl behaviour = new BehaviourImpl();
     return behaviour;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Action createAction()
+  {
+    ActionImpl action = new ActionImpl();
+    return action;
   }
 
   /**
@@ -140,6 +168,50 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     StopImpl stop = new StopImpl();
     return stop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Sound createSound()
+  {
+    SoundImpl sound = new SoundImpl();
+    return sound;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IO createIO()
+  {
+    IOImpl io = new IOImpl();
+    return io;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Trigger createTrigger()
+  {
+    TriggerImpl trigger = new TriggerImpl();
+    return trigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Device createDevice()
+  {
+    DeviceImpl device = new DeviceImpl();
+    return device;
   }
 
   /**

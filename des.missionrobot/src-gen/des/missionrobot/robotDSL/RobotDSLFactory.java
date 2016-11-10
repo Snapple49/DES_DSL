@@ -24,6 +24,15 @@ public interface RobotDSLFactory extends EFactory
   RobotDSLFactory eINSTANCE = des.missionrobot.robotDSL.impl.RobotDSLFactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>Mission</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mission</em>'.
+   * @generated
+   */
+  Mission createMission();
+
+  /**
    * Returns a new object of class '<em>Behaviour</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -31,6 +40,15 @@ public interface RobotDSLFactory extends EFactory
    * @generated
    */
   Behaviour createBehaviour();
+
+  /**
+   * Returns a new object of class '<em>Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action</em>'.
+   * @generated
+   */
+  Action createAction();
 
   /**
    * Returns a new object of class '<em>Movement</em>'.
@@ -76,6 +94,42 @@ public interface RobotDSLFactory extends EFactory
    * @generated
    */
   Stop createStop();
+
+  /**
+   * Returns a new object of class '<em>Sound</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sound</em>'.
+   * @generated
+   */
+  Sound createSound();
+
+  /**
+   * Returns a new object of class '<em>IO</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>IO</em>'.
+   * @generated
+   */
+  IO createIO();
+
+  /**
+   * Returns a new object of class '<em>Trigger</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Trigger</em>'.
+   * @generated
+   */
+  Trigger createTrigger();
+
+  /**
+   * Returns a new object of class '<em>Device</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Device</em>'.
+   * @generated
+   */
+  Device createDevice();
 
   /**
    * Returns the package supported by this factory.

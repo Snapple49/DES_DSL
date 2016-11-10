@@ -6,11 +6,19 @@
     copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="RobotDSL" basePackage="des.missionrobot" disposableProviderFactory="true"
       fileExtensions="rdsl" ecorePackage="RobotDSL.ecore#/">
+    <genClasses ecoreClass="RobotDSL.ecore#//Mission">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Mission/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Mission/behaviourList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Mission/goalCondition"/>
+    </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Behaviour">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Behaviour/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Behaviour/prio"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/moves"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/actionList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/triggerList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/deviceList"/>
     </genClasses>
+    <genClasses ecoreClass="RobotDSL.ecore#//Action"/>
     <genClasses ecoreClass="RobotDSL.ecore#//Movement"/>
     <genClasses ecoreClass="RobotDSL.ecore#//MoveForward">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//MoveForward/fspeed"/>
@@ -23,6 +31,18 @@
     </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Stop">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Stop/duration"/>
+    </genClasses>
+    <genClasses ecoreClass="RobotDSL.ecore#//Sound">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Sound/soundName"/>
+    </genClasses>
+    <genClasses ecoreClass="RobotDSL.ecore#//IO">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//IO/message"/>
+    </genClasses>
+    <genClasses ecoreClass="RobotDSL.ecore#//Trigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Trigger/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="RobotDSL.ecore#//Device">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/type"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

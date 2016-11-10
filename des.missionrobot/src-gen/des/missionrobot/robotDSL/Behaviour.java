@@ -3,6 +3,8 @@
  */
 package des.missionrobot.robotDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,7 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.Behaviour#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Behaviour#getPrio <em>Prio</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Behaviour#getMoves <em>Moves</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behaviour#getActionList <em>Action List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behaviour#getTriggerList <em>Trigger List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behaviour#getDeviceList <em>Device List</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour()
@@ -78,29 +82,61 @@ public interface Behaviour extends EObject
   void setPrio(int value);
 
   /**
-   * Returns the value of the '<em><b>Moves</b></em>' containment reference.
+   * Returns the value of the '<em><b>Action List</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Action}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Moves</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Action List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Moves</em>' containment reference.
-   * @see #setMoves(Movement)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_Moves()
+   * @return the value of the '<em>Action List</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_ActionList()
    * @model containment="true"
    * @generated
    */
-  Movement getMoves();
+  EList<Action> getActionList();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Behaviour#getMoves <em>Moves</em>}' containment reference.
+   * Returns the value of the '<em><b>Trigger List</b></em>' containment reference.
    * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Trigger List</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Moves</em>' containment reference.
-   * @see #getMoves()
+   * @return the value of the '<em>Trigger List</em>' containment reference.
+   * @see #setTriggerList(Trigger)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_TriggerList()
+   * @model containment="true"
    * @generated
    */
-  void setMoves(Movement value);
+  Trigger getTriggerList();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Behaviour#getTriggerList <em>Trigger List</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Trigger List</em>' containment reference.
+   * @see #getTriggerList()
+   * @generated
+   */
+  void setTriggerList(Trigger value);
+
+  /**
+   * Returns the value of the '<em><b>Device List</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Device}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Device List</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Device List</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_DeviceList()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Device> getDeviceList();
 
 } // Behaviour

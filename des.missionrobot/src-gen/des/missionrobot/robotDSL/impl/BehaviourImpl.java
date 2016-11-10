@@ -3,18 +3,27 @@
  */
 package des.missionrobot.robotDSL.impl;
 
+import des.missionrobot.robotDSL.Action;
 import des.missionrobot.robotDSL.Behaviour;
-import des.missionrobot.robotDSL.Movement;
+import des.missionrobot.robotDSL.Device;
 import des.missionrobot.robotDSL.RobotDSLPackage;
+import des.missionrobot.robotDSL.Trigger;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +35,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getPrio <em>Prio</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getMoves <em>Moves</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getActionList <em>Action List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getTriggerList <em>Trigger List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getDeviceList <em>Device List</em>}</li>
  * </ul>
  *
  * @generated
@@ -74,14 +85,34 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   protected int prio = PRIO_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getMoves() <em>Moves</em>}' containment reference.
+   * The cached value of the '{@link #getActionList() <em>Action List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMoves()
+   * @see #getActionList()
    * @generated
    * @ordered
    */
-  protected Movement moves;
+  protected EList<Action> actionList;
+
+  /**
+   * The cached value of the '{@link #getTriggerList() <em>Trigger List</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTriggerList()
+   * @generated
+   * @ordered
+   */
+  protected Trigger triggerList;
+
+  /**
+   * The cached value of the '{@link #getDeviceList() <em>Device List</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDeviceList()
+   * @generated
+   * @ordered
+   */
+  protected EList<Device> deviceList;
 
   /**
    * <!-- begin-user-doc -->
@@ -155,9 +186,13 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
    * <!-- end-user-doc -->
    * @generated
    */
-  public Movement getMoves()
+  public EList<Action> getActionList()
   {
-    return moves;
+    if (actionList == null)
+    {
+      actionList = new EObjectContainmentEList<Action>(Action.class, this, RobotDSLPackage.BEHAVIOUR__ACTION_LIST);
+    }
+    return actionList;
   }
 
   /**
@@ -165,13 +200,23 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMoves(Movement newMoves, NotificationChain msgs)
+  public Trigger getTriggerList()
   {
-    Movement oldMoves = moves;
-    moves = newMoves;
+    return triggerList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTriggerList(Trigger newTriggerList, NotificationChain msgs)
+  {
+    Trigger oldTriggerList = triggerList;
+    triggerList = newTriggerList;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOUR__MOVES, oldMoves, newMoves);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST, oldTriggerList, newTriggerList);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -182,20 +227,34 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMoves(Movement newMoves)
+  public void setTriggerList(Trigger newTriggerList)
   {
-    if (newMoves != moves)
+    if (newTriggerList != triggerList)
     {
       NotificationChain msgs = null;
-      if (moves != null)
-        msgs = ((InternalEObject)moves).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.BEHAVIOUR__MOVES, null, msgs);
-      if (newMoves != null)
-        msgs = ((InternalEObject)newMoves).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.BEHAVIOUR__MOVES, null, msgs);
-      msgs = basicSetMoves(newMoves, msgs);
+      if (triggerList != null)
+        msgs = ((InternalEObject)triggerList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST, null, msgs);
+      if (newTriggerList != null)
+        msgs = ((InternalEObject)newTriggerList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST, null, msgs);
+      msgs = basicSetTriggerList(newTriggerList, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOUR__MOVES, newMoves, newMoves));
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST, newTriggerList, newTriggerList));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Device> getDeviceList()
+  {
+    if (deviceList == null)
+    {
+      deviceList = new EObjectContainmentEList<Device>(Device.class, this, RobotDSLPackage.BEHAVIOUR__DEVICE_LIST);
+    }
+    return deviceList;
   }
 
   /**
@@ -208,8 +267,12 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     switch (featureID)
     {
-      case RobotDSLPackage.BEHAVIOUR__MOVES:
-        return basicSetMoves(null, msgs);
+      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+        return ((InternalEList<?>)getActionList()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+        return basicSetTriggerList(null, msgs);
+      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+        return ((InternalEList<?>)getDeviceList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -228,8 +291,12 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
         return getName();
       case RobotDSLPackage.BEHAVIOUR__PRIO:
         return getPrio();
-      case RobotDSLPackage.BEHAVIOUR__MOVES:
-        return getMoves();
+      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+        return getActionList();
+      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+        return getTriggerList();
+      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+        return getDeviceList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -239,6 +306,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -250,8 +318,16 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
       case RobotDSLPackage.BEHAVIOUR__PRIO:
         setPrio((Integer)newValue);
         return;
-      case RobotDSLPackage.BEHAVIOUR__MOVES:
-        setMoves((Movement)newValue);
+      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+        getActionList().clear();
+        getActionList().addAll((Collection<? extends Action>)newValue);
+        return;
+      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+        setTriggerList((Trigger)newValue);
+        return;
+      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+        getDeviceList().clear();
+        getDeviceList().addAll((Collection<? extends Device>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -273,8 +349,14 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
       case RobotDSLPackage.BEHAVIOUR__PRIO:
         setPrio(PRIO_EDEFAULT);
         return;
-      case RobotDSLPackage.BEHAVIOUR__MOVES:
-        setMoves((Movement)null);
+      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+        getActionList().clear();
+        return;
+      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+        setTriggerList((Trigger)null);
+        return;
+      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+        getDeviceList().clear();
         return;
     }
     super.eUnset(featureID);
@@ -294,8 +376,12 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RobotDSLPackage.BEHAVIOUR__PRIO:
         return prio != PRIO_EDEFAULT;
-      case RobotDSLPackage.BEHAVIOUR__MOVES:
-        return moves != null;
+      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+        return actionList != null && !actionList.isEmpty();
+      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+        return triggerList != null;
+      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+        return deviceList != null && !deviceList.isEmpty();
     }
     return super.eIsSet(featureID);
   }

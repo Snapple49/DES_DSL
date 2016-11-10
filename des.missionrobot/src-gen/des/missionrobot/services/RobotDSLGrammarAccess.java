@@ -22,6 +22,55 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
+	public class MissionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Mission");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMissionKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cBehavioursKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cBehaviourListAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cBehaviourListBehaviourParserRuleCall_3_0 = (RuleCall)cBehaviourListAssignment_3.eContents().get(0);
+		private final Keyword cGoalKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cGoalConditionAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cGoalConditionTriggerParserRuleCall_5_0 = (RuleCall)cGoalConditionAssignment_5.eContents().get(0);
+		
+		//Mission:
+		//	'Mission' name=ID
+		//	'Behaviours:' behaviourList+=Behaviour+
+		//	'Goal:' goalCondition+=Trigger+;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Mission' name=ID 'Behaviours:' behaviourList+=Behaviour+ 'Goal:' goalCondition+=Trigger+
+		public Group getGroup() { return cGroup; }
+		
+		//'Mission'
+		public Keyword getMissionKeyword_0() { return cMissionKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'Behaviours:'
+		public Keyword getBehavioursKeyword_2() { return cBehavioursKeyword_2; }
+		
+		//behaviourList+=Behaviour+
+		public Assignment getBehaviourListAssignment_3() { return cBehaviourListAssignment_3; }
+		
+		//Behaviour
+		public RuleCall getBehaviourListBehaviourParserRuleCall_3_0() { return cBehaviourListBehaviourParserRuleCall_3_0; }
+		
+		//'Goal:'
+		public Keyword getGoalKeyword_4() { return cGoalKeyword_4; }
+		
+		//goalCondition+=Trigger+
+		public Assignment getGoalConditionAssignment_5() { return cGoalConditionAssignment_5; }
+		
+		//Trigger
+		public RuleCall getGoalConditionTriggerParserRuleCall_5_0() { return cGoalConditionTriggerParserRuleCall_5_0; }
+	}
 	public class BehaviourElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Behaviour");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -31,20 +80,29 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPriorityKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cPrioAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cPrioINTTerminalRuleCall_3_0 = (RuleCall)cPrioAssignment_3.eContents().get(0);
-		private final Keyword cMovementsKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cMovesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cMovesMovementParserRuleCall_5_0 = (RuleCall)cMovesAssignment_5.eContents().get(0);
+		private final Keyword cActionsKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cActionListAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cActionListActionParserRuleCall_5_0 = (RuleCall)cActionListAssignment_5.eContents().get(0);
+		private final Keyword cTriggerKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cTriggerListAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cTriggerListTriggerParserRuleCall_7_0 = (RuleCall)cTriggerListAssignment_7.eContents().get(0);
+		private final Keyword cDevicesKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cDeviceListAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cDeviceListDeviceParserRuleCall_9_0 = (RuleCall)cDeviceListAssignment_9.eContents().get(0);
 		
 		//Behaviour:
-		//	'Behavior' name=ID
-		//	'priority' prio=INT
-		//	'movements:' moves=Movement;
+		//	'Behavior:' name=ID
+		//	'priority:' prio=INT
+		//	'actions:' actionList+=Action
+		//	'trigger:' triggerList=Trigger
+		//	'devices:' deviceList+=Device;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Behavior' name=ID 'priority' prio=INT 'movements:' moves=Movement
+		//'Behavior:' name=ID 'priority:' prio=INT 'actions:' actionList+=Action 'trigger:' triggerList=Trigger 'devices:'
+		//deviceList+=Device
 		public Group getGroup() { return cGroup; }
 		
-		//'Behavior'
+		//'Behavior:'
 		public Keyword getBehaviorKeyword_0() { return cBehaviorKeyword_0; }
 		
 		//name=ID
@@ -53,7 +111,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//'priority'
+		//'priority:'
 		public Keyword getPriorityKeyword_2() { return cPriorityKeyword_2; }
 		
 		//prio=INT
@@ -62,14 +120,55 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getPrioINTTerminalRuleCall_3_0() { return cPrioINTTerminalRuleCall_3_0; }
 		
-		//'movements:'
-		public Keyword getMovementsKeyword_4() { return cMovementsKeyword_4; }
+		//'actions:'
+		public Keyword getActionsKeyword_4() { return cActionsKeyword_4; }
 		
-		//moves=Movement
-		public Assignment getMovesAssignment_5() { return cMovesAssignment_5; }
+		//actionList+=Action
+		public Assignment getActionListAssignment_5() { return cActionListAssignment_5; }
+		
+		//Action
+		public RuleCall getActionListActionParserRuleCall_5_0() { return cActionListActionParserRuleCall_5_0; }
+		
+		//'trigger:'
+		public Keyword getTriggerKeyword_6() { return cTriggerKeyword_6; }
+		
+		//triggerList=Trigger
+		public Assignment getTriggerListAssignment_7() { return cTriggerListAssignment_7; }
+		
+		//Trigger
+		public RuleCall getTriggerListTriggerParserRuleCall_7_0() { return cTriggerListTriggerParserRuleCall_7_0; }
+		
+		//'devices:'
+		public Keyword getDevicesKeyword_8() { return cDevicesKeyword_8; }
+		
+		//deviceList+=Device
+		public Assignment getDeviceListAssignment_9() { return cDeviceListAssignment_9; }
+		
+		//Device
+		public RuleCall getDeviceListDeviceParserRuleCall_9_0() { return cDeviceListDeviceParserRuleCall_9_0; }
+	}
+	public class ActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Action");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMovementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSoundParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cIOParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Action:
+		//	Movement | Sound | IO;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Movement | Sound | IO
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Movement
-		public RuleCall getMovesMovementParserRuleCall_5_0() { return cMovesMovementParserRuleCall_5_0; }
+		public RuleCall getMovementParserRuleCall_0() { return cMovementParserRuleCall_0; }
+		
+		//Sound
+		public RuleCall getSoundParserRuleCall_1() { return cSoundParserRuleCall_1; }
+		
+		//IO
+		public RuleCall getIOParserRuleCall_2() { return cIOParserRuleCall_2; }
 	}
 	public class MovementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Movement");
@@ -190,14 +289,112 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getDurationINTTerminalRuleCall_1_0() { return cDurationINTTerminalRuleCall_1_0; }
 	}
+	public class SoundElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Sound");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPlaySoundKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cSoundNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cSoundNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cSoundNameAssignment_1.eContents().get(0);
+		
+		//Sound:
+		//	'PlaySound:' soundName=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'PlaySound:' soundName=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'PlaySound:'
+		public Keyword getPlaySoundKeyword_0() { return cPlaySoundKeyword_0; }
+		
+		//soundName=STRING
+		public Assignment getSoundNameAssignment_1() { return cSoundNameAssignment_1; }
+		
+		//STRING
+		public RuleCall getSoundNameSTRINGTerminalRuleCall_1_0() { return cSoundNameSTRINGTerminalRuleCall_1_0; }
+	}
+	public class IOElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.IO");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPrintMessageKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cMessageAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMessageSTRINGTerminalRuleCall_1_0 = (RuleCall)cMessageAssignment_1.eContents().get(0);
+		
+		//IO:
+		//	'PrintMessage' message=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'PrintMessage' message=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'PrintMessage'
+		public Keyword getPrintMessageKeyword_0() { return cPrintMessageKeyword_0; }
+		
+		//message=STRING
+		public Assignment getMessageAssignment_1() { return cMessageAssignment_1; }
+		
+		//STRING
+		public RuleCall getMessageSTRINGTerminalRuleCall_1_0() { return cMessageSTRINGTerminalRuleCall_1_0; }
+	}
+	public class TriggerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Trigger");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cConditionKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cConditionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cConditionSTRINGTerminalRuleCall_1_0 = (RuleCall)cConditionAssignment_1.eContents().get(0);
+		
+		//Trigger:
+		//	'Condition' condition=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Condition' condition=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'Condition'
+		public Keyword getConditionKeyword_0() { return cConditionKeyword_0; }
+		
+		//condition=STRING
+		public Assignment getConditionAssignment_1() { return cConditionAssignment_1; }
+		
+		//STRING
+		public RuleCall getConditionSTRINGTerminalRuleCall_1_0() { return cConditionSTRINGTerminalRuleCall_1_0; }
+	}
+	public class DeviceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Device");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDeviceKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeSTRINGTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		
+		//Device:
+		//	'Device:' type=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Device:' type=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'Device:'
+		public Keyword getDeviceKeyword_0() { return cDeviceKeyword_0; }
+		
+		//type=STRING
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		
+		//STRING
+		public RuleCall getTypeSTRINGTerminalRuleCall_1_0() { return cTypeSTRINGTerminalRuleCall_1_0; }
+	}
 	
 	
+	private final MissionElements pMission;
 	private final BehaviourElements pBehaviour;
+	private final ActionElements pAction;
 	private final MovementElements pMovement;
 	private final MoveForwardElements pMoveForward;
 	private final MoveBackwardElements pMoveBackward;
 	private final TurnElements pTurn;
 	private final StopElements pStop;
+	private final SoundElements pSound;
+	private final IOElements pIO;
+	private final TriggerElements pTrigger;
+	private final DeviceElements pDevice;
 	
 	private final Grammar grammar;
 	
@@ -208,12 +405,18 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMission = new MissionElements();
 		this.pBehaviour = new BehaviourElements();
+		this.pAction = new ActionElements();
 		this.pMovement = new MovementElements();
 		this.pMoveForward = new MoveForwardElements();
 		this.pMoveBackward = new MoveBackwardElements();
 		this.pTurn = new TurnElements();
 		this.pStop = new StopElements();
+		this.pSound = new SoundElements();
+		this.pIO = new IOElements();
+		this.pTrigger = new TriggerElements();
+		this.pDevice = new DeviceElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -243,16 +446,40 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//Mission:
+	//	'Mission' name=ID
+	//	'Behaviours:' behaviourList+=Behaviour+
+	//	'Goal:' goalCondition+=Trigger+;
+	public MissionElements getMissionAccess() {
+		return pMission;
+	}
+	
+	public ParserRule getMissionRule() {
+		return getMissionAccess().getRule();
+	}
+	
 	//Behaviour:
-	//	'Behavior' name=ID
-	//	'priority' prio=INT
-	//	'movements:' moves=Movement;
+	//	'Behavior:' name=ID
+	//	'priority:' prio=INT
+	//	'actions:' actionList+=Action
+	//	'trigger:' triggerList=Trigger
+	//	'devices:' deviceList+=Device;
 	public BehaviourElements getBehaviourAccess() {
 		return pBehaviour;
 	}
 	
 	public ParserRule getBehaviourRule() {
 		return getBehaviourAccess().getRule();
+	}
+	
+	//Action:
+	//	Movement | Sound | IO;
+	public ActionElements getActionAccess() {
+		return pAction;
+	}
+	
+	public ParserRule getActionRule() {
+		return getActionAccess().getRule();
 	}
 	
 	//Movement:
@@ -303,6 +530,46 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getStopRule() {
 		return getStopAccess().getRule();
+	}
+	
+	//Sound:
+	//	'PlaySound:' soundName=STRING;
+	public SoundElements getSoundAccess() {
+		return pSound;
+	}
+	
+	public ParserRule getSoundRule() {
+		return getSoundAccess().getRule();
+	}
+	
+	//IO:
+	//	'PrintMessage' message=STRING;
+	public IOElements getIOAccess() {
+		return pIO;
+	}
+	
+	public ParserRule getIORule() {
+		return getIOAccess().getRule();
+	}
+	
+	//Trigger:
+	//	'Condition' condition=STRING;
+	public TriggerElements getTriggerAccess() {
+		return pTrigger;
+	}
+	
+	public ParserRule getTriggerRule() {
+		return getTriggerAccess().getRule();
+	}
+	
+	//Device:
+	//	'Device:' type=STRING;
+	public DeviceElements getDeviceAccess() {
+		return pDevice;
+	}
+	
+	public ParserRule getDeviceRule() {
+		return getDeviceAccess().getRule();
 	}
 	
 	//terminal ID:

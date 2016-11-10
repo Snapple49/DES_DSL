@@ -73,6 +73,13 @@ public class RobotDSLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case RobotDSLPackage.MISSION:
+      {
+        Mission mission = (Mission)theEObject;
+        T result = caseMission(mission);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RobotDSLPackage.BEHAVIOUR:
       {
         Behaviour behaviour = (Behaviour)theEObject;
@@ -80,10 +87,18 @@ public class RobotDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RobotDSLPackage.ACTION:
+      {
+        Action action = (Action)theEObject;
+        T result = caseAction(action);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RobotDSLPackage.MOVEMENT:
       {
         Movement movement = (Movement)theEObject;
         T result = caseMovement(movement);
+        if (result == null) result = caseAction(movement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -92,6 +107,7 @@ public class RobotDSLSwitch<T> extends Switch<T>
         MoveForward moveForward = (MoveForward)theEObject;
         T result = caseMoveForward(moveForward);
         if (result == null) result = caseMovement(moveForward);
+        if (result == null) result = caseAction(moveForward);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -100,6 +116,7 @@ public class RobotDSLSwitch<T> extends Switch<T>
         MoveBackward moveBackward = (MoveBackward)theEObject;
         T result = caseMoveBackward(moveBackward);
         if (result == null) result = caseMovement(moveBackward);
+        if (result == null) result = caseAction(moveBackward);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -108,6 +125,7 @@ public class RobotDSLSwitch<T> extends Switch<T>
         Turn turn = (Turn)theEObject;
         T result = caseTurn(turn);
         if (result == null) result = caseMovement(turn);
+        if (result == null) result = caseAction(turn);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -116,11 +134,58 @@ public class RobotDSLSwitch<T> extends Switch<T>
         Stop stop = (Stop)theEObject;
         T result = caseStop(stop);
         if (result == null) result = caseMovement(stop);
+        if (result == null) result = caseAction(stop);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RobotDSLPackage.SOUND:
+      {
+        Sound sound = (Sound)theEObject;
+        T result = caseSound(sound);
+        if (result == null) result = caseAction(sound);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RobotDSLPackage.IO:
+      {
+        IO io = (IO)theEObject;
+        T result = caseIO(io);
+        if (result == null) result = caseAction(io);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RobotDSLPackage.TRIGGER:
+      {
+        Trigger trigger = (Trigger)theEObject;
+        T result = caseTrigger(trigger);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RobotDSLPackage.DEVICE:
+      {
+        Device device = (Device)theEObject;
+        T result = caseDevice(device);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
       default: return defaultCase(theEObject);
     }
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mission</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mission</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMission(Mission object)
+  {
+    return null;
   }
 
   /**
@@ -135,6 +200,22 @@ public class RobotDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBehaviour(Behaviour object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAction(Action object)
   {
     return null;
   }
@@ -215,6 +296,70 @@ public class RobotDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStop(Stop object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Sound</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Sound</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSound(Sound object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>IO</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>IO</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIO(IO object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Trigger</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Trigger</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTrigger(Trigger object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Device</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Device</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDevice(Device object)
   {
     return null;
   }
