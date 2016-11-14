@@ -14,7 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link des.missionrobot.robotDSL.Device#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Device#getType <em>Type</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Device#getSensorType <em>Sensor Type</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Device#getDesc <em>Desc</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getDevice()
@@ -24,7 +27,34 @@ import org.eclipse.emf.ecore.EObject;
 public interface Device extends EObject
 {
   /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getDevice_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Device#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.DeviceType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -32,21 +62,78 @@ public interface Device extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
+   * @see des.missionrobot.robotDSL.DeviceType
+   * @see #setType(DeviceType)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getDevice_Type()
    * @model
    * @generated
    */
-  String getType();
+  DeviceType getType();
 
   /**
    * Sets the value of the '{@link des.missionrobot.robotDSL.Device#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' attribute.
+   * @see des.missionrobot.robotDSL.DeviceType
    * @see #getType()
    * @generated
    */
-  void setType(String value);
+  void setType(DeviceType value);
+
+  /**
+   * Returns the value of the '<em><b>Sensor Type</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.SensorType}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sensor Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sensor Type</em>' attribute.
+   * @see des.missionrobot.robotDSL.SensorType
+   * @see #setSensorType(SensorType)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getDevice_SensorType()
+   * @model
+   * @generated
+   */
+  SensorType getSensorType();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Device#getSensorType <em>Sensor Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sensor Type</em>' attribute.
+   * @see des.missionrobot.robotDSL.SensorType
+   * @see #getSensorType()
+   * @generated
+   */
+  void setSensorType(SensorType value);
+
+  /**
+   * Returns the value of the '<em><b>Desc</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Desc</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Desc</em>' attribute.
+   * @see #setDesc(String)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getDevice_Desc()
+   * @model
+   * @generated
+   */
+  String getDesc();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Device#getDesc <em>Desc</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Desc</em>' attribute.
+   * @see #getDesc()
+   * @generated
+   */
+  void setDesc(String value);
 
 } // Device

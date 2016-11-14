@@ -6,20 +6,32 @@
     copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="RobotDSL" basePackage="des.missionrobot" disposableProviderFactory="true"
       fileExtensions="rdsl" ecorePackage="RobotDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RobotDSL.ecore#//DeviceType">
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//DeviceType/MOTOR"/>
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//DeviceType/SENSOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RobotDSL.ecore#//SensorType">
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/ULTRASONIC"/>
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/TOUCH"/>
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/COLOUR"/>
+    </genEnums>
     <genClasses ecoreClass="RobotDSL.ecore#//Mission">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Mission/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Mission/deviceList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Mission/behaviourList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Mission/goalCondition"/>
     </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Behaviour">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Behaviour/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Behaviour/prio"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/deviceList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/deviceList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/actionList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/triggerList"/>
     </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Action"/>
-    <genClasses ecoreClass="RobotDSL.ecore#//Movement"/>
+    <genClasses ecoreClass="RobotDSL.ecore#//Movement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Movement/duration"/>
+    </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//MoveForward">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//MoveForward/fspeed"/>
     </genClasses>
@@ -29,9 +41,7 @@
     <genClasses ecoreClass="RobotDSL.ecore#//Turn">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Turn/angle"/>
     </genClasses>
-    <genClasses ecoreClass="RobotDSL.ecore#//Stop">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Stop/duration"/>
-    </genClasses>
+    <genClasses ecoreClass="RobotDSL.ecore#//Stop"/>
     <genClasses ecoreClass="RobotDSL.ecore#//Sound">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Sound/soundName"/>
     </genClasses>
@@ -42,7 +52,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Trigger/condition"/>
     </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Device">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/sensorType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/desc"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

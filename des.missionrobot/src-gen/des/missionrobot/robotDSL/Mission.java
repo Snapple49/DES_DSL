@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getName <em>Name</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Mission#getDeviceList <em>Device List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getBehaviourList <em>Behaviour List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getGoalCondition <em>Goal Condition</em>}</li>
  * </ul>
@@ -52,6 +53,22 @@ public interface Mission extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Device List</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Device}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Device List</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Device List</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_DeviceList()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Device> getDeviceList();
 
   /**
    * Returns the value of the '<em><b>Behaviour List</b></em>' containment reference list.

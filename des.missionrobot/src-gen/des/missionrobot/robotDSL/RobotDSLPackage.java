@@ -5,6 +5,7 @@ package des.missionrobot.robotDSL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -77,13 +78,22 @@ public interface RobotDSLPackage extends EPackage
   int MISSION__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Device List</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MISSION__DEVICE_LIST = 1;
+
+  /**
    * The feature id for the '<em><b>Behaviour List</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MISSION__BEHAVIOUR_LIST = 1;
+  int MISSION__BEHAVIOUR_LIST = 2;
 
   /**
    * The feature id for the '<em><b>Goal Condition</b></em>' containment reference list.
@@ -92,7 +102,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MISSION__GOAL_CONDITION = 2;
+  int MISSION__GOAL_CONDITION = 3;
 
   /**
    * The number of structural features of the '<em>Mission</em>' class.
@@ -101,7 +111,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MISSION_FEATURE_COUNT = 3;
+  int MISSION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.BehaviourImpl <em>Behaviour</em>}' class.
@@ -132,7 +142,7 @@ public interface RobotDSLPackage extends EPackage
   int BEHAVIOUR__PRIO = 1;
 
   /**
-   * The feature id for the '<em><b>Device List</b></em>' containment reference list.
+   * The feature id for the '<em><b>Device List</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -150,7 +160,7 @@ public interface RobotDSLPackage extends EPackage
   int BEHAVIOUR__ACTION_LIST = 3;
 
   /**
-   * The feature id for the '<em><b>Trigger List</b></em>' containment reference.
+   * The feature id for the '<em><b>Trigger List</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -197,13 +207,22 @@ public interface RobotDSLPackage extends EPackage
   int MOVEMENT = 3;
 
   /**
+   * The feature id for the '<em><b>Duration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVEMENT__DURATION = ACTION_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Movement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MOVEMENT_FEATURE_COUNT = ACTION_FEATURE_COUNT + 0;
+  int MOVEMENT_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.MoveForwardImpl <em>Move Forward</em>}' class.
@@ -214,6 +233,15 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   int MOVE_FORWARD = 4;
+
+  /**
+   * The feature id for the '<em><b>Duration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE_FORWARD__DURATION = MOVEMENT__DURATION;
 
   /**
    * The feature id for the '<em><b>Fspeed</b></em>' attribute.
@@ -244,6 +272,15 @@ public interface RobotDSLPackage extends EPackage
   int MOVE_BACKWARD = 5;
 
   /**
+   * The feature id for the '<em><b>Duration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE_BACKWARD__DURATION = MOVEMENT__DURATION;
+
+  /**
    * The feature id for the '<em><b>Bspeed</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -270,6 +307,15 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   int TURN = 6;
+
+  /**
+   * The feature id for the '<em><b>Duration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TURN__DURATION = MOVEMENT__DURATION;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -306,7 +352,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STOP__DURATION = MOVEMENT_FEATURE_COUNT + 0;
+  int STOP__DURATION = MOVEMENT__DURATION;
 
   /**
    * The number of structural features of the '<em>Stop</em>' class.
@@ -315,7 +361,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STOP_FEATURE_COUNT = MOVEMENT_FEATURE_COUNT + 1;
+  int STOP_FEATURE_COUNT = MOVEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.SoundImpl <em>Sound</em>}' class.
@@ -412,13 +458,40 @@ public interface RobotDSLPackage extends EPackage
   int DEVICE = 11;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVICE__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVICE__TYPE = 0;
+  int DEVICE__TYPE = 1;
+
+  /**
+   * The feature id for the '<em><b>Sensor Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVICE__SENSOR_TYPE = 2;
+
+  /**
+   * The feature id for the '<em><b>Desc</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVICE__DESC = 3;
 
   /**
    * The number of structural features of the '<em>Device</em>' class.
@@ -427,7 +500,27 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_FEATURE_COUNT = 1;
+  int DEVICE_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.DeviceType <em>Device Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.DeviceType
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDeviceType()
+   * @generated
+   */
+  int DEVICE_TYPE = 12;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.SensorType <em>Sensor Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.SensorType
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensorType()
+   * @generated
+   */
+  int SENSOR_TYPE = 13;
 
 
   /**
@@ -450,6 +543,17 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   EAttribute getMission_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Mission#getDeviceList <em>Device List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Device List</em>'.
+   * @see des.missionrobot.robotDSL.Mission#getDeviceList()
+   * @see #getMission()
+   * @generated
+   */
+  EReference getMission_DeviceList();
 
   /**
    * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Mission#getBehaviourList <em>Behaviour List</em>}'.
@@ -506,10 +610,10 @@ public interface RobotDSLPackage extends EPackage
   EAttribute getBehaviour_Prio();
 
   /**
-   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Behaviour#getDeviceList <em>Device List</em>}'.
+   * Returns the meta object for the reference list '{@link des.missionrobot.robotDSL.Behaviour#getDeviceList <em>Device List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Device List</em>'.
+   * @return the meta object for the reference list '<em>Device List</em>'.
    * @see des.missionrobot.robotDSL.Behaviour#getDeviceList()
    * @see #getBehaviour()
    * @generated
@@ -528,10 +632,10 @@ public interface RobotDSLPackage extends EPackage
   EReference getBehaviour_ActionList();
 
   /**
-   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Behaviour#getTriggerList <em>Trigger List</em>}'.
+   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Behaviour#getTriggerList <em>Trigger List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Trigger List</em>'.
+   * @return the meta object for the containment reference list '<em>Trigger List</em>'.
    * @see des.missionrobot.robotDSL.Behaviour#getTriggerList()
    * @see #getBehaviour()
    * @generated
@@ -557,6 +661,17 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   EClass getMovement();
+
+  /**
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Movement#getDuration <em>Duration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Duration</em>'.
+   * @see des.missionrobot.robotDSL.Movement#getDuration()
+   * @see #getMovement()
+   * @generated
+   */
+  EAttribute getMovement_Duration();
 
   /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.MoveForward <em>Move Forward</em>}'.
@@ -632,17 +747,6 @@ public interface RobotDSLPackage extends EPackage
   EClass getStop();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Stop#getDuration <em>Duration</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Duration</em>'.
-   * @see des.missionrobot.robotDSL.Stop#getDuration()
-   * @see #getStop()
-   * @generated
-   */
-  EAttribute getStop_Duration();
-
-  /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Sound <em>Sound</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -716,6 +820,17 @@ public interface RobotDSLPackage extends EPackage
   EClass getDevice();
 
   /**
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see des.missionrobot.robotDSL.Device#getName()
+   * @see #getDevice()
+   * @generated
+   */
+  EAttribute getDevice_Name();
+
+  /**
    * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -725,6 +840,48 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   EAttribute getDevice_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getSensorType <em>Sensor Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Sensor Type</em>'.
+   * @see des.missionrobot.robotDSL.Device#getSensorType()
+   * @see #getDevice()
+   * @generated
+   */
+  EAttribute getDevice_SensorType();
+
+  /**
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getDesc <em>Desc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Desc</em>'.
+   * @see des.missionrobot.robotDSL.Device#getDesc()
+   * @see #getDevice()
+   * @generated
+   */
+  EAttribute getDevice_Desc();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.DeviceType <em>Device Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Device Type</em>'.
+   * @see des.missionrobot.robotDSL.DeviceType
+   * @generated
+   */
+  EEnum getDeviceType();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.SensorType <em>Sensor Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Sensor Type</em>'.
+   * @see des.missionrobot.robotDSL.SensorType
+   * @generated
+   */
+  EEnum getSensorType();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -766,6 +923,14 @@ public interface RobotDSLPackage extends EPackage
      * @generated
      */
     EAttribute MISSION__NAME = eINSTANCE.getMission_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Device List</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MISSION__DEVICE_LIST = eINSTANCE.getMission_DeviceList();
 
     /**
      * The meta object literal for the '<em><b>Behaviour List</b></em>' containment reference list feature.
@@ -810,7 +975,7 @@ public interface RobotDSLPackage extends EPackage
     EAttribute BEHAVIOUR__PRIO = eINSTANCE.getBehaviour_Prio();
 
     /**
-     * The meta object literal for the '<em><b>Device List</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Device List</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -826,7 +991,7 @@ public interface RobotDSLPackage extends EPackage
     EReference BEHAVIOUR__ACTION_LIST = eINSTANCE.getBehaviour_ActionList();
 
     /**
-     * The meta object literal for the '<em><b>Trigger List</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Trigger List</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -852,6 +1017,14 @@ public interface RobotDSLPackage extends EPackage
      * @generated
      */
     EClass MOVEMENT = eINSTANCE.getMovement();
+
+    /**
+     * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVEMENT__DURATION = eINSTANCE.getMovement_Duration();
 
     /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.MoveForwardImpl <em>Move Forward</em>}' class.
@@ -918,14 +1091,6 @@ public interface RobotDSLPackage extends EPackage
     EClass STOP = eINSTANCE.getStop();
 
     /**
-     * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STOP__DURATION = eINSTANCE.getStop_Duration();
-
-    /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.SoundImpl <em>Sound</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -990,12 +1155,56 @@ public interface RobotDSLPackage extends EPackage
     EClass DEVICE = eINSTANCE.getDevice();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEVICE__NAME = eINSTANCE.getDevice_Name();
+
+    /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute DEVICE__TYPE = eINSTANCE.getDevice_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Sensor Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEVICE__SENSOR_TYPE = eINSTANCE.getDevice_SensorType();
+
+    /**
+     * The meta object literal for the '<em><b>Desc</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEVICE__DESC = eINSTANCE.getDevice_Desc();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.DeviceType <em>Device Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.DeviceType
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDeviceType()
+     * @generated
+     */
+    EEnum DEVICE_TYPE = eINSTANCE.getDeviceType();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.SensorType <em>Sensor Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.SensorType
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensorType()
+     * @generated
+     */
+    EEnum SENSOR_TYPE = eINSTANCE.getSensorType();
 
   }
 

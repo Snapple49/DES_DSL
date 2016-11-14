@@ -4,6 +4,7 @@
 package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Behaviour;
+import des.missionrobot.robotDSL.Device;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Trigger;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getDeviceList <em>Device List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getBehaviourList <em>Behaviour List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getGoalCondition <em>Goal Condition</em>}</li>
  * </ul>
@@ -60,6 +62,16 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDeviceList() <em>Device List</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDeviceList()
+   * @generated
+   * @ordered
+   */
+  protected EList<Device> deviceList;
 
   /**
    * The cached value of the '{@link #getBehaviourList() <em>Behaviour List</em>}' containment reference list.
@@ -130,6 +142,20 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Device> getDeviceList()
+  {
+    if (deviceList == null)
+    {
+      deviceList = new EObjectContainmentEList<Device>(Device.class, this, RobotDSLPackage.MISSION__DEVICE_LIST);
+    }
+    return deviceList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Behaviour> getBehaviourList()
   {
     if (behaviourList == null)
@@ -163,6 +189,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
   {
     switch (featureID)
     {
+      case RobotDSLPackage.MISSION__DEVICE_LIST:
+        return ((InternalEList<?>)getDeviceList()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
         return ((InternalEList<?>)getBehaviourList()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.MISSION__GOAL_CONDITION:
@@ -183,6 +211,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__NAME:
         return getName();
+      case RobotDSLPackage.MISSION__DEVICE_LIST:
+        return getDeviceList();
       case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
         return getBehaviourList();
       case RobotDSLPackage.MISSION__GOAL_CONDITION:
@@ -204,6 +234,10 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__NAME:
         setName((String)newValue);
+        return;
+      case RobotDSLPackage.MISSION__DEVICE_LIST:
+        getDeviceList().clear();
+        getDeviceList().addAll((Collection<? extends Device>)newValue);
         return;
       case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
         getBehaviourList().clear();
@@ -230,6 +264,9 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
       case RobotDSLPackage.MISSION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case RobotDSLPackage.MISSION__DEVICE_LIST:
+        getDeviceList().clear();
+        return;
       case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
         getBehaviourList().clear();
         return;
@@ -252,6 +289,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case RobotDSLPackage.MISSION__DEVICE_LIST:
+        return deviceList != null && !deviceList.isEmpty();
       case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
         return behaviourList != null && !behaviourList.isEmpty();
       case RobotDSLPackage.MISSION__GOAL_CONDITION:

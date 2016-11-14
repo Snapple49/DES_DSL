@@ -82,17 +82,17 @@ public interface Behaviour extends EObject
   void setPrio(int value);
 
   /**
-   * Returns the value of the '<em><b>Device List</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Device List</b></em>' reference list.
    * The list contents are of type {@link des.missionrobot.robotDSL.Device}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Device List</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Device List</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Device List</em>' containment reference list.
+   * @return the value of the '<em>Device List</em>' reference list.
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_DeviceList()
-   * @model containment="true"
+   * @model
    * @generated
    */
   EList<Device> getDeviceList();
@@ -114,29 +114,19 @@ public interface Behaviour extends EObject
   EList<Action> getActionList();
 
   /**
-   * Returns the value of the '<em><b>Trigger List</b></em>' containment reference.
+   * Returns the value of the '<em><b>Trigger List</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Trigger}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Trigger List</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Trigger List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Trigger List</em>' containment reference.
-   * @see #setTriggerList(Trigger)
+   * @return the value of the '<em>Trigger List</em>' containment reference list.
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_TriggerList()
    * @model containment="true"
    * @generated
    */
-  Trigger getTriggerList();
-
-  /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Behaviour#getTriggerList <em>Trigger List</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Trigger List</em>' containment reference.
-   * @see #getTriggerList()
-   * @generated
-   */
-  void setTriggerList(Trigger value);
+  EList<Trigger> getTriggerList();
 
 } // Behaviour

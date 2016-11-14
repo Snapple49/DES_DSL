@@ -4,7 +4,9 @@
 package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Device;
+import des.missionrobot.robotDSL.DeviceType;
 import des.missionrobot.robotDSL.RobotDSLPackage;
+import des.missionrobot.robotDSL.SensorType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -21,13 +23,36 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link des.missionrobot.robotDSL.impl.DeviceImpl#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.DeviceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.DeviceImpl#getSensorType <em>Sensor Type</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.DeviceImpl#getDesc <em>Desc</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -36,7 +61,7 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
+  protected static final DeviceType TYPE_EDEFAULT = DeviceType.MOTOR;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -46,7 +71,47 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
    * @generated
    * @ordered
    */
-  protected String type = TYPE_EDEFAULT;
+  protected DeviceType type = TYPE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSensorType() <em>Sensor Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSensorType()
+   * @generated
+   * @ordered
+   */
+  protected static final SensorType SENSOR_TYPE_EDEFAULT = SensorType.ULTRASONIC;
+
+  /**
+   * The cached value of the '{@link #getSensorType() <em>Sensor Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSensorType()
+   * @generated
+   * @ordered
+   */
+  protected SensorType sensorType = SENSOR_TYPE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDesc() <em>Desc</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDesc()
+   * @generated
+   * @ordered
+   */
+  protected static final String DESC_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDesc() <em>Desc</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDesc()
+   * @generated
+   * @ordered
+   */
+  protected String desc = DESC_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,7 +139,30 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.DEVICE__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeviceType getType()
   {
     return type;
   }
@@ -84,12 +172,58 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public void setType(DeviceType newType)
   {
-    String oldType = type;
-    type = newType;
+    DeviceType oldType = type;
+    type = newType == null ? TYPE_EDEFAULT : newType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.DEVICE__TYPE, oldType, type));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SensorType getSensorType()
+  {
+    return sensorType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSensorType(SensorType newSensorType)
+  {
+    SensorType oldSensorType = sensorType;
+    sensorType = newSensorType == null ? SENSOR_TYPE_EDEFAULT : newSensorType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.DEVICE__SENSOR_TYPE, oldSensorType, sensorType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getDesc()
+  {
+    return desc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDesc(String newDesc)
+  {
+    String oldDesc = desc;
+    desc = newDesc;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.DEVICE__DESC, oldDesc, desc));
   }
 
   /**
@@ -102,8 +236,14 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
   {
     switch (featureID)
     {
+      case RobotDSLPackage.DEVICE__NAME:
+        return getName();
       case RobotDSLPackage.DEVICE__TYPE:
         return getType();
+      case RobotDSLPackage.DEVICE__SENSOR_TYPE:
+        return getSensorType();
+      case RobotDSLPackage.DEVICE__DESC:
+        return getDesc();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,8 +258,17 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
   {
     switch (featureID)
     {
+      case RobotDSLPackage.DEVICE__NAME:
+        setName((String)newValue);
+        return;
       case RobotDSLPackage.DEVICE__TYPE:
-        setType((String)newValue);
+        setType((DeviceType)newValue);
+        return;
+      case RobotDSLPackage.DEVICE__SENSOR_TYPE:
+        setSensorType((SensorType)newValue);
+        return;
+      case RobotDSLPackage.DEVICE__DESC:
+        setDesc((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +284,17 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
   {
     switch (featureID)
     {
+      case RobotDSLPackage.DEVICE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case RobotDSLPackage.DEVICE__TYPE:
         setType(TYPE_EDEFAULT);
+        return;
+      case RobotDSLPackage.DEVICE__SENSOR_TYPE:
+        setSensorType(SENSOR_TYPE_EDEFAULT);
+        return;
+      case RobotDSLPackage.DEVICE__DESC:
+        setDesc(DESC_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +310,14 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
   {
     switch (featureID)
     {
+      case RobotDSLPackage.DEVICE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RobotDSLPackage.DEVICE__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+        return type != TYPE_EDEFAULT;
+      case RobotDSLPackage.DEVICE__SENSOR_TYPE:
+        return sensorType != SENSOR_TYPE_EDEFAULT;
+      case RobotDSLPackage.DEVICE__DESC:
+        return DESC_EDEFAULT == null ? desc != null : !DESC_EDEFAULT.equals(desc);
     }
     return super.eIsSet(featureID);
   }
@@ -169,8 +333,14 @@ public class DeviceImpl extends MinimalEObjectImpl.Container implements Device
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", type: ");
     result.append(type);
+    result.append(", sensorType: ");
+    result.append(sensorType);
+    result.append(", desc: ");
+    result.append(desc);
     result.append(')');
     return result.toString();
   }

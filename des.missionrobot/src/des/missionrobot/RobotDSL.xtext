@@ -4,22 +4,21 @@ generate robotDSL "http://www.missionrobot.des/RobotDSL"
 
 Mission:
 	'Mission' name = ID
-	'Behaviours:' behaviourList += Behaviour+
-	'Goal:' goalCondition += Trigger+
 	'UsedDevices:' deviceList += Device+
+	'Behaviors:' behaviourList += Behavior+
+	'Goal:' goalCondition += Trigger+
 ;
 
-Behaviour:
+Behavior:
 	'Behavior:' name = ID
 	'priority:' prio = INT
 	'devices:' deviceList += [Device]+
 	'actions:' actionList += Action+
-	'trigger:' triggerList = Trigger+
+	'triggers:' triggerList += Trigger+
 ;
 
 Action: 
-	Movement | Sound | IO
-	('Duration' duration = INT)?
+	Movement ('Duration' duration = INT)? | Sound | IO
 ;
 
 Movement: MoveForward |	MoveBackward | Turn | Stop;
@@ -49,24 +48,24 @@ IO:
 ;
 
 Trigger:
-	'Condition' condition = STRING
+	'Condition:' condition = STRING
+	('Sensor' sensorTrigger = [Device])?
 ;
 
 Device:
 	'Device:' type = DeviceType
 	('SensorType:' sensorType = SensorType)?
-	('description:' desc = STRING) 
+	('description:' desc = STRING)? 
 ;
 
 enum DeviceType:
-	LMOTOR = 'LeftMotor' |
-	RMOTOR = 'RightMotor' |
+	MOTOR = 'Motor' |
 	SENSOR = 'Sensor'
 ;
 
 enum SensorType:
 	ULTRASONIC = 'Ultrasonic' |
 	TOUCH = 'Touch' |
-	COLOUR = 'Colour'	
+	COLOR = 'Color'	
 ;
 
