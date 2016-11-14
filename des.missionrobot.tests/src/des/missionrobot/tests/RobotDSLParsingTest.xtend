@@ -4,7 +4,7 @@
 package des.missionrobot.tests
 
 import com.google.inject.Inject
-import des.missionrobot.robotDSL.Behaviour
+import des.missionrobot.robotDSL.Behavior
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith
 class RobotDSLParsingTest{
 
 	@Inject
-	ParseHelper<Behaviour> parseHelper
+	ParseHelper<Behavior> parseHelper
 
 	@Test 
 	def void loadModel() {
