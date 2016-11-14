@@ -5,7 +5,7 @@ generate robotDSL "http://www.missionrobot.des/RobotDSL"
 Mission:
 	'Mission' name = ID
 	'UsedDevices:' deviceList += Device+
-	'Behaviors:' behaviourList += Behavior+
+	'Behaviors:' behaviorList += Behavior+
 	'Goal:' goalCondition += Trigger+
 ;
 
@@ -55,6 +55,7 @@ Trigger:
 Device:
 	'Device:' name = ID
 	'type:' type = DeviceType
+	'port:' port = STRING 
 	('sensorType:' sensorType = SensorType)?
 	('description:' desc = STRING)?
 ;
