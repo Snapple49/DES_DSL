@@ -4,7 +4,7 @@
 package des.missionrobot.serializer;
 
 import com.google.inject.Inject;
-import des.missionrobot.robotDSL.Behaviour;
+import des.missionrobot.robotDSL.Behavior;
 import des.missionrobot.robotDSL.Device;
 import des.missionrobot.robotDSL.IO;
 import des.missionrobot.robotDSL.Mission;
@@ -41,8 +41,8 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == RobotDSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case RobotDSLPackage.BEHAVIOUR:
-				sequence_Behaviour(context, (Behaviour) semanticObject); 
+			case RobotDSLPackage.BEHAVIOR:
+				sequence_Behavior(context, (Behavior) semanticObject); 
 				return; 
 			case RobotDSLPackage.DEVICE:
 				sequence_Device(context, (Device) semanticObject); 
@@ -158,12 +158,12 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     Behaviour returns Behaviour
+	 *     Behavior returns Behavior
 	 *
 	 * Constraint:
 	 *     (name=ID prio=INT deviceList+=[Device|ID]+ actionList+=Action+ triggerList+=Trigger+)
 	 */
-	protected void sequence_Behaviour(ISerializationContext context, Behaviour semanticObject) {
+	protected void sequence_Behavior(ISerializationContext context, Behavior semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -173,7 +173,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Device returns Device
 	 *
 	 * Constraint:
-	 *     (name=ID type=DeviceType sensorType=SensorType? desc=STRING?)
+	 *     (type=DeviceType sensorType=SensorType? desc=STRING?)
 	 */
 	protected void sequence_Device(ISerializationContext context, Device semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -204,7 +204,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Mission returns Mission
 	 *
 	 * Constraint:
-	 *     (name=ID deviceList+=Device+ behaviourList+=Behaviour+ goalCondition+=Trigger+)
+	 *     (name=ID deviceList+=Device+ behaviourList+=Behavior+ goalCondition+=Trigger+)
 	 */
 	protected void sequence_Mission(ISerializationContext context, Mission semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -292,16 +292,10 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Trigger returns Trigger
 	 *
 	 * Constraint:
-	 *     condition=STRING
+	 *     (condition=STRING sensorTrigger=[Device|ID]?)
 	 */
 	protected void sequence_Trigger(ISerializationContext context, Trigger semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.TRIGGER__CONDITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.TRIGGER__CONDITION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTriggerAccess().getConditionSTRINGTerminalRuleCall_1_0(), semanticObject.getCondition());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

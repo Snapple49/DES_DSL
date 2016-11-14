@@ -9,25 +9,25 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Behaviour</b></em>'.
+ * A representation of the model object '<em><b>Behavior</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link des.missionrobot.robotDSL.Behaviour#getName <em>Name</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Behaviour#getPrio <em>Prio</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Behaviour#getDeviceList <em>Device List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Behaviour#getActionList <em>Action List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Behaviour#getTriggerList <em>Trigger List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behavior#getName <em>Name</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behavior#getPrio <em>Prio</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behavior#getDeviceList <em>Device List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behavior#getActionList <em>Action List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Behavior#getTriggerList <em>Trigger List</em>}</li>
  * </ul>
  *
- * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour()
+ * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehavior()
  * @model
  * @generated
  */
-public interface Behaviour extends EObject
+public interface Behavior extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -39,14 +39,14 @@ public interface Behaviour extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_Name()
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehavior_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Behaviour#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Behavior#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -65,14 +65,14 @@ public interface Behaviour extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Prio</em>' attribute.
    * @see #setPrio(int)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_Prio()
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehavior_Prio()
    * @model
    * @generated
    */
   int getPrio();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Behaviour#getPrio <em>Prio</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Behavior#getPrio <em>Prio</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Prio</em>' attribute.
@@ -91,7 +91,7 @@ public interface Behaviour extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Device List</em>' reference list.
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_DeviceList()
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehavior_DeviceList()
    * @model
    * @generated
    */
@@ -107,7 +107,7 @@ public interface Behaviour extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Action List</em>' containment reference list.
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_ActionList()
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehavior_ActionList()
    * @model containment="true"
    * @generated
    */
@@ -123,10 +123,10 @@ public interface Behaviour extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Trigger List</em>' containment reference list.
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehaviour_TriggerList()
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getBehavior_TriggerList()
    * @model containment="true"
    * @generated
    */
   EList<Trigger> getTriggerList();
 
-} // Behaviour
+} // Behavior

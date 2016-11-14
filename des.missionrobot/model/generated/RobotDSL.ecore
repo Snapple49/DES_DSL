@@ -6,11 +6,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="deviceList" upperBound="-1"
         eType="#//Device" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviourList" upperBound="-1"
-        eType="#//Behaviour" containment="true"/>
+        eType="#//Behavior" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalCondition" upperBound="-1"
         eType="#//Trigger" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Behaviour">
+  <eClassifiers xsi:type="ecore:EClass" name="Behavior">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deviceList" unique="false"
@@ -42,9 +42,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensorTrigger" eType="#//Device"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Device">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DeviceType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensorType" eType="#//SensorType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="desc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -56,6 +56,6 @@
   <eClassifiers xsi:type="ecore:EEnum" name="SensorType">
     <eLiterals name="ULTRASONIC" literal="Ultrasonic"/>
     <eLiterals name="TOUCH" value="1" literal="Touch"/>
-    <eLiterals name="COLOUR" value="2" literal="Colour"/>
+    <eLiterals name="COLOR" value="2" literal="Color"/>
   </eClassifiers>
 </ecore:EPackage>

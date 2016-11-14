@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getCondition <em>Condition</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getSensorTrigger <em>Sensor Trigger</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger()
@@ -48,5 +49,31 @@ public interface Trigger extends EObject
    * @generated
    */
   void setCondition(String value);
+
+  /**
+   * Returns the value of the '<em><b>Sensor Trigger</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sensor Trigger</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sensor Trigger</em>' reference.
+   * @see #setSensorTrigger(Device)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_SensorTrigger()
+   * @model
+   * @generated
+   */
+  Device getSensorTrigger();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getSensorTrigger <em>Sensor Trigger</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sensor Trigger</em>' reference.
+   * @see #getSensorTrigger()
+   * @generated
+   */
+  void setSensorTrigger(Device value);
 
 } // Trigger

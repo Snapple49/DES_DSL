@@ -4,7 +4,7 @@
 package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Action;
-import des.missionrobot.robotDSL.Behaviour;
+import des.missionrobot.robotDSL.Behavior;
 import des.missionrobot.robotDSL.Device;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Trigger;
@@ -28,22 +28,22 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Behaviour</b></em>'.
+ * An implementation of the model object '<em><b>Behavior</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getName <em>Name</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getPrio <em>Prio</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getDeviceList <em>Device List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getActionList <em>Action List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviourImpl#getTriggerList <em>Trigger List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getName <em>Name</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getPrio <em>Prio</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getDeviceList <em>Device List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getActionList <em>Action List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getTriggerList <em>Trigger List</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behaviour
+public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavior
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -120,7 +120,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
    * <!-- end-user-doc -->
    * @generated
    */
-  protected BehaviourImpl()
+  protected BehaviorImpl()
   {
     super();
   }
@@ -133,7 +133,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   @Override
   protected EClass eStaticClass()
   {
-    return RobotDSLPackage.Literals.BEHAVIOUR;
+    return RobotDSLPackage.Literals.BEHAVIOR;
   }
 
   /**
@@ -156,7 +156,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOUR__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOR__NAME, oldName, name));
   }
 
   /**
@@ -179,7 +179,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
     int oldPrio = prio;
     prio = newPrio;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOUR__PRIO, oldPrio, prio));
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.BEHAVIOR__PRIO, oldPrio, prio));
   }
 
   /**
@@ -191,7 +191,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     if (deviceList == null)
     {
-      deviceList = new EObjectResolvingEList<Device>(Device.class, this, RobotDSLPackage.BEHAVIOUR__DEVICE_LIST);
+      deviceList = new EObjectResolvingEList<Device>(Device.class, this, RobotDSLPackage.BEHAVIOR__DEVICE_LIST);
     }
     return deviceList;
   }
@@ -205,7 +205,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     if (actionList == null)
     {
-      actionList = new EObjectContainmentEList<Action>(Action.class, this, RobotDSLPackage.BEHAVIOUR__ACTION_LIST);
+      actionList = new EObjectContainmentEList<Action>(Action.class, this, RobotDSLPackage.BEHAVIOR__ACTION_LIST);
     }
     return actionList;
   }
@@ -219,7 +219,7 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     if (triggerList == null)
     {
-      triggerList = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST);
+      triggerList = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.BEHAVIOR__TRIGGER_LIST);
     }
     return triggerList;
   }
@@ -234,9 +234,9 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     switch (featureID)
     {
-      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
         return ((InternalEList<?>)getActionList()).basicRemove(otherEnd, msgs);
-      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         return ((InternalEList<?>)getTriggerList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -252,15 +252,15 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     switch (featureID)
     {
-      case RobotDSLPackage.BEHAVIOUR__NAME:
+      case RobotDSLPackage.BEHAVIOR__NAME:
         return getName();
-      case RobotDSLPackage.BEHAVIOUR__PRIO:
+      case RobotDSLPackage.BEHAVIOR__PRIO:
         return getPrio();
-      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
         return getDeviceList();
-      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
         return getActionList();
-      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         return getTriggerList();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -277,21 +277,21 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     switch (featureID)
     {
-      case RobotDSLPackage.BEHAVIOUR__NAME:
+      case RobotDSLPackage.BEHAVIOR__NAME:
         setName((String)newValue);
         return;
-      case RobotDSLPackage.BEHAVIOUR__PRIO:
+      case RobotDSLPackage.BEHAVIOR__PRIO:
         setPrio((Integer)newValue);
         return;
-      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
         getDeviceList().clear();
         getDeviceList().addAll((Collection<? extends Device>)newValue);
         return;
-      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
         getActionList().clear();
         getActionList().addAll((Collection<? extends Action>)newValue);
         return;
-      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         getTriggerList().clear();
         getTriggerList().addAll((Collection<? extends Trigger>)newValue);
         return;
@@ -309,19 +309,19 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     switch (featureID)
     {
-      case RobotDSLPackage.BEHAVIOUR__NAME:
+      case RobotDSLPackage.BEHAVIOR__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case RobotDSLPackage.BEHAVIOUR__PRIO:
+      case RobotDSLPackage.BEHAVIOR__PRIO:
         setPrio(PRIO_EDEFAULT);
         return;
-      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
         getDeviceList().clear();
         return;
-      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
         getActionList().clear();
         return;
-      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         getTriggerList().clear();
         return;
     }
@@ -338,15 +338,15 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
   {
     switch (featureID)
     {
-      case RobotDSLPackage.BEHAVIOUR__NAME:
+      case RobotDSLPackage.BEHAVIOR__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case RobotDSLPackage.BEHAVIOUR__PRIO:
+      case RobotDSLPackage.BEHAVIOR__PRIO:
         return prio != PRIO_EDEFAULT;
-      case RobotDSLPackage.BEHAVIOUR__DEVICE_LIST:
+      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
         return deviceList != null && !deviceList.isEmpty();
-      case RobotDSLPackage.BEHAVIOUR__ACTION_LIST:
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
         return actionList != null && !actionList.isEmpty();
-      case RobotDSLPackage.BEHAVIOUR__TRIGGER_LIST:
+      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         return triggerList != null && !triggerList.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -371,4 +371,4 @@ public class BehaviourImpl extends MinimalEObjectImpl.Container implements Behav
     return result.toString();
   }
 
-} //BehaviourImpl
+} //BehaviorImpl

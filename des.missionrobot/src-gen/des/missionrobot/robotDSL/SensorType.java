@@ -41,14 +41,14 @@ public enum SensorType implements Enumerator
   TOUCH(1, "TOUCH", "Touch"),
 
   /**
-   * The '<em><b>COLOUR</b></em>' literal object.
+   * The '<em><b>COLOR</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #COLOUR_VALUE
+   * @see #COLOR_VALUE
    * @generated
    * @ordered
    */
-  COLOUR(2, "COLOUR", "Colour");
+  COLOR(2, "COLOR", "Color");
 
   /**
    * The '<em><b>ULTRASONIC</b></em>' literal value.
@@ -81,19 +81,19 @@ public enum SensorType implements Enumerator
   public static final int TOUCH_VALUE = 1;
 
   /**
-   * The '<em><b>COLOUR</b></em>' literal value.
+   * The '<em><b>COLOR</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of '<em><b>COLOUR</b></em>' literal object isn't clear,
+   * If the meaning of '<em><b>COLOR</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @see #COLOUR
-   * @model literal="Colour"
+   * @see #COLOR
+   * @model literal="Color"
    * @generated
    * @ordered
    */
-  public static final int COLOUR_VALUE = 2;
+  public static final int COLOR_VALUE = 2;
 
   /**
    * An array of all the '<em><b>Sensor Type</b></em>' enumerators.
@@ -106,7 +106,7 @@ public enum SensorType implements Enumerator
     {
       ULTRASONIC,
       TOUCH,
-      COLOUR,
+      COLOR,
     };
 
   /**
@@ -173,7 +173,7 @@ public enum SensorType implements Enumerator
     {
       case ULTRASONIC_VALUE: return ULTRASONIC;
       case TOUCH_VALUE: return TOUCH;
-      case COLOUR_VALUE: return COLOUR;
+      case COLOR_VALUE: return COLOR;
     }
     return null;
   }

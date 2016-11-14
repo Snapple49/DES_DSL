@@ -4,7 +4,7 @@
 package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Action;
-import des.missionrobot.robotDSL.Behaviour;
+import des.missionrobot.robotDSL.Behavior;
 import des.missionrobot.robotDSL.Device;
 import des.missionrobot.robotDSL.DeviceType;
 import des.missionrobot.robotDSL.Mission;
@@ -47,7 +47,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass behaviourEClass = null;
+  private EClass behaviorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -251,9 +251,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getBehaviour()
+  public EClass getBehavior()
   {
-    return behaviourEClass;
+    return behaviorEClass;
   }
 
   /**
@@ -261,9 +261,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBehaviour_Name()
+  public EAttribute getBehavior_Name()
   {
-    return (EAttribute)behaviourEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)behaviorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -271,9 +271,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBehaviour_Prio()
+  public EAttribute getBehavior_Prio()
   {
-    return (EAttribute)behaviourEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)behaviorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -281,9 +281,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBehaviour_DeviceList()
+  public EReference getBehavior_DeviceList()
   {
-    return (EReference)behaviourEClass.getEStructuralFeatures().get(2);
+    return (EReference)behaviorEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -291,9 +291,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBehaviour_ActionList()
+  public EReference getBehavior_ActionList()
   {
-    return (EReference)behaviourEClass.getEStructuralFeatures().get(3);
+    return (EReference)behaviorEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -301,9 +301,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBehaviour_TriggerList()
+  public EReference getBehavior_TriggerList()
   {
-    return (EReference)behaviourEClass.getEStructuralFeatures().get(4);
+    return (EReference)behaviorEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -471,6 +471,16 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getTrigger_SensorTrigger()
+  {
+    return (EReference)triggerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getDevice()
   {
     return deviceEClass;
@@ -481,7 +491,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_Name()
+  public EAttribute getDevice_Type()
   {
     return (EAttribute)deviceEClass.getEStructuralFeatures().get(0);
   }
@@ -491,7 +501,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_Type()
+  public EAttribute getDevice_SensorType()
   {
     return (EAttribute)deviceEClass.getEStructuralFeatures().get(1);
   }
@@ -501,19 +511,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_SensorType()
-  {
-    return (EAttribute)deviceEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getDevice_Desc()
   {
-    return (EAttribute)deviceEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)deviceEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -572,12 +572,12 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEReference(missionEClass, MISSION__BEHAVIOUR_LIST);
     createEReference(missionEClass, MISSION__GOAL_CONDITION);
 
-    behaviourEClass = createEClass(BEHAVIOUR);
-    createEAttribute(behaviourEClass, BEHAVIOUR__NAME);
-    createEAttribute(behaviourEClass, BEHAVIOUR__PRIO);
-    createEReference(behaviourEClass, BEHAVIOUR__DEVICE_LIST);
-    createEReference(behaviourEClass, BEHAVIOUR__ACTION_LIST);
-    createEReference(behaviourEClass, BEHAVIOUR__TRIGGER_LIST);
+    behaviorEClass = createEClass(BEHAVIOR);
+    createEAttribute(behaviorEClass, BEHAVIOR__NAME);
+    createEAttribute(behaviorEClass, BEHAVIOR__PRIO);
+    createEReference(behaviorEClass, BEHAVIOR__DEVICE_LIST);
+    createEReference(behaviorEClass, BEHAVIOR__ACTION_LIST);
+    createEReference(behaviorEClass, BEHAVIOR__TRIGGER_LIST);
 
     actionEClass = createEClass(ACTION);
 
@@ -603,9 +603,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
 
     triggerEClass = createEClass(TRIGGER);
     createEAttribute(triggerEClass, TRIGGER__CONDITION);
+    createEReference(triggerEClass, TRIGGER__SENSOR_TRIGGER);
 
     deviceEClass = createEClass(DEVICE);
-    createEAttribute(deviceEClass, DEVICE__NAME);
     createEAttribute(deviceEClass, DEVICE__TYPE);
     createEAttribute(deviceEClass, DEVICE__SENSOR_TYPE);
     createEAttribute(deviceEClass, DEVICE__DESC);
@@ -656,15 +656,15 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEClass(missionEClass, Mission.class, "Mission", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMission_Name(), ecorePackage.getEString(), "name", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_DeviceList(), this.getDevice(), null, "deviceList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_BehaviourList(), this.getBehaviour(), null, "behaviourList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMission_BehaviourList(), this.getBehavior(), null, "behaviourList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_GoalCondition(), this.getTrigger(), null, "goalCondition", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(behaviourEClass, Behaviour.class, "Behaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBehaviour_Name(), ecorePackage.getEString(), "name", null, 0, 1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getBehaviour_Prio(), ecorePackage.getEInt(), "prio", null, 0, 1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviour_DeviceList(), this.getDevice(), null, "deviceList", null, 0, -1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviour_ActionList(), this.getAction(), null, "actionList", null, 0, -1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviour_TriggerList(), this.getTrigger(), null, "triggerList", null, 0, -1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(behaviorEClass, Behavior.class, "Behavior", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBehavior_Name(), ecorePackage.getEString(), "name", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBehavior_Prio(), ecorePackage.getEInt(), "prio", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehavior_DeviceList(), this.getDevice(), null, "deviceList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehavior_ActionList(), this.getAction(), null, "actionList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehavior_TriggerList(), this.getTrigger(), null, "triggerList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -690,9 +690,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
 
     initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTrigger_Condition(), ecorePackage.getEString(), "condition", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_SensorTrigger(), this.getDevice(), null, "sensorTrigger", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDevice_Name(), ecorePackage.getEString(), "name", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDevice_Type(), this.getDeviceType(), "type", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDevice_SensorType(), this.getSensorType(), "sensorType", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDevice_Desc(), ecorePackage.getEString(), "desc", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -705,7 +705,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEEnum(sensorTypeEEnum, SensorType.class, "SensorType");
     addEEnumLiteral(sensorTypeEEnum, SensorType.ULTRASONIC);
     addEEnumLiteral(sensorTypeEEnum, SensorType.TOUCH);
-    addEEnumLiteral(sensorTypeEEnum, SensorType.COLOUR);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.COLOR);
 
     // Create resource
     createResource(eNS_URI);

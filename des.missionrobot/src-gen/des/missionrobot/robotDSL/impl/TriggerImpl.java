@@ -3,12 +3,14 @@
  */
 package des.missionrobot.robotDSL.impl;
 
+import des.missionrobot.robotDSL.Device;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Trigger;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -22,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getSensorTrigger <em>Sensor Trigger</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +50,16 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * @ordered
    */
   protected String condition = CONDITION_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSensorTrigger() <em>Sensor Trigger</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSensorTrigger()
+   * @generated
+   * @ordered
+   */
+  protected Device sensorTrigger;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,6 +110,49 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
+  public Device getSensorTrigger()
+  {
+    if (sensorTrigger != null && sensorTrigger.eIsProxy())
+    {
+      InternalEObject oldSensorTrigger = (InternalEObject)sensorTrigger;
+      sensorTrigger = (Device)eResolveProxy(oldSensorTrigger);
+      if (sensorTrigger != oldSensorTrigger)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobotDSLPackage.TRIGGER__SENSOR_TRIGGER, oldSensorTrigger, sensorTrigger));
+      }
+    }
+    return sensorTrigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Device basicGetSensorTrigger()
+  {
+    return sensorTrigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSensorTrigger(Device newSensorTrigger)
+  {
+    Device oldSensorTrigger = sensorTrigger;
+    sensorTrigger = newSensorTrigger;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__SENSOR_TRIGGER, oldSensorTrigger, sensorTrigger));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -104,6 +160,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     {
       case RobotDSLPackage.TRIGGER__CONDITION:
         return getCondition();
+      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
+        if (resolve) return getSensorTrigger();
+        return basicGetSensorTrigger();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,6 +179,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     {
       case RobotDSLPackage.TRIGGER__CONDITION:
         setCondition((String)newValue);
+        return;
+      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
+        setSensorTrigger((Device)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -138,6 +200,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__CONDITION:
         setCondition(CONDITION_EDEFAULT);
         return;
+      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
+        setSensorTrigger((Device)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -154,6 +219,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     {
       case RobotDSLPackage.TRIGGER__CONDITION:
         return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
+      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
+        return sensorTrigger != null;
     }
     return super.eIsSet(featureID);
   }

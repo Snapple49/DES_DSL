@@ -114,14 +114,14 @@ public interface RobotDSLPackage extends EPackage
   int MISSION_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.BehaviourImpl <em>Behaviour</em>}' class.
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.BehaviorImpl <em>Behavior</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.impl.BehaviourImpl
-   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBehaviour()
+   * @see des.missionrobot.robotDSL.impl.BehaviorImpl
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBehavior()
    * @generated
    */
-  int BEHAVIOUR = 1;
+  int BEHAVIOR = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -130,7 +130,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BEHAVIOUR__NAME = 0;
+  int BEHAVIOR__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Prio</b></em>' attribute.
@@ -139,7 +139,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BEHAVIOUR__PRIO = 1;
+  int BEHAVIOR__PRIO = 1;
 
   /**
    * The feature id for the '<em><b>Device List</b></em>' reference list.
@@ -148,7 +148,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BEHAVIOUR__DEVICE_LIST = 2;
+  int BEHAVIOR__DEVICE_LIST = 2;
 
   /**
    * The feature id for the '<em><b>Action List</b></em>' containment reference list.
@@ -157,7 +157,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BEHAVIOUR__ACTION_LIST = 3;
+  int BEHAVIOR__ACTION_LIST = 3;
 
   /**
    * The feature id for the '<em><b>Trigger List</b></em>' containment reference list.
@@ -166,16 +166,16 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BEHAVIOUR__TRIGGER_LIST = 4;
+  int BEHAVIOR__TRIGGER_LIST = 4;
 
   /**
-   * The number of structural features of the '<em>Behaviour</em>' class.
+   * The number of structural features of the '<em>Behavior</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BEHAVIOUR_FEATURE_COUNT = 5;
+  int BEHAVIOR_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.ActionImpl <em>Action</em>}' class.
@@ -439,13 +439,22 @@ public interface RobotDSLPackage extends EPackage
   int TRIGGER__CONDITION = 0;
 
   /**
+   * The feature id for the '<em><b>Sensor Trigger</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRIGGER__SENSOR_TRIGGER = 1;
+
+  /**
    * The number of structural features of the '<em>Trigger</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRIGGER_FEATURE_COUNT = 1;
+  int TRIGGER_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.DeviceImpl <em>Device</em>}' class.
@@ -458,22 +467,13 @@ public interface RobotDSLPackage extends EPackage
   int DEVICE = 11;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVICE__NAME = 0;
-
-  /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVICE__TYPE = 1;
+  int DEVICE__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Sensor Type</b></em>' attribute.
@@ -482,7 +482,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE__SENSOR_TYPE = 2;
+  int DEVICE__SENSOR_TYPE = 1;
 
   /**
    * The feature id for the '<em><b>Desc</b></em>' attribute.
@@ -491,7 +491,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE__DESC = 3;
+  int DEVICE__DESC = 2;
 
   /**
    * The number of structural features of the '<em>Device</em>' class.
@@ -500,7 +500,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_FEATURE_COUNT = 4;
+  int DEVICE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.DeviceType <em>Device Type</em>}' enum.
@@ -578,69 +578,69 @@ public interface RobotDSLPackage extends EPackage
   EReference getMission_GoalCondition();
 
   /**
-   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Behaviour <em>Behaviour</em>}'.
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Behavior <em>Behavior</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Behaviour</em>'.
-   * @see des.missionrobot.robotDSL.Behaviour
+   * @return the meta object for class '<em>Behavior</em>'.
+   * @see des.missionrobot.robotDSL.Behavior
    * @generated
    */
-  EClass getBehaviour();
+  EClass getBehavior();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Behaviour#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Behavior#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see des.missionrobot.robotDSL.Behaviour#getName()
-   * @see #getBehaviour()
+   * @see des.missionrobot.robotDSL.Behavior#getName()
+   * @see #getBehavior()
    * @generated
    */
-  EAttribute getBehaviour_Name();
+  EAttribute getBehavior_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Behaviour#getPrio <em>Prio</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Behavior#getPrio <em>Prio</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Prio</em>'.
-   * @see des.missionrobot.robotDSL.Behaviour#getPrio()
-   * @see #getBehaviour()
+   * @see des.missionrobot.robotDSL.Behavior#getPrio()
+   * @see #getBehavior()
    * @generated
    */
-  EAttribute getBehaviour_Prio();
+  EAttribute getBehavior_Prio();
 
   /**
-   * Returns the meta object for the reference list '{@link des.missionrobot.robotDSL.Behaviour#getDeviceList <em>Device List</em>}'.
+   * Returns the meta object for the reference list '{@link des.missionrobot.robotDSL.Behavior#getDeviceList <em>Device List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference list '<em>Device List</em>'.
-   * @see des.missionrobot.robotDSL.Behaviour#getDeviceList()
-   * @see #getBehaviour()
+   * @see des.missionrobot.robotDSL.Behavior#getDeviceList()
+   * @see #getBehavior()
    * @generated
    */
-  EReference getBehaviour_DeviceList();
+  EReference getBehavior_DeviceList();
 
   /**
-   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Behaviour#getActionList <em>Action List</em>}'.
+   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Behavior#getActionList <em>Action List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Action List</em>'.
-   * @see des.missionrobot.robotDSL.Behaviour#getActionList()
-   * @see #getBehaviour()
+   * @see des.missionrobot.robotDSL.Behavior#getActionList()
+   * @see #getBehavior()
    * @generated
    */
-  EReference getBehaviour_ActionList();
+  EReference getBehavior_ActionList();
 
   /**
-   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Behaviour#getTriggerList <em>Trigger List</em>}'.
+   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Behavior#getTriggerList <em>Trigger List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Trigger List</em>'.
-   * @see des.missionrobot.robotDSL.Behaviour#getTriggerList()
-   * @see #getBehaviour()
+   * @see des.missionrobot.robotDSL.Behavior#getTriggerList()
+   * @see #getBehavior()
    * @generated
    */
-  EReference getBehaviour_TriggerList();
+  EReference getBehavior_TriggerList();
 
   /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Action <em>Action</em>}'.
@@ -810,6 +810,17 @@ public interface RobotDSLPackage extends EPackage
   EAttribute getTrigger_Condition();
 
   /**
+   * Returns the meta object for the reference '{@link des.missionrobot.robotDSL.Trigger#getSensorTrigger <em>Sensor Trigger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Sensor Trigger</em>'.
+   * @see des.missionrobot.robotDSL.Trigger#getSensorTrigger()
+   * @see #getTrigger()
+   * @generated
+   */
+  EReference getTrigger_SensorTrigger();
+
+  /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Device <em>Device</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -818,17 +829,6 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   EClass getDevice();
-
-  /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see des.missionrobot.robotDSL.Device#getName()
-   * @see #getDevice()
-   * @generated
-   */
-  EAttribute getDevice_Name();
 
   /**
    * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getType <em>Type</em>}'.
@@ -949,14 +949,14 @@ public interface RobotDSLPackage extends EPackage
     EReference MISSION__GOAL_CONDITION = eINSTANCE.getMission_GoalCondition();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.BehaviourImpl <em>Behaviour</em>}' class.
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.BehaviorImpl <em>Behavior</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.impl.BehaviourImpl
-     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBehaviour()
+     * @see des.missionrobot.robotDSL.impl.BehaviorImpl
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBehavior()
      * @generated
      */
-    EClass BEHAVIOUR = eINSTANCE.getBehaviour();
+    EClass BEHAVIOR = eINSTANCE.getBehavior();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -964,7 +964,7 @@ public interface RobotDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BEHAVIOUR__NAME = eINSTANCE.getBehaviour_Name();
+    EAttribute BEHAVIOR__NAME = eINSTANCE.getBehavior_Name();
 
     /**
      * The meta object literal for the '<em><b>Prio</b></em>' attribute feature.
@@ -972,7 +972,7 @@ public interface RobotDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BEHAVIOUR__PRIO = eINSTANCE.getBehaviour_Prio();
+    EAttribute BEHAVIOR__PRIO = eINSTANCE.getBehavior_Prio();
 
     /**
      * The meta object literal for the '<em><b>Device List</b></em>' reference list feature.
@@ -980,7 +980,7 @@ public interface RobotDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BEHAVIOUR__DEVICE_LIST = eINSTANCE.getBehaviour_DeviceList();
+    EReference BEHAVIOR__DEVICE_LIST = eINSTANCE.getBehavior_DeviceList();
 
     /**
      * The meta object literal for the '<em><b>Action List</b></em>' containment reference list feature.
@@ -988,7 +988,7 @@ public interface RobotDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BEHAVIOUR__ACTION_LIST = eINSTANCE.getBehaviour_ActionList();
+    EReference BEHAVIOR__ACTION_LIST = eINSTANCE.getBehavior_ActionList();
 
     /**
      * The meta object literal for the '<em><b>Trigger List</b></em>' containment reference list feature.
@@ -996,7 +996,7 @@ public interface RobotDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BEHAVIOUR__TRIGGER_LIST = eINSTANCE.getBehaviour_TriggerList();
+    EReference BEHAVIOR__TRIGGER_LIST = eINSTANCE.getBehavior_TriggerList();
 
     /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.ActionImpl <em>Action</em>}' class.
@@ -1145,6 +1145,14 @@ public interface RobotDSLPackage extends EPackage
     EAttribute TRIGGER__CONDITION = eINSTANCE.getTrigger_Condition();
 
     /**
+     * The meta object literal for the '<em><b>Sensor Trigger</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TRIGGER__SENSOR_TRIGGER = eINSTANCE.getTrigger_SensorTrigger();
+
+    /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.DeviceImpl <em>Device</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1153,14 +1161,6 @@ public interface RobotDSLPackage extends EPackage
      * @generated
      */
     EClass DEVICE = eINSTANCE.getDevice();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DEVICE__NAME = eINSTANCE.getDevice_Name();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.

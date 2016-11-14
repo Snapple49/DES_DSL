@@ -53,9 +53,10 @@ Trigger:
 ;
 
 Device:
-	'Device:' type = DeviceType
-	('SensorType:' sensorType = SensorType)?
-	('description:' desc = STRING)? 
+	'Device:' name = ID
+	'type:' type = DeviceType
+	('sensorType:' sensorType = SensorType)?
+	('description:' desc = STRING)?
 ;
 
 enum DeviceType:

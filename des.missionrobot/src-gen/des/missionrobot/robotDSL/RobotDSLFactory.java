@@ -33,13 +33,13 @@ public interface RobotDSLFactory extends EFactory
   Mission createMission();
 
   /**
-   * Returns a new object of class '<em>Behaviour</em>'.
+   * Returns a new object of class '<em>Behavior</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Behaviour</em>'.
+   * @return a new object of class '<em>Behavior</em>'.
    * @generated
    */
-  Behaviour createBehaviour();
+  Behavior createBehavior();
 
   /**
    * Returns a new object of class '<em>Action</em>'.

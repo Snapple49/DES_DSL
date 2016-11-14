@@ -67,7 +67,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
     switch (eClass.getClassifierID())
     {
       case RobotDSLPackage.MISSION: return createMission();
-      case RobotDSLPackage.BEHAVIOUR: return createBehaviour();
+      case RobotDSLPackage.BEHAVIOR: return createBehavior();
       case RobotDSLPackage.ACTION: return createAction();
       case RobotDSLPackage.MOVEMENT: return createMovement();
       case RobotDSLPackage.MOVE_FORWARD: return createMoveForward();
@@ -137,10 +137,10 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Behaviour createBehaviour()
+  public Behavior createBehavior()
   {
-    BehaviourImpl behaviour = new BehaviourImpl();
-    return behaviour;
+    BehaviorImpl behavior = new BehaviorImpl();
+    return behavior;
   }
 
   /**

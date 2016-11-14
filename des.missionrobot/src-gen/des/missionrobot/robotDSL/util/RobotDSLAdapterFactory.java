@@ -81,9 +81,9 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
         return createMissionAdapter();
       }
       @Override
-      public Adapter caseBehaviour(Behaviour object)
+      public Adapter caseBehavior(Behavior object)
       {
-        return createBehaviourAdapter();
+        return createBehaviorAdapter();
       }
       @Override
       public Adapter caseAction(Action object)
@@ -173,16 +173,16 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Behaviour <em>Behaviour</em>}'.
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Behavior <em>Behavior</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Behaviour
+   * @see des.missionrobot.robotDSL.Behavior
    * @generated
    */
-  public Adapter createBehaviourAdapter()
+  public Adapter createBehaviorAdapter()
   {
     return null;
   }

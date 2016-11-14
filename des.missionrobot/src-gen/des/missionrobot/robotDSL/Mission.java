@@ -72,7 +72,7 @@ public interface Mission extends EObject
 
   /**
    * Returns the value of the '<em><b>Behaviour List</b></em>' containment reference list.
-   * The list contents are of type {@link des.missionrobot.robotDSL.Behaviour}.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Behavior}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Behaviour List</em>' containment reference list isn't clear,
@@ -84,7 +84,7 @@ public interface Mission extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Behaviour> getBehaviourList();
+  EList<Behavior> getBehaviourList();
 
   /**
    * Returns the value of the '<em><b>Goal Condition</b></em>' containment reference list.

@@ -3,7 +3,7 @@
  */
 package des.missionrobot.robotDSL.impl;
 
-import des.missionrobot.robotDSL.Behaviour;
+import des.missionrobot.robotDSL.Behavior;
 import des.missionrobot.robotDSL.Device;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
@@ -81,7 +81,7 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * @generated
    * @ordered
    */
-  protected EList<Behaviour> behaviourList;
+  protected EList<Behavior> behaviourList;
 
   /**
    * The cached value of the '{@link #getGoalCondition() <em>Goal Condition</em>}' containment reference list.
@@ -156,11 +156,11 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Behaviour> getBehaviourList()
+  public EList<Behavior> getBehaviourList()
   {
     if (behaviourList == null)
     {
-      behaviourList = new EObjectContainmentEList<Behaviour>(Behaviour.class, this, RobotDSLPackage.MISSION__BEHAVIOUR_LIST);
+      behaviourList = new EObjectContainmentEList<Behavior>(Behavior.class, this, RobotDSLPackage.MISSION__BEHAVIOUR_LIST);
     }
     return behaviourList;
   }
@@ -241,7 +241,7 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         return;
       case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
         getBehaviourList().clear();
-        getBehaviourList().addAll((Collection<? extends Behaviour>)newValue);
+        getBehaviourList().addAll((Collection<? extends Behavior>)newValue);
         return;
       case RobotDSLPackage.MISSION__GOAL_CONDITION:
         getGoalCondition().clear();
