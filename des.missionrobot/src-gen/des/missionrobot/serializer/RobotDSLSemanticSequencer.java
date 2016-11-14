@@ -81,7 +81,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Behaviour returns Behaviour
 	 *
 	 * Constraint:
-	 *     (name=ID prio=INT actionList+=Action triggerList=Trigger deviceList+=Device)
+	 *     (name=ID prio=INT deviceList+=Device+ actionList+=Action+ triggerList=Trigger)
 	 */
 	protected void sequence_Behaviour(ISerializationContext context, Behaviour semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

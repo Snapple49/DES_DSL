@@ -14,9 +14,9 @@
     <genClasses ecoreClass="RobotDSL.ecore#//Behaviour">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Behaviour/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Behaviour/prio"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/deviceList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/actionList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/triggerList"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Behaviour/deviceList"/>
     </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Action"/>
     <genClasses ecoreClass="RobotDSL.ecore#//Movement"/>

@@ -10,10 +10,10 @@
 'PrintMessage'=24
 'TurnAngle:'=21
 'WaitFor:'=22
-'actions:'=16
-'devices:'=18
+'actions:'=17
+'devices:'=16
 'priority:'=15
-'trigger:'=17
+'trigger:'=18
 RULE_ANY_OTHER=10
 RULE_ID=4
 RULE_INT=5

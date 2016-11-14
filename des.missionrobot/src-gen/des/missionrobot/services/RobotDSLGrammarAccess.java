@@ -80,26 +80,26 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPriorityKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cPrioAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cPrioINTTerminalRuleCall_3_0 = (RuleCall)cPrioAssignment_3.eContents().get(0);
-		private final Keyword cActionsKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cActionListAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cActionListActionParserRuleCall_5_0 = (RuleCall)cActionListAssignment_5.eContents().get(0);
-		private final Keyword cTriggerKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cTriggerListAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cTriggerListTriggerParserRuleCall_7_0 = (RuleCall)cTriggerListAssignment_7.eContents().get(0);
-		private final Keyword cDevicesKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cDeviceListAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cDeviceListDeviceParserRuleCall_9_0 = (RuleCall)cDeviceListAssignment_9.eContents().get(0);
+		private final Keyword cDevicesKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cDeviceListAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cDeviceListDeviceParserRuleCall_5_0 = (RuleCall)cDeviceListAssignment_5.eContents().get(0);
+		private final Keyword cActionsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cActionListAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cActionListActionParserRuleCall_7_0 = (RuleCall)cActionListAssignment_7.eContents().get(0);
+		private final Keyword cTriggerKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cTriggerListAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cTriggerListTriggerParserRuleCall_9_0 = (RuleCall)cTriggerListAssignment_9.eContents().get(0);
 		
 		//Behaviour:
 		//	'Behavior:' name=ID
 		//	'priority:' prio=INT
-		//	'actions:' actionList+=Action
-		//	'trigger:' triggerList=Trigger
-		//	'devices:' deviceList+=Device;
+		//	'devices:' deviceList+=Device+
+		//	'actions:' actionList+=Action+
+		//	'trigger:' triggerList=Trigger;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Behavior:' name=ID 'priority:' prio=INT 'actions:' actionList+=Action 'trigger:' triggerList=Trigger 'devices:'
-		//deviceList+=Device
+		//'Behavior:' name=ID 'priority:' prio=INT 'devices:' deviceList+=Device+ 'actions:' actionList+=Action+ 'trigger:'
+		//triggerList=Trigger
 		public Group getGroup() { return cGroup; }
 		
 		//'Behavior:'
@@ -120,32 +120,32 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getPrioINTTerminalRuleCall_3_0() { return cPrioINTTerminalRuleCall_3_0; }
 		
-		//'actions:'
-		public Keyword getActionsKeyword_4() { return cActionsKeyword_4; }
-		
-		//actionList+=Action
-		public Assignment getActionListAssignment_5() { return cActionListAssignment_5; }
-		
-		//Action
-		public RuleCall getActionListActionParserRuleCall_5_0() { return cActionListActionParserRuleCall_5_0; }
-		
-		//'trigger:'
-		public Keyword getTriggerKeyword_6() { return cTriggerKeyword_6; }
-		
-		//triggerList=Trigger
-		public Assignment getTriggerListAssignment_7() { return cTriggerListAssignment_7; }
-		
-		//Trigger
-		public RuleCall getTriggerListTriggerParserRuleCall_7_0() { return cTriggerListTriggerParserRuleCall_7_0; }
-		
 		//'devices:'
-		public Keyword getDevicesKeyword_8() { return cDevicesKeyword_8; }
+		public Keyword getDevicesKeyword_4() { return cDevicesKeyword_4; }
 		
-		//deviceList+=Device
-		public Assignment getDeviceListAssignment_9() { return cDeviceListAssignment_9; }
+		//deviceList+=Device+
+		public Assignment getDeviceListAssignment_5() { return cDeviceListAssignment_5; }
 		
 		//Device
-		public RuleCall getDeviceListDeviceParserRuleCall_9_0() { return cDeviceListDeviceParserRuleCall_9_0; }
+		public RuleCall getDeviceListDeviceParserRuleCall_5_0() { return cDeviceListDeviceParserRuleCall_5_0; }
+		
+		//'actions:'
+		public Keyword getActionsKeyword_6() { return cActionsKeyword_6; }
+		
+		//actionList+=Action+
+		public Assignment getActionListAssignment_7() { return cActionListAssignment_7; }
+		
+		//Action
+		public RuleCall getActionListActionParserRuleCall_7_0() { return cActionListActionParserRuleCall_7_0; }
+		
+		//'trigger:'
+		public Keyword getTriggerKeyword_8() { return cTriggerKeyword_8; }
+		
+		//triggerList=Trigger
+		public Assignment getTriggerListAssignment_9() { return cTriggerListAssignment_9; }
+		
+		//Trigger
+		public RuleCall getTriggerListTriggerParserRuleCall_9_0() { return cTriggerListTriggerParserRuleCall_9_0; }
 	}
 	public class ActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Action");
@@ -461,9 +461,9 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Behaviour:
 	//	'Behavior:' name=ID
 	//	'priority:' prio=INT
-	//	'actions:' actionList+=Action
-	//	'trigger:' triggerList=Trigger
-	//	'devices:' deviceList+=Device;
+	//	'devices:' deviceList+=Device+
+	//	'actions:' actionList+=Action+
+	//	'trigger:' triggerList=Trigger;
 	public BehaviourElements getBehaviourAccess() {
 		return pBehaviour;
 	}

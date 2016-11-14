@@ -52,9 +52,9 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMissionAccess().getGoalConditionAssignment_5(), "rule__Mission__GoalConditionAssignment_5");
 					put(grammarAccess.getBehaviourAccess().getNameAssignment_1(), "rule__Behaviour__NameAssignment_1");
 					put(grammarAccess.getBehaviourAccess().getPrioAssignment_3(), "rule__Behaviour__PrioAssignment_3");
-					put(grammarAccess.getBehaviourAccess().getActionListAssignment_5(), "rule__Behaviour__ActionListAssignment_5");
-					put(grammarAccess.getBehaviourAccess().getTriggerListAssignment_7(), "rule__Behaviour__TriggerListAssignment_7");
-					put(grammarAccess.getBehaviourAccess().getDeviceListAssignment_9(), "rule__Behaviour__DeviceListAssignment_9");
+					put(grammarAccess.getBehaviourAccess().getDeviceListAssignment_5(), "rule__Behaviour__DeviceListAssignment_5");
+					put(grammarAccess.getBehaviourAccess().getActionListAssignment_7(), "rule__Behaviour__ActionListAssignment_7");
+					put(grammarAccess.getBehaviourAccess().getTriggerListAssignment_9(), "rule__Behaviour__TriggerListAssignment_9");
 					put(grammarAccess.getMoveForwardAccess().getFspeedAssignment_1(), "rule__MoveForward__FspeedAssignment_1");
 					put(grammarAccess.getMoveBackwardAccess().getBspeedAssignment_1(), "rule__MoveBackward__BspeedAssignment_1");
 					put(grammarAccess.getTurnAccess().getAngleAssignment_1(), "rule__Turn__AngleAssignment_1");

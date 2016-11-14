@@ -6,34 +6,38 @@ Mission:
 	'Mission' name = ID
 	'Behaviours:' behaviourList += Behaviour+
 	'Goal:' goalCondition += Trigger+
+	'UsedDevices:' deviceList += Device+
 ;
 
 Behaviour:
 	'Behavior:' name = ID
 	'priority:' prio = INT
-	'devices:' deviceList += Device+
+	'devices:' deviceList += [Device]+
 	'actions:' actionList += Action+
-	'trigger:' triggerList = Trigger
+	'trigger:' triggerList = Trigger+
 ;
 
-Action: Movement | Sound | IO;
+Action: 
+	Movement | Sound | IO
+	('Duration' duration = INT)?
+;
 
 Movement: MoveForward |	MoveBackward | Turn | Stop;
 
 MoveForward: 
-	'ForwardSpeed:' fspeed = INT
+	'Forward' fspeed = INT
 ;
 
 MoveBackward: 
-	'BackwardSpeed:' bspeed = INT
+	'Backward' bspeed = INT
 ;
 
 Turn: 
-	'TurnAngle:' angle = INT
+	'Turn' angle = INT
 ;
 
 Stop:
-	'WaitFor:' duration = INT
+	'Stop' duration = INT
 ;
 
 Sound:
@@ -49,5 +53,20 @@ Trigger:
 ;
 
 Device:
-	'Device:' type = STRING 
+	'Device:' type = DeviceType
+	('SensorType:' sensorType = SensorType)?
+	('description:' desc = STRING) 
 ;
+
+enum DeviceType:
+	LMOTOR = 'LeftMotor' |
+	RMOTOR = 'RightMotor' |
+	SENSOR = 'Sensor'
+;
+
+enum SensorType:
+	ULTRASONIC = 'Ultrasonic' |
+	TOUCH = 'Touch' |
+	COLOUR = 'Colour'	
+;
+

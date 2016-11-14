@@ -207,62 +207,16 @@ ruleBehaviour returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_4='actions:'
+		otherlv_4='devices:'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getBehaviourAccess().getActionsKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getBehaviourAccess().getDevicesKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBehaviourAccess().getActionListActionParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getBehaviourAccess().getDeviceListDeviceParserRuleCall_5_0());
 				}
-				lv_actionList_5_0=ruleAction
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
-					}
-					add(
-						$current,
-						"actionList",
-						lv_actionList_5_0,
-						"des.missionrobot.RobotDSL.Action");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_6='trigger:'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getBehaviourAccess().getTriggerKeyword_6());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getBehaviourAccess().getTriggerListTriggerParserRuleCall_7_0());
-				}
-				lv_triggerList_7_0=ruleTrigger
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
-					}
-					set(
-						$current,
-						"triggerList",
-						lv_triggerList_7_0,
-						"des.missionrobot.RobotDSL.Trigger");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_8='devices:'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getBehaviourAccess().getDevicesKeyword_8());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getBehaviourAccess().getDeviceListDeviceParserRuleCall_9_0());
-				}
-				lv_deviceList_9_0=ruleDevice
+				lv_deviceList_5_0=ruleDevice
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
@@ -270,8 +224,54 @@ ruleBehaviour returns [EObject current=null]
 					add(
 						$current,
 						"deviceList",
-						lv_deviceList_9_0,
+						lv_deviceList_5_0,
 						"des.missionrobot.RobotDSL.Device");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_6='actions:'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getBehaviourAccess().getActionsKeyword_6());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBehaviourAccess().getActionListActionParserRuleCall_7_0());
+				}
+				lv_actionList_7_0=ruleAction
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
+					}
+					add(
+						$current,
+						"actionList",
+						lv_actionList_7_0,
+						"des.missionrobot.RobotDSL.Action");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_8='trigger:'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getBehaviourAccess().getTriggerKeyword_8());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBehaviourAccess().getTriggerListTriggerParserRuleCall_9_0());
+				}
+				lv_triggerList_9_0=ruleTrigger
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBehaviourRule());
+					}
+					set(
+						$current,
+						"triggerList",
+						lv_triggerList_9_0,
+						"des.missionrobot.RobotDSL.Trigger");
 					afterParserOrEnumRuleCall();
 				}
 			)

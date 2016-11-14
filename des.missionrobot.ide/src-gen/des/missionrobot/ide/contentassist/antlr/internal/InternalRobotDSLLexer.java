@@ -160,10 +160,10 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:16:7: ( 'actions:' )
-            // InternalRobotDSL.g:16:9: 'actions:'
+            // InternalRobotDSL.g:16:7: ( 'devices:' )
+            // InternalRobotDSL.g:16:9: 'devices:'
             {
-            match("actions:"); 
+            match("devices:"); 
 
 
             }
@@ -181,10 +181,10 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:17:7: ( 'trigger:' )
-            // InternalRobotDSL.g:17:9: 'trigger:'
+            // InternalRobotDSL.g:17:7: ( 'actions:' )
+            // InternalRobotDSL.g:17:9: 'actions:'
             {
-            match("trigger:"); 
+            match("actions:"); 
 
 
             }
@@ -202,10 +202,10 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:18:7: ( 'devices:' )
-            // InternalRobotDSL.g:18:9: 'devices:'
+            // InternalRobotDSL.g:18:7: ( 'trigger:' )
+            // InternalRobotDSL.g:18:9: 'trigger:'
             {
-            match("devices:"); 
+            match("trigger:"); 
 
 
             }
@@ -391,10 +391,10 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:1530:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalRobotDSL.g:1530:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalRobotDSL.g:1544:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalRobotDSL.g:1544:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalRobotDSL.g:1530:11: ( '^' )?
+            // InternalRobotDSL.g:1544:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -403,7 +403,7 @@ public class InternalRobotDSLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalRobotDSL.g:1530:11: '^'
+                    // InternalRobotDSL.g:1544:11: '^'
                     {
                     match('^'); 
 
@@ -421,7 +421,7 @@ public class InternalRobotDSLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalRobotDSL.g:1530:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalRobotDSL.g:1544:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -470,10 +470,10 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:1532:10: ( ( '0' .. '9' )+ )
-            // InternalRobotDSL.g:1532:12: ( '0' .. '9' )+
+            // InternalRobotDSL.g:1546:10: ( ( '0' .. '9' )+ )
+            // InternalRobotDSL.g:1546:12: ( '0' .. '9' )+
             {
-            // InternalRobotDSL.g:1532:12: ( '0' .. '9' )+
+            // InternalRobotDSL.g:1546:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -487,7 +487,7 @@ public class InternalRobotDSLLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalRobotDSL.g:1532:13: '0' .. '9'
+            	    // InternalRobotDSL.g:1546:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -519,10 +519,10 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:1534:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalRobotDSL.g:1534:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalRobotDSL.g:1548:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalRobotDSL.g:1548:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalRobotDSL.g:1534:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalRobotDSL.g:1548:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -540,10 +540,10 @@ public class InternalRobotDSLLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalRobotDSL.g:1534:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalRobotDSL.g:1548:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalRobotDSL.g:1534:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalRobotDSL.g:1548:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -559,7 +559,7 @@ public class InternalRobotDSLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalRobotDSL.g:1534:21: '\\\\' .
+                    	    // InternalRobotDSL.g:1548:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -567,7 +567,7 @@ public class InternalRobotDSLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalRobotDSL.g:1534:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalRobotDSL.g:1548:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -592,10 +592,10 @@ public class InternalRobotDSLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:1534:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalRobotDSL.g:1548:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalRobotDSL.g:1534:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalRobotDSL.g:1548:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -611,7 +611,7 @@ public class InternalRobotDSLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalRobotDSL.g:1534:54: '\\\\' .
+                    	    // InternalRobotDSL.g:1548:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -619,7 +619,7 @@ public class InternalRobotDSLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalRobotDSL.g:1534:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalRobotDSL.g:1548:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -662,12 +662,12 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:1536:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalRobotDSL.g:1536:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalRobotDSL.g:1550:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalRobotDSL.g:1550:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalRobotDSL.g:1536:24: ( options {greedy=false; } : . )*
+            // InternalRobotDSL.g:1550:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -692,7 +692,7 @@ public class InternalRobotDSLLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalRobotDSL.g:1536:52: .
+            	    // InternalRobotDSL.g:1550:52: .
             	    {
             	    matchAny(); 
 
@@ -722,12 +722,12 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:1538:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalRobotDSL.g:1538:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalRobotDSL.g:1552:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalRobotDSL.g:1552:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalRobotDSL.g:1538:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalRobotDSL.g:1552:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -740,7 +740,7 @@ public class InternalRobotDSLLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalRobotDSL.g:1538:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalRobotDSL.g:1552:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -760,7 +760,7 @@ public class InternalRobotDSLLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalRobotDSL.g:1538:40: ( ( '\\r' )? '\\n' )?
+            // InternalRobotDSL.g:1552:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -769,9 +769,9 @@ public class InternalRobotDSLLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalRobotDSL.g:1538:41: ( '\\r' )? '\\n'
+                    // InternalRobotDSL.g:1552:41: ( '\\r' )? '\\n'
                     {
-                    // InternalRobotDSL.g:1538:41: ( '\\r' )?
+                    // InternalRobotDSL.g:1552:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -780,7 +780,7 @@ public class InternalRobotDSLLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalRobotDSL.g:1538:41: '\\r'
+                            // InternalRobotDSL.g:1552:41: '\\r'
                             {
                             match('\r'); 
 
@@ -812,10 +812,10 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:1540:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalRobotDSL.g:1540:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalRobotDSL.g:1554:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalRobotDSL.g:1554:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalRobotDSL.g:1540:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalRobotDSL.g:1554:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -869,8 +869,8 @@ public class InternalRobotDSLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRobotDSL.g:1542:16: ( . )
-            // InternalRobotDSL.g:1542:18: .
+            // InternalRobotDSL.g:1556:16: ( . )
+            // InternalRobotDSL.g:1556:18: .
             {
             matchAny(); 
 
@@ -1062,15 +1062,15 @@ public class InternalRobotDSLLexer extends Lexer {
     static final String DFA12_eofS =
         "\u009d\uffff";
     static final String DFA12_minS =
-        "\1\0\1\151\1\141\1\157\1\162\1\143\1\162\1\145\1\157\1\165\1\141\1\154\1\157\1\145\1\101\2\uffff\2\0\1\52\2\uffff\1\163\1\uffff\1\150\1\143\1\141\1\151\1\164\1\151\1\166\2\162\1\151\1\141\1\151\1\156\1\166\5\uffff\1\163\1\141\1\153\1\154\1\157\1\151\1\147\1\151\1\167\1\156\1\164\1\171\1\156\1\144\2\151\1\166\1\167\1\72\1\162\1\157\1\147\1\143\1\141\1\101\1\106\1\123\1\164\1\151\1\143\1\157\1\151\1\141\1\uffff\1\151\1\156\2\145\1\162\1\156\2\157\1\115\1\164\1\145\1\156\1\157\1\162\1\164\1\163\1\162\1\163\1\144\1\147\1\162\1\165\1\145\1\151\1\72\1\60\1\162\1\144\1\171\3\72\1\123\1\154\1\72\1\156\1\163\1\157\2\uffff\1\162\1\72\1\123\1\72\3\uffff\1\160\1\145\1\uffff\1\144\1\163\1\156\1\163\1\uffff\1\160\1\uffff\1\145\2\72\1\141\1\60\1\72\2\145\2\uffff\1\147\2\uffff\1\145\1\144\1\145\1\144\1\72\1\60\1\72\3\uffff";
+        "\1\0\1\151\1\141\1\157\1\162\1\145\1\143\1\162\1\157\1\165\1\141\1\154\1\157\1\145\1\101\2\uffff\2\0\1\52\2\uffff\1\163\1\uffff\1\150\1\143\1\141\1\151\1\166\1\164\1\151\2\162\1\151\1\141\1\151\1\156\1\166\5\uffff\1\163\1\141\1\153\1\154\1\157\2\151\1\147\1\167\1\156\1\164\1\171\1\156\1\144\2\151\1\166\1\167\1\72\1\162\1\143\1\157\1\147\1\141\1\101\1\106\1\123\1\164\1\151\1\143\1\157\1\151\1\141\1\uffff\1\151\1\145\1\156\1\145\1\162\1\156\2\157\1\115\1\164\1\145\1\156\1\157\1\162\1\164\2\163\1\162\1\144\1\147\1\162\1\165\1\145\1\151\1\72\1\60\1\162\1\144\1\171\3\72\1\123\1\154\1\72\1\156\1\163\1\157\2\uffff\1\162\1\72\1\123\1\72\3\uffff\1\160\1\145\1\uffff\1\144\1\163\1\156\1\163\1\uffff\1\160\1\uffff\1\145\2\72\1\141\1\60\1\72\2\145\2\uffff\1\147\2\uffff\1\145\1\144\1\145\1\144\1\72\1\60\1\72\3\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\151\1\145\1\157\1\162\1\143\1\162\1\145\1\157\1\165\1\141\1\162\1\157\1\145\1\172\2\uffff\2\uffff\1\57\2\uffff\1\163\1\uffff\1\150\1\143\1\141\1\151\1\164\1\151\1\166\2\162\1\151\1\141\1\151\1\156\1\166\5\uffff\1\163\1\141\1\153\1\154\1\157\1\151\1\147\1\151\1\167\1\156\1\164\1\171\1\156\1\144\2\151\1\166\1\167\1\72\1\162\1\157\1\147\1\143\1\141\1\101\1\106\1\123\1\164\1\151\1\143\1\157\1\151\1\141\1\uffff\1\151\1\156\2\145\1\162\1\156\2\157\1\115\1\164\1\145\1\156\1\157\1\162\1\164\1\163\1\162\1\163\1\144\1\147\1\162\1\165\1\145\1\151\1\72\1\172\1\165\1\144\1\171\3\72\1\123\1\154\1\72\1\156\1\163\1\157\2\uffff\1\162\1\72\1\123\1\72\3\uffff\1\160\1\145\1\uffff\1\144\1\163\1\156\1\163\1\uffff\1\160\1\uffff\1\145\2\72\1\141\1\172\1\72\2\145\2\uffff\1\147\2\uffff\1\145\1\144\1\145\1\144\1\72\1\172\1\72\3\uffff";
+        "\1\uffff\1\151\1\145\1\157\1\162\1\145\1\143\1\162\1\157\1\165\1\141\1\162\1\157\1\145\1\172\2\uffff\2\uffff\1\57\2\uffff\1\163\1\uffff\1\150\1\143\1\141\1\151\1\166\1\164\1\151\2\162\1\151\1\141\1\151\1\156\1\166\5\uffff\1\163\1\141\1\153\1\154\1\157\2\151\1\147\1\167\1\156\1\164\1\171\1\156\1\144\2\151\1\166\1\167\1\72\1\162\1\143\1\157\1\147\1\141\1\101\1\106\1\123\1\164\1\151\1\143\1\157\1\151\1\141\1\uffff\1\151\1\145\1\156\1\145\1\162\1\156\2\157\1\115\1\164\1\145\1\156\1\157\1\162\1\164\2\163\1\162\1\144\1\147\1\162\1\165\1\145\1\151\1\72\1\172\1\165\1\144\1\171\3\72\1\123\1\154\1\72\1\156\1\163\1\157\2\uffff\1\162\1\72\1\123\1\72\3\uffff\1\160\1\145\1\uffff\1\144\1\163\1\156\1\163\1\uffff\1\160\1\uffff\1\145\2\72\1\141\1\172\1\72\2\145\2\uffff\1\147\2\uffff\1\145\1\144\1\145\1\144\1\72\1\172\1\72\3\uffff";
     static final String DFA12_acceptS =
         "\17\uffff\1\21\1\22\3\uffff\1\26\1\27\1\uffff\1\21\16\uffff\1\22\1\23\1\24\1\25\1\26\41\uffff\1\3\46\uffff\1\20\1\1\4\uffff\1\6\1\7\1\10\2\uffff\1\14\4\uffff\1\4\1\uffff\1\5\10\uffff\1\13\1\15\1\uffff\1\17\1\2\7\uffff\1\11\1\16\1\12";
     static final String DFA12_specialS =
         "\1\1\20\uffff\1\2\1\0\u008a\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\25\2\24\2\25\1\24\22\25\1\24\1\25\1\21\4\25\1\22\7\25\1\23\12\20\7\25\1\17\1\2\1\14\1\15\1\17\1\10\1\3\5\17\1\1\2\17\1\13\3\17\1\11\2\17\1\12\3\17\3\25\1\16\1\17\1\25\1\5\2\17\1\7\13\17\1\4\3\17\1\6\6\17\uff85\25",
+            "\11\25\2\24\2\25\1\24\22\25\1\24\1\25\1\21\4\25\1\22\7\25\1\23\12\20\7\25\1\17\1\2\1\14\1\15\1\17\1\10\1\3\5\17\1\1\2\17\1\13\3\17\1\11\2\17\1\12\3\17\3\25\1\16\1\17\1\25\1\6\2\17\1\5\13\17\1\4\3\17\1\7\6\17\uff85\25",
             "\1\26",
             "\1\31\3\uffff\1\30",
             "\1\32",
@@ -1287,11 +1287,11 @@ public class InternalRobotDSLLexer extends Lexer {
 
                         else if ( (LA12_0=='p') ) {s = 4;}
 
-                        else if ( (LA12_0=='a') ) {s = 5;}
+                        else if ( (LA12_0=='d') ) {s = 5;}
 
-                        else if ( (LA12_0=='t') ) {s = 6;}
+                        else if ( (LA12_0=='a') ) {s = 6;}
 
-                        else if ( (LA12_0=='d') ) {s = 7;}
+                        else if ( (LA12_0=='t') ) {s = 7;}
 
                         else if ( (LA12_0=='F') ) {s = 8;}
 
