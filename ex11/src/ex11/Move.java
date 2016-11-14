@@ -12,17 +12,15 @@ public class Move implements Behavior {
 	//create all private variables and motor objects
 	private boolean suppressed = false;
 	static EV3LargeRegulatedMotor leftMotor, rightMotor;
-	HashMap<String, Boolean> colorsFound;
 
 	//set the motor objects to the provided initialized motor objects
-	public Move(EV3LargeRegulatedMotor Lmtr, EV3LargeRegulatedMotor Rmtr, HashMap<String, Boolean> colorsFnd){
+	public Move(EV3LargeRegulatedMotor Lmtr, EV3LargeRegulatedMotor Rmtr){
 		leftMotor = Lmtr;
 		rightMotor = Rmtr;
-		colorsFound = colorsFnd;
 	}
 	//always run
 	public boolean takeControl(){
-		return colorsFound.values().contains(false);
+		return true;
 	}
 	
 	//stop motors when suppressed
@@ -34,8 +32,8 @@ public class Move implements Behavior {
 	
 	//move forwards indefinitely 
 	public void action(){
-		
 		suppressed = false;
+		leftMotor.setSpeed(5);
 		leftMotor.forward();
 		rightMotor.forward();
 		while(!suppressed){
