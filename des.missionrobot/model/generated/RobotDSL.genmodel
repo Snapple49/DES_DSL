@@ -53,6 +53,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Trigger/sensorTrigger"/>
     </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Device">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/sensorType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Device/desc"/>

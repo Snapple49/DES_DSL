@@ -173,7 +173,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Device returns Device
 	 *
 	 * Constraint:
-	 *     (type=DeviceType sensorType=SensorType? desc=STRING?)
+	 *     (name=ID type=DeviceType sensorType=SensorType? desc=STRING?)
 	 */
 	protected void sequence_Device(ISerializationContext context, Device semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

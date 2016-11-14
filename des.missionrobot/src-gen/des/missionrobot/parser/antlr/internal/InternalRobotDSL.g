@@ -707,7 +707,7 @@ ruleTrigger returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_2='Sensor'
+			otherlv_2='Sensor:'
 			{
 				newLeafNode(otherlv_2, grammarAccess.getTriggerAccess().getSensorKeyword_2_0());
 			}
@@ -750,10 +750,32 @@ ruleDevice returns [EObject current=null]
 		}
 		(
 			(
+				lv_name_1_0=RULE_ID
 				{
-					newCompositeNode(grammarAccess.getDeviceAccess().getTypeDeviceTypeEnumRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getDeviceAccess().getNameIDTerminalRuleCall_1_0());
 				}
-				lv_type_1_0=ruleDeviceType
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDeviceRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='type:'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getDeviceAccess().getTypeKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDeviceAccess().getTypeDeviceTypeEnumRuleCall_3_0());
+				}
+				lv_type_3_0=ruleDeviceType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDeviceRule());
@@ -761,23 +783,23 @@ ruleDevice returns [EObject current=null]
 					set(
 						$current,
 						"type",
-						lv_type_1_0,
+						lv_type_3_0,
 						"des.missionrobot.RobotDSL.DeviceType");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_2='SensorType:'
+			otherlv_4='sensorType:'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getDeviceAccess().getSensorTypeKeyword_2_0());
+				newLeafNode(otherlv_4, grammarAccess.getDeviceAccess().getSensorTypeKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDeviceAccess().getSensorTypeSensorTypeEnumRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getDeviceAccess().getSensorTypeSensorTypeEnumRuleCall_4_1_0());
 					}
-					lv_sensorType_3_0=ruleSensorType
+					lv_sensorType_5_0=ruleSensorType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDeviceRule());
@@ -785,7 +807,7 @@ ruleDevice returns [EObject current=null]
 						set(
 							$current,
 							"sensorType",
-							lv_sensorType_3_0,
+							lv_sensorType_5_0,
 							"des.missionrobot.RobotDSL.SensorType");
 						afterParserOrEnumRuleCall();
 					}
@@ -793,15 +815,15 @@ ruleDevice returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_4='description:'
+			otherlv_6='description:'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getDeviceAccess().getDescriptionKeyword_3_0());
+				newLeafNode(otherlv_6, grammarAccess.getDeviceAccess().getDescriptionKeyword_5_0());
 			}
 			(
 				(
-					lv_desc_5_0=RULE_STRING
+					lv_desc_7_0=RULE_STRING
 					{
-						newLeafNode(lv_desc_5_0, grammarAccess.getDeviceAccess().getDescSTRINGTerminalRuleCall_3_1_0());
+						newLeafNode(lv_desc_7_0, grammarAccess.getDeviceAccess().getDescSTRINGTerminalRuleCall_5_1_0());
 					}
 					{
 						if ($current==null) {
@@ -810,7 +832,7 @@ ruleDevice returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"desc",
-							lv_desc_5_0,
+							lv_desc_7_0,
 							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)

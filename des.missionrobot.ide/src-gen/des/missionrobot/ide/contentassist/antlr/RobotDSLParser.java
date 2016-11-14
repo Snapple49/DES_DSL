@@ -52,8 +52,8 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTriggerAccess().getGroup(), "rule__Trigger__Group__0");
 					put(grammarAccess.getTriggerAccess().getGroup_2(), "rule__Trigger__Group_2__0");
 					put(grammarAccess.getDeviceAccess().getGroup(), "rule__Device__Group__0");
-					put(grammarAccess.getDeviceAccess().getGroup_2(), "rule__Device__Group_2__0");
-					put(grammarAccess.getDeviceAccess().getGroup_3(), "rule__Device__Group_3__0");
+					put(grammarAccess.getDeviceAccess().getGroup_4(), "rule__Device__Group_4__0");
+					put(grammarAccess.getDeviceAccess().getGroup_5(), "rule__Device__Group_5__0");
 					put(grammarAccess.getMissionAccess().getNameAssignment_1(), "rule__Mission__NameAssignment_1");
 					put(grammarAccess.getMissionAccess().getDeviceListAssignment_3(), "rule__Mission__DeviceListAssignment_3");
 					put(grammarAccess.getMissionAccess().getBehaviourListAssignment_5(), "rule__Mission__BehaviourListAssignment_5");
@@ -72,9 +72,10 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIOAccess().getMessageAssignment_1(), "rule__IO__MessageAssignment_1");
 					put(grammarAccess.getTriggerAccess().getConditionAssignment_1(), "rule__Trigger__ConditionAssignment_1");
 					put(grammarAccess.getTriggerAccess().getSensorTriggerAssignment_2_1(), "rule__Trigger__SensorTriggerAssignment_2_1");
-					put(grammarAccess.getDeviceAccess().getTypeAssignment_1(), "rule__Device__TypeAssignment_1");
-					put(grammarAccess.getDeviceAccess().getSensorTypeAssignment_2_1(), "rule__Device__SensorTypeAssignment_2_1");
-					put(grammarAccess.getDeviceAccess().getDescAssignment_3_1(), "rule__Device__DescAssignment_3_1");
+					put(grammarAccess.getDeviceAccess().getNameAssignment_1(), "rule__Device__NameAssignment_1");
+					put(grammarAccess.getDeviceAccess().getTypeAssignment_3(), "rule__Device__TypeAssignment_3");
+					put(grammarAccess.getDeviceAccess().getSensorTypeAssignment_4_1(), "rule__Device__SensorTypeAssignment_4_1");
+					put(grammarAccess.getDeviceAccess().getDescAssignment_5_1(), "rule__Device__DescAssignment_5_1");
 				}
 			};
 		}

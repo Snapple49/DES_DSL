@@ -49,7 +49,7 @@ IO:
 
 Trigger:
 	'Condition:' condition = STRING
-	('Sensor' sensorTrigger = [Device])?
+	('Sensor:' sensorTrigger = [Device])?
 ;
 
 Device:

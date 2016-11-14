@@ -491,7 +491,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_Type()
+  public EAttribute getDevice_Name()
   {
     return (EAttribute)deviceEClass.getEStructuralFeatures().get(0);
   }
@@ -501,7 +501,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_SensorType()
+  public EAttribute getDevice_Type()
   {
     return (EAttribute)deviceEClass.getEStructuralFeatures().get(1);
   }
@@ -511,9 +511,19 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_Desc()
+  public EAttribute getDevice_SensorType()
   {
     return (EAttribute)deviceEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDevice_Desc()
+  {
+    return (EAttribute)deviceEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -606,6 +616,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEReference(triggerEClass, TRIGGER__SENSOR_TRIGGER);
 
     deviceEClass = createEClass(DEVICE);
+    createEAttribute(deviceEClass, DEVICE__NAME);
     createEAttribute(deviceEClass, DEVICE__TYPE);
     createEAttribute(deviceEClass, DEVICE__SENSOR_TYPE);
     createEAttribute(deviceEClass, DEVICE__DESC);
@@ -693,6 +704,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEReference(getTrigger_SensorTrigger(), this.getDevice(), null, "sensorTrigger", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDevice_Name(), ecorePackage.getEString(), "name", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDevice_Type(), this.getDeviceType(), "type", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDevice_SensorType(), this.getSensorType(), "sensorType", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDevice_Desc(), ecorePackage.getEString(), "desc", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

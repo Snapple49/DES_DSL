@@ -467,13 +467,22 @@ public interface RobotDSLPackage extends EPackage
   int DEVICE = 11;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVICE__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVICE__TYPE = 0;
+  int DEVICE__TYPE = 1;
 
   /**
    * The feature id for the '<em><b>Sensor Type</b></em>' attribute.
@@ -482,7 +491,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE__SENSOR_TYPE = 1;
+  int DEVICE__SENSOR_TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Desc</b></em>' attribute.
@@ -491,7 +500,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE__DESC = 2;
+  int DEVICE__DESC = 3;
 
   /**
    * The number of structural features of the '<em>Device</em>' class.
@@ -500,7 +509,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_FEATURE_COUNT = 3;
+  int DEVICE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.DeviceType <em>Device Type</em>}' enum.
@@ -829,6 +838,17 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   EClass getDevice();
+
+  /**
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see des.missionrobot.robotDSL.Device#getName()
+   * @see #getDevice()
+   * @generated
+   */
+  EAttribute getDevice_Name();
 
   /**
    * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Device#getType <em>Type</em>}'.
@@ -1161,6 +1181,14 @@ public interface RobotDSLPackage extends EPackage
      * @generated
      */
     EClass DEVICE = eINSTANCE.getDevice();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEVICE__NAME = eINSTANCE.getDevice_Name();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
