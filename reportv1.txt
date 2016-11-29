@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+
+\title{Development document: RobotDSL \\ \Large{A leJOS EV3 robot mission DSL}}
+\author{Albin Ohlsson 4846060, Oliver Stein 4846524 }
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\pagenumbering{none}
+\pagebreak
+
+\tableofcontents
+\thispagestyle{empty}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{plain}
+\section{Introduction}
+This document will outline the planning, design and implementation of our Mars Rover mission domain-specific language (\textit{DSL}), RobotDSL.
+
+\section{Requirements}
+The DSL should allow the robot to perform a variety of tasks in a user-friendly way. To describe what the robot should be able to perform, we will divide requirements into a FURPS structure, and the priority of these requirements will be labeled according to the MoSCoW structure. See the tables in each subsection for the requirements listings with priority.
+
+\subsection{Functionality}
+The language needs to provide support for actions and value reading. Actions include concepts such as moving, turning, playing sounds, writing to the screen and more. Value reading includes reading user- or predefined values from different sensors or actuators that support being read from. 
+
+\vspace{2em}
+\begin{center}
+\begin{tabular}{| l | l | p{5cm} |}
+\hline
+\multicolumn{3}{|l|}{\textbf{\textit{Functionality}}} \\
+\hline
+    \textbf{Code} & \textbf{Priority} & \textbf{Description} \\
+\hline
+
+    RF1 & M & Make motor run for set period \\ \hline
+    RF2 & M & Read value from light sensor \\ \hline
+    RF3 & M & Read value from ultrasonic sensor \\ \hline
+    RF4 & M & Read value from color sensor \\ \hline
+    RF5 & M & Use read values as conditions for behaviours \\ \hline
+    RF6 & S & Read value from touch sensor \\ \hline
+    RF7 & C & Read value from gyroscopic sensor \\ \hline
+    RF8 & M & Implement multiple behaviours in order of priority \\ \hline
+    RF9 & W & Specify predetermined route \\ \hline
+    RF10 & M & Take sample \\ \hline
+    RF11 & M & Recall values and use them as conditions for behaviours \\ \hline
+    
+\end{tabular}
+\end{center}
+
+\subsection{Usability}
+We intend our design to be fairly close to how coding is done in the subsumption architecture, because we assume that the users of our language will have a fairly good understanding of how the robots work. Our main focus is making mission specification faster and more easily structured by abstracting away things that needlessly take up the users time, such as behaviour implementation, sensor and actuator initialization or communication between robots. We will put less focus on being able to easily read what the robot is intended to do from the DSL syntax, as we think this will take too much time to implement and potentially introduce errors. 
+
+\vspace{2em}
+\begin{center}
+\begin{tabular}{| l | l | p{5cm} |}
+\hline
+\multicolumn{3}{|l|}{\textbf{\textit{Usability}}} \\
+\hline
+    \textbf{Code} & \textbf{Priority} & \textbf{Description} \\
+\hline
+
+    RU1 & M & The interface provides error messages about bad/incorrect syntax in the RobotDSL \\ \hline
+    RU2 & S & The interface provides warnings for potentially bad syntax \\ \hline
+    RU3 & W & The interface is easy to use and intuitive with regard to semantics and expected behaviour \\ \hline
+
+    
+\end{tabular}
+\end{center}
+
+\subsection{Reliability}
+It is important that we handle exceptions thrown by sensors at start up to prevent unnecessary crashes. Usually this requires restarting the robot and preventing this would save much time, but also sensor failure during mission operation would endanger the robot. The correct behaviour should also always take priority and execute, but should also be interruptible by a higher priority behaviour. 
+
+\vspace{2em}
+\begin{center}
+\begin{tabular}{| l | l | p{5cm} |}
+\hline
+\multicolumn{3}{|l|}{\textbf{\textit{Reliability}}} \\
+\hline
+    \textbf{Code} & \textbf{Priority} & \textbf{Description} \\
+\hline
+
+    RR1 & S & Handle exceptions thrown by sensors \\ \hline
+    RR2 & M & Highest priority behaviour executes first \\ \hline
+    RR3 & M & Behaviours take control only when they should \\ \hline
+    
+\end{tabular}
+\end{center}
+
+\subsection{Performance}
+One critical aspect of performance is speed in switching between behaviours in the subsumption architecture. This means that both suppressing a behaviour should be quick, but also takeControl has to check the boolean expression quickly.
+
+\vspace{2em}
+\begin{center}
+\begin{tabular}{| l | l | p{5cm} |}
+\hline
+\multicolumn{3}{|l|}{\textbf{\textit{Performance}}} \\
+\hline
+    \textbf{Code} & \textbf{Priority} & \textbf{Description} \\
+\hline
+
+    RP1 & S & The suppress methods should not take up too much time to allow fast behaviour switching \\ \hline
+    RP2 & M & Behaviours take control as soon as they should \\ \hline
+    
+
+\end{tabular}
+\end{center}
+
+\subsection{Supportability}
+It is important that we leave the generation of java code for sensors and actuators general so that new devices can easily be added. Nice to have-features would include different methods for communication between EV3 blocks or even with PCs, instead of predefined generated connection setups. Also, it is always a good idea to leave the implementation of the DSL in a state which is easy to add features to for future work.
+
+\vspace{2em} 
+\begin{center}
+\begin{tabular}{| l | l | p{5cm} |}
+\hline
+\multicolumn{3}{|l|}{\textbf{\textit{Supportability}}} \\
+\hline
+    \textbf{Code} & \textbf{Priority} & \textbf{Description} \\
+\hline
+
+    RS1 & S & Java generators for sensors are extensible to support new sensor types\\ \hline
+    RS2 & W & Communication between devices can be user-defined \\ \hline
+    RS3 & W & The DSL supports adding new features in future versions \\ \hline
+    
+    
+\end{tabular}
+\end{center}
+
+\section{Mapping}
+It would be good to have the sensors and actuators critical to the safety-related behaviours, such as edge avoidance all on the same block. This would make it more tolerant to any issues introduced by the communication between the blocks. Having both driving motors connected to the same block would also avoid any delay and potential inaccuracy since they would then be running on the same thread. Since the behaviours are triggered by boolean conditions, they can easily be communicated over bluetooth between the blocks. The only time an issue arises is when timing is critical, and by having the safety-related behaviours all on one block we believe we have that covered.
+
+One example (and our preferred version) of a setup would be:
+
+\textbf{Block 1:} Both driving motors, both color sensors, the light sensor and the back ultrasonic sensor. This allows fastest access to edge avoidance, which is probably the most critical safety-feature.
+
+\textbf{Block 2:} Arm motor, frontal ultrasonic sensor, gyroscope and touch sensors. This block would appropriately be more in charge of the mission related behaviours, such as sample collecting and obstacle avoiding/detecting/removing.
+
+\section{Planning}
+\textbf{Iteration 1 (30 nov)}
+It is important to have something presentable quickly, so for the first iteration of our DSL we will focus on some of the M priority requirements in the functionality. For our first iteration we aim to fulfill requirements RF1 through RF5. Although perhaps not all fully, just so that we can make the robot move and avoid edges. 
+
+\textbf{Iteration 2 (7 dec)}
+For our second iteration we intend to begin making the mission specific actions possible, so we will need to start implementing requirements RR2 and RR3, as well as RF8 and R10. Finishing these requirements might have to be left for the next interation, but we hope to have something presentable. We will also need to think about usability here, implementing some validation, as in RU1. 
+
+\textbf{Iteration 3 (14 dec)}
+For our third iteration we will aim to finish the sampling, implementing RF11. In general this extends to having mission wide goal conditions which the robot works towards.
+
+\textbf{Iteration 4 (21 dec)}
+For the next iteration we want to have all the M and most of the S priority requirements, allowing a general mission to be implemented with our DSL, with some limitations.
+
+Following iterations will be about polishing the DSL to improve usability and implementing the remaining features in order of priority and as time allows.
+
+
+\end{document}
