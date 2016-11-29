@@ -3,8 +3,11 @@
  */
 package des.missionrobot.robotDSL.impl;
 
-import des.missionrobot.robotDSL.Device;
+import des.missionrobot.robotDSL.Bool;
+import des.missionrobot.robotDSL.Color;
+import des.missionrobot.robotDSL.Event;
 import des.missionrobot.robotDSL.RobotDSLPackage;
+import des.missionrobot.robotDSL.Sensor;
 import des.missionrobot.robotDSL.Trigger;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,8 +26,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getCondition <em>Condition</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getSensorTrigger <em>Sensor Trigger</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getBoolType <em>Bool Type</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getEvent <em>Event</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getSensor <em>Sensor</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getBool <em>Bool</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getDistance <em>Distance</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +39,114 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
 {
   /**
-   * The default value of the '{@link #getCondition() <em>Condition</em>}' attribute.
+   * The default value of the '{@link #getBoolType() <em>Bool Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCondition()
+   * @see #getBoolType()
    * @generated
    * @ordered
    */
-  protected static final String CONDITION_EDEFAULT = null;
+  protected static final Bool BOOL_TYPE_EDEFAULT = Bool.L;
 
   /**
-   * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute.
+   * The cached value of the '{@link #getBoolType() <em>Bool Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCondition()
+   * @see #getBoolType()
    * @generated
    * @ordered
    */
-  protected String condition = CONDITION_EDEFAULT;
+  protected Bool boolType = BOOL_TYPE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSensorTrigger() <em>Sensor Trigger</em>}' reference.
+   * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSensorTrigger()
+   * @see #getEvent()
    * @generated
    * @ordered
    */
-  protected Device sensorTrigger;
+  protected Event event;
+
+  /**
+   * The default value of the '{@link #getSensor() <em>Sensor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSensor()
+   * @generated
+   * @ordered
+   */
+  protected static final Sensor SENSOR_EDEFAULT = Sensor.COLOR;
+
+  /**
+   * The cached value of the '{@link #getSensor() <em>Sensor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSensor()
+   * @generated
+   * @ordered
+   */
+  protected Sensor sensor = SENSOR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColor()
+   * @generated
+   * @ordered
+   */
+  protected static final Color COLOR_EDEFAULT = Color.RED;
+
+  /**
+   * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColor()
+   * @generated
+   * @ordered
+   */
+  protected Color color = COLOR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBool()
+   * @generated
+   * @ordered
+   */
+  protected static final Bool BOOL_EDEFAULT = Bool.L;
+
+  /**
+   * The cached value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBool()
+   * @generated
+   * @ordered
+   */
+  protected Bool bool = BOOL_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDistance() <em>Distance</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDistance()
+   * @generated
+   * @ordered
+   */
+  protected static final int DISTANCE_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getDistance() <em>Distance</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDistance()
+   * @generated
+   * @ordered
+   */
+  protected int distance = DISTANCE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -87,9 +174,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCondition()
+  public Bool getBoolType()
   {
-    return condition;
+    return boolType;
   }
 
   /**
@@ -97,12 +184,12 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCondition(String newCondition)
+  public void setBoolType(Bool newBoolType)
   {
-    String oldCondition = condition;
-    condition = newCondition;
+    Bool oldBoolType = boolType;
+    boolType = newBoolType == null ? BOOL_TYPE_EDEFAULT : newBoolType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__CONDITION, oldCondition, condition));
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__BOOL_TYPE, oldBoolType, boolType));
   }
 
   /**
@@ -110,19 +197,19 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public Device getSensorTrigger()
+  public Event getEvent()
   {
-    if (sensorTrigger != null && sensorTrigger.eIsProxy())
+    if (event != null && event.eIsProxy())
     {
-      InternalEObject oldSensorTrigger = (InternalEObject)sensorTrigger;
-      sensorTrigger = (Device)eResolveProxy(oldSensorTrigger);
-      if (sensorTrigger != oldSensorTrigger)
+      InternalEObject oldEvent = (InternalEObject)event;
+      event = (Event)eResolveProxy(oldEvent);
+      if (event != oldEvent)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobotDSLPackage.TRIGGER__SENSOR_TRIGGER, oldSensorTrigger, sensorTrigger));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobotDSLPackage.TRIGGER__EVENT, oldEvent, event));
       }
     }
-    return sensorTrigger;
+    return event;
   }
 
   /**
@@ -130,9 +217,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public Device basicGetSensorTrigger()
+  public Event basicGetEvent()
   {
-    return sensorTrigger;
+    return event;
   }
 
   /**
@@ -140,12 +227,104 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSensorTrigger(Device newSensorTrigger)
+  public void setEvent(Event newEvent)
   {
-    Device oldSensorTrigger = sensorTrigger;
-    sensorTrigger = newSensorTrigger;
+    Event oldEvent = event;
+    event = newEvent;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__SENSOR_TRIGGER, oldSensorTrigger, sensorTrigger));
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__EVENT, oldEvent, event));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Sensor getSensor()
+  {
+    return sensor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSensor(Sensor newSensor)
+  {
+    Sensor oldSensor = sensor;
+    sensor = newSensor == null ? SENSOR_EDEFAULT : newSensor;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__SENSOR, oldSensor, sensor));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Color getColor()
+  {
+    return color;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setColor(Color newColor)
+  {
+    Color oldColor = color;
+    color = newColor == null ? COLOR_EDEFAULT : newColor;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__COLOR, oldColor, color));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Bool getBool()
+  {
+    return bool;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBool(Bool newBool)
+  {
+    Bool oldBool = bool;
+    bool = newBool == null ? BOOL_EDEFAULT : newBool;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__BOOL, oldBool, bool));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getDistance()
+  {
+    return distance;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDistance(int newDistance)
+  {
+    int oldDistance = distance;
+    distance = newDistance;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__DISTANCE, oldDistance, distance));
   }
 
   /**
@@ -158,11 +337,19 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   {
     switch (featureID)
     {
-      case RobotDSLPackage.TRIGGER__CONDITION:
-        return getCondition();
-      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
-        if (resolve) return getSensorTrigger();
-        return basicGetSensorTrigger();
+      case RobotDSLPackage.TRIGGER__BOOL_TYPE:
+        return getBoolType();
+      case RobotDSLPackage.TRIGGER__EVENT:
+        if (resolve) return getEvent();
+        return basicGetEvent();
+      case RobotDSLPackage.TRIGGER__SENSOR:
+        return getSensor();
+      case RobotDSLPackage.TRIGGER__COLOR:
+        return getColor();
+      case RobotDSLPackage.TRIGGER__BOOL:
+        return getBool();
+      case RobotDSLPackage.TRIGGER__DISTANCE:
+        return getDistance();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -177,11 +364,23 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   {
     switch (featureID)
     {
-      case RobotDSLPackage.TRIGGER__CONDITION:
-        setCondition((String)newValue);
+      case RobotDSLPackage.TRIGGER__BOOL_TYPE:
+        setBoolType((Bool)newValue);
         return;
-      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
-        setSensorTrigger((Device)newValue);
+      case RobotDSLPackage.TRIGGER__EVENT:
+        setEvent((Event)newValue);
+        return;
+      case RobotDSLPackage.TRIGGER__SENSOR:
+        setSensor((Sensor)newValue);
+        return;
+      case RobotDSLPackage.TRIGGER__COLOR:
+        setColor((Color)newValue);
+        return;
+      case RobotDSLPackage.TRIGGER__BOOL:
+        setBool((Bool)newValue);
+        return;
+      case RobotDSLPackage.TRIGGER__DISTANCE:
+        setDistance((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -197,11 +396,23 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   {
     switch (featureID)
     {
-      case RobotDSLPackage.TRIGGER__CONDITION:
-        setCondition(CONDITION_EDEFAULT);
+      case RobotDSLPackage.TRIGGER__BOOL_TYPE:
+        setBoolType(BOOL_TYPE_EDEFAULT);
         return;
-      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
-        setSensorTrigger((Device)null);
+      case RobotDSLPackage.TRIGGER__EVENT:
+        setEvent((Event)null);
+        return;
+      case RobotDSLPackage.TRIGGER__SENSOR:
+        setSensor(SENSOR_EDEFAULT);
+        return;
+      case RobotDSLPackage.TRIGGER__COLOR:
+        setColor(COLOR_EDEFAULT);
+        return;
+      case RobotDSLPackage.TRIGGER__BOOL:
+        setBool(BOOL_EDEFAULT);
+        return;
+      case RobotDSLPackage.TRIGGER__DISTANCE:
+        setDistance(DISTANCE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -217,10 +428,18 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   {
     switch (featureID)
     {
-      case RobotDSLPackage.TRIGGER__CONDITION:
-        return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
-      case RobotDSLPackage.TRIGGER__SENSOR_TRIGGER:
-        return sensorTrigger != null;
+      case RobotDSLPackage.TRIGGER__BOOL_TYPE:
+        return boolType != BOOL_TYPE_EDEFAULT;
+      case RobotDSLPackage.TRIGGER__EVENT:
+        return event != null;
+      case RobotDSLPackage.TRIGGER__SENSOR:
+        return sensor != SENSOR_EDEFAULT;
+      case RobotDSLPackage.TRIGGER__COLOR:
+        return color != COLOR_EDEFAULT;
+      case RobotDSLPackage.TRIGGER__BOOL:
+        return bool != BOOL_EDEFAULT;
+      case RobotDSLPackage.TRIGGER__DISTANCE:
+        return distance != DISTANCE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -236,8 +455,16 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (condition: ");
-    result.append(condition);
+    result.append(" (boolType: ");
+    result.append(boolType);
+    result.append(", sensor: ");
+    result.append(sensor);
+    result.append(", color: ");
+    result.append(color);
+    result.append(", bool: ");
+    result.append(bool);
+    result.append(", distance: ");
+    result.append(distance);
     result.append(')');
     return result.toString();
   }

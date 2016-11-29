@@ -66,18 +66,13 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     switch (eClass.getClassifierID())
     {
+      case RobotDSLPackage.MISSION_LIST: return createMissionList();
       case RobotDSLPackage.MISSION: return createMission();
       case RobotDSLPackage.BEHAVIOR: return createBehavior();
       case RobotDSLPackage.ACTION: return createAction();
-      case RobotDSLPackage.MOVEMENT: return createMovement();
-      case RobotDSLPackage.MOVE_FORWARD: return createMoveForward();
-      case RobotDSLPackage.MOVE_BACKWARD: return createMoveBackward();
-      case RobotDSLPackage.TURN: return createTurn();
-      case RobotDSLPackage.STOP: return createStop();
-      case RobotDSLPackage.SOUND: return createSound();
-      case RobotDSLPackage.IO: return createIO();
+      case RobotDSLPackage.REACTION: return createReaction();
+      case RobotDSLPackage.EVENT: return createEvent();
       case RobotDSLPackage.TRIGGER: return createTrigger();
-      case RobotDSLPackage.DEVICE: return createDevice();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -93,10 +88,22 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case RobotDSLPackage.DEVICE_TYPE:
-        return createDeviceTypeFromString(eDataType, initialValue);
-      case RobotDSLPackage.SENSOR_TYPE:
-        return createSensorTypeFromString(eDataType, initialValue);
+      case RobotDSLPackage.DIRECTION:
+        return createDirectionFromString(eDataType, initialValue);
+      case RobotDSLPackage.SPEED:
+        return createSpeedFromString(eDataType, initialValue);
+      case RobotDSLPackage.ARM_OP:
+        return createArmOpFromString(eDataType, initialValue);
+      case RobotDSLPackage.SOUND:
+        return createSoundFromString(eDataType, initialValue);
+      case RobotDSLPackage.SENSOR:
+        return createSensorFromString(eDataType, initialValue);
+      case RobotDSLPackage.COLOR:
+        return createColorFromString(eDataType, initialValue);
+      case RobotDSLPackage.BOOL:
+        return createBoolFromString(eDataType, initialValue);
+      case RobotDSLPackage.REPEAT:
+        return createRepeatFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -112,13 +119,36 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case RobotDSLPackage.DEVICE_TYPE:
-        return convertDeviceTypeToString(eDataType, instanceValue);
-      case RobotDSLPackage.SENSOR_TYPE:
-        return convertSensorTypeToString(eDataType, instanceValue);
+      case RobotDSLPackage.DIRECTION:
+        return convertDirectionToString(eDataType, instanceValue);
+      case RobotDSLPackage.SPEED:
+        return convertSpeedToString(eDataType, instanceValue);
+      case RobotDSLPackage.ARM_OP:
+        return convertArmOpToString(eDataType, instanceValue);
+      case RobotDSLPackage.SOUND:
+        return convertSoundToString(eDataType, instanceValue);
+      case RobotDSLPackage.SENSOR:
+        return convertSensorToString(eDataType, instanceValue);
+      case RobotDSLPackage.COLOR:
+        return convertColorToString(eDataType, instanceValue);
+      case RobotDSLPackage.BOOL:
+        return convertBoolToString(eDataType, instanceValue);
+      case RobotDSLPackage.REPEAT:
+        return convertRepeatToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MissionList createMissionList()
+  {
+    MissionListImpl missionList = new MissionListImpl();
+    return missionList;
   }
 
   /**
@@ -159,10 +189,10 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Movement createMovement()
+  public Reaction createReaction()
   {
-    MovementImpl movement = new MovementImpl();
-    return movement;
+    ReactionImpl reaction = new ReactionImpl();
+    return reaction;
   }
 
   /**
@@ -170,65 +200,10 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public MoveForward createMoveForward()
+  public Event createEvent()
   {
-    MoveForwardImpl moveForward = new MoveForwardImpl();
-    return moveForward;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MoveBackward createMoveBackward()
-  {
-    MoveBackwardImpl moveBackward = new MoveBackwardImpl();
-    return moveBackward;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Turn createTurn()
-  {
-    TurnImpl turn = new TurnImpl();
-    return turn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Stop createStop()
-  {
-    StopImpl stop = new StopImpl();
-    return stop;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Sound createSound()
-  {
-    SoundImpl sound = new SoundImpl();
-    return sound;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IO createIO()
-  {
-    IOImpl io = new IOImpl();
-    return io;
+    EventImpl event = new EventImpl();
+    return event;
   }
 
   /**
@@ -247,20 +222,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Device createDevice()
+  public Direction createDirectionFromString(EDataType eDataType, String initialValue)
   {
-    DeviceImpl device = new DeviceImpl();
-    return device;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DeviceType createDeviceTypeFromString(EDataType eDataType, String initialValue)
-  {
-    DeviceType result = DeviceType.get(initialValue);
+    Direction result = Direction.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -270,7 +234,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertDeviceTypeToString(EDataType eDataType, Object instanceValue)
+  public String convertDirectionToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -280,9 +244,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public SensorType createSensorTypeFromString(EDataType eDataType, String initialValue)
+  public Speed createSpeedFromString(EDataType eDataType, String initialValue)
   {
-    SensorType result = SensorType.get(initialValue);
+    Speed result = Speed.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -292,7 +256,139 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertSensorTypeToString(EDataType eDataType, Object instanceValue)
+  public String convertSpeedToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ArmOp createArmOpFromString(EDataType eDataType, String initialValue)
+  {
+    ArmOp result = ArmOp.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertArmOpToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Sound createSoundFromString(EDataType eDataType, String initialValue)
+  {
+    Sound result = Sound.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertSoundToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Sensor createSensorFromString(EDataType eDataType, String initialValue)
+  {
+    Sensor result = Sensor.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertSensorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Color createColorFromString(EDataType eDataType, String initialValue)
+  {
+    Color result = Color.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertColorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Bool createBoolFromString(EDataType eDataType, String initialValue)
+  {
+    Bool result = Bool.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertBoolToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Repeat createRepeatFromString(EDataType eDataType, String initialValue)
+  {
+    Repeat result = Repeat.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertRepeatToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

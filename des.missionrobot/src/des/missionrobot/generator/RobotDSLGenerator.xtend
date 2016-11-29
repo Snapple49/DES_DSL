@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import des.missionrobot.robotDSL.Mission
+import des.missionrobot.robotDSL.Behavior
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +18,15 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class RobotDSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+ 	val root = resource.allContents.head as Mission;
+ 	if (root != null) {
+ 		var path = "generated/" + resource.getURI().lastSegment + "/"
+ 		fsa.generateFile(path+root.name+".java", JavaGenerator.arbitratorMain(root))
+ 		for (Behavior b: root.behaviorList){
+ 				fsa.generateFile(path+b.name+".java", BehaviorMaker.makeBehaviorClass(b))
+ 		}
+ 	}
+ 	
 	}
+	
 }

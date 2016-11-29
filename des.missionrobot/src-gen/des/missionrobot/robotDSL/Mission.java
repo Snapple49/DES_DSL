@@ -17,9 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getName <em>Name</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Mission#getDeviceList <em>Device List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Mission#getBehaviourList <em>Behaviour List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Mission#getGoalCondition <em>Goal Condition</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Mission#getBehaviorList <em>Behavior List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Mission#getGoalEvents <em>Goal Events</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission()
@@ -55,51 +54,35 @@ public interface Mission extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Device List</b></em>' containment reference list.
-   * The list contents are of type {@link des.missionrobot.robotDSL.Device}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Device List</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Device List</em>' containment reference list.
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_DeviceList()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Device> getDeviceList();
-
-  /**
-   * Returns the value of the '<em><b>Behaviour List</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Behavior List</b></em>' containment reference list.
    * The list contents are of type {@link des.missionrobot.robotDSL.Behavior}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Behaviour List</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Behavior List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Behaviour List</em>' containment reference list.
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_BehaviourList()
+   * @return the value of the '<em>Behavior List</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_BehaviorList()
    * @model containment="true"
    * @generated
    */
-  EList<Behavior> getBehaviourList();
+  EList<Behavior> getBehaviorList();
 
   /**
-   * Returns the value of the '<em><b>Goal Condition</b></em>' containment reference list.
-   * The list contents are of type {@link des.missionrobot.robotDSL.Trigger}.
+   * Returns the value of the '<em><b>Goal Events</b></em>' reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Event}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Goal Condition</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Goal Events</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Goal Condition</em>' containment reference list.
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_GoalCondition()
-   * @model containment="true"
+   * @return the value of the '<em>Goal Events</em>' reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_GoalEvents()
+   * @model
    * @generated
    */
-  EList<Trigger> getGoalCondition();
+  EList<Event> getGoalEvents();
 
 } // Mission

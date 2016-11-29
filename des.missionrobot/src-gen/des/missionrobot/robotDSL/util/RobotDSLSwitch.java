@@ -73,6 +73,13 @@ public class RobotDSLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case RobotDSLPackage.MISSION_LIST:
+      {
+        MissionList missionList = (MissionList)theEObject;
+        T result = caseMissionList(missionList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RobotDSLPackage.MISSION:
       {
         Mission mission = (Mission)theEObject;
@@ -94,63 +101,17 @@ public class RobotDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RobotDSLPackage.MOVEMENT:
+      case RobotDSLPackage.REACTION:
       {
-        Movement movement = (Movement)theEObject;
-        T result = caseMovement(movement);
-        if (result == null) result = caseAction(movement);
+        Reaction reaction = (Reaction)theEObject;
+        T result = caseReaction(reaction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RobotDSLPackage.MOVE_FORWARD:
+      case RobotDSLPackage.EVENT:
       {
-        MoveForward moveForward = (MoveForward)theEObject;
-        T result = caseMoveForward(moveForward);
-        if (result == null) result = caseMovement(moveForward);
-        if (result == null) result = caseAction(moveForward);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RobotDSLPackage.MOVE_BACKWARD:
-      {
-        MoveBackward moveBackward = (MoveBackward)theEObject;
-        T result = caseMoveBackward(moveBackward);
-        if (result == null) result = caseMovement(moveBackward);
-        if (result == null) result = caseAction(moveBackward);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RobotDSLPackage.TURN:
-      {
-        Turn turn = (Turn)theEObject;
-        T result = caseTurn(turn);
-        if (result == null) result = caseMovement(turn);
-        if (result == null) result = caseAction(turn);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RobotDSLPackage.STOP:
-      {
-        Stop stop = (Stop)theEObject;
-        T result = caseStop(stop);
-        if (result == null) result = caseMovement(stop);
-        if (result == null) result = caseAction(stop);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RobotDSLPackage.SOUND:
-      {
-        Sound sound = (Sound)theEObject;
-        T result = caseSound(sound);
-        if (result == null) result = caseAction(sound);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RobotDSLPackage.IO:
-      {
-        IO io = (IO)theEObject;
-        T result = caseIO(io);
-        if (result == null) result = caseAction(io);
+        Event event = (Event)theEObject;
+        T result = caseEvent(event);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -161,15 +122,24 @@ public class RobotDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RobotDSLPackage.DEVICE:
-      {
-        Device device = (Device)theEObject;
-        T result = caseDevice(device);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mission List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mission List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMissionList(MissionList object)
+  {
+    return null;
   }
 
   /**
@@ -221,113 +191,33 @@ public class RobotDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Movement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Reaction</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Movement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Reaction</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMovement(Movement object)
+  public T caseReaction(Reaction object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Move Forward</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Move Forward</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Event</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMoveForward(MoveForward object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Move Backward</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Move Backward</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMoveBackward(MoveBackward object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Turn</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Turn</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTurn(Turn object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Stop</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Stop</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStop(Stop object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Sound</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Sound</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSound(Sound object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>IO</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>IO</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIO(IO object)
+  public T caseEvent(Event object)
   {
     return null;
   }
@@ -344,22 +234,6 @@ public class RobotDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTrigger(Trigger object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Device</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Device</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDevice(Device object)
   {
     return null;
   }

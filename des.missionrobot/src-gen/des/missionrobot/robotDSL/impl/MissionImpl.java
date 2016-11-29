@@ -4,10 +4,9 @@
 package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Behavior;
-import des.missionrobot.robotDSL.Device;
+import des.missionrobot.robotDSL.Event;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
-import des.missionrobot.robotDSL.Trigger;
 
 import java.util.Collection;
 
@@ -23,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -34,9 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getName <em>Name</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getDeviceList <em>Device List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getBehaviourList <em>Behaviour List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getGoalCondition <em>Goal Condition</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getBehaviorList <em>Behavior List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getGoalEvents <em>Goal Events</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,34 +63,24 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDeviceList() <em>Device List</em>}' containment reference list.
+   * The cached value of the '{@link #getBehaviorList() <em>Behavior List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDeviceList()
+   * @see #getBehaviorList()
    * @generated
    * @ordered
    */
-  protected EList<Device> deviceList;
+  protected EList<Behavior> behaviorList;
 
   /**
-   * The cached value of the '{@link #getBehaviourList() <em>Behaviour List</em>}' containment reference list.
+   * The cached value of the '{@link #getGoalEvents() <em>Goal Events</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBehaviourList()
+   * @see #getGoalEvents()
    * @generated
    * @ordered
    */
-  protected EList<Behavior> behaviourList;
-
-  /**
-   * The cached value of the '{@link #getGoalCondition() <em>Goal Condition</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGoalCondition()
-   * @generated
-   * @ordered
-   */
-  protected EList<Trigger> goalCondition;
+  protected EList<Event> goalEvents;
 
   /**
    * <!-- begin-user-doc -->
@@ -142,13 +131,13 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Device> getDeviceList()
+  public EList<Behavior> getBehaviorList()
   {
-    if (deviceList == null)
+    if (behaviorList == null)
     {
-      deviceList = new EObjectContainmentEList<Device>(Device.class, this, RobotDSLPackage.MISSION__DEVICE_LIST);
+      behaviorList = new EObjectContainmentEList<Behavior>(Behavior.class, this, RobotDSLPackage.MISSION__BEHAVIOR_LIST);
     }
-    return deviceList;
+    return behaviorList;
   }
 
   /**
@@ -156,27 +145,13 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Behavior> getBehaviourList()
+  public EList<Event> getGoalEvents()
   {
-    if (behaviourList == null)
+    if (goalEvents == null)
     {
-      behaviourList = new EObjectContainmentEList<Behavior>(Behavior.class, this, RobotDSLPackage.MISSION__BEHAVIOUR_LIST);
+      goalEvents = new EObjectResolvingEList<Event>(Event.class, this, RobotDSLPackage.MISSION__GOAL_EVENTS);
     }
-    return behaviourList;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Trigger> getGoalCondition()
-  {
-    if (goalCondition == null)
-    {
-      goalCondition = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.MISSION__GOAL_CONDITION);
-    }
-    return goalCondition;
+    return goalEvents;
   }
 
   /**
@@ -189,12 +164,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
   {
     switch (featureID)
     {
-      case RobotDSLPackage.MISSION__DEVICE_LIST:
-        return ((InternalEList<?>)getDeviceList()).basicRemove(otherEnd, msgs);
-      case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
-        return ((InternalEList<?>)getBehaviourList()).basicRemove(otherEnd, msgs);
-      case RobotDSLPackage.MISSION__GOAL_CONDITION:
-        return ((InternalEList<?>)getGoalCondition()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
+        return ((InternalEList<?>)getBehaviorList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -211,12 +182,10 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__NAME:
         return getName();
-      case RobotDSLPackage.MISSION__DEVICE_LIST:
-        return getDeviceList();
-      case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
-        return getBehaviourList();
-      case RobotDSLPackage.MISSION__GOAL_CONDITION:
-        return getGoalCondition();
+      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
+        return getBehaviorList();
+      case RobotDSLPackage.MISSION__GOAL_EVENTS:
+        return getGoalEvents();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -235,17 +204,13 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
       case RobotDSLPackage.MISSION__NAME:
         setName((String)newValue);
         return;
-      case RobotDSLPackage.MISSION__DEVICE_LIST:
-        getDeviceList().clear();
-        getDeviceList().addAll((Collection<? extends Device>)newValue);
+      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
+        getBehaviorList().clear();
+        getBehaviorList().addAll((Collection<? extends Behavior>)newValue);
         return;
-      case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
-        getBehaviourList().clear();
-        getBehaviourList().addAll((Collection<? extends Behavior>)newValue);
-        return;
-      case RobotDSLPackage.MISSION__GOAL_CONDITION:
-        getGoalCondition().clear();
-        getGoalCondition().addAll((Collection<? extends Trigger>)newValue);
+      case RobotDSLPackage.MISSION__GOAL_EVENTS:
+        getGoalEvents().clear();
+        getGoalEvents().addAll((Collection<? extends Event>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -264,14 +229,11 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
       case RobotDSLPackage.MISSION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case RobotDSLPackage.MISSION__DEVICE_LIST:
-        getDeviceList().clear();
+      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
+        getBehaviorList().clear();
         return;
-      case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
-        getBehaviourList().clear();
-        return;
-      case RobotDSLPackage.MISSION__GOAL_CONDITION:
-        getGoalCondition().clear();
+      case RobotDSLPackage.MISSION__GOAL_EVENTS:
+        getGoalEvents().clear();
         return;
     }
     super.eUnset(featureID);
@@ -289,12 +251,10 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case RobotDSLPackage.MISSION__DEVICE_LIST:
-        return deviceList != null && !deviceList.isEmpty();
-      case RobotDSLPackage.MISSION__BEHAVIOUR_LIST:
-        return behaviourList != null && !behaviourList.isEmpty();
-      case RobotDSLPackage.MISSION__GOAL_CONDITION:
-        return goalCondition != null && !goalCondition.isEmpty();
+      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
+        return behaviorList != null && !behaviorList.isEmpty();
+      case RobotDSLPackage.MISSION__GOAL_EVENTS:
+        return goalEvents != null && !goalEvents.isEmpty();
     }
     return super.eIsSet(featureID);
   }

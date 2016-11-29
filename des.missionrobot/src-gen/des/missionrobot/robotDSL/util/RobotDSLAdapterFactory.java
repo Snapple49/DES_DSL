@@ -76,6 +76,11 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
     new RobotDSLSwitch<Adapter>()
     {
       @Override
+      public Adapter caseMissionList(MissionList object)
+      {
+        return createMissionListAdapter();
+      }
+      @Override
       public Adapter caseMission(Mission object)
       {
         return createMissionAdapter();
@@ -91,49 +96,19 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
         return createActionAdapter();
       }
       @Override
-      public Adapter caseMovement(Movement object)
+      public Adapter caseReaction(Reaction object)
       {
-        return createMovementAdapter();
+        return createReactionAdapter();
       }
       @Override
-      public Adapter caseMoveForward(MoveForward object)
+      public Adapter caseEvent(Event object)
       {
-        return createMoveForwardAdapter();
-      }
-      @Override
-      public Adapter caseMoveBackward(MoveBackward object)
-      {
-        return createMoveBackwardAdapter();
-      }
-      @Override
-      public Adapter caseTurn(Turn object)
-      {
-        return createTurnAdapter();
-      }
-      @Override
-      public Adapter caseStop(Stop object)
-      {
-        return createStopAdapter();
-      }
-      @Override
-      public Adapter caseSound(Sound object)
-      {
-        return createSoundAdapter();
-      }
-      @Override
-      public Adapter caseIO(IO object)
-      {
-        return createIOAdapter();
+        return createEventAdapter();
       }
       @Override
       public Adapter caseTrigger(Trigger object)
       {
         return createTriggerAdapter();
-      }
-      @Override
-      public Adapter caseDevice(Device object)
-      {
-        return createDeviceAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -156,6 +131,21 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
+
+  /**
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.MissionList <em>Mission List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see des.missionrobot.robotDSL.MissionList
+   * @generated
+   */
+  public Adapter createMissionListAdapter()
+  {
+    return null;
+  }
 
   /**
    * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Mission <em>Mission</em>}'.
@@ -203,106 +193,31 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Movement <em>Movement</em>}'.
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Reaction <em>Reaction</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Movement
+   * @see des.missionrobot.robotDSL.Reaction
    * @generated
    */
-  public Adapter createMovementAdapter()
+  public Adapter createReactionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.MoveForward <em>Move Forward</em>}'.
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Event <em>Event</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see des.missionrobot.robotDSL.MoveForward
+   * @see des.missionrobot.robotDSL.Event
    * @generated
    */
-  public Adapter createMoveForwardAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.MoveBackward <em>Move Backward</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.MoveBackward
-   * @generated
-   */
-  public Adapter createMoveBackwardAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Turn <em>Turn</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Turn
-   * @generated
-   */
-  public Adapter createTurnAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Stop <em>Stop</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Stop
-   * @generated
-   */
-  public Adapter createStopAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Sound <em>Sound</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Sound
-   * @generated
-   */
-  public Adapter createSoundAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.IO <em>IO</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.IO
-   * @generated
-   */
-  public Adapter createIOAdapter()
+  public Adapter createEventAdapter()
   {
     return null;
   }
@@ -318,21 +233,6 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTriggerAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Device <em>Device</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Device
-   * @generated
-   */
-  public Adapter createDeviceAdapter()
   {
     return null;
   }

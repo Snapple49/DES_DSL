@@ -1,62 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="robotDSL" nsURI="http://www.missionrobot.des/RobotDSL" nsPrefix="robotDSL">
+  <eClassifiers xsi:type="ecore:EClass" name="MissionList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="missionList" upperBound="-1"
+        eType="#//Mission" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mission">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceList" upperBound="-1"
-        eType="#//Device" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviourList" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviorList" upperBound="-1"
         eType="#//Behavior" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="goalCondition" upperBound="-1"
-        eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalEvents" unique="false"
+        upperBound="-1" eType="#//Event"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Behavior">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceList" unique="false"
-        upperBound="-1" eType="#//Device"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actionList" upperBound="-1"
-        eType="#//Action" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggerList" upperBound="-1"
         eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reactionList" upperBound="-1"
+        eType="#//Reaction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionList" upperBound="-1"
+        eType="#//Action" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Action"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Movement" eSuperTypes="#//Action">
+  <eClassifiers xsi:type="ecore:EClass" name="Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dir" eType="#//Direction"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="#//Speed"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="#//ArmOp"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sound" eType="#//Sound"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MoveForward" eSuperTypes="#//Movement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fspeed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Reaction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reactions" upperBound="-1"
+        eType="#//Action" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MoveBackward" eSuperTypes="#//Movement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bspeed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Turn" eSuperTypes="#//Movement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="angle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Stop" eSuperTypes="#//Movement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Sound" eSuperTypes="#//Action">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="soundName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IO" eSuperTypes="#//Action">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repeat" eType="#//Repeat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sensorTrigger" eType="#//Device"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boolType" eType="#//Bool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensor" eType="#//Sensor"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bool" eType="#//Bool"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Device">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DeviceType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensorType" eType="#//SensorType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="desc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Direction">
+    <eLiterals name="FORWARD" literal="forward"/>
+    <eLiterals name="BACKWARD" value="1" literal="backward"/>
+    <eLiterals name="LEFT" value="2" literal="left"/>
+    <eLiterals name="RIGHT" value="3" literal="right"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="DeviceType">
-    <eLiterals name="MOTOR" literal="Motor"/>
-    <eLiterals name="SENSOR" value="1" literal="Sensor"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Speed">
+    <eLiterals name="HIGH" literal="high"/>
+    <eLiterals name="MED" value="1" literal="medium"/>
+    <eLiterals name="LOW" value="2" literal="low"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="SensorType">
-    <eLiterals name="ULTRASONIC" literal="Ultrasonic"/>
-    <eLiterals name="TOUCH" value="1" literal="Touch"/>
-    <eLiterals name="COLOR" value="2" literal="Color"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArmOp">
+    <eLiterals name="UP" literal="raise"/>
+    <eLiterals name="DOWN" value="1" literal="lower"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Sound">
+    <eLiterals name="buzz" literal="buzz"/>
+    <eLiterals name="fanfare" value="1" literal="fanfare"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Sensor">
+    <eLiterals name="COLOR" literal="Color"/>
+    <eLiterals name="LEFTLIGHT" value="1" literal="LeftLight"/>
+    <eLiterals name="RIGHTLIGHT" value="2" literal="RightLight"/>
+    <eLiterals name="BACKUS" value="3" literal="RearHeight"/>
+    <eLiterals name="FRONTUS" value="4" literal="FrontDistance"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Color">
+    <eLiterals name="RED" literal="red"/>
+    <eLiterals name="WHITE" value="1" literal="white"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Bool">
+    <eLiterals name="L" literal="less"/>
+    <eLiterals name="G" value="1" literal="greater"/>
+    <eLiterals name="AND" value="2" literal="and"/>
+    <eLiterals name="OR" value="3" literal="or"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Repeat">
+    <eLiterals name="ONCE" literal="once"/>
+    <eLiterals name="REPEAT" value="1" literal="repeatable"/>
   </eClassifiers>
 </ecore:EPackage>

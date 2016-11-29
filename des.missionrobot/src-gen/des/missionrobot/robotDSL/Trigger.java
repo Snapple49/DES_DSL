@@ -14,8 +14,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link des.missionrobot.robotDSL.Trigger#getCondition <em>Condition</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Trigger#getSensorTrigger <em>Sensor Trigger</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getBoolType <em>Bool Type</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getEvent <em>Event</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getBool <em>Bool</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getDistance <em>Distance</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger()
@@ -25,55 +29,171 @@ import org.eclipse.emf.ecore.EObject;
 public interface Trigger extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Condition</b></em>' attribute.
+   * Returns the value of the '<em><b>Bool Type</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Bool}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Condition</em>' attribute isn't clear,
+   * If the meaning of the '<em>Bool Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Condition</em>' attribute.
-   * @see #setCondition(String)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Condition()
+   * @return the value of the '<em>Bool Type</em>' attribute.
+   * @see des.missionrobot.robotDSL.Bool
+   * @see #setBoolType(Bool)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_BoolType()
    * @model
    * @generated
    */
-  String getCondition();
+  Bool getBoolType();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getCondition <em>Condition</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getBoolType <em>Bool Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Condition</em>' attribute.
-   * @see #getCondition()
+   * @param value the new value of the '<em>Bool Type</em>' attribute.
+   * @see des.missionrobot.robotDSL.Bool
+   * @see #getBoolType()
    * @generated
    */
-  void setCondition(String value);
+  void setBoolType(Bool value);
 
   /**
-   * Returns the value of the '<em><b>Sensor Trigger</b></em>' reference.
+   * Returns the value of the '<em><b>Event</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sensor Trigger</em>' reference isn't clear,
+   * If the meaning of the '<em>Event</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sensor Trigger</em>' reference.
-   * @see #setSensorTrigger(Device)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_SensorTrigger()
+   * @return the value of the '<em>Event</em>' reference.
+   * @see #setEvent(Event)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Event()
    * @model
    * @generated
    */
-  Device getSensorTrigger();
+  Event getEvent();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getSensorTrigger <em>Sensor Trigger</em>}' reference.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getEvent <em>Event</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sensor Trigger</em>' reference.
-   * @see #getSensorTrigger()
+   * @param value the new value of the '<em>Event</em>' reference.
+   * @see #getEvent()
    * @generated
    */
-  void setSensorTrigger(Device value);
+  void setEvent(Event value);
+
+  /**
+   * Returns the value of the '<em><b>Sensor</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Sensor}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sensor</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sensor</em>' attribute.
+   * @see des.missionrobot.robotDSL.Sensor
+   * @see #setSensor(Sensor)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Sensor()
+   * @model
+   * @generated
+   */
+  Sensor getSensor();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sensor</em>' attribute.
+   * @see des.missionrobot.robotDSL.Sensor
+   * @see #getSensor()
+   * @generated
+   */
+  void setSensor(Sensor value);
+
+  /**
+   * Returns the value of the '<em><b>Color</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Color}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Color</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Color</em>' attribute.
+   * @see des.missionrobot.robotDSL.Color
+   * @see #setColor(Color)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Color()
+   * @model
+   * @generated
+   */
+  Color getColor();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Color</em>' attribute.
+   * @see des.missionrobot.robotDSL.Color
+   * @see #getColor()
+   * @generated
+   */
+  void setColor(Color value);
+
+  /**
+   * Returns the value of the '<em><b>Bool</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Bool}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Bool</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Bool</em>' attribute.
+   * @see des.missionrobot.robotDSL.Bool
+   * @see #setBool(Bool)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Bool()
+   * @model
+   * @generated
+   */
+  Bool getBool();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getBool <em>Bool</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Bool</em>' attribute.
+   * @see des.missionrobot.robotDSL.Bool
+   * @see #getBool()
+   * @generated
+   */
+  void setBool(Bool value);
+
+  /**
+   * Returns the value of the '<em><b>Distance</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Distance</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Distance</em>' attribute.
+   * @see #setDistance(int)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Distance()
+   * @model
+   * @generated
+   */
+  int getDistance();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getDistance <em>Distance</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Distance</em>' attribute.
+   * @see #getDistance()
+   * @generated
+   */
+  void setDistance(int value);
 
 } // Trigger

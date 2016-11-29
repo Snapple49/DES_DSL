@@ -4,21 +4,159 @@
 package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Action;
+import des.missionrobot.robotDSL.ArmOp;
+import des.missionrobot.robotDSL.Direction;
 import des.missionrobot.robotDSL.RobotDSLPackage;
+import des.missionrobot.robotDSL.Sound;
+import des.missionrobot.robotDSL.Speed;
+
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Action</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDir <em>Dir</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDuration <em>Duration</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSpeed <em>Speed</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDegr <em>Degr</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSound <em>Sound</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class ActionImpl extends MinimalEObjectImpl.Container implements Action
 {
+  /**
+   * The default value of the '{@link #getDir() <em>Dir</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDir()
+   * @generated
+   * @ordered
+   */
+  protected static final Direction DIR_EDEFAULT = Direction.FORWARD;
+
+  /**
+   * The cached value of the '{@link #getDir() <em>Dir</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDir()
+   * @generated
+   * @ordered
+   */
+  protected Direction dir = DIR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDuration() <em>Duration</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDuration()
+   * @generated
+   * @ordered
+   */
+  protected static final int DURATION_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getDuration() <em>Duration</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDuration()
+   * @generated
+   * @ordered
+   */
+  protected int duration = DURATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSpeed()
+   * @generated
+   * @ordered
+   */
+  protected static final Speed SPEED_EDEFAULT = Speed.HIGH;
+
+  /**
+   * The cached value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSpeed()
+   * @generated
+   * @ordered
+   */
+  protected Speed speed = SPEED_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDegr() <em>Degr</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDegr()
+   * @generated
+   * @ordered
+   */
+  protected static final int DEGR_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getDegr() <em>Degr</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDegr()
+   * @generated
+   * @ordered
+   */
+  protected int degr = DEGR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected static final ArmOp OP_EDEFAULT = ArmOp.UP;
+
+  /**
+   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected ArmOp op = OP_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSound() <em>Sound</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSound()
+   * @generated
+   * @ordered
+   */
+  protected static final Sound SOUND_EDEFAULT = Sound.BUZZ;
+
+  /**
+   * The cached value of the '{@link #getSound() <em>Sound</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSound()
+   * @generated
+   * @ordered
+   */
+  protected Sound sound = SOUND_EDEFAULT;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +176,287 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected EClass eStaticClass()
   {
     return RobotDSLPackage.Literals.ACTION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Direction getDir()
+  {
+    return dir;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDir(Direction newDir)
+  {
+    Direction oldDir = dir;
+    dir = newDir == null ? DIR_EDEFAULT : newDir;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__DIR, oldDir, dir));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getDuration()
+  {
+    return duration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDuration(int newDuration)
+  {
+    int oldDuration = duration;
+    duration = newDuration;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__DURATION, oldDuration, duration));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Speed getSpeed()
+  {
+    return speed;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSpeed(Speed newSpeed)
+  {
+    Speed oldSpeed = speed;
+    speed = newSpeed == null ? SPEED_EDEFAULT : newSpeed;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SPEED, oldSpeed, speed));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getDegr()
+  {
+    return degr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDegr(int newDegr)
+  {
+    int oldDegr = degr;
+    degr = newDegr;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__DEGR, oldDegr, degr));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ArmOp getOp()
+  {
+    return op;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOp(ArmOp newOp)
+  {
+    ArmOp oldOp = op;
+    op = newOp == null ? OP_EDEFAULT : newOp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__OP, oldOp, op));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Sound getSound()
+  {
+    return sound;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSound(Sound newSound)
+  {
+    Sound oldSound = sound;
+    sound = newSound == null ? SOUND_EDEFAULT : newSound;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SOUND, oldSound, sound));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case RobotDSLPackage.ACTION__DIR:
+        return getDir();
+      case RobotDSLPackage.ACTION__DURATION:
+        return getDuration();
+      case RobotDSLPackage.ACTION__SPEED:
+        return getSpeed();
+      case RobotDSLPackage.ACTION__DEGR:
+        return getDegr();
+      case RobotDSLPackage.ACTION__OP:
+        return getOp();
+      case RobotDSLPackage.ACTION__SOUND:
+        return getSound();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case RobotDSLPackage.ACTION__DIR:
+        setDir((Direction)newValue);
+        return;
+      case RobotDSLPackage.ACTION__DURATION:
+        setDuration((Integer)newValue);
+        return;
+      case RobotDSLPackage.ACTION__SPEED:
+        setSpeed((Speed)newValue);
+        return;
+      case RobotDSLPackage.ACTION__DEGR:
+        setDegr((Integer)newValue);
+        return;
+      case RobotDSLPackage.ACTION__OP:
+        setOp((ArmOp)newValue);
+        return;
+      case RobotDSLPackage.ACTION__SOUND:
+        setSound((Sound)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case RobotDSLPackage.ACTION__DIR:
+        setDir(DIR_EDEFAULT);
+        return;
+      case RobotDSLPackage.ACTION__DURATION:
+        setDuration(DURATION_EDEFAULT);
+        return;
+      case RobotDSLPackage.ACTION__SPEED:
+        setSpeed(SPEED_EDEFAULT);
+        return;
+      case RobotDSLPackage.ACTION__DEGR:
+        setDegr(DEGR_EDEFAULT);
+        return;
+      case RobotDSLPackage.ACTION__OP:
+        setOp(OP_EDEFAULT);
+        return;
+      case RobotDSLPackage.ACTION__SOUND:
+        setSound(SOUND_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case RobotDSLPackage.ACTION__DIR:
+        return dir != DIR_EDEFAULT;
+      case RobotDSLPackage.ACTION__DURATION:
+        return duration != DURATION_EDEFAULT;
+      case RobotDSLPackage.ACTION__SPEED:
+        return speed != SPEED_EDEFAULT;
+      case RobotDSLPackage.ACTION__DEGR:
+        return degr != DEGR_EDEFAULT;
+      case RobotDSLPackage.ACTION__OP:
+        return op != OP_EDEFAULT;
+      case RobotDSLPackage.ACTION__SOUND:
+        return sound != SOUND_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (dir: ");
+    result.append(dir);
+    result.append(", duration: ");
+    result.append(duration);
+    result.append(", speed: ");
+    result.append(speed);
+    result.append(", degr: ");
+    result.append(degr);
+    result.append(", op: ");
+    result.append(op);
+    result.append(", sound: ");
+    result.append(sound);
+    result.append(')');
+    return result.toString();
   }
 
 } //ActionImpl

@@ -1,73 +1,101 @@
 grammar des.missionrobot.RobotDSL with org.eclipse.xtext.common.Terminals
 
 generate robotDSL "http://www.missionrobot.des/RobotDSL"
+MissionList:
+	missionList += Mission+
+;
 
 Mission:
 	'Mission' name = ID
-	'UsedDevices:' deviceList += Device+
 	'Behaviors:' behaviorList += Behavior+
-	'Goal:' goalCondition += Trigger+
+	'Goal:' goalEvents += Event+
 ;
 
 Behavior:
 	'Behavior:' name = ID
 	'priority:' prio = INT
-	'devices:' deviceList += [Device]+
-	'actions:' actionList += Action+
-	'triggers:' triggerList += Trigger+
+	(('Triggers:' (triggerList += Trigger+) | flag = [Flag] 'is' bool = Bool )
+	('Reactions:' reactionList += Reaction+)?)?
+	('Actions:' actionList += Action+)?
 ;
+
 
 Action: 
-	Movement ('Duration' duration = INT)? | Sound | IO
+	'Move' dir = Direction ('for' duration = INT 'sec')? ('at' speed = Speed 'speed' )? | 
+	'Turn' dir = Direction degr = INT 'deg' |
+	'Arm' op = ArmOp |
+	'Play' 'sound' sound = Sound |
+	'Update' flag = Flag 'to' bool = Bool
 ;
 
-Movement: MoveForward |	MoveBackward | Turn | Stop;
-
-MoveForward: 
-	'Forward' fspeed = INT
+Reaction:
+	'if' trig = [Trigger] 'triggered' 'Do:' reactions += Action+
 ;
 
-MoveBackward: 
-	'Backward' bspeed = INT
+Event:
+	('Event:' name = ID 
+	(repeat = Repeat)?) |
+	'Time:' time = INT 'minutes'
 ;
 
-Turn: 
-	'Turn' angle = INT
+Trigger: 
+	(boolType = Bool)? 
+	name = ID
+	sensor = Sensor
+	(('is' color = Color) | ('distance' bool = Bool 'than' distance = INT 'cm' ))
 ;
 
-Stop:
-	'Stop' duration = INT
+Flag:
+	'Flag' name = ID 'is' bool = Bool
 ;
 
-Sound:
-	'PlaySound:' soundName = STRING
+enum Direction:
+	FORWARD = 'forward' |
+	BACKWARD = 'backward' |
+	LEFT = 	'left' |
+	RIGHT = 'right'
 ;
 
-IO:
-	'PrintMessage' message = STRING
+enum Speed:
+	HIGH = 'high' |
+	MED = 'medium' |
+	LOW = 'low'
+;
+enum ArmOp:
+	UP = 'raise' |
+	DOWN = 'lower'
 ;
 
-Trigger:
-	'Condition:' condition = STRING
-	('Sensor:' sensorTrigger = [Device])?
+enum Sound:
+	buzz = 'buzz' |
+	fanfare = 'fanfare'
 ;
 
-Device:
-	'Device:' name = ID
-	'type:' type = DeviceType
-	'port:' port = STRING 
-	('sensorType:' sensorType = SensorType)?
-	('description:' desc = STRING)?
+
+enum Sensor:
+	COLOR = 'Color' |
+	LEFTLIGHT = 'LeftLight' |
+	RIGHTLIGHT = 'RightLight' |
+	BACKUS = 'RearHeight' |
+	FRONTUS = 'FrontDistance'
+	
 ;
 
-enum DeviceType:
-	MOTOR = 'Motor' |
-	SENSOR = 'Sensor'
+enum Color:
+	RED = 'red' |
+	WHITE = 'white'
 ;
 
-enum SensorType:
-	ULTRASONIC = 'Ultrasonic' |
-	TOUCH = 'Touch' |
-	COLOR = 'Color'	
+enum Bool:
+	L = 'less' |
+	G = 'greater' |
+	AND = 'and' |
+	OR = 'or' |
+	TRUE = 'true' |
+	FALSE = 'false'
 ;
 
+enum Repeat:
+	ONCE = 'once' |
+	REPEAT = 'repeatable'
+;

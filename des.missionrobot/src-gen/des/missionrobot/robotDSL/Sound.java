@@ -3,49 +3,228 @@
  */
 package des.missionrobot.robotDSL;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Sound</b></em>'.
+ * A representation of the literals of the enumeration '<em><b>Sound</b></em>',
+ * and utility methods for working with them.
  * <!-- end-user-doc -->
- *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link des.missionrobot.robotDSL.Sound#getSoundName <em>Sound Name</em>}</li>
- * </ul>
- *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getSound()
  * @model
  * @generated
  */
-public interface Sound extends Action
+public enum Sound implements Enumerator
 {
   /**
-   * Returns the value of the '<em><b>Sound Name</b></em>' attribute.
+   * The '<em><b>Buzz</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #BUZZ_VALUE
+   * @generated
+   * @ordered
+   */
+  BUZZ(0, "buzz", "buzz"),
+
+  /**
+   * The '<em><b>Fanfare</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #FANFARE_VALUE
+   * @generated
+   * @ordered
+   */
+  FANFARE(1, "fanfare", "fanfare");
+
+  /**
+   * The '<em><b>Buzz</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sound Name</em>' attribute isn't clear,
+   * If the meaning of '<em><b>Buzz</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sound Name</em>' attribute.
-   * @see #setSoundName(String)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getSound_SoundName()
-   * @model
+   * @see #BUZZ
+   * @model name="buzz"
    * @generated
+   * @ordered
    */
-  String getSoundName();
+  public static final int BUZZ_VALUE = 0;
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Sound#getSoundName <em>Sound Name</em>}' attribute.
+   * The '<em><b>Fanfare</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>Fanfare</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #FANFARE
+   * @model name="fanfare"
+   * @generated
+   * @ordered
+   */
+  public static final int FANFARE_VALUE = 1;
+
+  /**
+   * An array of all the '<em><b>Sound</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sound Name</em>' attribute.
-   * @see #getSoundName()
    * @generated
    */
-  void setSoundName(String value);
+  private static final Sound[] VALUES_ARRAY =
+    new Sound[]
+    {
+      BUZZ,
+      FANFARE,
+    };
 
-} // Sound
+  /**
+   * A public read-only list of all the '<em><b>Sound</b></em>' enumerators.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static final List<Sound> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+
+  /**
+   * Returns the '<em><b>Sound</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static Sound get(String literal)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      Sound result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Sound</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static Sound getByName(String name)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      Sound result = VALUES_ARRAY[i];
+      if (result.getName().equals(name))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Sound</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static Sound get(int value)
+  {
+    switch (value)
+    {
+      case BUZZ_VALUE: return BUZZ;
+      case FANFARE_VALUE: return FANFARE;
+    }
+    return null;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final int value;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String name;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String literal;
+
+  /**
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private Sound(int value, String name, String literal)
+  {
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getValue()
+  {
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getLiteral()
+  {
+    return literal;
+  }
+
+  /**
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    return literal;
+  }
+  
+} //Sound

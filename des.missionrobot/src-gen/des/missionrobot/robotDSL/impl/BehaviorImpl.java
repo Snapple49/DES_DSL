@@ -5,7 +5,7 @@ package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Action;
 import des.missionrobot.robotDSL.Behavior;
-import des.missionrobot.robotDSL.Device;
+import des.missionrobot.robotDSL.Reaction;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Trigger;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -36,9 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getPrio <em>Prio</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getDeviceList <em>Device List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getActionList <em>Action List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getTriggerList <em>Trigger List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getReactionList <em>Reaction List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.BehaviorImpl#getActionList <em>Action List</em>}</li>
  * </ul>
  *
  * @generated
@@ -86,14 +85,24 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
   protected int prio = PRIO_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDeviceList() <em>Device List</em>}' reference list.
+   * The cached value of the '{@link #getTriggerList() <em>Trigger List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDeviceList()
+   * @see #getTriggerList()
    * @generated
    * @ordered
    */
-  protected EList<Device> deviceList;
+  protected EList<Trigger> triggerList;
+
+  /**
+   * The cached value of the '{@link #getReactionList() <em>Reaction List</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReactionList()
+   * @generated
+   * @ordered
+   */
+  protected EList<Reaction> reactionList;
 
   /**
    * The cached value of the '{@link #getActionList() <em>Action List</em>}' containment reference list.
@@ -104,16 +113,6 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
    * @ordered
    */
   protected EList<Action> actionList;
-
-  /**
-   * The cached value of the '{@link #getTriggerList() <em>Trigger List</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTriggerList()
-   * @generated
-   * @ordered
-   */
-  protected EList<Trigger> triggerList;
 
   /**
    * <!-- begin-user-doc -->
@@ -187,13 +186,27 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Device> getDeviceList()
+  public EList<Trigger> getTriggerList()
   {
-    if (deviceList == null)
+    if (triggerList == null)
     {
-      deviceList = new EObjectResolvingEList<Device>(Device.class, this, RobotDSLPackage.BEHAVIOR__DEVICE_LIST);
+      triggerList = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.BEHAVIOR__TRIGGER_LIST);
     }
-    return deviceList;
+    return triggerList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Reaction> getReactionList()
+  {
+    if (reactionList == null)
+    {
+      reactionList = new EObjectContainmentEList<Reaction>(Reaction.class, this, RobotDSLPackage.BEHAVIOR__REACTION_LIST);
+    }
+    return reactionList;
   }
 
   /**
@@ -215,29 +228,17 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Trigger> getTriggerList()
-  {
-    if (triggerList == null)
-    {
-      triggerList = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.BEHAVIOR__TRIGGER_LIST);
-    }
-    return triggerList;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
-        return ((InternalEList<?>)getActionList()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         return ((InternalEList<?>)getTriggerList()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.BEHAVIOR__REACTION_LIST:
+        return ((InternalEList<?>)getReactionList()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
+        return ((InternalEList<?>)getActionList()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -256,12 +257,12 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
         return getName();
       case RobotDSLPackage.BEHAVIOR__PRIO:
         return getPrio();
-      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
-        return getDeviceList();
-      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
-        return getActionList();
       case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         return getTriggerList();
+      case RobotDSLPackage.BEHAVIOR__REACTION_LIST:
+        return getReactionList();
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
+        return getActionList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -283,17 +284,17 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
       case RobotDSLPackage.BEHAVIOR__PRIO:
         setPrio((Integer)newValue);
         return;
-      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
-        getDeviceList().clear();
-        getDeviceList().addAll((Collection<? extends Device>)newValue);
+      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
+        getTriggerList().clear();
+        getTriggerList().addAll((Collection<? extends Trigger>)newValue);
+        return;
+      case RobotDSLPackage.BEHAVIOR__REACTION_LIST:
+        getReactionList().clear();
+        getReactionList().addAll((Collection<? extends Reaction>)newValue);
         return;
       case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
         getActionList().clear();
         getActionList().addAll((Collection<? extends Action>)newValue);
-        return;
-      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
-        getTriggerList().clear();
-        getTriggerList().addAll((Collection<? extends Trigger>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -315,14 +316,14 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
       case RobotDSLPackage.BEHAVIOR__PRIO:
         setPrio(PRIO_EDEFAULT);
         return;
-      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
-        getDeviceList().clear();
+      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
+        getTriggerList().clear();
+        return;
+      case RobotDSLPackage.BEHAVIOR__REACTION_LIST:
+        getReactionList().clear();
         return;
       case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
         getActionList().clear();
-        return;
-      case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
-        getTriggerList().clear();
         return;
     }
     super.eUnset(featureID);
@@ -342,12 +343,12 @@ public class BehaviorImpl extends MinimalEObjectImpl.Container implements Behavi
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RobotDSLPackage.BEHAVIOR__PRIO:
         return prio != PRIO_EDEFAULT;
-      case RobotDSLPackage.BEHAVIOR__DEVICE_LIST:
-        return deviceList != null && !deviceList.isEmpty();
-      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
-        return actionList != null && !actionList.isEmpty();
       case RobotDSLPackage.BEHAVIOR__TRIGGER_LIST:
         return triggerList != null && !triggerList.isEmpty();
+      case RobotDSLPackage.BEHAVIOR__REACTION_LIST:
+        return reactionList != null && !reactionList.isEmpty();
+      case RobotDSLPackage.BEHAVIOR__ACTION_LIST:
+        return actionList != null && !actionList.isEmpty();
     }
     return super.eIsSet(featureID);
   }

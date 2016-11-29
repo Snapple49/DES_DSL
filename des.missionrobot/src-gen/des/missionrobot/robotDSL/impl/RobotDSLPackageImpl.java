@@ -4,20 +4,22 @@
 package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Action;
+import des.missionrobot.robotDSL.ArmOp;
 import des.missionrobot.robotDSL.Behavior;
-import des.missionrobot.robotDSL.Device;
-import des.missionrobot.robotDSL.DeviceType;
+import des.missionrobot.robotDSL.Bool;
+import des.missionrobot.robotDSL.Color;
+import des.missionrobot.robotDSL.Direction;
+import des.missionrobot.robotDSL.Event;
 import des.missionrobot.robotDSL.Mission;
-import des.missionrobot.robotDSL.MoveBackward;
-import des.missionrobot.robotDSL.MoveForward;
-import des.missionrobot.robotDSL.Movement;
+import des.missionrobot.robotDSL.MissionList;
+import des.missionrobot.robotDSL.Reaction;
+import des.missionrobot.robotDSL.Repeat;
 import des.missionrobot.robotDSL.RobotDSLFactory;
 import des.missionrobot.robotDSL.RobotDSLPackage;
-import des.missionrobot.robotDSL.SensorType;
+import des.missionrobot.robotDSL.Sensor;
 import des.missionrobot.robotDSL.Sound;
-import des.missionrobot.robotDSL.Stop;
+import des.missionrobot.robotDSL.Speed;
 import des.missionrobot.robotDSL.Trigger;
-import des.missionrobot.robotDSL.Turn;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -35,6 +37,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  */
 public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
 {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass missionListEClass = null;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -61,49 +70,14 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass movementEClass = null;
+  private EClass reactionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass moveForwardEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass moveBackwardEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass turnEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass stopEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass soundEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass ioEClass = null;
+  private EClass eventEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,21 +91,56 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass deviceEClass = null;
+  private EEnum directionEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum deviceTypeEEnum = null;
+  private EEnum speedEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum sensorTypeEEnum = null;
+  private EEnum armOpEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum soundEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum sensorEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum colorEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum boolEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum repeatEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -201,6 +210,26 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getMissionList()
+  {
+    return missionListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMissionList_MissionList()
+  {
+    return (EReference)missionListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMission()
   {
     return missionEClass;
@@ -221,7 +250,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMission_DeviceList()
+  public EReference getMission_BehaviorList()
   {
     return (EReference)missionEClass.getEStructuralFeatures().get(1);
   }
@@ -231,19 +260,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMission_BehaviourList()
+  public EReference getMission_GoalEvents()
   {
     return (EReference)missionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getMission_GoalCondition()
-  {
-    return (EReference)missionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -281,7 +300,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBehavior_DeviceList()
+  public EReference getBehavior_TriggerList()
   {
     return (EReference)behaviorEClass.getEStructuralFeatures().get(2);
   }
@@ -291,7 +310,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBehavior_ActionList()
+  public EReference getBehavior_ReactionList()
   {
     return (EReference)behaviorEClass.getEStructuralFeatures().get(3);
   }
@@ -301,7 +320,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBehavior_TriggerList()
+  public EReference getBehavior_ActionList()
   {
     return (EReference)behaviorEClass.getEStructuralFeatures().get(4);
   }
@@ -321,9 +340,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMovement()
+  public EAttribute getAction_Dir()
   {
-    return movementEClass;
+    return (EAttribute)actionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -331,9 +350,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMovement_Duration()
+  public EAttribute getAction_Duration()
   {
-    return (EAttribute)movementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)actionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -341,9 +360,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMoveForward()
+  public EAttribute getAction_Speed()
   {
-    return moveForwardEClass;
+    return (EAttribute)actionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -351,9 +370,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMoveForward_Fspeed()
+  public EAttribute getAction_Degr()
   {
-    return (EAttribute)moveForwardEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)actionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -361,9 +380,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMoveBackward()
+  public EAttribute getAction_Op()
   {
-    return moveBackwardEClass;
+    return (EAttribute)actionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -371,9 +390,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMoveBackward_Bspeed()
+  public EAttribute getAction_Sound()
   {
-    return (EAttribute)moveBackwardEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)actionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -381,9 +400,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getTurn()
+  public EClass getReaction()
   {
-    return turnEClass;
+    return reactionEClass;
   }
 
   /**
@@ -391,9 +410,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTurn_Angle()
+  public EReference getReaction_Event()
   {
-    return (EAttribute)turnEClass.getEStructuralFeatures().get(0);
+    return (EReference)reactionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -401,9 +420,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getStop()
+  public EReference getReaction_Reactions()
   {
-    return stopEClass;
+    return (EReference)reactionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -411,9 +430,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSound()
+  public EClass getEvent()
   {
-    return soundEClass;
+    return eventEClass;
   }
 
   /**
@@ -421,9 +440,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSound_SoundName()
+  public EAttribute getEvent_Name()
   {
-    return (EAttribute)soundEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)eventEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -431,9 +450,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getIO()
+  public EAttribute getEvent_Repeat()
   {
-    return ioEClass;
+    return (EAttribute)eventEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -441,9 +460,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIO_Message()
+  public EAttribute getEvent_Time()
   {
-    return (EAttribute)ioEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)eventEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -461,7 +480,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_Condition()
+  public EAttribute getTrigger_BoolType()
   {
     return (EAttribute)triggerEClass.getEStructuralFeatures().get(0);
   }
@@ -471,7 +490,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTrigger_SensorTrigger()
+  public EReference getTrigger_Event()
   {
     return (EReference)triggerEClass.getEStructuralFeatures().get(1);
   }
@@ -481,9 +500,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDevice()
+  public EAttribute getTrigger_Sensor()
   {
-    return deviceEClass;
+    return (EAttribute)triggerEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -491,9 +510,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_Name()
+  public EAttribute getTrigger_Color()
   {
-    return (EAttribute)deviceEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)triggerEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -501,9 +520,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_Type()
+  public EAttribute getTrigger_Bool()
   {
-    return (EAttribute)deviceEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)triggerEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -511,9 +530,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_SensorType()
+  public EAttribute getTrigger_Distance()
   {
-    return (EAttribute)deviceEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)triggerEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -521,9 +540,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDevice_Desc()
+  public EEnum getDirection()
   {
-    return (EAttribute)deviceEClass.getEStructuralFeatures().get(3);
+    return directionEEnum;
   }
 
   /**
@@ -531,9 +550,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getDeviceType()
+  public EEnum getSpeed()
   {
-    return deviceTypeEEnum;
+    return speedEEnum;
   }
 
   /**
@@ -541,9 +560,59 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getSensorType()
+  public EEnum getArmOp()
   {
-    return sensorTypeEEnum;
+    return armOpEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getSound()
+  {
+    return soundEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getSensor()
+  {
+    return sensorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getColor()
+  {
+    return colorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getBool()
+  {
+    return boolEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getRepeat()
+  {
+    return repeatEEnum;
   }
 
   /**
@@ -576,54 +645,55 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     isCreated = true;
 
     // Create classes and their features
+    missionListEClass = createEClass(MISSION_LIST);
+    createEReference(missionListEClass, MISSION_LIST__MISSION_LIST);
+
     missionEClass = createEClass(MISSION);
     createEAttribute(missionEClass, MISSION__NAME);
-    createEReference(missionEClass, MISSION__DEVICE_LIST);
-    createEReference(missionEClass, MISSION__BEHAVIOUR_LIST);
-    createEReference(missionEClass, MISSION__GOAL_CONDITION);
+    createEReference(missionEClass, MISSION__BEHAVIOR_LIST);
+    createEReference(missionEClass, MISSION__GOAL_EVENTS);
 
     behaviorEClass = createEClass(BEHAVIOR);
     createEAttribute(behaviorEClass, BEHAVIOR__NAME);
     createEAttribute(behaviorEClass, BEHAVIOR__PRIO);
-    createEReference(behaviorEClass, BEHAVIOR__DEVICE_LIST);
-    createEReference(behaviorEClass, BEHAVIOR__ACTION_LIST);
     createEReference(behaviorEClass, BEHAVIOR__TRIGGER_LIST);
+    createEReference(behaviorEClass, BEHAVIOR__REACTION_LIST);
+    createEReference(behaviorEClass, BEHAVIOR__ACTION_LIST);
 
     actionEClass = createEClass(ACTION);
+    createEAttribute(actionEClass, ACTION__DIR);
+    createEAttribute(actionEClass, ACTION__DURATION);
+    createEAttribute(actionEClass, ACTION__SPEED);
+    createEAttribute(actionEClass, ACTION__DEGR);
+    createEAttribute(actionEClass, ACTION__OP);
+    createEAttribute(actionEClass, ACTION__SOUND);
 
-    movementEClass = createEClass(MOVEMENT);
-    createEAttribute(movementEClass, MOVEMENT__DURATION);
+    reactionEClass = createEClass(REACTION);
+    createEReference(reactionEClass, REACTION__EVENT);
+    createEReference(reactionEClass, REACTION__REACTIONS);
 
-    moveForwardEClass = createEClass(MOVE_FORWARD);
-    createEAttribute(moveForwardEClass, MOVE_FORWARD__FSPEED);
-
-    moveBackwardEClass = createEClass(MOVE_BACKWARD);
-    createEAttribute(moveBackwardEClass, MOVE_BACKWARD__BSPEED);
-
-    turnEClass = createEClass(TURN);
-    createEAttribute(turnEClass, TURN__ANGLE);
-
-    stopEClass = createEClass(STOP);
-
-    soundEClass = createEClass(SOUND);
-    createEAttribute(soundEClass, SOUND__SOUND_NAME);
-
-    ioEClass = createEClass(IO);
-    createEAttribute(ioEClass, IO__MESSAGE);
+    eventEClass = createEClass(EVENT);
+    createEAttribute(eventEClass, EVENT__NAME);
+    createEAttribute(eventEClass, EVENT__REPEAT);
+    createEAttribute(eventEClass, EVENT__TIME);
 
     triggerEClass = createEClass(TRIGGER);
-    createEAttribute(triggerEClass, TRIGGER__CONDITION);
-    createEReference(triggerEClass, TRIGGER__SENSOR_TRIGGER);
-
-    deviceEClass = createEClass(DEVICE);
-    createEAttribute(deviceEClass, DEVICE__NAME);
-    createEAttribute(deviceEClass, DEVICE__TYPE);
-    createEAttribute(deviceEClass, DEVICE__SENSOR_TYPE);
-    createEAttribute(deviceEClass, DEVICE__DESC);
+    createEAttribute(triggerEClass, TRIGGER__BOOL_TYPE);
+    createEReference(triggerEClass, TRIGGER__EVENT);
+    createEAttribute(triggerEClass, TRIGGER__SENSOR);
+    createEAttribute(triggerEClass, TRIGGER__COLOR);
+    createEAttribute(triggerEClass, TRIGGER__BOOL);
+    createEAttribute(triggerEClass, TRIGGER__DISTANCE);
 
     // Create enums
-    deviceTypeEEnum = createEEnum(DEVICE_TYPE);
-    sensorTypeEEnum = createEEnum(SENSOR_TYPE);
+    directionEEnum = createEEnum(DIRECTION);
+    speedEEnum = createEEnum(SPEED);
+    armOpEEnum = createEEnum(ARM_OP);
+    soundEEnum = createEEnum(SOUND);
+    sensorEEnum = createEEnum(SENSOR);
+    colorEEnum = createEEnum(COLOR);
+    boolEEnum = createEEnum(BOOL);
+    repeatEEnum = createEEnum(REPEAT);
   }
 
   /**
@@ -655,69 +725,88 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    movementEClass.getESuperTypes().add(this.getAction());
-    moveForwardEClass.getESuperTypes().add(this.getMovement());
-    moveBackwardEClass.getESuperTypes().add(this.getMovement());
-    turnEClass.getESuperTypes().add(this.getMovement());
-    stopEClass.getESuperTypes().add(this.getMovement());
-    soundEClass.getESuperTypes().add(this.getAction());
-    ioEClass.getESuperTypes().add(this.getAction());
 
     // Initialize classes and features; add operations and parameters
+    initEClass(missionListEClass, MissionList.class, "MissionList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMissionList_MissionList(), this.getMission(), null, "missionList", null, 0, -1, MissionList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(missionEClass, Mission.class, "Mission", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMission_Name(), ecorePackage.getEString(), "name", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_DeviceList(), this.getDevice(), null, "deviceList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_BehaviourList(), this.getBehavior(), null, "behaviourList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_GoalCondition(), this.getTrigger(), null, "goalCondition", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMission_BehaviorList(), this.getBehavior(), null, "behaviorList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMission_GoalEvents(), this.getEvent(), null, "goalEvents", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(behaviorEClass, Behavior.class, "Behavior", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBehavior_Name(), ecorePackage.getEString(), "name", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBehavior_Prio(), ecorePackage.getEInt(), "prio", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehavior_DeviceList(), this.getDevice(), null, "deviceList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehavior_ActionList(), this.getAction(), null, "actionList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehavior_TriggerList(), this.getTrigger(), null, "triggerList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehavior_ReactionList(), this.getReaction(), null, "reactionList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehavior_ActionList(), this.getAction(), null, "actionList", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAction_Dir(), this.getDirection(), "dir", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAction_Duration(), ecorePackage.getEInt(), "duration", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAction_Speed(), this.getSpeed(), "speed", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAction_Degr(), ecorePackage.getEInt(), "degr", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAction_Op(), this.getArmOp(), "op", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAction_Sound(), this.getSound(), "sound", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(movementEClass, Movement.class, "Movement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMovement_Duration(), ecorePackage.getEInt(), "duration", null, 0, 1, Movement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(reactionEClass, Reaction.class, "Reaction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getReaction_Event(), this.getEvent(), null, "event", null, 0, 1, Reaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReaction_Reactions(), this.getAction(), null, "reactions", null, 0, -1, Reaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(moveForwardEClass, MoveForward.class, "MoveForward", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMoveForward_Fspeed(), ecorePackage.getEInt(), "fspeed", null, 0, 1, MoveForward.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(moveBackwardEClass, MoveBackward.class, "MoveBackward", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMoveBackward_Bspeed(), ecorePackage.getEInt(), "bspeed", null, 0, 1, MoveBackward.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(turnEClass, Turn.class, "Turn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTurn_Angle(), ecorePackage.getEInt(), "angle", null, 0, 1, Turn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(stopEClass, Stop.class, "Stop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSound_SoundName(), ecorePackage.getEString(), "soundName", null, 0, 1, Sound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(ioEClass, des.missionrobot.robotDSL.IO.class, "IO", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIO_Message(), ecorePackage.getEString(), "message", null, 0, 1, des.missionrobot.robotDSL.IO.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEvent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEvent_Repeat(), this.getRepeat(), "repeat", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEvent_Time(), ecorePackage.getEInt(), "time", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTrigger_Condition(), ecorePackage.getEString(), "condition", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTrigger_SensorTrigger(), this.getDevice(), null, "sensorTrigger", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDevice_Name(), ecorePackage.getEString(), "name", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDevice_Type(), this.getDeviceType(), "type", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDevice_SensorType(), this.getSensorType(), "sensorType", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDevice_Desc(), ecorePackage.getEString(), "desc", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrigger_BoolType(), this.getBool(), "boolType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_Event(), this.getEvent(), null, "event", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrigger_Sensor(), this.getSensor(), "sensor", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrigger_Color(), this.getColor(), "color", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrigger_Bool(), this.getBool(), "bool", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrigger_Distance(), ecorePackage.getEInt(), "distance", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
-    initEEnum(deviceTypeEEnum, DeviceType.class, "DeviceType");
-    addEEnumLiteral(deviceTypeEEnum, DeviceType.MOTOR);
-    addEEnumLiteral(deviceTypeEEnum, DeviceType.SENSOR);
+    initEEnum(directionEEnum, Direction.class, "Direction");
+    addEEnumLiteral(directionEEnum, Direction.FORWARD);
+    addEEnumLiteral(directionEEnum, Direction.BACKWARD);
+    addEEnumLiteral(directionEEnum, Direction.LEFT);
+    addEEnumLiteral(directionEEnum, Direction.RIGHT);
 
-    initEEnum(sensorTypeEEnum, SensorType.class, "SensorType");
-    addEEnumLiteral(sensorTypeEEnum, SensorType.ULTRASONIC);
-    addEEnumLiteral(sensorTypeEEnum, SensorType.TOUCH);
-    addEEnumLiteral(sensorTypeEEnum, SensorType.COLOR);
+    initEEnum(speedEEnum, Speed.class, "Speed");
+    addEEnumLiteral(speedEEnum, Speed.HIGH);
+    addEEnumLiteral(speedEEnum, Speed.MED);
+    addEEnumLiteral(speedEEnum, Speed.LOW);
+
+    initEEnum(armOpEEnum, ArmOp.class, "ArmOp");
+    addEEnumLiteral(armOpEEnum, ArmOp.UP);
+    addEEnumLiteral(armOpEEnum, ArmOp.DOWN);
+
+    initEEnum(soundEEnum, Sound.class, "Sound");
+    addEEnumLiteral(soundEEnum, Sound.BUZZ);
+    addEEnumLiteral(soundEEnum, Sound.FANFARE);
+
+    initEEnum(sensorEEnum, Sensor.class, "Sensor");
+    addEEnumLiteral(sensorEEnum, Sensor.COLOR);
+    addEEnumLiteral(sensorEEnum, Sensor.LEFTLIGHT);
+    addEEnumLiteral(sensorEEnum, Sensor.RIGHTLIGHT);
+    addEEnumLiteral(sensorEEnum, Sensor.BACKUS);
+    addEEnumLiteral(sensorEEnum, Sensor.FRONTUS);
+
+    initEEnum(colorEEnum, Color.class, "Color");
+    addEEnumLiteral(colorEEnum, Color.RED);
+    addEEnumLiteral(colorEEnum, Color.WHITE);
+
+    initEEnum(boolEEnum, Bool.class, "Bool");
+    addEEnumLiteral(boolEEnum, Bool.L);
+    addEEnumLiteral(boolEEnum, Bool.G);
+    addEEnumLiteral(boolEEnum, Bool.AND);
+    addEEnumLiteral(boolEEnum, Bool.OR);
+
+    initEEnum(repeatEEnum, Repeat.class, "Repeat");
+    addEEnumLiteral(repeatEEnum, Repeat.ONCE);
+    addEEnumLiteral(repeatEEnum, Repeat.REPEAT);
 
     // Create resource
     createResource(eNS_URI);

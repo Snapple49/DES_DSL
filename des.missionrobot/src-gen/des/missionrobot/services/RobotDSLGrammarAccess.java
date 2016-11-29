@@ -26,31 +26,42 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
+	public class MissionListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.MissionList");
+		private final Assignment cMissionListAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cMissionListMissionParserRuleCall_0 = (RuleCall)cMissionListAssignment.eContents().get(0);
+		
+		//MissionList:
+		//	missionList+=Mission+;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//missionList+=Mission+
+		public Assignment getMissionListAssignment() { return cMissionListAssignment; }
+		
+		//Mission
+		public RuleCall getMissionListMissionParserRuleCall_0() { return cMissionListMissionParserRuleCall_0; }
+	}
 	public class MissionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Mission");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cMissionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cUsedDevicesKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cDeviceListAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cDeviceListDeviceParserRuleCall_3_0 = (RuleCall)cDeviceListAssignment_3.eContents().get(0);
-		private final Keyword cBehaviorsKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cBehaviourListAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cBehaviourListBehaviorParserRuleCall_5_0 = (RuleCall)cBehaviourListAssignment_5.eContents().get(0);
-		private final Keyword cGoalKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cGoalConditionAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cGoalConditionTriggerParserRuleCall_7_0 = (RuleCall)cGoalConditionAssignment_7.eContents().get(0);
+		private final Keyword cBehaviorsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cBehaviorListAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cBehaviorListBehaviorParserRuleCall_3_0 = (RuleCall)cBehaviorListAssignment_3.eContents().get(0);
+		private final Keyword cGoalKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cGoalEventsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cGoalEventsEventCrossReference_5_0 = (CrossReference)cGoalEventsAssignment_5.eContents().get(0);
+		private final RuleCall cGoalEventsEventIDTerminalRuleCall_5_0_1 = (RuleCall)cGoalEventsEventCrossReference_5_0.eContents().get(1);
 		
 		//Mission:
 		//	'Mission' name=ID
-		//	'UsedDevices:' deviceList+=Device+
-		//	'Behaviors:' behaviourList+=Behavior+
-		//	'Goal:' goalCondition+=Trigger+;
+		//	'Behaviors:' behaviorList+=Behavior+
+		//	'Goal:' goalEvents+=[Event];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Mission' name=ID 'UsedDevices:' deviceList+=Device+ 'Behaviors:' behaviourList+=Behavior+ 'Goal:'
-		//goalCondition+=Trigger+
+		//'Mission' name=ID 'Behaviors:' behaviorList+=Behavior+ 'Goal:' goalEvents+=[Event]
 		public Group getGroup() { return cGroup; }
 		
 		//'Mission'
@@ -62,32 +73,26 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//'UsedDevices:'
-		public Keyword getUsedDevicesKeyword_2() { return cUsedDevicesKeyword_2; }
-		
-		//deviceList+=Device+
-		public Assignment getDeviceListAssignment_3() { return cDeviceListAssignment_3; }
-		
-		//Device
-		public RuleCall getDeviceListDeviceParserRuleCall_3_0() { return cDeviceListDeviceParserRuleCall_3_0; }
-		
 		//'Behaviors:'
-		public Keyword getBehaviorsKeyword_4() { return cBehaviorsKeyword_4; }
+		public Keyword getBehaviorsKeyword_2() { return cBehaviorsKeyword_2; }
 		
-		//behaviourList+=Behavior+
-		public Assignment getBehaviourListAssignment_5() { return cBehaviourListAssignment_5; }
+		//behaviorList+=Behavior+
+		public Assignment getBehaviorListAssignment_3() { return cBehaviorListAssignment_3; }
 		
 		//Behavior
-		public RuleCall getBehaviourListBehaviorParserRuleCall_5_0() { return cBehaviourListBehaviorParserRuleCall_5_0; }
+		public RuleCall getBehaviorListBehaviorParserRuleCall_3_0() { return cBehaviorListBehaviorParserRuleCall_3_0; }
 		
 		//'Goal:'
-		public Keyword getGoalKeyword_6() { return cGoalKeyword_6; }
+		public Keyword getGoalKeyword_4() { return cGoalKeyword_4; }
 		
-		//goalCondition+=Trigger+
-		public Assignment getGoalConditionAssignment_7() { return cGoalConditionAssignment_7; }
+		//goalEvents+=[Event]
+		public Assignment getGoalEventsAssignment_5() { return cGoalEventsAssignment_5; }
 		
-		//Trigger
-		public RuleCall getGoalConditionTriggerParserRuleCall_7_0() { return cGoalConditionTriggerParserRuleCall_7_0; }
+		//[Event]
+		public CrossReference getGoalEventsEventCrossReference_5_0() { return cGoalEventsEventCrossReference_5_0; }
+		
+		//ID
+		public RuleCall getGoalEventsEventIDTerminalRuleCall_5_0_1() { return cGoalEventsEventIDTerminalRuleCall_5_0_1; }
 	}
 	public class BehaviorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Behavior");
@@ -98,27 +103,28 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPriorityKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cPrioAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cPrioINTTerminalRuleCall_3_0 = (RuleCall)cPrioAssignment_3.eContents().get(0);
-		private final Keyword cDevicesKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cDeviceListAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cDeviceListDeviceCrossReference_5_0 = (CrossReference)cDeviceListAssignment_5.eContents().get(0);
-		private final RuleCall cDeviceListDeviceIDTerminalRuleCall_5_0_1 = (RuleCall)cDeviceListDeviceCrossReference_5_0.eContents().get(1);
-		private final Keyword cActionsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cActionListAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cActionListActionParserRuleCall_7_0 = (RuleCall)cActionListAssignment_7.eContents().get(0);
-		private final Keyword cTriggersKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cTriggerListAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cTriggerListTriggerParserRuleCall_9_0 = (RuleCall)cTriggerListAssignment_9.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Group cGroup_4_0 = (Group)cGroup_4.eContents().get(0);
+		private final Keyword cTriggersKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
+		private final Assignment cTriggerListAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
+		private final RuleCall cTriggerListTriggerParserRuleCall_4_0_1_0 = (RuleCall)cTriggerListAssignment_4_0_1.eContents().get(0);
+		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
+		private final Keyword cReactionsKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cReactionListAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final RuleCall cReactionListReactionParserRuleCall_4_1_1_0 = (RuleCall)cReactionListAssignment_4_1_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cActionsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cActionListAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cActionListActionParserRuleCall_5_1_0 = (RuleCall)cActionListAssignment_5_1.eContents().get(0);
 		
 		//Behavior:
 		//	'Behavior:' name=ID
-		//	'priority:' prio=INT
-		//	'devices:' deviceList+=[Device]+
-		//	'actions:' actionList+=Action+
-		//	'triggers:' triggerList+=Trigger+;
+		//	'priority:' prio=INT (('Triggers:' triggerList+=Trigger+) ('Reactions:' reactionList+=Reaction+)?)? ('Actions:'
+		//	actionList+=Action+)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Behavior:' name=ID 'priority:' prio=INT 'devices:' deviceList+=[Device]+ 'actions:' actionList+=Action+ 'triggers:'
-		//triggerList+=Trigger+
+		//'Behavior:' name=ID 'priority:' prio=INT (('Triggers:' triggerList+=Trigger+) ('Reactions:' reactionList+=Reaction+)?)?
+		//('Actions:' actionList+=Action+)?
 		public Group getGroup() { return cGroup; }
 		
 		//'Behavior:'
@@ -139,436 +145,686 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getPrioINTTerminalRuleCall_3_0() { return cPrioINTTerminalRuleCall_3_0; }
 		
-		//'devices:'
-		public Keyword getDevicesKeyword_4() { return cDevicesKeyword_4; }
+		//(('Triggers:' triggerList+=Trigger+) ('Reactions:' reactionList+=Reaction+)?)?
+		public Group getGroup_4() { return cGroup_4; }
 		
-		//deviceList+=[Device]+
-		public Assignment getDeviceListAssignment_5() { return cDeviceListAssignment_5; }
+		//('Triggers:' triggerList+=Trigger+)
+		public Group getGroup_4_0() { return cGroup_4_0; }
 		
-		//[Device]
-		public CrossReference getDeviceListDeviceCrossReference_5_0() { return cDeviceListDeviceCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getDeviceListDeviceIDTerminalRuleCall_5_0_1() { return cDeviceListDeviceIDTerminalRuleCall_5_0_1; }
-		
-		//'actions:'
-		public Keyword getActionsKeyword_6() { return cActionsKeyword_6; }
-		
-		//actionList+=Action+
-		public Assignment getActionListAssignment_7() { return cActionListAssignment_7; }
-		
-		//Action
-		public RuleCall getActionListActionParserRuleCall_7_0() { return cActionListActionParserRuleCall_7_0; }
-		
-		//'triggers:'
-		public Keyword getTriggersKeyword_8() { return cTriggersKeyword_8; }
+		//'Triggers:'
+		public Keyword getTriggersKeyword_4_0_0() { return cTriggersKeyword_4_0_0; }
 		
 		//triggerList+=Trigger+
-		public Assignment getTriggerListAssignment_9() { return cTriggerListAssignment_9; }
+		public Assignment getTriggerListAssignment_4_0_1() { return cTriggerListAssignment_4_0_1; }
 		
 		//Trigger
-		public RuleCall getTriggerListTriggerParserRuleCall_9_0() { return cTriggerListTriggerParserRuleCall_9_0; }
+		public RuleCall getTriggerListTriggerParserRuleCall_4_0_1_0() { return cTriggerListTriggerParserRuleCall_4_0_1_0; }
+		
+		//('Reactions:' reactionList+=Reaction+)?
+		public Group getGroup_4_1() { return cGroup_4_1; }
+		
+		//'Reactions:'
+		public Keyword getReactionsKeyword_4_1_0() { return cReactionsKeyword_4_1_0; }
+		
+		//reactionList+=Reaction+
+		public Assignment getReactionListAssignment_4_1_1() { return cReactionListAssignment_4_1_1; }
+		
+		//Reaction
+		public RuleCall getReactionListReactionParserRuleCall_4_1_1_0() { return cReactionListReactionParserRuleCall_4_1_1_0; }
+		
+		//('Actions:' actionList+=Action+)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'Actions:'
+		public Keyword getActionsKeyword_5_0() { return cActionsKeyword_5_0; }
+		
+		//actionList+=Action+
+		public Assignment getActionListAssignment_5_1() { return cActionListAssignment_5_1; }
+		
+		//Action
+		public RuleCall getActionListActionParserRuleCall_5_1_0() { return cActionListActionParserRuleCall_5_1_0; }
 	}
 	public class ActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Action");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final RuleCall cMovementParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cDurationKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cDurationAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cDurationINTTerminalRuleCall_0_1_1_0 = (RuleCall)cDurationAssignment_0_1_1.eContents().get(0);
-		private final RuleCall cSoundParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cIOParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Keyword cMoveKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cDirAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cDirDirectionEnumRuleCall_0_1_0 = (RuleCall)cDirAssignment_0_1.eContents().get(0);
+		private final Group cGroup_0_2 = (Group)cGroup_0.eContents().get(2);
+		private final Keyword cForKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
+		private final Assignment cDurationAssignment_0_2_1 = (Assignment)cGroup_0_2.eContents().get(1);
+		private final RuleCall cDurationINTTerminalRuleCall_0_2_1_0 = (RuleCall)cDurationAssignment_0_2_1.eContents().get(0);
+		private final Keyword cSecKeyword_0_2_2 = (Keyword)cGroup_0_2.eContents().get(2);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Keyword cAtKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
+		private final Assignment cSpeedAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
+		private final RuleCall cSpeedSpeedEnumRuleCall_0_3_1_0 = (RuleCall)cSpeedAssignment_0_3_1.eContents().get(0);
+		private final Keyword cSpeedKeyword_0_3_2 = (Keyword)cGroup_0_3.eContents().get(2);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cTurnKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cDirAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cDirDirectionEnumRuleCall_1_1_0 = (RuleCall)cDirAssignment_1_1.eContents().get(0);
+		private final Assignment cDegrAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cDegrINTTerminalRuleCall_1_2_0 = (RuleCall)cDegrAssignment_1_2.eContents().get(0);
+		private final Keyword cDegKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cArmKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cOpAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cOpArmOpEnumRuleCall_2_1_0 = (RuleCall)cOpAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Keyword cPlayKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cSoundKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Assignment cSoundAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final RuleCall cSoundSoundEnumRuleCall_3_2_0 = (RuleCall)cSoundAssignment_3_2.eContents().get(0);
 		
 		//Action:
-		//	Movement ('Duration' duration=INT)? | Sound | IO;
+		//	'Move' dir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? |
+		//	'Turn' dir=Direction degr=INT 'deg' |
+		//	'Arm' op=ArmOp |
+		//	'Play' 'sound' sound=Sound;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Movement ('Duration' duration=INT)? | Sound | IO
+		//'Move' dir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? | 'Turn' dir=Direction degr=INT 'deg' |
+		//'Arm' op=ArmOp | 'Play' 'sound' sound=Sound
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//Movement ('Duration' duration=INT)?
+		//'Move' dir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')?
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//Movement
-		public RuleCall getMovementParserRuleCall_0_0() { return cMovementParserRuleCall_0_0; }
+		//'Move'
+		public Keyword getMoveKeyword_0_0() { return cMoveKeyword_0_0; }
 		
-		//('Duration' duration=INT)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
+		//dir=Direction
+		public Assignment getDirAssignment_0_1() { return cDirAssignment_0_1; }
 		
-		//'Duration'
-		public Keyword getDurationKeyword_0_1_0() { return cDurationKeyword_0_1_0; }
+		//Direction
+		public RuleCall getDirDirectionEnumRuleCall_0_1_0() { return cDirDirectionEnumRuleCall_0_1_0; }
+		
+		//('for' duration=INT 'sec')?
+		public Group getGroup_0_2() { return cGroup_0_2; }
+		
+		//'for'
+		public Keyword getForKeyword_0_2_0() { return cForKeyword_0_2_0; }
 		
 		//duration=INT
-		public Assignment getDurationAssignment_0_1_1() { return cDurationAssignment_0_1_1; }
+		public Assignment getDurationAssignment_0_2_1() { return cDurationAssignment_0_2_1; }
 		
 		//INT
-		public RuleCall getDurationINTTerminalRuleCall_0_1_1_0() { return cDurationINTTerminalRuleCall_0_1_1_0; }
+		public RuleCall getDurationINTTerminalRuleCall_0_2_1_0() { return cDurationINTTerminalRuleCall_0_2_1_0; }
 		
-		//Sound
-		public RuleCall getSoundParserRuleCall_1() { return cSoundParserRuleCall_1; }
+		//'sec'
+		public Keyword getSecKeyword_0_2_2() { return cSecKeyword_0_2_2; }
 		
-		//IO
-		public RuleCall getIOParserRuleCall_2() { return cIOParserRuleCall_2; }
-	}
-	public class MovementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Movement");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cMoveForwardParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cMoveBackwardParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cTurnParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cStopParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		//('at' speed=Speed 'speed')?
+		public Group getGroup_0_3() { return cGroup_0_3; }
 		
-		//Movement:
-		//	MoveForward | MoveBackward | Turn | Stop;
-		@Override public ParserRule getRule() { return rule; }
+		//'at'
+		public Keyword getAtKeyword_0_3_0() { return cAtKeyword_0_3_0; }
 		
-		//MoveForward | MoveBackward | Turn | Stop
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//speed=Speed
+		public Assignment getSpeedAssignment_0_3_1() { return cSpeedAssignment_0_3_1; }
 		
-		//MoveForward
-		public RuleCall getMoveForwardParserRuleCall_0() { return cMoveForwardParserRuleCall_0; }
+		//Speed
+		public RuleCall getSpeedSpeedEnumRuleCall_0_3_1_0() { return cSpeedSpeedEnumRuleCall_0_3_1_0; }
 		
-		//MoveBackward
-		public RuleCall getMoveBackwardParserRuleCall_1() { return cMoveBackwardParserRuleCall_1; }
+		//'speed'
+		public Keyword getSpeedKeyword_0_3_2() { return cSpeedKeyword_0_3_2; }
 		
-		//Turn
-		public RuleCall getTurnParserRuleCall_2() { return cTurnParserRuleCall_2; }
-		
-		//Stop
-		public RuleCall getStopParserRuleCall_3() { return cStopParserRuleCall_3; }
-	}
-	public class MoveForwardElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.MoveForward");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cForwardKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cFspeedAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cFspeedINTTerminalRuleCall_1_0 = (RuleCall)cFspeedAssignment_1.eContents().get(0);
-		
-		//MoveForward:
-		//	'Forward' fspeed=INT;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Forward' fspeed=INT
-		public Group getGroup() { return cGroup; }
-		
-		//'Forward'
-		public Keyword getForwardKeyword_0() { return cForwardKeyword_0; }
-		
-		//fspeed=INT
-		public Assignment getFspeedAssignment_1() { return cFspeedAssignment_1; }
-		
-		//INT
-		public RuleCall getFspeedINTTerminalRuleCall_1_0() { return cFspeedINTTerminalRuleCall_1_0; }
-	}
-	public class MoveBackwardElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.MoveBackward");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBackwardKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cBspeedAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cBspeedINTTerminalRuleCall_1_0 = (RuleCall)cBspeedAssignment_1.eContents().get(0);
-		
-		//MoveBackward:
-		//	'Backward' bspeed=INT;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Backward' bspeed=INT
-		public Group getGroup() { return cGroup; }
-		
-		//'Backward'
-		public Keyword getBackwardKeyword_0() { return cBackwardKeyword_0; }
-		
-		//bspeed=INT
-		public Assignment getBspeedAssignment_1() { return cBspeedAssignment_1; }
-		
-		//INT
-		public RuleCall getBspeedINTTerminalRuleCall_1_0() { return cBspeedINTTerminalRuleCall_1_0; }
-	}
-	public class TurnElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Turn");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTurnKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cAngleAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cAngleINTTerminalRuleCall_1_0 = (RuleCall)cAngleAssignment_1.eContents().get(0);
-		
-		//Turn:
-		//	'Turn' angle=INT;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Turn' angle=INT
-		public Group getGroup() { return cGroup; }
+		//'Turn' dir=Direction degr=INT 'deg'
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//'Turn'
-		public Keyword getTurnKeyword_0() { return cTurnKeyword_0; }
+		public Keyword getTurnKeyword_1_0() { return cTurnKeyword_1_0; }
 		
-		//angle=INT
-		public Assignment getAngleAssignment_1() { return cAngleAssignment_1; }
+		//dir=Direction
+		public Assignment getDirAssignment_1_1() { return cDirAssignment_1_1; }
 		
-		//INT
-		public RuleCall getAngleINTTerminalRuleCall_1_0() { return cAngleINTTerminalRuleCall_1_0; }
-	}
-	public class StopElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Stop");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cStopKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cDurationAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDurationINTTerminalRuleCall_1_0 = (RuleCall)cDurationAssignment_1.eContents().get(0);
+		//Direction
+		public RuleCall getDirDirectionEnumRuleCall_1_1_0() { return cDirDirectionEnumRuleCall_1_1_0; }
 		
-		//Stop:
-		//	'Stop' duration=INT;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Stop' duration=INT
-		public Group getGroup() { return cGroup; }
-		
-		//'Stop'
-		public Keyword getStopKeyword_0() { return cStopKeyword_0; }
-		
-		//duration=INT
-		public Assignment getDurationAssignment_1() { return cDurationAssignment_1; }
+		//degr=INT
+		public Assignment getDegrAssignment_1_2() { return cDegrAssignment_1_2; }
 		
 		//INT
-		public RuleCall getDurationINTTerminalRuleCall_1_0() { return cDurationINTTerminalRuleCall_1_0; }
-	}
-	public class SoundElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Sound");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPlaySoundKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cSoundNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cSoundNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cSoundNameAssignment_1.eContents().get(0);
+		public RuleCall getDegrINTTerminalRuleCall_1_2_0() { return cDegrINTTerminalRuleCall_1_2_0; }
 		
-		//Sound:
-		//	'PlaySound:' soundName=STRING;
+		//'deg'
+		public Keyword getDegKeyword_1_3() { return cDegKeyword_1_3; }
+		
+		//'Arm' op=ArmOp
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'Arm'
+		public Keyword getArmKeyword_2_0() { return cArmKeyword_2_0; }
+		
+		//op=ArmOp
+		public Assignment getOpAssignment_2_1() { return cOpAssignment_2_1; }
+		
+		//ArmOp
+		public RuleCall getOpArmOpEnumRuleCall_2_1_0() { return cOpArmOpEnumRuleCall_2_1_0; }
+		
+		//'Play' 'sound' sound=Sound
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'Play'
+		public Keyword getPlayKeyword_3_0() { return cPlayKeyword_3_0; }
+		
+		//'sound'
+		public Keyword getSoundKeyword_3_1() { return cSoundKeyword_3_1; }
+		
+		//sound=Sound
+		public Assignment getSoundAssignment_3_2() { return cSoundAssignment_3_2; }
+		
+		//Sound
+		public RuleCall getSoundSoundEnumRuleCall_3_2_0() { return cSoundSoundEnumRuleCall_3_2_0; }
+	}
+	public class ReactionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Reaction");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cEventAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cEventEventCrossReference_1_0 = (CrossReference)cEventAssignment_1.eContents().get(0);
+		private final RuleCall cEventEventIDTerminalRuleCall_1_0_1 = (RuleCall)cEventEventCrossReference_1_0.eContents().get(1);
+		private final Keyword cTriggeredKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cDoKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cReactionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cReactionsActionParserRuleCall_4_0 = (RuleCall)cReactionsAssignment_4.eContents().get(0);
+		
+		//Reaction:
+		//	'if' event=[Event] 'triggered' 'Do:' reactions+=Action+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'PlaySound:' soundName=STRING
+		//'if' event=[Event] 'triggered' 'Do:' reactions+=Action+
 		public Group getGroup() { return cGroup; }
 		
-		//'PlaySound:'
-		public Keyword getPlaySoundKeyword_0() { return cPlaySoundKeyword_0; }
+		//'if'
+		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
 		
-		//soundName=STRING
-		public Assignment getSoundNameAssignment_1() { return cSoundNameAssignment_1; }
+		//event=[Event]
+		public Assignment getEventAssignment_1() { return cEventAssignment_1; }
 		
-		//STRING
-		public RuleCall getSoundNameSTRINGTerminalRuleCall_1_0() { return cSoundNameSTRINGTerminalRuleCall_1_0; }
+		//[Event]
+		public CrossReference getEventEventCrossReference_1_0() { return cEventEventCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getEventEventIDTerminalRuleCall_1_0_1() { return cEventEventIDTerminalRuleCall_1_0_1; }
+		
+		//'triggered'
+		public Keyword getTriggeredKeyword_2() { return cTriggeredKeyword_2; }
+		
+		//'Do:'
+		public Keyword getDoKeyword_3() { return cDoKeyword_3; }
+		
+		//reactions+=Action+
+		public Assignment getReactionsAssignment_4() { return cReactionsAssignment_4; }
+		
+		//Action
+		public RuleCall getReactionsActionParserRuleCall_4_0() { return cReactionsActionParserRuleCall_4_0; }
 	}
-	public class IOElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.IO");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPrintMessageKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cMessageAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMessageSTRINGTerminalRuleCall_1_0 = (RuleCall)cMessageAssignment_1.eContents().get(0);
+	public class EventElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Event");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cEventKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Assignment cRepeatAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cRepeatRepeatEnumRuleCall_0_2_0 = (RuleCall)cRepeatAssignment_0_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cTimeKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cTimeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cTimeINTTerminalRuleCall_1_1_0 = (RuleCall)cTimeAssignment_1_1.eContents().get(0);
+		private final Keyword cMinutesKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		
-		//IO:
-		//	'PrintMessage' message=STRING;
+		//Event:
+		//	'Event:' name=ID
+		//	repeat=Repeat? |
+		//	'Time:' time=INT 'minutes';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'PrintMessage' message=STRING
-		public Group getGroup() { return cGroup; }
+		//'Event:' name=ID repeat=Repeat? | 'Time:' time=INT 'minutes'
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'PrintMessage'
-		public Keyword getPrintMessageKeyword_0() { return cPrintMessageKeyword_0; }
+		//'Event:' name=ID repeat=Repeat?
+		public Group getGroup_0() { return cGroup_0; }
 		
-		//message=STRING
-		public Assignment getMessageAssignment_1() { return cMessageAssignment_1; }
+		//'Event:'
+		public Keyword getEventKeyword_0_0() { return cEventKeyword_0_0; }
 		
-		//STRING
-		public RuleCall getMessageSTRINGTerminalRuleCall_1_0() { return cMessageSTRINGTerminalRuleCall_1_0; }
+		//name=ID
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
+		
+		//repeat=Repeat?
+		public Assignment getRepeatAssignment_0_2() { return cRepeatAssignment_0_2; }
+		
+		//Repeat
+		public RuleCall getRepeatRepeatEnumRuleCall_0_2_0() { return cRepeatRepeatEnumRuleCall_0_2_0; }
+		
+		//'Time:' time=INT 'minutes'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'Time:'
+		public Keyword getTimeKeyword_1_0() { return cTimeKeyword_1_0; }
+		
+		//time=INT
+		public Assignment getTimeAssignment_1_1() { return cTimeAssignment_1_1; }
+		
+		//INT
+		public RuleCall getTimeINTTerminalRuleCall_1_1_0() { return cTimeINTTerminalRuleCall_1_1_0; }
+		
+		//'minutes'
+		public Keyword getMinutesKeyword_1_2() { return cMinutesKeyword_1_2; }
 	}
 	public class TriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Trigger");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cConditionKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cConditionAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cConditionSTRINGTerminalRuleCall_1_0 = (RuleCall)cConditionAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cSensorKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cSensorTriggerAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cSensorTriggerDeviceCrossReference_2_1_0 = (CrossReference)cSensorTriggerAssignment_2_1.eContents().get(0);
-		private final RuleCall cSensorTriggerDeviceIDTerminalRuleCall_2_1_0_1 = (RuleCall)cSensorTriggerDeviceCrossReference_2_1_0.eContents().get(1);
+		private final Assignment cBoolTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cBoolTypeBoolEnumRuleCall_0_0 = (RuleCall)cBoolTypeAssignment_0.eContents().get(0);
+		private final Assignment cEventAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cEventEventCrossReference_1_0 = (CrossReference)cEventAssignment_1.eContents().get(0);
+		private final RuleCall cEventEventIDTerminalRuleCall_1_0_1 = (RuleCall)cEventEventCrossReference_1_0.eContents().get(1);
+		private final Assignment cSensorAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cSensorSensorEnumRuleCall_2_0 = (RuleCall)cSensorAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cAlternatives_3.eContents().get(0);
+		private final Keyword cIsKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
+		private final Assignment cColorAssignment_3_0_1 = (Assignment)cGroup_3_0.eContents().get(1);
+		private final RuleCall cColorColorEnumRuleCall_3_0_1_0 = (RuleCall)cColorAssignment_3_0_1.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cAlternatives_3.eContents().get(1);
+		private final Keyword cDistanceKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cBoolAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cBoolBoolEnumRuleCall_3_1_1_0 = (RuleCall)cBoolAssignment_3_1_1.eContents().get(0);
+		private final Keyword cThanKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
+		private final Assignment cDistanceAssignment_3_1_3 = (Assignment)cGroup_3_1.eContents().get(3);
+		private final RuleCall cDistanceINTTerminalRuleCall_3_1_3_0 = (RuleCall)cDistanceAssignment_3_1_3.eContents().get(0);
+		private final Keyword cCmKeyword_3_1_4 = (Keyword)cGroup_3_1.eContents().get(4);
 		
 		//Trigger:
-		//	'Condition:' condition=STRING ('Sensor:' sensorTrigger=[Device])?;
+		//	boolType=Bool?
+		//	event=[Event]?
+		//	sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than' distance=INT 'cm');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Condition:' condition=STRING ('Sensor:' sensorTrigger=[Device])?
+		//boolType=Bool? event=[Event]? sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than' distance=INT 'cm')
 		public Group getGroup() { return cGroup; }
 		
-		//'Condition:'
-		public Keyword getConditionKeyword_0() { return cConditionKeyword_0; }
+		//boolType=Bool?
+		public Assignment getBoolTypeAssignment_0() { return cBoolTypeAssignment_0; }
 		
-		//condition=STRING
-		public Assignment getConditionAssignment_1() { return cConditionAssignment_1; }
+		//Bool
+		public RuleCall getBoolTypeBoolEnumRuleCall_0_0() { return cBoolTypeBoolEnumRuleCall_0_0; }
 		
-		//STRING
-		public RuleCall getConditionSTRINGTerminalRuleCall_1_0() { return cConditionSTRINGTerminalRuleCall_1_0; }
+		//event=[Event]?
+		public Assignment getEventAssignment_1() { return cEventAssignment_1; }
 		
-		//('Sensor:' sensorTrigger=[Device])?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'Sensor:'
-		public Keyword getSensorKeyword_2_0() { return cSensorKeyword_2_0; }
-		
-		//sensorTrigger=[Device]
-		public Assignment getSensorTriggerAssignment_2_1() { return cSensorTriggerAssignment_2_1; }
-		
-		//[Device]
-		public CrossReference getSensorTriggerDeviceCrossReference_2_1_0() { return cSensorTriggerDeviceCrossReference_2_1_0; }
+		//[Event]
+		public CrossReference getEventEventCrossReference_1_0() { return cEventEventCrossReference_1_0; }
 		
 		//ID
-		public RuleCall getSensorTriggerDeviceIDTerminalRuleCall_2_1_0_1() { return cSensorTriggerDeviceIDTerminalRuleCall_2_1_0_1; }
-	}
-	public class DeviceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Device");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDeviceKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cTypeKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTypeDeviceTypeEnumRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cSensorTypeKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cSensorTypeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cSensorTypeSensorTypeEnumRuleCall_4_1_0 = (RuleCall)cSensorTypeAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cDescriptionKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cDescAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cDescSTRINGTerminalRuleCall_5_1_0 = (RuleCall)cDescAssignment_5_1.eContents().get(0);
+		public RuleCall getEventEventIDTerminalRuleCall_1_0_1() { return cEventEventIDTerminalRuleCall_1_0_1; }
 		
-		//Device:
-		//	'Device:' name=ID
-		//	'type:' type=DeviceType ('sensorType:' sensorType=SensorType)? ('description:' desc=STRING)?;
-		@Override public ParserRule getRule() { return rule; }
+		//sensor=Sensor
+		public Assignment getSensorAssignment_2() { return cSensorAssignment_2; }
 		
-		//'Device:' name=ID 'type:' type=DeviceType ('sensorType:' sensorType=SensorType)? ('description:' desc=STRING)?
-		public Group getGroup() { return cGroup; }
+		//Sensor
+		public RuleCall getSensorSensorEnumRuleCall_2_0() { return cSensorSensorEnumRuleCall_2_0; }
 		
-		//'Device:'
-		public Keyword getDeviceKeyword_0() { return cDeviceKeyword_0; }
+		//('is' color=Color | 'distance' bool=Bool 'than' distance=INT 'cm')
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//'is' color=Color
+		public Group getGroup_3_0() { return cGroup_3_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//'is'
+		public Keyword getIsKeyword_3_0_0() { return cIsKeyword_3_0_0; }
 		
-		//'type:'
-		public Keyword getTypeKeyword_2() { return cTypeKeyword_2; }
+		//color=Color
+		public Assignment getColorAssignment_3_0_1() { return cColorAssignment_3_0_1; }
 		
-		//type=DeviceType
-		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
+		//Color
+		public RuleCall getColorColorEnumRuleCall_3_0_1_0() { return cColorColorEnumRuleCall_3_0_1_0; }
 		
-		//DeviceType
-		public RuleCall getTypeDeviceTypeEnumRuleCall_3_0() { return cTypeDeviceTypeEnumRuleCall_3_0; }
+		//'distance' bool=Bool 'than' distance=INT 'cm'
+		public Group getGroup_3_1() { return cGroup_3_1; }
 		
-		//('sensorType:' sensorType=SensorType)?
-		public Group getGroup_4() { return cGroup_4; }
+		//'distance'
+		public Keyword getDistanceKeyword_3_1_0() { return cDistanceKeyword_3_1_0; }
 		
-		//'sensorType:'
-		public Keyword getSensorTypeKeyword_4_0() { return cSensorTypeKeyword_4_0; }
+		//bool=Bool
+		public Assignment getBoolAssignment_3_1_1() { return cBoolAssignment_3_1_1; }
 		
-		//sensorType=SensorType
-		public Assignment getSensorTypeAssignment_4_1() { return cSensorTypeAssignment_4_1; }
+		//Bool
+		public RuleCall getBoolBoolEnumRuleCall_3_1_1_0() { return cBoolBoolEnumRuleCall_3_1_1_0; }
 		
-		//SensorType
-		public RuleCall getSensorTypeSensorTypeEnumRuleCall_4_1_0() { return cSensorTypeSensorTypeEnumRuleCall_4_1_0; }
+		//'than'
+		public Keyword getThanKeyword_3_1_2() { return cThanKeyword_3_1_2; }
 		
-		//('description:' desc=STRING)?
-		public Group getGroup_5() { return cGroup_5; }
+		//distance=INT
+		public Assignment getDistanceAssignment_3_1_3() { return cDistanceAssignment_3_1_3; }
 		
-		//'description:'
-		public Keyword getDescriptionKeyword_5_0() { return cDescriptionKeyword_5_0; }
+		//INT
+		public RuleCall getDistanceINTTerminalRuleCall_3_1_3_0() { return cDistanceINTTerminalRuleCall_3_1_3_0; }
 		
-		//desc=STRING
-		public Assignment getDescAssignment_5_1() { return cDescAssignment_5_1; }
-		
-		//STRING
-		public RuleCall getDescSTRINGTerminalRuleCall_5_1_0() { return cDescSTRINGTerminalRuleCall_5_1_0; }
+		//'cm'
+		public Keyword getCmKeyword_3_1_4() { return cCmKeyword_3_1_4; }
 	}
 	
-	public class DeviceTypeElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.DeviceType");
+	public class DirectionElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Direction");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cMOTOREnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cMOTORMotorKeyword_0_0 = (Keyword)cMOTOREnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cSENSOREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cSENSORSensorKeyword_1_0 = (Keyword)cSENSOREnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cFORWARDEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cFORWARDForwardKeyword_0_0 = (Keyword)cFORWARDEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cBACKWARDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cBACKWARDBackwardKeyword_1_0 = (Keyword)cBACKWARDEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cLEFTEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cLEFTLeftKeyword_2_0 = (Keyword)cLEFTEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cRIGHTEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cRIGHTRightKeyword_3_0 = (Keyword)cRIGHTEnumLiteralDeclaration_3.eContents().get(0);
 		
-		//enum DeviceType:
-		//	MOTOR='Motor' |
-		//	SENSOR='Sensor';
+		//enum Direction:
+		//	FORWARD='forward' |
+		//	BACKWARD='backward' |
+		//	LEFT='left' |
+		//	RIGHT='right';
 		public EnumRule getRule() { return rule; }
 		
-		//MOTOR='Motor' | SENSOR='Sensor'
+		//FORWARD='forward' | BACKWARD='backward' | LEFT='left' | RIGHT='right'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//MOTOR='Motor'
-		public EnumLiteralDeclaration getMOTOREnumLiteralDeclaration_0() { return cMOTOREnumLiteralDeclaration_0; }
+		//FORWARD='forward'
+		public EnumLiteralDeclaration getFORWARDEnumLiteralDeclaration_0() { return cFORWARDEnumLiteralDeclaration_0; }
 		
-		//'Motor'
-		public Keyword getMOTORMotorKeyword_0_0() { return cMOTORMotorKeyword_0_0; }
+		//'forward'
+		public Keyword getFORWARDForwardKeyword_0_0() { return cFORWARDForwardKeyword_0_0; }
 		
-		//SENSOR='Sensor'
-		public EnumLiteralDeclaration getSENSOREnumLiteralDeclaration_1() { return cSENSOREnumLiteralDeclaration_1; }
+		//BACKWARD='backward'
+		public EnumLiteralDeclaration getBACKWARDEnumLiteralDeclaration_1() { return cBACKWARDEnumLiteralDeclaration_1; }
 		
-		//'Sensor'
-		public Keyword getSENSORSensorKeyword_1_0() { return cSENSORSensorKeyword_1_0; }
+		//'backward'
+		public Keyword getBACKWARDBackwardKeyword_1_0() { return cBACKWARDBackwardKeyword_1_0; }
+		
+		//LEFT='left'
+		public EnumLiteralDeclaration getLEFTEnumLiteralDeclaration_2() { return cLEFTEnumLiteralDeclaration_2; }
+		
+		//'left'
+		public Keyword getLEFTLeftKeyword_2_0() { return cLEFTLeftKeyword_2_0; }
+		
+		//RIGHT='right'
+		public EnumLiteralDeclaration getRIGHTEnumLiteralDeclaration_3() { return cRIGHTEnumLiteralDeclaration_3; }
+		
+		//'right'
+		public Keyword getRIGHTRightKeyword_3_0() { return cRIGHTRightKeyword_3_0; }
 	}
-	public class SensorTypeElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.SensorType");
+	public class SpeedElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Speed");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cULTRASONICEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cULTRASONICUltrasonicKeyword_0_0 = (Keyword)cULTRASONICEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cTOUCHEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cTOUCHTouchKeyword_1_0 = (Keyword)cTOUCHEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cCOLOREnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cCOLORColorKeyword_2_0 = (Keyword)cCOLOREnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cHIGHEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cHIGHHighKeyword_0_0 = (Keyword)cHIGHEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cMEDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cMEDMediumKeyword_1_0 = (Keyword)cMEDEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cLOWEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cLOWLowKeyword_2_0 = (Keyword)cLOWEnumLiteralDeclaration_2.eContents().get(0);
 		
-		//enum SensorType:
-		//	ULTRASONIC='Ultrasonic' |
-		//	TOUCH='Touch' |
-		//	COLOR='Color';
+		//enum Speed:
+		//	HIGH='high' |
+		//	MED='medium' |
+		//	LOW='low';
 		public EnumRule getRule() { return rule; }
 		
-		//ULTRASONIC='Ultrasonic' | TOUCH='Touch' | COLOR='Color'
+		//HIGH='high' | MED='medium' | LOW='low'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//ULTRASONIC='Ultrasonic'
-		public EnumLiteralDeclaration getULTRASONICEnumLiteralDeclaration_0() { return cULTRASONICEnumLiteralDeclaration_0; }
+		//HIGH='high'
+		public EnumLiteralDeclaration getHIGHEnumLiteralDeclaration_0() { return cHIGHEnumLiteralDeclaration_0; }
 		
-		//'Ultrasonic'
-		public Keyword getULTRASONICUltrasonicKeyword_0_0() { return cULTRASONICUltrasonicKeyword_0_0; }
+		//'high'
+		public Keyword getHIGHHighKeyword_0_0() { return cHIGHHighKeyword_0_0; }
 		
-		//TOUCH='Touch'
-		public EnumLiteralDeclaration getTOUCHEnumLiteralDeclaration_1() { return cTOUCHEnumLiteralDeclaration_1; }
+		//MED='medium'
+		public EnumLiteralDeclaration getMEDEnumLiteralDeclaration_1() { return cMEDEnumLiteralDeclaration_1; }
 		
-		//'Touch'
-		public Keyword getTOUCHTouchKeyword_1_0() { return cTOUCHTouchKeyword_1_0; }
+		//'medium'
+		public Keyword getMEDMediumKeyword_1_0() { return cMEDMediumKeyword_1_0; }
+		
+		//LOW='low'
+		public EnumLiteralDeclaration getLOWEnumLiteralDeclaration_2() { return cLOWEnumLiteralDeclaration_2; }
+		
+		//'low'
+		public Keyword getLOWLowKeyword_2_0() { return cLOWLowKeyword_2_0; }
+	}
+	public class ArmOpElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.ArmOp");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cUPEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cUPRaiseKeyword_0_0 = (Keyword)cUPEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cDOWNEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cDOWNLowerKeyword_1_0 = (Keyword)cDOWNEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum ArmOp:
+		//	UP='raise' |
+		//	DOWN='lower';
+		public EnumRule getRule() { return rule; }
+		
+		//UP='raise' | DOWN='lower'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//UP='raise'
+		public EnumLiteralDeclaration getUPEnumLiteralDeclaration_0() { return cUPEnumLiteralDeclaration_0; }
+		
+		//'raise'
+		public Keyword getUPRaiseKeyword_0_0() { return cUPRaiseKeyword_0_0; }
+		
+		//DOWN='lower'
+		public EnumLiteralDeclaration getDOWNEnumLiteralDeclaration_1() { return cDOWNEnumLiteralDeclaration_1; }
+		
+		//'lower'
+		public Keyword getDOWNLowerKeyword_1_0() { return cDOWNLowerKeyword_1_0; }
+	}
+	public class SoundElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Sound");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cBuzzEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cBuzzBuzzKeyword_0_0 = (Keyword)cBuzzEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFanfareEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFanfareFanfareKeyword_1_0 = (Keyword)cFanfareEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum Sound:
+		//	buzz |
+		//	fanfare;
+		public EnumRule getRule() { return rule; }
+		
+		//buzz | fanfare
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//buzz
+		public EnumLiteralDeclaration getBuzzEnumLiteralDeclaration_0() { return cBuzzEnumLiteralDeclaration_0; }
+		
+		//'buzz'
+		public Keyword getBuzzBuzzKeyword_0_0() { return cBuzzBuzzKeyword_0_0; }
+		
+		//fanfare
+		public EnumLiteralDeclaration getFanfareEnumLiteralDeclaration_1() { return cFanfareEnumLiteralDeclaration_1; }
+		
+		//'fanfare'
+		public Keyword getFanfareFanfareKeyword_1_0() { return cFanfareFanfareKeyword_1_0; }
+	}
+	public class SensorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Sensor");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cCOLOREnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cCOLORColorKeyword_0_0 = (Keyword)cCOLOREnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cLEFTLIGHTEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cLEFTLIGHTLeftLightKeyword_1_0 = (Keyword)cLEFTLIGHTEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cRIGHTLIGHTEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cRIGHTLIGHTRightLightKeyword_2_0 = (Keyword)cRIGHTLIGHTEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cBACKUSEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cBACKUSRearHeightKeyword_3_0 = (Keyword)cBACKUSEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cFRONTUSEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cFRONTUSFrontDistanceKeyword_4_0 = (Keyword)cFRONTUSEnumLiteralDeclaration_4.eContents().get(0);
+		
+		//enum Sensor:
+		//	COLOR='Color' |
+		//	LEFTLIGHT='LeftLight' |
+		//	RIGHTLIGHT='RightLight' |
+		//	BACKUS='RearHeight' |
+		//	FRONTUS='FrontDistance';
+		public EnumRule getRule() { return rule; }
+		
+		//COLOR='Color' | LEFTLIGHT='LeftLight' | RIGHTLIGHT='RightLight' | BACKUS='RearHeight' | FRONTUS='FrontDistance'
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//COLOR='Color'
-		public EnumLiteralDeclaration getCOLOREnumLiteralDeclaration_2() { return cCOLOREnumLiteralDeclaration_2; }
+		public EnumLiteralDeclaration getCOLOREnumLiteralDeclaration_0() { return cCOLOREnumLiteralDeclaration_0; }
 		
 		//'Color'
-		public Keyword getCOLORColorKeyword_2_0() { return cCOLORColorKeyword_2_0; }
+		public Keyword getCOLORColorKeyword_0_0() { return cCOLORColorKeyword_0_0; }
+		
+		//LEFTLIGHT='LeftLight'
+		public EnumLiteralDeclaration getLEFTLIGHTEnumLiteralDeclaration_1() { return cLEFTLIGHTEnumLiteralDeclaration_1; }
+		
+		//'LeftLight'
+		public Keyword getLEFTLIGHTLeftLightKeyword_1_0() { return cLEFTLIGHTLeftLightKeyword_1_0; }
+		
+		//RIGHTLIGHT='RightLight'
+		public EnumLiteralDeclaration getRIGHTLIGHTEnumLiteralDeclaration_2() { return cRIGHTLIGHTEnumLiteralDeclaration_2; }
+		
+		//'RightLight'
+		public Keyword getRIGHTLIGHTRightLightKeyword_2_0() { return cRIGHTLIGHTRightLightKeyword_2_0; }
+		
+		//BACKUS='RearHeight'
+		public EnumLiteralDeclaration getBACKUSEnumLiteralDeclaration_3() { return cBACKUSEnumLiteralDeclaration_3; }
+		
+		//'RearHeight'
+		public Keyword getBACKUSRearHeightKeyword_3_0() { return cBACKUSRearHeightKeyword_3_0; }
+		
+		//FRONTUS='FrontDistance'
+		public EnumLiteralDeclaration getFRONTUSEnumLiteralDeclaration_4() { return cFRONTUSEnumLiteralDeclaration_4; }
+		
+		//'FrontDistance'
+		public Keyword getFRONTUSFrontDistanceKeyword_4_0() { return cFRONTUSFrontDistanceKeyword_4_0; }
+	}
+	public class ColorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Color");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cREDEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cREDRedKeyword_0_0 = (Keyword)cREDEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cWHITEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cWHITEWhiteKeyword_1_0 = (Keyword)cWHITEEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum Color:
+		//	RED='red' |
+		//	WHITE='white';
+		public EnumRule getRule() { return rule; }
+		
+		//RED='red' | WHITE='white'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//RED='red'
+		public EnumLiteralDeclaration getREDEnumLiteralDeclaration_0() { return cREDEnumLiteralDeclaration_0; }
+		
+		//'red'
+		public Keyword getREDRedKeyword_0_0() { return cREDRedKeyword_0_0; }
+		
+		//WHITE='white'
+		public EnumLiteralDeclaration getWHITEEnumLiteralDeclaration_1() { return cWHITEEnumLiteralDeclaration_1; }
+		
+		//'white'
+		public Keyword getWHITEWhiteKeyword_1_0() { return cWHITEWhiteKeyword_1_0; }
+	}
+	public class BoolElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Bool");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cLEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cLLessKeyword_0_0 = (Keyword)cLEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cGEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cGGreaterKeyword_1_0 = (Keyword)cGEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cANDEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cANDAndKeyword_2_0 = (Keyword)cANDEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cOREnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cOROrKeyword_3_0 = (Keyword)cOREnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum Bool:
+		//	L='less' |
+		//	G='greater' |
+		//	AND='and' |
+		//	OR='or';
+		public EnumRule getRule() { return rule; }
+		
+		//L='less' | G='greater' | AND='and' | OR='or'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//L='less'
+		public EnumLiteralDeclaration getLEnumLiteralDeclaration_0() { return cLEnumLiteralDeclaration_0; }
+		
+		//'less'
+		public Keyword getLLessKeyword_0_0() { return cLLessKeyword_0_0; }
+		
+		//G='greater'
+		public EnumLiteralDeclaration getGEnumLiteralDeclaration_1() { return cGEnumLiteralDeclaration_1; }
+		
+		//'greater'
+		public Keyword getGGreaterKeyword_1_0() { return cGGreaterKeyword_1_0; }
+		
+		//AND='and'
+		public EnumLiteralDeclaration getANDEnumLiteralDeclaration_2() { return cANDEnumLiteralDeclaration_2; }
+		
+		//'and'
+		public Keyword getANDAndKeyword_2_0() { return cANDAndKeyword_2_0; }
+		
+		//OR='or'
+		public EnumLiteralDeclaration getOREnumLiteralDeclaration_3() { return cOREnumLiteralDeclaration_3; }
+		
+		//'or'
+		public Keyword getOROrKeyword_3_0() { return cOROrKeyword_3_0; }
+	}
+	public class RepeatElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Repeat");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cONCEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cONCEOnceKeyword_0_0 = (Keyword)cONCEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cREPEATEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cREPEATRepeatableKeyword_1_0 = (Keyword)cREPEATEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum Repeat:
+		//	ONCE='once' |
+		//	REPEAT='repeatable';
+		public EnumRule getRule() { return rule; }
+		
+		//ONCE='once' | REPEAT='repeatable'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ONCE='once'
+		public EnumLiteralDeclaration getONCEEnumLiteralDeclaration_0() { return cONCEEnumLiteralDeclaration_0; }
+		
+		//'once'
+		public Keyword getONCEOnceKeyword_0_0() { return cONCEOnceKeyword_0_0; }
+		
+		//REPEAT='repeatable'
+		public EnumLiteralDeclaration getREPEATEnumLiteralDeclaration_1() { return cREPEATEnumLiteralDeclaration_1; }
+		
+		//'repeatable'
+		public Keyword getREPEATRepeatableKeyword_1_0() { return cREPEATRepeatableKeyword_1_0; }
 	}
 	
+	private final MissionListElements pMissionList;
 	private final MissionElements pMission;
 	private final BehaviorElements pBehavior;
 	private final ActionElements pAction;
-	private final MovementElements pMovement;
-	private final MoveForwardElements pMoveForward;
-	private final MoveBackwardElements pMoveBackward;
-	private final TurnElements pTurn;
-	private final StopElements pStop;
-	private final SoundElements pSound;
-	private final IOElements pIO;
+	private final ReactionElements pReaction;
+	private final EventElements pEvent;
 	private final TriggerElements pTrigger;
-	private final DeviceElements pDevice;
-	private final DeviceTypeElements eDeviceType;
-	private final SensorTypeElements eSensorType;
+	private final DirectionElements eDirection;
+	private final SpeedElements eSpeed;
+	private final ArmOpElements eArmOp;
+	private final SoundElements eSound;
+	private final SensorElements eSensor;
+	private final ColorElements eColor;
+	private final BoolElements eBool;
+	private final RepeatElements eRepeat;
 	
 	private final Grammar grammar;
 	
@@ -579,20 +835,21 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMissionList = new MissionListElements();
 		this.pMission = new MissionElements();
 		this.pBehavior = new BehaviorElements();
 		this.pAction = new ActionElements();
-		this.pMovement = new MovementElements();
-		this.pMoveForward = new MoveForwardElements();
-		this.pMoveBackward = new MoveBackwardElements();
-		this.pTurn = new TurnElements();
-		this.pStop = new StopElements();
-		this.pSound = new SoundElements();
-		this.pIO = new IOElements();
+		this.pReaction = new ReactionElements();
+		this.pEvent = new EventElements();
 		this.pTrigger = new TriggerElements();
-		this.pDevice = new DeviceElements();
-		this.eDeviceType = new DeviceTypeElements();
-		this.eSensorType = new SensorTypeElements();
+		this.eDirection = new DirectionElements();
+		this.eSpeed = new SpeedElements();
+		this.eArmOp = new ArmOpElements();
+		this.eSound = new SoundElements();
+		this.eSensor = new SensorElements();
+		this.eColor = new ColorElements();
+		this.eBool = new BoolElements();
+		this.eRepeat = new RepeatElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -622,11 +879,20 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//MissionList:
+	//	missionList+=Mission+;
+	public MissionListElements getMissionListAccess() {
+		return pMissionList;
+	}
+	
+	public ParserRule getMissionListRule() {
+		return getMissionListAccess().getRule();
+	}
+	
 	//Mission:
 	//	'Mission' name=ID
-	//	'UsedDevices:' deviceList+=Device+
-	//	'Behaviors:' behaviourList+=Behavior+
-	//	'Goal:' goalCondition+=Trigger+;
+	//	'Behaviors:' behaviorList+=Behavior+
+	//	'Goal:' goalEvents+=[Event];
 	public MissionElements getMissionAccess() {
 		return pMission;
 	}
@@ -637,10 +903,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Behavior:
 	//	'Behavior:' name=ID
-	//	'priority:' prio=INT
-	//	'devices:' deviceList+=[Device]+
-	//	'actions:' actionList+=Action+
-	//	'triggers:' triggerList+=Trigger+;
+	//	'priority:' prio=INT (('Triggers:' triggerList+=Trigger+) ('Reactions:' reactionList+=Reaction+)?)? ('Actions:'
+	//	actionList+=Action+)?;
 	public BehaviorElements getBehaviorAccess() {
 		return pBehavior;
 	}
@@ -650,7 +914,10 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Action:
-	//	Movement ('Duration' duration=INT)? | Sound | IO;
+	//	'Move' dir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? |
+	//	'Turn' dir=Direction degr=INT 'deg' |
+	//	'Arm' op=ArmOp |
+	//	'Play' 'sound' sound=Sound;
 	public ActionElements getActionAccess() {
 		return pAction;
 	}
@@ -659,78 +926,32 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getActionAccess().getRule();
 	}
 	
-	//Movement:
-	//	MoveForward | MoveBackward | Turn | Stop;
-	public MovementElements getMovementAccess() {
-		return pMovement;
+	//Reaction:
+	//	'if' event=[Event] 'triggered' 'Do:' reactions+=Action+;
+	public ReactionElements getReactionAccess() {
+		return pReaction;
 	}
 	
-	public ParserRule getMovementRule() {
-		return getMovementAccess().getRule();
+	public ParserRule getReactionRule() {
+		return getReactionAccess().getRule();
 	}
 	
-	//MoveForward:
-	//	'Forward' fspeed=INT;
-	public MoveForwardElements getMoveForwardAccess() {
-		return pMoveForward;
+	//Event:
+	//	'Event:' name=ID
+	//	repeat=Repeat? |
+	//	'Time:' time=INT 'minutes';
+	public EventElements getEventAccess() {
+		return pEvent;
 	}
 	
-	public ParserRule getMoveForwardRule() {
-		return getMoveForwardAccess().getRule();
-	}
-	
-	//MoveBackward:
-	//	'Backward' bspeed=INT;
-	public MoveBackwardElements getMoveBackwardAccess() {
-		return pMoveBackward;
-	}
-	
-	public ParserRule getMoveBackwardRule() {
-		return getMoveBackwardAccess().getRule();
-	}
-	
-	//Turn:
-	//	'Turn' angle=INT;
-	public TurnElements getTurnAccess() {
-		return pTurn;
-	}
-	
-	public ParserRule getTurnRule() {
-		return getTurnAccess().getRule();
-	}
-	
-	//Stop:
-	//	'Stop' duration=INT;
-	public StopElements getStopAccess() {
-		return pStop;
-	}
-	
-	public ParserRule getStopRule() {
-		return getStopAccess().getRule();
-	}
-	
-	//Sound:
-	//	'PlaySound:' soundName=STRING;
-	public SoundElements getSoundAccess() {
-		return pSound;
-	}
-	
-	public ParserRule getSoundRule() {
-		return getSoundAccess().getRule();
-	}
-	
-	//IO:
-	//	'PrintMessage' message=STRING;
-	public IOElements getIOAccess() {
-		return pIO;
-	}
-	
-	public ParserRule getIORule() {
-		return getIOAccess().getRule();
+	public ParserRule getEventRule() {
+		return getEventAccess().getRule();
 	}
 	
 	//Trigger:
-	//	'Condition:' condition=STRING ('Sensor:' sensorTrigger=[Device])?;
+	//	boolType=Bool?
+	//	event=[Event]?
+	//	sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than' distance=INT 'cm');
 	public TriggerElements getTriggerAccess() {
 		return pTrigger;
 	}
@@ -739,38 +960,100 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getTriggerAccess().getRule();
 	}
 	
-	//Device:
-	//	'Device:' name=ID
-	//	'type:' type=DeviceType ('sensorType:' sensorType=SensorType)? ('description:' desc=STRING)?;
-	public DeviceElements getDeviceAccess() {
-		return pDevice;
+	//enum Direction:
+	//	FORWARD='forward' |
+	//	BACKWARD='backward' |
+	//	LEFT='left' |
+	//	RIGHT='right';
+	public DirectionElements getDirectionAccess() {
+		return eDirection;
 	}
 	
-	public ParserRule getDeviceRule() {
-		return getDeviceAccess().getRule();
+	public EnumRule getDirectionRule() {
+		return getDirectionAccess().getRule();
 	}
 	
-	//enum DeviceType:
-	//	MOTOR='Motor' |
-	//	SENSOR='Sensor';
-	public DeviceTypeElements getDeviceTypeAccess() {
-		return eDeviceType;
+	//enum Speed:
+	//	HIGH='high' |
+	//	MED='medium' |
+	//	LOW='low';
+	public SpeedElements getSpeedAccess() {
+		return eSpeed;
 	}
 	
-	public EnumRule getDeviceTypeRule() {
-		return getDeviceTypeAccess().getRule();
+	public EnumRule getSpeedRule() {
+		return getSpeedAccess().getRule();
 	}
 	
-	//enum SensorType:
-	//	ULTRASONIC='Ultrasonic' |
-	//	TOUCH='Touch' |
-	//	COLOR='Color';
-	public SensorTypeElements getSensorTypeAccess() {
-		return eSensorType;
+	//enum ArmOp:
+	//	UP='raise' |
+	//	DOWN='lower';
+	public ArmOpElements getArmOpAccess() {
+		return eArmOp;
 	}
 	
-	public EnumRule getSensorTypeRule() {
-		return getSensorTypeAccess().getRule();
+	public EnumRule getArmOpRule() {
+		return getArmOpAccess().getRule();
+	}
+	
+	//enum Sound:
+	//	buzz |
+	//	fanfare;
+	public SoundElements getSoundAccess() {
+		return eSound;
+	}
+	
+	public EnumRule getSoundRule() {
+		return getSoundAccess().getRule();
+	}
+	
+	//enum Sensor:
+	//	COLOR='Color' |
+	//	LEFTLIGHT='LeftLight' |
+	//	RIGHTLIGHT='RightLight' |
+	//	BACKUS='RearHeight' |
+	//	FRONTUS='FrontDistance';
+	public SensorElements getSensorAccess() {
+		return eSensor;
+	}
+	
+	public EnumRule getSensorRule() {
+		return getSensorAccess().getRule();
+	}
+	
+	//enum Color:
+	//	RED='red' |
+	//	WHITE='white';
+	public ColorElements getColorAccess() {
+		return eColor;
+	}
+	
+	public EnumRule getColorRule() {
+		return getColorAccess().getRule();
+	}
+	
+	//enum Bool:
+	//	L='less' |
+	//	G='greater' |
+	//	AND='and' |
+	//	OR='or';
+	public BoolElements getBoolAccess() {
+		return eBool;
+	}
+	
+	public EnumRule getBoolRule() {
+		return getBoolAccess().getRule();
+	}
+	
+	//enum Repeat:
+	//	ONCE='once' |
+	//	REPEAT='repeatable';
+	public RepeatElements getRepeatAccess() {
+		return eRepeat;
+	}
+	
+	public EnumRule getRepeatRule() {
+		return getRepeatAccess().getRule();
 	}
 	
 	//terminal ID:

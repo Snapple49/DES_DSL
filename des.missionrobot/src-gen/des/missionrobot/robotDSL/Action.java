@@ -10,6 +10,17 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Action</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getDir <em>Dir</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getDuration <em>Duration</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}</li>
+ * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction()
  * @model
@@ -17,4 +28,172 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Action extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Dir</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Direction}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Dir</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dir</em>' attribute.
+   * @see des.missionrobot.robotDSL.Direction
+   * @see #setDir(Direction)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Dir()
+   * @model
+   * @generated
+   */
+  Direction getDir();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getDir <em>Dir</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Dir</em>' attribute.
+   * @see des.missionrobot.robotDSL.Direction
+   * @see #getDir()
+   * @generated
+   */
+  void setDir(Direction value);
+
+  /**
+   * Returns the value of the '<em><b>Duration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Duration</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Duration</em>' attribute.
+   * @see #setDuration(int)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Duration()
+   * @model
+   * @generated
+   */
+  int getDuration();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getDuration <em>Duration</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Duration</em>' attribute.
+   * @see #getDuration()
+   * @generated
+   */
+  void setDuration(int value);
+
+  /**
+   * Returns the value of the '<em><b>Speed</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Speed}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Speed</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Speed</em>' attribute.
+   * @see des.missionrobot.robotDSL.Speed
+   * @see #setSpeed(Speed)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Speed()
+   * @model
+   * @generated
+   */
+  Speed getSpeed();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Speed</em>' attribute.
+   * @see des.missionrobot.robotDSL.Speed
+   * @see #getSpeed()
+   * @generated
+   */
+  void setSpeed(Speed value);
+
+  /**
+   * Returns the value of the '<em><b>Degr</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Degr</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Degr</em>' attribute.
+   * @see #setDegr(int)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Degr()
+   * @model
+   * @generated
+   */
+  int getDegr();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Degr</em>' attribute.
+   * @see #getDegr()
+   * @generated
+   */
+  void setDegr(int value);
+
+  /**
+   * Returns the value of the '<em><b>Op</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.ArmOp}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Op</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Op</em>' attribute.
+   * @see des.missionrobot.robotDSL.ArmOp
+   * @see #setOp(ArmOp)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Op()
+   * @model
+   * @generated
+   */
+  ArmOp getOp();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Op</em>' attribute.
+   * @see des.missionrobot.robotDSL.ArmOp
+   * @see #getOp()
+   * @generated
+   */
+  void setOp(ArmOp value);
+
+  /**
+   * Returns the value of the '<em><b>Sound</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Sound}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sound</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sound</em>' attribute.
+   * @see des.missionrobot.robotDSL.Sound
+   * @see #setSound(Sound)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Sound()
+   * @model
+   * @generated
+   */
+  Sound getSound();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sound</em>' attribute.
+   * @see des.missionrobot.robotDSL.Sound
+   * @see #getSound()
+   * @generated
+   */
+  void setSound(Sound value);
+
 } // Action
