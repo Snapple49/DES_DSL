@@ -3,10 +3,13 @@
  */
 package des.missionrobot.robotDSL.impl;
 
-import des.missionrobot.robotDSL.Behavior;
-import des.missionrobot.robotDSL.Event;
+import des.missionrobot.robotDSL.Action;
+import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
+import des.missionrobot.robotDSL.Task;
+import des.missionrobot.robotDSL.Time;
+import des.missionrobot.robotDSL.Trigger;
 
 import java.util.Collection;
 
@@ -22,7 +25,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -34,8 +36,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getFlagsList <em>Flags List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getBehaviorList <em>Behavior List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getGoalEvents <em>Goal Events</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getTimeout <em>Timeout</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getFinishActions <em>Finish Actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,6 +68,16 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getFlagsList() <em>Flags List</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFlagsList()
+   * @generated
+   * @ordered
+   */
+  protected EList<Flag> flagsList;
+
+  /**
    * The cached value of the '{@link #getBehaviorList() <em>Behavior List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -70,17 +85,37 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * @generated
    * @ordered
    */
-  protected EList<Behavior> behaviorList;
+  protected EList<Task> behaviorList;
 
   /**
-   * The cached value of the '{@link #getGoalEvents() <em>Goal Events</em>}' reference list.
+   * The cached value of the '{@link #getGoalEvents() <em>Goal Events</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getGoalEvents()
    * @generated
    * @ordered
    */
-  protected EList<Event> goalEvents;
+  protected EList<Trigger> goalEvents;
+
+  /**
+   * The cached value of the '{@link #getTimeout() <em>Timeout</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTimeout()
+   * @generated
+   * @ordered
+   */
+  protected Time timeout;
+
+  /**
+   * The cached value of the '{@link #getFinishActions() <em>Finish Actions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFinishActions()
+   * @generated
+   * @ordered
+   */
+  protected EList<Action> finishActions;
 
   /**
    * <!-- begin-user-doc -->
@@ -131,11 +166,25 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Behavior> getBehaviorList()
+  public EList<Flag> getFlagsList()
+  {
+    if (flagsList == null)
+    {
+      flagsList = new EObjectContainmentEList<Flag>(Flag.class, this, RobotDSLPackage.MISSION__FLAGS_LIST);
+    }
+    return flagsList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Task> getBehaviorList()
   {
     if (behaviorList == null)
     {
-      behaviorList = new EObjectContainmentEList<Behavior>(Behavior.class, this, RobotDSLPackage.MISSION__BEHAVIOR_LIST);
+      behaviorList = new EObjectContainmentEList<Task>(Task.class, this, RobotDSLPackage.MISSION__BEHAVIOR_LIST);
     }
     return behaviorList;
   }
@@ -145,13 +194,75 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Event> getGoalEvents()
+  public EList<Trigger> getGoalEvents()
   {
     if (goalEvents == null)
     {
-      goalEvents = new EObjectResolvingEList<Event>(Event.class, this, RobotDSLPackage.MISSION__GOAL_EVENTS);
+      goalEvents = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.MISSION__GOAL_EVENTS);
     }
     return goalEvents;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Time getTimeout()
+  {
+    return timeout;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTimeout(Time newTimeout, NotificationChain msgs)
+  {
+    Time oldTimeout = timeout;
+    timeout = newTimeout;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.MISSION__TIMEOUT, oldTimeout, newTimeout);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTimeout(Time newTimeout)
+  {
+    if (newTimeout != timeout)
+    {
+      NotificationChain msgs = null;
+      if (timeout != null)
+        msgs = ((InternalEObject)timeout).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.MISSION__TIMEOUT, null, msgs);
+      if (newTimeout != null)
+        msgs = ((InternalEObject)newTimeout).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.MISSION__TIMEOUT, null, msgs);
+      msgs = basicSetTimeout(newTimeout, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.MISSION__TIMEOUT, newTimeout, newTimeout));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Action> getFinishActions()
+  {
+    if (finishActions == null)
+    {
+      finishActions = new EObjectContainmentEList<Action>(Action.class, this, RobotDSLPackage.MISSION__FINISH_ACTIONS);
+    }
+    return finishActions;
   }
 
   /**
@@ -164,8 +275,16 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
   {
     switch (featureID)
     {
+      case RobotDSLPackage.MISSION__FLAGS_LIST:
+        return ((InternalEList<?>)getFlagsList()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
         return ((InternalEList<?>)getBehaviorList()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.MISSION__GOAL_EVENTS:
+        return ((InternalEList<?>)getGoalEvents()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.MISSION__TIMEOUT:
+        return basicSetTimeout(null, msgs);
+      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
+        return ((InternalEList<?>)getFinishActions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -182,10 +301,16 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__NAME:
         return getName();
+      case RobotDSLPackage.MISSION__FLAGS_LIST:
+        return getFlagsList();
       case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
         return getBehaviorList();
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         return getGoalEvents();
+      case RobotDSLPackage.MISSION__TIMEOUT:
+        return getTimeout();
+      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
+        return getFinishActions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -204,13 +329,24 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
       case RobotDSLPackage.MISSION__NAME:
         setName((String)newValue);
         return;
+      case RobotDSLPackage.MISSION__FLAGS_LIST:
+        getFlagsList().clear();
+        getFlagsList().addAll((Collection<? extends Flag>)newValue);
+        return;
       case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
         getBehaviorList().clear();
-        getBehaviorList().addAll((Collection<? extends Behavior>)newValue);
+        getBehaviorList().addAll((Collection<? extends Task>)newValue);
         return;
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         getGoalEvents().clear();
-        getGoalEvents().addAll((Collection<? extends Event>)newValue);
+        getGoalEvents().addAll((Collection<? extends Trigger>)newValue);
+        return;
+      case RobotDSLPackage.MISSION__TIMEOUT:
+        setTimeout((Time)newValue);
+        return;
+      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
+        getFinishActions().clear();
+        getFinishActions().addAll((Collection<? extends Action>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -229,11 +365,20 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
       case RobotDSLPackage.MISSION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case RobotDSLPackage.MISSION__FLAGS_LIST:
+        getFlagsList().clear();
+        return;
       case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
         getBehaviorList().clear();
         return;
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         getGoalEvents().clear();
+        return;
+      case RobotDSLPackage.MISSION__TIMEOUT:
+        setTimeout((Time)null);
+        return;
+      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
+        getFinishActions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -251,10 +396,16 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case RobotDSLPackage.MISSION__FLAGS_LIST:
+        return flagsList != null && !flagsList.isEmpty();
       case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
         return behaviorList != null && !behaviorList.isEmpty();
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         return goalEvents != null && !goalEvents.isEmpty();
+      case RobotDSLPackage.MISSION__TIMEOUT:
+        return timeout != null;
+      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
+        return finishActions != null && !finishActions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

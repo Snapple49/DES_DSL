@@ -42,13 +42,13 @@ public interface RobotDSLFactory extends EFactory
   Mission createMission();
 
   /**
-   * Returns a new object of class '<em>Behavior</em>'.
+   * Returns a new object of class '<em>Task</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Behavior</em>'.
+   * @return a new object of class '<em>Task</em>'.
    * @generated
    */
-  Behavior createBehavior();
+  Task createTask();
 
   /**
    * Returns a new object of class '<em>Action</em>'.
@@ -60,24 +60,6 @@ public interface RobotDSLFactory extends EFactory
   Action createAction();
 
   /**
-   * Returns a new object of class '<em>Reaction</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Reaction</em>'.
-   * @generated
-   */
-  Reaction createReaction();
-
-  /**
-   * Returns a new object of class '<em>Event</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Event</em>'.
-   * @generated
-   */
-  Event createEvent();
-
-  /**
    * Returns a new object of class '<em>Trigger</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +67,24 @@ public interface RobotDSLFactory extends EFactory
    * @generated
    */
   Trigger createTrigger();
+
+  /**
+   * Returns a new object of class '<em>Flag</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Flag</em>'.
+   * @generated
+   */
+  Flag createFlag();
+
+  /**
+   * Returns a new object of class '<em>Time</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Time</em>'.
+   * @generated
+   */
+  Time createTime();
 
   /**
    * Returns the package supported by this factory.

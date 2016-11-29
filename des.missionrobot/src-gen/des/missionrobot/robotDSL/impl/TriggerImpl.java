@@ -5,7 +5,8 @@ package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Bool;
 import des.missionrobot.robotDSL.Color;
-import des.missionrobot.robotDSL.Event;
+import des.missionrobot.robotDSL.Flag;
+import des.missionrobot.robotDSL.Negation;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Sensor;
 import des.missionrobot.robotDSL.Trigger;
@@ -27,7 +28,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getBoolType <em>Bool Type</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getEvent <em>Event</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getNeg <em>Neg</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getFlag <em>Flag</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getSensor <em>Sensor</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getColor <em>Color</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getBool <em>Bool</em>}</li>
@@ -59,14 +61,34 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   protected Bool boolType = BOOL_TYPE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
+   * The default value of the '{@link #getNeg() <em>Neg</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEvent()
+   * @see #getNeg()
    * @generated
    * @ordered
    */
-  protected Event event;
+  protected static final Negation NEG_EDEFAULT = Negation.NOT;
+
+  /**
+   * The cached value of the '{@link #getNeg() <em>Neg</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNeg()
+   * @generated
+   * @ordered
+   */
+  protected Negation neg = NEG_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getFlag() <em>Flag</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFlag()
+   * @generated
+   * @ordered
+   */
+  protected Flag flag;
 
   /**
    * The default value of the '{@link #getSensor() <em>Sensor</em>}' attribute.
@@ -197,19 +219,42 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public Event getEvent()
+  public Negation getNeg()
   {
-    if (event != null && event.eIsProxy())
+    return neg;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setNeg(Negation newNeg)
+  {
+    Negation oldNeg = neg;
+    neg = newNeg == null ? NEG_EDEFAULT : newNeg;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__NEG, oldNeg, neg));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Flag getFlag()
+  {
+    if (flag != null && flag.eIsProxy())
     {
-      InternalEObject oldEvent = (InternalEObject)event;
-      event = (Event)eResolveProxy(oldEvent);
-      if (event != oldEvent)
+      InternalEObject oldFlag = (InternalEObject)flag;
+      flag = (Flag)eResolveProxy(oldFlag);
+      if (flag != oldFlag)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobotDSLPackage.TRIGGER__EVENT, oldEvent, event));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobotDSLPackage.TRIGGER__FLAG, oldFlag, flag));
       }
     }
-    return event;
+    return flag;
   }
 
   /**
@@ -217,9 +262,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public Event basicGetEvent()
+  public Flag basicGetFlag()
   {
-    return event;
+    return flag;
   }
 
   /**
@@ -227,12 +272,12 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setEvent(Event newEvent)
+  public void setFlag(Flag newFlag)
   {
-    Event oldEvent = event;
-    event = newEvent;
+    Flag oldFlag = flag;
+    flag = newFlag;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__EVENT, oldEvent, event));
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__FLAG, oldFlag, flag));
   }
 
   /**
@@ -339,9 +384,11 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     {
       case RobotDSLPackage.TRIGGER__BOOL_TYPE:
         return getBoolType();
-      case RobotDSLPackage.TRIGGER__EVENT:
-        if (resolve) return getEvent();
-        return basicGetEvent();
+      case RobotDSLPackage.TRIGGER__NEG:
+        return getNeg();
+      case RobotDSLPackage.TRIGGER__FLAG:
+        if (resolve) return getFlag();
+        return basicGetFlag();
       case RobotDSLPackage.TRIGGER__SENSOR:
         return getSensor();
       case RobotDSLPackage.TRIGGER__COLOR:
@@ -367,8 +414,11 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__BOOL_TYPE:
         setBoolType((Bool)newValue);
         return;
-      case RobotDSLPackage.TRIGGER__EVENT:
-        setEvent((Event)newValue);
+      case RobotDSLPackage.TRIGGER__NEG:
+        setNeg((Negation)newValue);
+        return;
+      case RobotDSLPackage.TRIGGER__FLAG:
+        setFlag((Flag)newValue);
         return;
       case RobotDSLPackage.TRIGGER__SENSOR:
         setSensor((Sensor)newValue);
@@ -399,8 +449,11 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__BOOL_TYPE:
         setBoolType(BOOL_TYPE_EDEFAULT);
         return;
-      case RobotDSLPackage.TRIGGER__EVENT:
-        setEvent((Event)null);
+      case RobotDSLPackage.TRIGGER__NEG:
+        setNeg(NEG_EDEFAULT);
+        return;
+      case RobotDSLPackage.TRIGGER__FLAG:
+        setFlag((Flag)null);
         return;
       case RobotDSLPackage.TRIGGER__SENSOR:
         setSensor(SENSOR_EDEFAULT);
@@ -430,8 +483,10 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     {
       case RobotDSLPackage.TRIGGER__BOOL_TYPE:
         return boolType != BOOL_TYPE_EDEFAULT;
-      case RobotDSLPackage.TRIGGER__EVENT:
-        return event != null;
+      case RobotDSLPackage.TRIGGER__NEG:
+        return neg != NEG_EDEFAULT;
+      case RobotDSLPackage.TRIGGER__FLAG:
+        return flag != null;
       case RobotDSLPackage.TRIGGER__SENSOR:
         return sensor != SENSOR_EDEFAULT;
       case RobotDSLPackage.TRIGGER__COLOR:
@@ -457,6 +512,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (boolType: ");
     result.append(boolType);
+    result.append(", neg: ");
+    result.append(neg);
     result.append(", sensor: ");
     result.append(sensor);
     result.append(", color: ");

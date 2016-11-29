@@ -68,11 +68,11 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
     {
       case RobotDSLPackage.MISSION_LIST: return createMissionList();
       case RobotDSLPackage.MISSION: return createMission();
-      case RobotDSLPackage.BEHAVIOR: return createBehavior();
+      case RobotDSLPackage.TASK: return createTask();
       case RobotDSLPackage.ACTION: return createAction();
-      case RobotDSLPackage.REACTION: return createReaction();
-      case RobotDSLPackage.EVENT: return createEvent();
       case RobotDSLPackage.TRIGGER: return createTrigger();
+      case RobotDSLPackage.FLAG: return createFlag();
+      case RobotDSLPackage.TIME: return createTime();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -102,8 +102,8 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
         return createColorFromString(eDataType, initialValue);
       case RobotDSLPackage.BOOL:
         return createBoolFromString(eDataType, initialValue);
-      case RobotDSLPackage.REPEAT:
-        return createRepeatFromString(eDataType, initialValue);
+      case RobotDSLPackage.NEGATION:
+        return createNegationFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -133,8 +133,8 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
         return convertColorToString(eDataType, instanceValue);
       case RobotDSLPackage.BOOL:
         return convertBoolToString(eDataType, instanceValue);
-      case RobotDSLPackage.REPEAT:
-        return convertRepeatToString(eDataType, instanceValue);
+      case RobotDSLPackage.NEGATION:
+        return convertNegationToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -167,10 +167,10 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Behavior createBehavior()
+  public Task createTask()
   {
-    BehaviorImpl behavior = new BehaviorImpl();
-    return behavior;
+    TaskImpl task = new TaskImpl();
+    return task;
   }
 
   /**
@@ -189,32 +189,32 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Reaction createReaction()
-  {
-    ReactionImpl reaction = new ReactionImpl();
-    return reaction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Event createEvent()
-  {
-    EventImpl event = new EventImpl();
-    return event;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Trigger createTrigger()
   {
     TriggerImpl trigger = new TriggerImpl();
     return trigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Flag createFlag()
+  {
+    FlagImpl flag = new FlagImpl();
+    return flag;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Time createTime()
+  {
+    TimeImpl time = new TimeImpl();
+    return time;
   }
 
   /**
@@ -376,9 +376,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Repeat createRepeatFromString(EDataType eDataType, String initialValue)
+  public Negation createNegationFromString(EDataType eDataType, String initialValue)
   {
-    Repeat result = Repeat.get(initialValue);
+    Negation result = Negation.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -388,7 +388,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertRepeatToString(EDataType eDataType, Object instanceValue)
+  public String convertNegationToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

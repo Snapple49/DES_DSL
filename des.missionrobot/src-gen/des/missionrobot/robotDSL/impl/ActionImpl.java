@@ -5,7 +5,9 @@ package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Action;
 import des.missionrobot.robotDSL.ArmOp;
+import des.missionrobot.robotDSL.Bool;
 import des.missionrobot.robotDSL.Direction;
+import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Sound;
 import des.missionrobot.robotDSL.Speed;
@@ -13,6 +15,7 @@ import des.missionrobot.robotDSL.Speed;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -31,6 +34,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDegr <em>Degr</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSound <em>Sound</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getFlag <em>Flag</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getBool <em>Bool</em>}</li>
  * </ul>
  *
  * @generated
@@ -156,6 +161,36 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * @ordered
    */
   protected Sound sound = SOUND_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getFlag() <em>Flag</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFlag()
+   * @generated
+   * @ordered
+   */
+  protected Flag flag;
+
+  /**
+   * The default value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBool()
+   * @generated
+   * @ordered
+   */
+  protected static final Bool BOOL_EDEFAULT = Bool.L;
+
+  /**
+   * The cached value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBool()
+   * @generated
+   * @ordered
+   */
+  protected Bool bool = BOOL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -321,6 +356,72 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
+  public Flag getFlag()
+  {
+    if (flag != null && flag.eIsProxy())
+    {
+      InternalEObject oldFlag = (InternalEObject)flag;
+      flag = (Flag)eResolveProxy(oldFlag);
+      if (flag != oldFlag)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RobotDSLPackage.ACTION__FLAG, oldFlag, flag));
+      }
+    }
+    return flag;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Flag basicGetFlag()
+  {
+    return flag;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFlag(Flag newFlag)
+  {
+    Flag oldFlag = flag;
+    flag = newFlag;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__FLAG, oldFlag, flag));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Bool getBool()
+  {
+    return bool;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBool(Bool newBool)
+  {
+    Bool oldBool = bool;
+    bool = newBool == null ? BOOL_EDEFAULT : newBool;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__BOOL, oldBool, bool));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -338,6 +439,11 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return getOp();
       case RobotDSLPackage.ACTION__SOUND:
         return getSound();
+      case RobotDSLPackage.ACTION__FLAG:
+        if (resolve) return getFlag();
+        return basicGetFlag();
+      case RobotDSLPackage.ACTION__BOOL:
+        return getBool();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -369,6 +475,12 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return;
       case RobotDSLPackage.ACTION__SOUND:
         setSound((Sound)newValue);
+        return;
+      case RobotDSLPackage.ACTION__FLAG:
+        setFlag((Flag)newValue);
+        return;
+      case RobotDSLPackage.ACTION__BOOL:
+        setBool((Bool)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -402,6 +514,12 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case RobotDSLPackage.ACTION__SOUND:
         setSound(SOUND_EDEFAULT);
         return;
+      case RobotDSLPackage.ACTION__FLAG:
+        setFlag((Flag)null);
+        return;
+      case RobotDSLPackage.ACTION__BOOL:
+        setBool(BOOL_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -428,6 +546,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return op != OP_EDEFAULT;
       case RobotDSLPackage.ACTION__SOUND:
         return sound != SOUND_EDEFAULT;
+      case RobotDSLPackage.ACTION__FLAG:
+        return flag != null;
+      case RobotDSLPackage.ACTION__BOOL:
+        return bool != BOOL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -455,6 +577,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
     result.append(op);
     result.append(", sound: ");
     result.append(sound);
+    result.append(", bool: ");
+    result.append(bool);
     result.append(')');
     return result.toString();
   }

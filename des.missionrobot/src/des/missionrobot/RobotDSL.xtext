@@ -7,16 +7,16 @@ MissionList:
 
 Mission:
 	'Mission' name = ID
-	'Behaviors:' behaviorList += Behavior+
-	'Goal:' goalEvents += Event+
+	'Flags:' flagsList += Flag*
+	'Tasks:' behaviorList += Task+
+	'Goal:' ('Condition:'goalEvents += Trigger+)? ('timeout' timeout = Time)? ('Actions:' finishActions += Action+)?
 ;
 
-Behavior:
-	'Behavior:' name = ID
+Task:
+	'Task:' name = ID
 	'priority:' prio = INT
-	(('Triggers:' (triggerList += Trigger+) | flag = [Flag] 'is' bool = Bool )
-	('Reactions:' reactionList += Reaction+)?)?
-	('Actions:' actionList += Action+)?
+	('Triggers:' triggerList += Trigger+)?
+	'Actions:' actionList += Action+
 ;
 
 
@@ -25,28 +25,22 @@ Action:
 	'Turn' dir = Direction degr = INT 'deg' |
 	'Arm' op = ArmOp |
 	'Play' 'sound' sound = Sound |
-	'Update' flag = Flag 'to' bool = Bool
-;
-
-Reaction:
-	'if' trig = [Trigger] 'triggered' 'Do:' reactions += Action+
-;
-
-Event:
-	('Event:' name = ID 
-	(repeat = Repeat)?) |
-	'Time:' time = INT 'minutes'
+	'Update' flag = [Flag] 'to' bool = Bool
 ;
 
 Trigger: 
 	(boolType = Bool)? 
-	name = ID
+	((neg = Negation)? flag = [Flag] |
 	sensor = Sensor
-	(('is' color = Color) | ('distance' bool = Bool 'than' distance = INT 'cm' ))
+	(('is' color = Color) | ('distance' bool = Bool 'than' distance = INT 'cm' )))
 ;
 
 Flag:
-	'Flag' name = ID 'is' bool = Bool
+	name = ID ('is' bool = Bool)?
+;
+
+Time:
+	'Time:' sec = INT 'sec'
 ;
 
 enum Direction:
@@ -77,13 +71,16 @@ enum Sensor:
 	LEFTLIGHT = 'LeftLight' |
 	RIGHTLIGHT = 'RightLight' |
 	BACKUS = 'RearHeight' |
-	FRONTUS = 'FrontDistance'
+	FRONTUS = 'FrontDistance' 
 	
 ;
 
 enum Color:
 	RED = 'red' |
-	WHITE = 'white'
+	WHITE = 'white' |
+	BLACK = 'black' |
+	GREEN = 'green' |
+	BLUE = 'blue'
 ;
 
 enum Bool:
@@ -94,8 +91,6 @@ enum Bool:
 	TRUE = 'true' |
 	FALSE = 'false'
 ;
-
-enum Repeat:
-	ONCE = 'once' |
-	REPEAT = 'repeatable'
+enum Negation:
+	NOT = 'not'
 ;

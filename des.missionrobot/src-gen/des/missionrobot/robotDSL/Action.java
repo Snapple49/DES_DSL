@@ -20,6 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getFlag <em>Flag</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getBool <em>Bool</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction()
@@ -195,5 +197,60 @@ public interface Action extends EObject
    * @generated
    */
   void setSound(Sound value);
+
+  /**
+   * Returns the value of the '<em><b>Flag</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Flag</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Flag</em>' reference.
+   * @see #setFlag(Flag)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Flag()
+   * @model
+   * @generated
+   */
+  Flag getFlag();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getFlag <em>Flag</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Flag</em>' reference.
+   * @see #getFlag()
+   * @generated
+   */
+  void setFlag(Flag value);
+
+  /**
+   * Returns the value of the '<em><b>Bool</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Bool}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Bool</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Bool</em>' attribute.
+   * @see des.missionrobot.robotDSL.Bool
+   * @see #setBool(Bool)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Bool()
+   * @model
+   * @generated
+   */
+  Bool getBool();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getBool <em>Bool</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Bool</em>' attribute.
+   * @see des.missionrobot.robotDSL.Bool
+   * @see #getBool()
+   * @generated
+   */
+  void setBool(Bool value);
 
 } // Action

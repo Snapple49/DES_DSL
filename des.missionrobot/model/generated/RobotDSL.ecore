@@ -7,18 +7,22 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mission">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flagsList" upperBound="-1"
+        eType="#//Flag" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviorList" upperBound="-1"
-        eType="#//Behavior" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="goalEvents" unique="false"
-        upperBound="-1" eType="#//Event"/>
+        eType="#//Task" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goalEvents" upperBound="-1"
+        eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeout" eType="#//Time"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finishActions" upperBound="-1"
+        eType="#//Action" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Behavior">
+  <eClassifiers xsi:type="ecore:EClass" name="Task">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggerList" upperBound="-1"
         eType="#//Trigger" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reactionList" upperBound="-1"
-        eType="#//Reaction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actionList" upperBound="-1"
         eType="#//Action" containment="true"/>
   </eClassifiers>
@@ -29,24 +33,24 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="degr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="#//ArmOp"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sound" eType="#//Sound"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Reaction">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//Event"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reactions" upperBound="-1"
-        eType="#//Action" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Event">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repeat" eType="#//Repeat"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flag" eType="#//Flag"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bool" eType="#//Bool"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boolType" eType="#//Bool"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="neg" eType="#//Negation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flag" eType="#//Flag"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensor" eType="#//Sensor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bool" eType="#//Bool"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Flag">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bool" eType="#//Bool"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Time">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Direction">
     <eLiterals name="FORWARD" literal="forward"/>
@@ -77,15 +81,19 @@
   <eClassifiers xsi:type="ecore:EEnum" name="Color">
     <eLiterals name="RED" literal="red"/>
     <eLiterals name="WHITE" value="1" literal="white"/>
+    <eLiterals name="BLACK" value="2" literal="black"/>
+    <eLiterals name="GREEN" value="3" literal="green"/>
+    <eLiterals name="BLUE" value="4" literal="blue"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Bool">
     <eLiterals name="L" literal="less"/>
     <eLiterals name="G" value="1" literal="greater"/>
     <eLiterals name="AND" value="2" literal="and"/>
     <eLiterals name="OR" value="3" literal="or"/>
+    <eLiterals name="TRUE" value="4" literal="true"/>
+    <eLiterals name="FALSE" value="5" literal="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Repeat">
-    <eLiterals name="ONCE" literal="once"/>
-    <eLiterals name="REPEAT" value="1" literal="repeatable"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Negation">
+    <eLiterals name="NOT" literal="not"/>
   </eClassifiers>
 </ecore:EPackage>

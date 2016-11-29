@@ -17,8 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getName <em>Name</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Mission#getFlagsList <em>Flags List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getBehaviorList <em>Behavior List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getGoalEvents <em>Goal Events</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Mission#getTimeout <em>Timeout</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Mission#getFinishActions <em>Finish Actions</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission()
@@ -54,8 +57,24 @@ public interface Mission extends EObject
   void setName(String value);
 
   /**
+   * Returns the value of the '<em><b>Flags List</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Flag}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Flags List</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Flags List</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_FlagsList()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Flag> getFlagsList();
+
+  /**
    * Returns the value of the '<em><b>Behavior List</b></em>' containment reference list.
-   * The list contents are of type {@link des.missionrobot.robotDSL.Behavior}.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Task}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Behavior List</em>' containment reference list isn't clear,
@@ -67,22 +86,64 @@ public interface Mission extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Behavior> getBehaviorList();
+  EList<Task> getBehaviorList();
 
   /**
-   * Returns the value of the '<em><b>Goal Events</b></em>' reference list.
-   * The list contents are of type {@link des.missionrobot.robotDSL.Event}.
+   * Returns the value of the '<em><b>Goal Events</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Trigger}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Goal Events</em>' reference list isn't clear,
+   * If the meaning of the '<em>Goal Events</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Goal Events</em>' reference list.
+   * @return the value of the '<em>Goal Events</em>' containment reference list.
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_GoalEvents()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  EList<Event> getGoalEvents();
+  EList<Trigger> getGoalEvents();
+
+  /**
+   * Returns the value of the '<em><b>Timeout</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Timeout</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Timeout</em>' containment reference.
+   * @see #setTimeout(Time)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_Timeout()
+   * @model containment="true"
+   * @generated
+   */
+  Time getTimeout();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Mission#getTimeout <em>Timeout</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Timeout</em>' containment reference.
+   * @see #getTimeout()
+   * @generated
+   */
+  void setTimeout(Time value);
+
+  /**
+   * Returns the value of the '<em><b>Finish Actions</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Action}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Finish Actions</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Finish Actions</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_FinishActions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Action> getFinishActions();
 
 } // Mission

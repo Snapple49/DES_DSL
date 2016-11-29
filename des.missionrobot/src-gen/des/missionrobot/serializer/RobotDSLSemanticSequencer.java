@@ -4,12 +4,12 @@
 package des.missionrobot.serializer;
 
 import com.google.inject.Inject;
-import des.missionrobot.robotDSL.Behavior;
-import des.missionrobot.robotDSL.Event;
+import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.MissionList;
-import des.missionrobot.robotDSL.Reaction;
 import des.missionrobot.robotDSL.RobotDSLPackage;
+import des.missionrobot.robotDSL.Task;
+import des.missionrobot.robotDSL.Time;
 import des.missionrobot.robotDSL.Trigger;
 import des.missionrobot.services.RobotDSLGrammarAccess;
 import java.util.Set;
@@ -19,7 +19,9 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
+import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
 public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -38,11 +40,8 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case RobotDSLPackage.ACTION:
 				sequence_Action(context, (des.missionrobot.robotDSL.Action) semanticObject); 
 				return; 
-			case RobotDSLPackage.BEHAVIOR:
-				sequence_Behavior(context, (Behavior) semanticObject); 
-				return; 
-			case RobotDSLPackage.EVENT:
-				sequence_Event(context, (Event) semanticObject); 
+			case RobotDSLPackage.FLAG:
+				sequence_Flag(context, (Flag) semanticObject); 
 				return; 
 			case RobotDSLPackage.MISSION:
 				sequence_Mission(context, (Mission) semanticObject); 
@@ -50,8 +49,11 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case RobotDSLPackage.MISSION_LIST:
 				sequence_MissionList(context, (MissionList) semanticObject); 
 				return; 
-			case RobotDSLPackage.REACTION:
-				sequence_Reaction(context, (Reaction) semanticObject); 
+			case RobotDSLPackage.TASK:
+				sequence_Task(context, (Task) semanticObject); 
+				return; 
+			case RobotDSLPackage.TIME:
+				sequence_Time(context, (Time) semanticObject); 
 				return; 
 			case RobotDSLPackage.TRIGGER:
 				sequence_Trigger(context, (Trigger) semanticObject); 
@@ -66,7 +68,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Action returns Action
 	 *
 	 * Constraint:
-	 *     ((dir=Direction duration=INT? speed=Speed?) | (dir=Direction degr=INT) | op=ArmOp | sound=Sound)
+	 *     ((dir=Direction duration=INT? speed=Speed?) | (dir=Direction degr=INT) | op=ArmOp | sound=Sound | (flag=[Flag|ID] bool=Bool))
 	 */
 	protected void sequence_Action(ISerializationContext context, des.missionrobot.robotDSL.Action semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -75,24 +77,12 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     Behavior returns Behavior
+	 *     Flag returns Flag
 	 *
 	 * Constraint:
-	 *     (name=ID prio=INT (triggerList+=Trigger+ reactionList+=Reaction*)? actionList+=Action*)
+	 *     (name=ID bool=Bool?)
 	 */
-	protected void sequence_Behavior(ISerializationContext context, Behavior semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Event returns Event
-	 *
-	 * Constraint:
-	 *     ((name=ID repeat=Repeat?) | time=INT)
-	 */
-	protected void sequence_Event(ISerializationContext context, Event semanticObject) {
+	protected void sequence_Flag(ISerializationContext context, Flag semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -114,7 +104,14 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Mission returns Mission
 	 *
 	 * Constraint:
-	 *     (name=ID behaviorList+=Behavior+ goalEvents+=[Event|ID])
+	 *     (
+	 *         name=ID 
+	 *         flagsList+=Flag* 
+	 *         behaviorList+=Task+ 
+	 *         goalEvents+=Trigger* 
+	 *         timeout=Time? 
+	 *         finishActions+=Action*
+	 *     )
 	 */
 	protected void sequence_Mission(ISerializationContext context, Mission semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -123,13 +120,31 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     Reaction returns Reaction
+	 *     Task returns Task
 	 *
 	 * Constraint:
-	 *     (event=[Event|ID] reactions+=Action+)
+	 *     (name=ID prio=INT triggerList+=Trigger* actionList+=Action+)
 	 */
-	protected void sequence_Reaction(ISerializationContext context, Reaction semanticObject) {
+	protected void sequence_Task(ISerializationContext context, Task semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Time returns Time
+	 *
+	 * Constraint:
+	 *     sec=INT
+	 */
+	protected void sequence_Time(ISerializationContext context, Time semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.TIME__SEC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.TIME__SEC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTimeAccess().getSecINTTerminalRuleCall_1_0(), semanticObject.getSec());
+		feeder.finish();
 	}
 	
 	
@@ -138,7 +153,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Trigger returns Trigger
 	 *
 	 * Constraint:
-	 *     (boolType=Bool? event=[Event|ID]? sensor=Sensor (color=Color | (bool=Bool distance=INT)))
+	 *     (boolType=Bool? ((neg=Negation? flag=[Flag|ID]) | (sensor=Sensor (color=Color | (bool=Bool distance=INT)))))
 	 */
 	protected void sequence_Trigger(ISerializationContext context, Trigger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

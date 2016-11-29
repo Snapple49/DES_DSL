@@ -3,20 +3,10 @@
  */
 package des.missionrobot.generator;
 
-import com.google.common.base.Objects;
-import des.missionrobot.generator.BehaviorMaker;
-import des.missionrobot.generator.JavaGenerator;
-import des.missionrobot.robotDSL.Behavior;
-import des.missionrobot.robotDSL.Mission;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -27,28 +17,9 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class RobotDSLGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    EObject _head = IteratorExtensions.<EObject>head(_allContents);
-    final Mission root = ((Mission) _head);
-    boolean _notEquals = (!Objects.equal(root, null));
-    if (_notEquals) {
-      URI _uRI = resource.getURI();
-      String _lastSegment = _uRI.lastSegment();
-      String _plus = ("generated/" + _lastSegment);
-      String path = (_plus + "/");
-      String _name = root.getName();
-      String _plus_1 = (path + _name);
-      String _plus_2 = (_plus_1 + ".java");
-      CharSequence _arbitratorMain = JavaGenerator.arbitratorMain(root);
-      fsa.generateFile(_plus_2, _arbitratorMain);
-      EList<Behavior> _behaviorList = root.getBehaviorList();
-      for (final Behavior b : _behaviorList) {
-        String _name_1 = b.getName();
-        String _plus_3 = (path + _name_1);
-        String _plus_4 = (_plus_3 + ".java");
-        CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(b);
-        fsa.generateFile(_plus_4, _makeBehaviorClass);
-      }
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nBehavior cannot be resolved to a type."
+      + "\nThe method makeBehaviorClass(Object) from the type BehaviorMaker refers to the missing type Object"
+      + "\nname cannot be resolved");
   }
 }

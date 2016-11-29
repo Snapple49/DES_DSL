@@ -15,7 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getBoolType <em>Bool Type</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Trigger#getEvent <em>Event</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getNeg <em>Neg</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getFlag <em>Flag</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getBool <em>Bool</em>}</li>
@@ -58,30 +59,59 @@ public interface Trigger extends EObject
   void setBoolType(Bool value);
 
   /**
-   * Returns the value of the '<em><b>Event</b></em>' reference.
+   * Returns the value of the '<em><b>Neg</b></em>' attribute.
+   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Negation}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Event</em>' reference isn't clear,
+   * If the meaning of the '<em>Neg</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Event</em>' reference.
-   * @see #setEvent(Event)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Event()
+   * @return the value of the '<em>Neg</em>' attribute.
+   * @see des.missionrobot.robotDSL.Negation
+   * @see #setNeg(Negation)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Neg()
    * @model
    * @generated
    */
-  Event getEvent();
+  Negation getNeg();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getEvent <em>Event</em>}' reference.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getNeg <em>Neg</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Event</em>' reference.
-   * @see #getEvent()
+   * @param value the new value of the '<em>Neg</em>' attribute.
+   * @see des.missionrobot.robotDSL.Negation
+   * @see #getNeg()
    * @generated
    */
-  void setEvent(Event value);
+  void setNeg(Negation value);
+
+  /**
+   * Returns the value of the '<em><b>Flag</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Flag</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Flag</em>' reference.
+   * @see #setFlag(Flag)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Flag()
+   * @model
+   * @generated
+   */
+  Flag getFlag();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getFlag <em>Flag</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Flag</em>' reference.
+   * @see #getFlag()
+   * @generated
+   */
+  void setFlag(Flag value);
 
   /**
    * Returns the value of the '<em><b>Sensor</b></em>' attribute.

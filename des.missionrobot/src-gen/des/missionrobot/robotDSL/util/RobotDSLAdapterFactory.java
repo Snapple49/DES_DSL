@@ -86,9 +86,9 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
         return createMissionAdapter();
       }
       @Override
-      public Adapter caseBehavior(Behavior object)
+      public Adapter caseTask(Task object)
       {
-        return createBehaviorAdapter();
+        return createTaskAdapter();
       }
       @Override
       public Adapter caseAction(Action object)
@@ -96,19 +96,19 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
         return createActionAdapter();
       }
       @Override
-      public Adapter caseReaction(Reaction object)
-      {
-        return createReactionAdapter();
-      }
-      @Override
-      public Adapter caseEvent(Event object)
-      {
-        return createEventAdapter();
-      }
-      @Override
       public Adapter caseTrigger(Trigger object)
       {
         return createTriggerAdapter();
+      }
+      @Override
+      public Adapter caseFlag(Flag object)
+      {
+        return createFlagAdapter();
+      }
+      @Override
+      public Adapter caseTime(Time object)
+      {
+        return createTimeAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -163,16 +163,16 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Behavior <em>Behavior</em>}'.
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Task <em>Task</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Behavior
+   * @see des.missionrobot.robotDSL.Task
    * @generated
    */
-  public Adapter createBehaviorAdapter()
+  public Adapter createTaskAdapter()
   {
     return null;
   }
@@ -193,36 +193,6 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Reaction <em>Reaction</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Reaction
-   * @generated
-   */
-  public Adapter createReactionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Event <em>Event</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see des.missionrobot.robotDSL.Event
-   * @generated
-   */
-  public Adapter createEventAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Trigger <em>Trigger</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -233,6 +203,36 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTriggerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Flag <em>Flag</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see des.missionrobot.robotDSL.Flag
+   * @generated
+   */
+  public Adapter createFlagAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Time <em>Time</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see des.missionrobot.robotDSL.Time
+   * @generated
+   */
+  public Adapter createTimeAdapter()
   {
     return null;
   }

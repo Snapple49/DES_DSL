@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Mission'", "'Behaviors:'", "'Goal:'", "'Behavior:'", "'priority:'", "'Triggers:'", "'Reactions:'", "'Actions:'", "'Move'", "'for'", "'sec'", "'at'", "'speed'", "'Turn'", "'deg'", "'Arm'", "'Play'", "'sound'", "'if'", "'triggered'", "'Do:'", "'is'", "'distance'", "'than'", "'cm'", "'forward'", "'backward'", "'left'", "'right'", "'high'", "'medium'", "'low'", "'raise'", "'lower'", "'buzz'", "'fanfare'", "'Color'", "'LeftLight'", "'RightLight'", "'RearHeight'", "'FrontDistance'", "'red'", "'white'", "'less'", "'greater'", "'and'", "'or'", "'once'", "'repeatable'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Mission'", "'Flags:'", "'Tasks:'", "'Goal:'", "'Condition:'", "'timeout'", "'Actions:'", "'Task:'", "'priority:'", "'Triggers:'", "'Move'", "'for'", "'sec'", "'at'", "'speed'", "'Turn'", "'deg'", "'Arm'", "'Play'", "'sound'", "'Update'", "'to'", "'is'", "'distance'", "'than'", "'cm'", "'Time:'", "'forward'", "'backward'", "'left'", "'right'", "'high'", "'medium'", "'low'", "'raise'", "'lower'", "'buzz'", "'fanfare'", "'Color'", "'LeftLight'", "'RightLight'", "'RearHeight'", "'FrontDistance'", "'red'", "'white'", "'black'", "'green'", "'blue'", "'less'", "'greater'", "'and'", "'or'", "'true'", "'false'", "'not'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -43,6 +43,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     public static final int T__52=52;
     public static final int T__53=53;
     public static final int T__54=54;
+    public static final int T__60=60;
+    public static final int T__61=61;
     public static final int RULE_ID=4;
     public static final int T__26=26;
     public static final int T__27=27;
@@ -54,8 +56,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
+    public static final int T__62=62;
+    public static final int T__63=63;
     public static final int T__20=20;
+    public static final int T__64=64;
     public static final int T__21=21;
+    public static final int T__65=65;
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__37=37;
@@ -282,7 +288,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMission"
-    // InternalRobotDSL.g:108:1: ruleMission returns [EObject current=null] : (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Behaviors:' ( (lv_behaviorList_3_0= ruleBehavior ) )+ otherlv_4= 'Goal:' ( (otherlv_5= RULE_ID ) ) ) ;
+    // InternalRobotDSL.g:108:1: ruleMission returns [EObject current=null] : (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Flags:' ( (lv_flagsList_3_0= ruleFlag ) )* otherlv_4= 'Tasks:' ( (lv_behaviorList_5_0= ruleTask ) )+ otherlv_6= 'Goal:' (otherlv_7= 'Condition:' ( (lv_goalEvents_8_0= ruleTrigger ) )+ )? (otherlv_9= 'timeout' ( (lv_timeout_10_0= ruleTime ) ) )? (otherlv_11= 'Actions:' ( (lv_finishActions_12_0= ruleAction ) )+ )? ) ;
     public final EObject ruleMission() throws RecognitionException {
         EObject current = null;
 
@@ -290,19 +296,30 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         Token lv_name_1_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
-        Token otherlv_5=null;
-        EObject lv_behaviorList_3_0 = null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_9=null;
+        Token otherlv_11=null;
+        EObject lv_flagsList_3_0 = null;
+
+        EObject lv_behaviorList_5_0 = null;
+
+        EObject lv_goalEvents_8_0 = null;
+
+        EObject lv_timeout_10_0 = null;
+
+        EObject lv_finishActions_12_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:114:2: ( (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Behaviors:' ( (lv_behaviorList_3_0= ruleBehavior ) )+ otherlv_4= 'Goal:' ( (otherlv_5= RULE_ID ) ) ) )
-            // InternalRobotDSL.g:115:2: (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Behaviors:' ( (lv_behaviorList_3_0= ruleBehavior ) )+ otherlv_4= 'Goal:' ( (otherlv_5= RULE_ID ) ) )
+            // InternalRobotDSL.g:114:2: ( (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Flags:' ( (lv_flagsList_3_0= ruleFlag ) )* otherlv_4= 'Tasks:' ( (lv_behaviorList_5_0= ruleTask ) )+ otherlv_6= 'Goal:' (otherlv_7= 'Condition:' ( (lv_goalEvents_8_0= ruleTrigger ) )+ )? (otherlv_9= 'timeout' ( (lv_timeout_10_0= ruleTime ) ) )? (otherlv_11= 'Actions:' ( (lv_finishActions_12_0= ruleAction ) )+ )? ) )
+            // InternalRobotDSL.g:115:2: (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Flags:' ( (lv_flagsList_3_0= ruleFlag ) )* otherlv_4= 'Tasks:' ( (lv_behaviorList_5_0= ruleTask ) )+ otherlv_6= 'Goal:' (otherlv_7= 'Condition:' ( (lv_goalEvents_8_0= ruleTrigger ) )+ )? (otherlv_9= 'timeout' ( (lv_timeout_10_0= ruleTime ) ) )? (otherlv_11= 'Actions:' ( (lv_finishActions_12_0= ruleAction ) )+ )? )
             {
-            // InternalRobotDSL.g:115:2: (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Behaviors:' ( (lv_behaviorList_3_0= ruleBehavior ) )+ otherlv_4= 'Goal:' ( (otherlv_5= RULE_ID ) ) )
-            // InternalRobotDSL.g:116:3: otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Behaviors:' ( (lv_behaviorList_3_0= ruleBehavior ) )+ otherlv_4= 'Goal:' ( (otherlv_5= RULE_ID ) )
+            // InternalRobotDSL.g:115:2: (otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Flags:' ( (lv_flagsList_3_0= ruleFlag ) )* otherlv_4= 'Tasks:' ( (lv_behaviorList_5_0= ruleTask ) )+ otherlv_6= 'Goal:' (otherlv_7= 'Condition:' ( (lv_goalEvents_8_0= ruleTrigger ) )+ )? (otherlv_9= 'timeout' ( (lv_timeout_10_0= ruleTime ) ) )? (otherlv_11= 'Actions:' ( (lv_finishActions_12_0= ruleAction ) )+ )? )
+            // InternalRobotDSL.g:116:3: otherlv_0= 'Mission' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Flags:' ( (lv_flagsList_3_0= ruleFlag ) )* otherlv_4= 'Tasks:' ( (lv_behaviorList_5_0= ruleTask ) )+ otherlv_6= 'Goal:' (otherlv_7= 'Condition:' ( (lv_goalEvents_8_0= ruleTrigger ) )+ )? (otherlv_9= 'timeout' ( (lv_timeout_10_0= ruleTime ) ) )? (otherlv_11= 'Actions:' ( (lv_finishActions_12_0= ruleAction ) )+ )?
             {
             otherlv_0=(Token)match(input,11,FOLLOW_4); 
 
@@ -336,32 +353,31 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
             otherlv_2=(Token)match(input,12,FOLLOW_6); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getMissionAccess().getBehaviorsKeyword_2());
+            			newLeafNode(otherlv_2, grammarAccess.getMissionAccess().getFlagsKeyword_2());
             		
-            // InternalRobotDSL.g:142:3: ( (lv_behaviorList_3_0= ruleBehavior ) )+
-            int cnt2=0;
+            // InternalRobotDSL.g:142:3: ( (lv_flagsList_3_0= ruleFlag ) )*
             loop2:
             do {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( (LA2_0==14) ) {
+                if ( (LA2_0==RULE_ID) ) {
                     alt2=1;
                 }
 
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalRobotDSL.g:143:4: (lv_behaviorList_3_0= ruleBehavior )
+            	    // InternalRobotDSL.g:143:4: (lv_flagsList_3_0= ruleFlag )
             	    {
-            	    // InternalRobotDSL.g:143:4: (lv_behaviorList_3_0= ruleBehavior )
-            	    // InternalRobotDSL.g:144:5: lv_behaviorList_3_0= ruleBehavior
+            	    // InternalRobotDSL.g:143:4: (lv_flagsList_3_0= ruleFlag )
+            	    // InternalRobotDSL.g:144:5: lv_flagsList_3_0= ruleFlag
             	    {
 
-            	    					newCompositeNode(grammarAccess.getMissionAccess().getBehaviorListBehaviorParserRuleCall_3_0());
+            	    					newCompositeNode(grammarAccess.getMissionAccess().getFlagsListFlagParserRuleCall_3_0());
             	    				
-            	    pushFollow(FOLLOW_7);
-            	    lv_behaviorList_3_0=ruleBehavior();
+            	    pushFollow(FOLLOW_6);
+            	    lv_flagsList_3_0=ruleFlag();
 
             	    state._fsp--;
 
@@ -371,9 +387,9 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
             	    					}
             	    					add(
             	    						current,
-            	    						"behaviorList",
-            	    						lv_behaviorList_3_0,
-            	    						"des.missionrobot.RobotDSL.Behavior");
+            	    						"flagsList",
+            	    						lv_flagsList_3_0,
+            	    						"des.missionrobot.RobotDSL.Flag");
             	    					afterParserOrEnumRuleCall();
             	    				
 
@@ -384,242 +400,125 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt2 >= 1 ) break loop2;
-                        EarlyExitException eee =
-                            new EarlyExitException(2, input);
-                        throw eee;
+            	    break loop2;
                 }
-                cnt2++;
             } while (true);
 
-            otherlv_4=(Token)match(input,13,FOLLOW_4); 
+            otherlv_4=(Token)match(input,13,FOLLOW_7); 
 
-            			newLeafNode(otherlv_4, grammarAccess.getMissionAccess().getGoalKeyword_4());
+            			newLeafNode(otherlv_4, grammarAccess.getMissionAccess().getTasksKeyword_4());
             		
-            // InternalRobotDSL.g:165:3: ( (otherlv_5= RULE_ID ) )
-            // InternalRobotDSL.g:166:4: (otherlv_5= RULE_ID )
-            {
-            // InternalRobotDSL.g:166:4: (otherlv_5= RULE_ID )
-            // InternalRobotDSL.g:167:5: otherlv_5= RULE_ID
-            {
+            // InternalRobotDSL.g:165:3: ( (lv_behaviorList_5_0= ruleTask ) )+
+            int cnt3=0;
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getMissionRule());
-            					}
-            				
-            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_2); 
-
-            					newLeafNode(otherlv_5, grammarAccess.getMissionAccess().getGoalEventsEventCrossReference_5_0());
-            				
-
-            }
+                if ( (LA3_0==18) ) {
+                    alt3=1;
+                }
 
 
-            }
+                switch (alt3) {
+            	case 1 :
+            	    // InternalRobotDSL.g:166:4: (lv_behaviorList_5_0= ruleTask )
+            	    {
+            	    // InternalRobotDSL.g:166:4: (lv_behaviorList_5_0= ruleTask )
+            	    // InternalRobotDSL.g:167:5: lv_behaviorList_5_0= ruleTask
+            	    {
+
+            	    					newCompositeNode(grammarAccess.getMissionAccess().getBehaviorListTaskParserRuleCall_5_0());
+            	    				
+            	    pushFollow(FOLLOW_8);
+            	    lv_behaviorList_5_0=ruleTask();
+
+            	    state._fsp--;
 
 
-            }
+            	    					if (current==null) {
+            	    						current = createModelElementForParent(grammarAccess.getMissionRule());
+            	    					}
+            	    					add(
+            	    						current,
+            	    						"behaviorList",
+            	    						lv_behaviorList_5_0,
+            	    						"des.missionrobot.RobotDSL.Task");
+            	    					afterParserOrEnumRuleCall();
+            	    				
+
+            	    }
 
 
-            }
+            	    }
+            	    break;
 
+            	default :
+            	    if ( cnt3 >= 1 ) break loop3;
+                        EarlyExitException eee =
+                            new EarlyExitException(3, input);
+                        throw eee;
+                }
+                cnt3++;
+            } while (true);
 
-            	leaveRule();
+            otherlv_6=(Token)match(input,14,FOLLOW_9); 
 
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleMission"
-
-
-    // $ANTLR start "entryRuleBehavior"
-    // InternalRobotDSL.g:182:1: entryRuleBehavior returns [EObject current=null] : iv_ruleBehavior= ruleBehavior EOF ;
-    public final EObject entryRuleBehavior() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleBehavior = null;
-
-
-        try {
-            // InternalRobotDSL.g:182:49: (iv_ruleBehavior= ruleBehavior EOF )
-            // InternalRobotDSL.g:183:2: iv_ruleBehavior= ruleBehavior EOF
-            {
-             newCompositeNode(grammarAccess.getBehaviorRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleBehavior=ruleBehavior();
-
-            state._fsp--;
-
-             current =iv_ruleBehavior; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleBehavior"
-
-
-    // $ANTLR start "ruleBehavior"
-    // InternalRobotDSL.g:189:1: ruleBehavior returns [EObject current=null] : (otherlv_0= 'Behavior:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) ( (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ ) (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )? )? (otherlv_8= 'Actions:' ( (lv_actionList_9_0= ruleAction ) )+ )? ) ;
-    public final EObject ruleBehavior() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_0=null;
-        Token lv_name_1_0=null;
-        Token otherlv_2=null;
-        Token lv_prio_3_0=null;
-        Token otherlv_4=null;
-        Token otherlv_6=null;
-        Token otherlv_8=null;
-        EObject lv_triggerList_5_0 = null;
-
-        EObject lv_reactionList_7_0 = null;
-
-        EObject lv_actionList_9_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalRobotDSL.g:195:2: ( (otherlv_0= 'Behavior:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) ( (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ ) (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )? )? (otherlv_8= 'Actions:' ( (lv_actionList_9_0= ruleAction ) )+ )? ) )
-            // InternalRobotDSL.g:196:2: (otherlv_0= 'Behavior:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) ( (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ ) (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )? )? (otherlv_8= 'Actions:' ( (lv_actionList_9_0= ruleAction ) )+ )? )
-            {
-            // InternalRobotDSL.g:196:2: (otherlv_0= 'Behavior:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) ( (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ ) (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )? )? (otherlv_8= 'Actions:' ( (lv_actionList_9_0= ruleAction ) )+ )? )
-            // InternalRobotDSL.g:197:3: otherlv_0= 'Behavior:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) ( (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ ) (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )? )? (otherlv_8= 'Actions:' ( (lv_actionList_9_0= ruleAction ) )+ )?
-            {
-            otherlv_0=(Token)match(input,14,FOLLOW_4); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getBehaviorAccess().getBehaviorKeyword_0());
+            			newLeafNode(otherlv_6, grammarAccess.getMissionAccess().getGoalKeyword_6());
             		
-            // InternalRobotDSL.g:201:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalRobotDSL.g:202:4: (lv_name_1_0= RULE_ID )
-            {
-            // InternalRobotDSL.g:202:4: (lv_name_1_0= RULE_ID )
-            // InternalRobotDSL.g:203:5: lv_name_1_0= RULE_ID
-            {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_8); 
+            // InternalRobotDSL.g:188:3: (otherlv_7= 'Condition:' ( (lv_goalEvents_8_0= ruleTrigger ) )+ )?
+            int alt5=2;
+            int LA5_0 = input.LA(1);
 
-            					newLeafNode(lv_name_1_0, grammarAccess.getBehaviorAccess().getNameIDTerminalRuleCall_1_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getBehaviorRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"name",
-            						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
-            				
-
+            if ( (LA5_0==15) ) {
+                alt5=1;
             }
-
-
-            }
-
-            otherlv_2=(Token)match(input,15,FOLLOW_9); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getBehaviorAccess().getPriorityKeyword_2());
-            		
-            // InternalRobotDSL.g:223:3: ( (lv_prio_3_0= RULE_INT ) )
-            // InternalRobotDSL.g:224:4: (lv_prio_3_0= RULE_INT )
-            {
-            // InternalRobotDSL.g:224:4: (lv_prio_3_0= RULE_INT )
-            // InternalRobotDSL.g:225:5: lv_prio_3_0= RULE_INT
-            {
-            lv_prio_3_0=(Token)match(input,RULE_INT,FOLLOW_10); 
-
-            					newLeafNode(lv_prio_3_0, grammarAccess.getBehaviorAccess().getPrioINTTerminalRuleCall_3_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getBehaviorRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"prio",
-            						lv_prio_3_0,
-            						"org.eclipse.xtext.common.Terminals.INT");
-            				
-
-            }
-
-
-            }
-
-            // InternalRobotDSL.g:241:3: ( (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ ) (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )? )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
-
-            if ( (LA6_0==16) ) {
-                alt6=1;
-            }
-            switch (alt6) {
+            switch (alt5) {
                 case 1 :
-                    // InternalRobotDSL.g:242:4: (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ ) (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )?
+                    // InternalRobotDSL.g:189:4: otherlv_7= 'Condition:' ( (lv_goalEvents_8_0= ruleTrigger ) )+
                     {
-                    // InternalRobotDSL.g:242:4: (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ )
-                    // InternalRobotDSL.g:243:5: otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+
-                    {
-                    otherlv_4=(Token)match(input,16,FOLLOW_11); 
+                    otherlv_7=(Token)match(input,15,FOLLOW_10); 
 
-                    					newLeafNode(otherlv_4, grammarAccess.getBehaviorAccess().getTriggersKeyword_4_0_0());
-                    				
-                    // InternalRobotDSL.g:247:5: ( (lv_triggerList_5_0= ruleTrigger ) )+
-                    int cnt3=0;
-                    loop3:
+                    				newLeafNode(otherlv_7, grammarAccess.getMissionAccess().getConditionKeyword_7_0());
+                    			
+                    // InternalRobotDSL.g:193:4: ( (lv_goalEvents_8_0= ruleTrigger ) )+
+                    int cnt4=0;
+                    loop4:
                     do {
-                        int alt3=2;
-                        int LA3_0 = input.LA(1);
+                        int alt4=2;
+                        int LA4_0 = input.LA(1);
 
-                        if ( (LA3_0==RULE_ID||(LA3_0>=47 && LA3_0<=51)||(LA3_0>=54 && LA3_0<=57)) ) {
-                            alt3=1;
+                        if ( (LA4_0==RULE_ID||(LA4_0>=49 && LA4_0<=53)||(LA4_0>=59 && LA4_0<=65)) ) {
+                            alt4=1;
                         }
 
 
-                        switch (alt3) {
+                        switch (alt4) {
                     	case 1 :
-                    	    // InternalRobotDSL.g:248:6: (lv_triggerList_5_0= ruleTrigger )
+                    	    // InternalRobotDSL.g:194:5: (lv_goalEvents_8_0= ruleTrigger )
                     	    {
-                    	    // InternalRobotDSL.g:248:6: (lv_triggerList_5_0= ruleTrigger )
-                    	    // InternalRobotDSL.g:249:7: lv_triggerList_5_0= ruleTrigger
+                    	    // InternalRobotDSL.g:194:5: (lv_goalEvents_8_0= ruleTrigger )
+                    	    // InternalRobotDSL.g:195:6: lv_goalEvents_8_0= ruleTrigger
                     	    {
 
-                    	    							newCompositeNode(grammarAccess.getBehaviorAccess().getTriggerListTriggerParserRuleCall_4_0_1_0());
-                    	    						
-                    	    pushFollow(FOLLOW_12);
-                    	    lv_triggerList_5_0=ruleTrigger();
+                    	    						newCompositeNode(grammarAccess.getMissionAccess().getGoalEventsTriggerParserRuleCall_7_1_0());
+                    	    					
+                    	    pushFollow(FOLLOW_11);
+                    	    lv_goalEvents_8_0=ruleTrigger();
 
                     	    state._fsp--;
 
 
-                    	    							if (current==null) {
-                    	    								current = createModelElementForParent(grammarAccess.getBehaviorRule());
-                    	    							}
-                    	    							add(
-                    	    								current,
-                    	    								"triggerList",
-                    	    								lv_triggerList_5_0,
-                    	    								"des.missionrobot.RobotDSL.Trigger");
-                    	    							afterParserOrEnumRuleCall();
-                    	    						
+                    	    						if (current==null) {
+                    	    							current = createModelElementForParent(grammarAccess.getMissionRule());
+                    	    						}
+                    	    						add(
+                    	    							current,
+                    	    							"goalEvents",
+                    	    							lv_goalEvents_8_0,
+                    	    							"des.missionrobot.RobotDSL.Trigger");
+                    	    						afterParserOrEnumRuleCall();
+                    	    					
 
                     	    }
 
@@ -628,89 +527,63 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt3 >= 1 ) break loop3;
+                    	    if ( cnt4 >= 1 ) break loop4;
                                 EarlyExitException eee =
-                                    new EarlyExitException(3, input);
+                                    new EarlyExitException(4, input);
                                 throw eee;
                         }
-                        cnt3++;
+                        cnt4++;
                     } while (true);
 
 
                     }
+                    break;
 
-                    // InternalRobotDSL.g:267:4: (otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+ )?
-                    int alt5=2;
-                    int LA5_0 = input.LA(1);
+            }
 
-                    if ( (LA5_0==17) ) {
-                        alt5=1;
+            // InternalRobotDSL.g:213:3: (otherlv_9= 'timeout' ( (lv_timeout_10_0= ruleTime ) ) )?
+            int alt6=2;
+            int LA6_0 = input.LA(1);
+
+            if ( (LA6_0==16) ) {
+                alt6=1;
+            }
+            switch (alt6) {
+                case 1 :
+                    // InternalRobotDSL.g:214:4: otherlv_9= 'timeout' ( (lv_timeout_10_0= ruleTime ) )
+                    {
+                    otherlv_9=(Token)match(input,16,FOLLOW_12); 
+
+                    				newLeafNode(otherlv_9, grammarAccess.getMissionAccess().getTimeoutKeyword_8_0());
+                    			
+                    // InternalRobotDSL.g:218:4: ( (lv_timeout_10_0= ruleTime ) )
+                    // InternalRobotDSL.g:219:5: (lv_timeout_10_0= ruleTime )
+                    {
+                    // InternalRobotDSL.g:219:5: (lv_timeout_10_0= ruleTime )
+                    // InternalRobotDSL.g:220:6: lv_timeout_10_0= ruleTime
+                    {
+
+                    						newCompositeNode(grammarAccess.getMissionAccess().getTimeoutTimeParserRuleCall_8_1_0());
+                    					
+                    pushFollow(FOLLOW_13);
+                    lv_timeout_10_0=ruleTime();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getMissionRule());
+                    						}
+                    						set(
+                    							current,
+                    							"timeout",
+                    							lv_timeout_10_0,
+                    							"des.missionrobot.RobotDSL.Time");
+                    						afterParserOrEnumRuleCall();
+                    					
+
                     }
-                    switch (alt5) {
-                        case 1 :
-                            // InternalRobotDSL.g:268:5: otherlv_6= 'Reactions:' ( (lv_reactionList_7_0= ruleReaction ) )+
-                            {
-                            otherlv_6=(Token)match(input,17,FOLLOW_13); 
 
-                            					newLeafNode(otherlv_6, grammarAccess.getBehaviorAccess().getReactionsKeyword_4_1_0());
-                            				
-                            // InternalRobotDSL.g:272:5: ( (lv_reactionList_7_0= ruleReaction ) )+
-                            int cnt4=0;
-                            loop4:
-                            do {
-                                int alt4=2;
-                                int LA4_0 = input.LA(1);
-
-                                if ( (LA4_0==29) ) {
-                                    alt4=1;
-                                }
-
-
-                                switch (alt4) {
-                            	case 1 :
-                            	    // InternalRobotDSL.g:273:6: (lv_reactionList_7_0= ruleReaction )
-                            	    {
-                            	    // InternalRobotDSL.g:273:6: (lv_reactionList_7_0= ruleReaction )
-                            	    // InternalRobotDSL.g:274:7: lv_reactionList_7_0= ruleReaction
-                            	    {
-
-                            	    							newCompositeNode(grammarAccess.getBehaviorAccess().getReactionListReactionParserRuleCall_4_1_1_0());
-                            	    						
-                            	    pushFollow(FOLLOW_14);
-                            	    lv_reactionList_7_0=ruleReaction();
-
-                            	    state._fsp--;
-
-
-                            	    							if (current==null) {
-                            	    								current = createModelElementForParent(grammarAccess.getBehaviorRule());
-                            	    							}
-                            	    							add(
-                            	    								current,
-                            	    								"reactionList",
-                            	    								lv_reactionList_7_0,
-                            	    								"des.missionrobot.RobotDSL.Reaction");
-                            	    							afterParserOrEnumRuleCall();
-                            	    						
-
-                            	    }
-
-
-                            	    }
-                            	    break;
-
-                            	default :
-                            	    if ( cnt4 >= 1 ) break loop4;
-                                        EarlyExitException eee =
-                                            new EarlyExitException(4, input);
-                                        throw eee;
-                                }
-                                cnt4++;
-                            } while (true);
-
-
-                            }
-                            break;
 
                     }
 
@@ -720,56 +593,56 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalRobotDSL.g:293:3: (otherlv_8= 'Actions:' ( (lv_actionList_9_0= ruleAction ) )+ )?
+            // InternalRobotDSL.g:238:3: (otherlv_11= 'Actions:' ( (lv_finishActions_12_0= ruleAction ) )+ )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==18) ) {
+            if ( (LA8_0==17) ) {
                 alt8=1;
             }
             switch (alt8) {
                 case 1 :
-                    // InternalRobotDSL.g:294:4: otherlv_8= 'Actions:' ( (lv_actionList_9_0= ruleAction ) )+
+                    // InternalRobotDSL.g:239:4: otherlv_11= 'Actions:' ( (lv_finishActions_12_0= ruleAction ) )+
                     {
-                    otherlv_8=(Token)match(input,18,FOLLOW_15); 
+                    otherlv_11=(Token)match(input,17,FOLLOW_14); 
 
-                    				newLeafNode(otherlv_8, grammarAccess.getBehaviorAccess().getActionsKeyword_5_0());
+                    				newLeafNode(otherlv_11, grammarAccess.getMissionAccess().getActionsKeyword_9_0());
                     			
-                    // InternalRobotDSL.g:298:4: ( (lv_actionList_9_0= ruleAction ) )+
+                    // InternalRobotDSL.g:243:4: ( (lv_finishActions_12_0= ruleAction ) )+
                     int cnt7=0;
                     loop7:
                     do {
                         int alt7=2;
                         int LA7_0 = input.LA(1);
 
-                        if ( (LA7_0==19||LA7_0==24||(LA7_0>=26 && LA7_0<=27)) ) {
+                        if ( (LA7_0==21||LA7_0==26||(LA7_0>=28 && LA7_0<=29)||LA7_0==31) ) {
                             alt7=1;
                         }
 
 
                         switch (alt7) {
                     	case 1 :
-                    	    // InternalRobotDSL.g:299:5: (lv_actionList_9_0= ruleAction )
+                    	    // InternalRobotDSL.g:244:5: (lv_finishActions_12_0= ruleAction )
                     	    {
-                    	    // InternalRobotDSL.g:299:5: (lv_actionList_9_0= ruleAction )
-                    	    // InternalRobotDSL.g:300:6: lv_actionList_9_0= ruleAction
+                    	    // InternalRobotDSL.g:244:5: (lv_finishActions_12_0= ruleAction )
+                    	    // InternalRobotDSL.g:245:6: lv_finishActions_12_0= ruleAction
                     	    {
 
-                    	    						newCompositeNode(grammarAccess.getBehaviorAccess().getActionListActionParserRuleCall_5_1_0());
+                    	    						newCompositeNode(grammarAccess.getMissionAccess().getFinishActionsActionParserRuleCall_9_1_0());
                     	    					
-                    	    pushFollow(FOLLOW_16);
-                    	    lv_actionList_9_0=ruleAction();
+                    	    pushFollow(FOLLOW_15);
+                    	    lv_finishActions_12_0=ruleAction();
 
                     	    state._fsp--;
 
 
                     	    						if (current==null) {
-                    	    							current = createModelElementForParent(grammarAccess.getBehaviorRule());
+                    	    							current = createModelElementForParent(grammarAccess.getMissionRule());
                     	    						}
                     	    						add(
                     	    							current,
-                    	    							"actionList",
-                    	    							lv_actionList_9_0,
+                    	    							"finishActions",
+                    	    							lv_finishActions_12_0,
                     	    							"des.missionrobot.RobotDSL.Action");
                     	    						afterParserOrEnumRuleCall();
                     	    					
@@ -814,11 +687,288 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleBehavior"
+    // $ANTLR end "ruleMission"
+
+
+    // $ANTLR start "entryRuleTask"
+    // InternalRobotDSL.g:267:1: entryRuleTask returns [EObject current=null] : iv_ruleTask= ruleTask EOF ;
+    public final EObject entryRuleTask() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleTask = null;
+
+
+        try {
+            // InternalRobotDSL.g:267:45: (iv_ruleTask= ruleTask EOF )
+            // InternalRobotDSL.g:268:2: iv_ruleTask= ruleTask EOF
+            {
+             newCompositeNode(grammarAccess.getTaskRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleTask=ruleTask();
+
+            state._fsp--;
+
+             current =iv_ruleTask; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTask"
+
+
+    // $ANTLR start "ruleTask"
+    // InternalRobotDSL.g:274:1: ruleTask returns [EObject current=null] : (otherlv_0= 'Task:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ )? otherlv_6= 'Actions:' ( (lv_actionList_7_0= ruleAction ) )+ ) ;
+    public final EObject ruleTask() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token lv_prio_3_0=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
+        EObject lv_triggerList_5_0 = null;
+
+        EObject lv_actionList_7_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:280:2: ( (otherlv_0= 'Task:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ )? otherlv_6= 'Actions:' ( (lv_actionList_7_0= ruleAction ) )+ ) )
+            // InternalRobotDSL.g:281:2: (otherlv_0= 'Task:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ )? otherlv_6= 'Actions:' ( (lv_actionList_7_0= ruleAction ) )+ )
+            {
+            // InternalRobotDSL.g:281:2: (otherlv_0= 'Task:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ )? otherlv_6= 'Actions:' ( (lv_actionList_7_0= ruleAction ) )+ )
+            // InternalRobotDSL.g:282:3: otherlv_0= 'Task:' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'priority:' ( (lv_prio_3_0= RULE_INT ) ) (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ )? otherlv_6= 'Actions:' ( (lv_actionList_7_0= ruleAction ) )+
+            {
+            otherlv_0=(Token)match(input,18,FOLLOW_4); 
+
+            			newLeafNode(otherlv_0, grammarAccess.getTaskAccess().getTaskKeyword_0());
+            		
+            // InternalRobotDSL.g:286:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalRobotDSL.g:287:4: (lv_name_1_0= RULE_ID )
+            {
+            // InternalRobotDSL.g:287:4: (lv_name_1_0= RULE_ID )
+            // InternalRobotDSL.g:288:5: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_16); 
+
+            					newLeafNode(lv_name_1_0, grammarAccess.getTaskAccess().getNameIDTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getTaskRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"name",
+            						lv_name_1_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,19,FOLLOW_17); 
+
+            			newLeafNode(otherlv_2, grammarAccess.getTaskAccess().getPriorityKeyword_2());
+            		
+            // InternalRobotDSL.g:308:3: ( (lv_prio_3_0= RULE_INT ) )
+            // InternalRobotDSL.g:309:4: (lv_prio_3_0= RULE_INT )
+            {
+            // InternalRobotDSL.g:309:4: (lv_prio_3_0= RULE_INT )
+            // InternalRobotDSL.g:310:5: lv_prio_3_0= RULE_INT
+            {
+            lv_prio_3_0=(Token)match(input,RULE_INT,FOLLOW_18); 
+
+            					newLeafNode(lv_prio_3_0, grammarAccess.getTaskAccess().getPrioINTTerminalRuleCall_3_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getTaskRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"prio",
+            						lv_prio_3_0,
+            						"org.eclipse.xtext.common.Terminals.INT");
+            				
+
+            }
+
+
+            }
+
+            // InternalRobotDSL.g:326:3: (otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+ )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
+
+            if ( (LA10_0==20) ) {
+                alt10=1;
+            }
+            switch (alt10) {
+                case 1 :
+                    // InternalRobotDSL.g:327:4: otherlv_4= 'Triggers:' ( (lv_triggerList_5_0= ruleTrigger ) )+
+                    {
+                    otherlv_4=(Token)match(input,20,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getTaskAccess().getTriggersKeyword_4_0());
+                    			
+                    // InternalRobotDSL.g:331:4: ( (lv_triggerList_5_0= ruleTrigger ) )+
+                    int cnt9=0;
+                    loop9:
+                    do {
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
+
+                        if ( (LA9_0==RULE_ID||(LA9_0>=49 && LA9_0<=53)||(LA9_0>=59 && LA9_0<=65)) ) {
+                            alt9=1;
+                        }
+
+
+                        switch (alt9) {
+                    	case 1 :
+                    	    // InternalRobotDSL.g:332:5: (lv_triggerList_5_0= ruleTrigger )
+                    	    {
+                    	    // InternalRobotDSL.g:332:5: (lv_triggerList_5_0= ruleTrigger )
+                    	    // InternalRobotDSL.g:333:6: lv_triggerList_5_0= ruleTrigger
+                    	    {
+
+                    	    						newCompositeNode(grammarAccess.getTaskAccess().getTriggerListTriggerParserRuleCall_4_1_0());
+                    	    					
+                    	    pushFollow(FOLLOW_19);
+                    	    lv_triggerList_5_0=ruleTrigger();
+
+                    	    state._fsp--;
+
+
+                    	    						if (current==null) {
+                    	    							current = createModelElementForParent(grammarAccess.getTaskRule());
+                    	    						}
+                    	    						add(
+                    	    							current,
+                    	    							"triggerList",
+                    	    							lv_triggerList_5_0,
+                    	    							"des.missionrobot.RobotDSL.Trigger");
+                    	    						afterParserOrEnumRuleCall();
+                    	    					
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt9 >= 1 ) break loop9;
+                                EarlyExitException eee =
+                                    new EarlyExitException(9, input);
+                                throw eee;
+                        }
+                        cnt9++;
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_6=(Token)match(input,17,FOLLOW_14); 
+
+            			newLeafNode(otherlv_6, grammarAccess.getTaskAccess().getActionsKeyword_5());
+            		
+            // InternalRobotDSL.g:355:3: ( (lv_actionList_7_0= ruleAction ) )+
+            int cnt11=0;
+            loop11:
+            do {
+                int alt11=2;
+                int LA11_0 = input.LA(1);
+
+                if ( (LA11_0==21||LA11_0==26||(LA11_0>=28 && LA11_0<=29)||LA11_0==31) ) {
+                    alt11=1;
+                }
+
+
+                switch (alt11) {
+            	case 1 :
+            	    // InternalRobotDSL.g:356:4: (lv_actionList_7_0= ruleAction )
+            	    {
+            	    // InternalRobotDSL.g:356:4: (lv_actionList_7_0= ruleAction )
+            	    // InternalRobotDSL.g:357:5: lv_actionList_7_0= ruleAction
+            	    {
+
+            	    					newCompositeNode(grammarAccess.getTaskAccess().getActionListActionParserRuleCall_6_0());
+            	    				
+            	    pushFollow(FOLLOW_15);
+            	    lv_actionList_7_0=ruleAction();
+
+            	    state._fsp--;
+
+
+            	    					if (current==null) {
+            	    						current = createModelElementForParent(grammarAccess.getTaskRule());
+            	    					}
+            	    					add(
+            	    						current,
+            	    						"actionList",
+            	    						lv_actionList_7_0,
+            	    						"des.missionrobot.RobotDSL.Action");
+            	    					afterParserOrEnumRuleCall();
+            	    				
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt11 >= 1 ) break loop11;
+                        EarlyExitException eee =
+                            new EarlyExitException(11, input);
+                        throw eee;
+                }
+                cnt11++;
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTask"
 
 
     // $ANTLR start "entryRuleAction"
-    // InternalRobotDSL.g:322:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
+    // InternalRobotDSL.g:378:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
     public final EObject entryRuleAction() throws RecognitionException {
         EObject current = null;
 
@@ -826,8 +976,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRobotDSL.g:322:47: (iv_ruleAction= ruleAction EOF )
-            // InternalRobotDSL.g:323:2: iv_ruleAction= ruleAction EOF
+            // InternalRobotDSL.g:378:47: (iv_ruleAction= ruleAction EOF )
+            // InternalRobotDSL.g:379:2: iv_ruleAction= ruleAction EOF
             {
              newCompositeNode(grammarAccess.getActionRule()); 
             pushFollow(FOLLOW_1);
@@ -854,7 +1004,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAction"
-    // InternalRobotDSL.g:329:1: ruleAction returns [EObject current=null] : ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) ) ;
+    // InternalRobotDSL.g:385:1: ruleAction returns [EObject current=null] : ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) ;
     public final EObject ruleAction() throws RecognitionException {
         EObject current = null;
 
@@ -870,6 +1020,9 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_12=null;
         Token otherlv_14=null;
         Token otherlv_15=null;
+        Token otherlv_17=null;
+        Token otherlv_18=null;
+        Token otherlv_19=null;
         Enumerator lv_dir_1_0 = null;
 
         Enumerator lv_speed_6_0 = null;
@@ -880,65 +1033,72 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
         Enumerator lv_sound_16_0 = null;
 
+        Enumerator lv_bool_20_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:335:2: ( ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) ) )
-            // InternalRobotDSL.g:336:2: ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) )
+            // InternalRobotDSL.g:391:2: ( ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) )
+            // InternalRobotDSL.g:392:2: ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
             {
-            // InternalRobotDSL.g:336:2: ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) )
-            int alt11=4;
+            // InternalRobotDSL.g:392:2: ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
+            int alt14=5;
             switch ( input.LA(1) ) {
-            case 19:
+            case 21:
                 {
-                alt11=1;
-                }
-                break;
-            case 24:
-                {
-                alt11=2;
+                alt14=1;
                 }
                 break;
             case 26:
                 {
-                alt11=3;
+                alt14=2;
                 }
                 break;
-            case 27:
+            case 28:
                 {
-                alt11=4;
+                alt14=3;
+                }
+                break;
+            case 29:
+                {
+                alt14=4;
+                }
+                break;
+            case 31:
+                {
+                alt14=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt11) {
+            switch (alt14) {
                 case 1 :
-                    // InternalRobotDSL.g:337:3: (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
+                    // InternalRobotDSL.g:393:3: (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
                     {
-                    // InternalRobotDSL.g:337:3: (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
-                    // InternalRobotDSL.g:338:4: otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )?
+                    // InternalRobotDSL.g:393:3: (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
+                    // InternalRobotDSL.g:394:4: otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )?
                     {
-                    otherlv_0=(Token)match(input,19,FOLLOW_17); 
+                    otherlv_0=(Token)match(input,21,FOLLOW_20); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getActionAccess().getMoveKeyword_0_0());
                     			
-                    // InternalRobotDSL.g:342:4: ( (lv_dir_1_0= ruleDirection ) )
-                    // InternalRobotDSL.g:343:5: (lv_dir_1_0= ruleDirection )
+                    // InternalRobotDSL.g:398:4: ( (lv_dir_1_0= ruleDirection ) )
+                    // InternalRobotDSL.g:399:5: (lv_dir_1_0= ruleDirection )
                     {
-                    // InternalRobotDSL.g:343:5: (lv_dir_1_0= ruleDirection )
-                    // InternalRobotDSL.g:344:6: lv_dir_1_0= ruleDirection
+                    // InternalRobotDSL.g:399:5: (lv_dir_1_0= ruleDirection )
+                    // InternalRobotDSL.g:400:6: lv_dir_1_0= ruleDirection
                     {
 
                     						newCompositeNode(grammarAccess.getActionAccess().getDirDirectionEnumRuleCall_0_1_0());
                     					
-                    pushFollow(FOLLOW_18);
+                    pushFollow(FOLLOW_21);
                     lv_dir_1_0=ruleDirection();
 
                     state._fsp--;
@@ -960,28 +1120,28 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalRobotDSL.g:361:4: (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )?
-                    int alt9=2;
-                    int LA9_0 = input.LA(1);
+                    // InternalRobotDSL.g:417:4: (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )?
+                    int alt12=2;
+                    int LA12_0 = input.LA(1);
 
-                    if ( (LA9_0==20) ) {
-                        alt9=1;
+                    if ( (LA12_0==22) ) {
+                        alt12=1;
                     }
-                    switch (alt9) {
+                    switch (alt12) {
                         case 1 :
-                            // InternalRobotDSL.g:362:5: otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec'
+                            // InternalRobotDSL.g:418:5: otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec'
                             {
-                            otherlv_2=(Token)match(input,20,FOLLOW_9); 
+                            otherlv_2=(Token)match(input,22,FOLLOW_17); 
 
                             					newLeafNode(otherlv_2, grammarAccess.getActionAccess().getForKeyword_0_2_0());
                             				
-                            // InternalRobotDSL.g:366:5: ( (lv_duration_3_0= RULE_INT ) )
-                            // InternalRobotDSL.g:367:6: (lv_duration_3_0= RULE_INT )
+                            // InternalRobotDSL.g:422:5: ( (lv_duration_3_0= RULE_INT ) )
+                            // InternalRobotDSL.g:423:6: (lv_duration_3_0= RULE_INT )
                             {
-                            // InternalRobotDSL.g:367:6: (lv_duration_3_0= RULE_INT )
-                            // InternalRobotDSL.g:368:7: lv_duration_3_0= RULE_INT
+                            // InternalRobotDSL.g:423:6: (lv_duration_3_0= RULE_INT )
+                            // InternalRobotDSL.g:424:7: lv_duration_3_0= RULE_INT
                             {
-                            lv_duration_3_0=(Token)match(input,RULE_INT,FOLLOW_19); 
+                            lv_duration_3_0=(Token)match(input,RULE_INT,FOLLOW_22); 
 
                             							newLeafNode(lv_duration_3_0, grammarAccess.getActionAccess().getDurationINTTerminalRuleCall_0_2_1_0());
                             						
@@ -1001,7 +1161,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_4=(Token)match(input,21,FOLLOW_20); 
+                            otherlv_4=(Token)match(input,23,FOLLOW_23); 
 
                             					newLeafNode(otherlv_4, grammarAccess.getActionAccess().getSecKeyword_0_2_2());
                             				
@@ -1011,31 +1171,31 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalRobotDSL.g:389:4: (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )?
-                    int alt10=2;
-                    int LA10_0 = input.LA(1);
+                    // InternalRobotDSL.g:445:4: (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )?
+                    int alt13=2;
+                    int LA13_0 = input.LA(1);
 
-                    if ( (LA10_0==22) ) {
-                        alt10=1;
+                    if ( (LA13_0==24) ) {
+                        alt13=1;
                     }
-                    switch (alt10) {
+                    switch (alt13) {
                         case 1 :
-                            // InternalRobotDSL.g:390:5: otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed'
+                            // InternalRobotDSL.g:446:5: otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed'
                             {
-                            otherlv_5=(Token)match(input,22,FOLLOW_21); 
+                            otherlv_5=(Token)match(input,24,FOLLOW_24); 
 
                             					newLeafNode(otherlv_5, grammarAccess.getActionAccess().getAtKeyword_0_3_0());
                             				
-                            // InternalRobotDSL.g:394:5: ( (lv_speed_6_0= ruleSpeed ) )
-                            // InternalRobotDSL.g:395:6: (lv_speed_6_0= ruleSpeed )
+                            // InternalRobotDSL.g:450:5: ( (lv_speed_6_0= ruleSpeed ) )
+                            // InternalRobotDSL.g:451:6: (lv_speed_6_0= ruleSpeed )
                             {
-                            // InternalRobotDSL.g:395:6: (lv_speed_6_0= ruleSpeed )
-                            // InternalRobotDSL.g:396:7: lv_speed_6_0= ruleSpeed
+                            // InternalRobotDSL.g:451:6: (lv_speed_6_0= ruleSpeed )
+                            // InternalRobotDSL.g:452:7: lv_speed_6_0= ruleSpeed
                             {
 
                             							newCompositeNode(grammarAccess.getActionAccess().getSpeedSpeedEnumRuleCall_0_3_1_0());
                             						
-                            pushFollow(FOLLOW_22);
+                            pushFollow(FOLLOW_25);
                             lv_speed_6_0=ruleSpeed();
 
                             state._fsp--;
@@ -1057,7 +1217,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_7=(Token)match(input,23,FOLLOW_2); 
+                            otherlv_7=(Token)match(input,25,FOLLOW_2); 
 
                             					newLeafNode(otherlv_7, grammarAccess.getActionAccess().getSpeedKeyword_0_3_2());
                             				
@@ -1074,25 +1234,25 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:420:3: (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
+                    // InternalRobotDSL.g:476:3: (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
                     {
-                    // InternalRobotDSL.g:420:3: (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
-                    // InternalRobotDSL.g:421:4: otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg'
+                    // InternalRobotDSL.g:476:3: (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
+                    // InternalRobotDSL.g:477:4: otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg'
                     {
-                    otherlv_8=(Token)match(input,24,FOLLOW_17); 
+                    otherlv_8=(Token)match(input,26,FOLLOW_20); 
 
                     				newLeafNode(otherlv_8, grammarAccess.getActionAccess().getTurnKeyword_1_0());
                     			
-                    // InternalRobotDSL.g:425:4: ( (lv_dir_9_0= ruleDirection ) )
-                    // InternalRobotDSL.g:426:5: (lv_dir_9_0= ruleDirection )
+                    // InternalRobotDSL.g:481:4: ( (lv_dir_9_0= ruleDirection ) )
+                    // InternalRobotDSL.g:482:5: (lv_dir_9_0= ruleDirection )
                     {
-                    // InternalRobotDSL.g:426:5: (lv_dir_9_0= ruleDirection )
-                    // InternalRobotDSL.g:427:6: lv_dir_9_0= ruleDirection
+                    // InternalRobotDSL.g:482:5: (lv_dir_9_0= ruleDirection )
+                    // InternalRobotDSL.g:483:6: lv_dir_9_0= ruleDirection
                     {
 
                     						newCompositeNode(grammarAccess.getActionAccess().getDirDirectionEnumRuleCall_1_1_0());
                     					
-                    pushFollow(FOLLOW_9);
+                    pushFollow(FOLLOW_17);
                     lv_dir_9_0=ruleDirection();
 
                     state._fsp--;
@@ -1114,13 +1274,13 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalRobotDSL.g:444:4: ( (lv_degr_10_0= RULE_INT ) )
-                    // InternalRobotDSL.g:445:5: (lv_degr_10_0= RULE_INT )
+                    // InternalRobotDSL.g:500:4: ( (lv_degr_10_0= RULE_INT ) )
+                    // InternalRobotDSL.g:501:5: (lv_degr_10_0= RULE_INT )
                     {
-                    // InternalRobotDSL.g:445:5: (lv_degr_10_0= RULE_INT )
-                    // InternalRobotDSL.g:446:6: lv_degr_10_0= RULE_INT
+                    // InternalRobotDSL.g:501:5: (lv_degr_10_0= RULE_INT )
+                    // InternalRobotDSL.g:502:6: lv_degr_10_0= RULE_INT
                     {
-                    lv_degr_10_0=(Token)match(input,RULE_INT,FOLLOW_23); 
+                    lv_degr_10_0=(Token)match(input,RULE_INT,FOLLOW_26); 
 
                     						newLeafNode(lv_degr_10_0, grammarAccess.getActionAccess().getDegrINTTerminalRuleCall_1_2_0());
                     					
@@ -1140,7 +1300,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,25,FOLLOW_2); 
+                    otherlv_11=(Token)match(input,27,FOLLOW_2); 
 
                     				newLeafNode(otherlv_11, grammarAccess.getActionAccess().getDegKeyword_1_3());
                     			
@@ -1151,20 +1311,20 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRobotDSL.g:468:3: (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) )
+                    // InternalRobotDSL.g:524:3: (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) )
                     {
-                    // InternalRobotDSL.g:468:3: (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) )
-                    // InternalRobotDSL.g:469:4: otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) )
+                    // InternalRobotDSL.g:524:3: (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) )
+                    // InternalRobotDSL.g:525:4: otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) )
                     {
-                    otherlv_12=(Token)match(input,26,FOLLOW_24); 
+                    otherlv_12=(Token)match(input,28,FOLLOW_27); 
 
                     				newLeafNode(otherlv_12, grammarAccess.getActionAccess().getArmKeyword_2_0());
                     			
-                    // InternalRobotDSL.g:473:4: ( (lv_op_13_0= ruleArmOp ) )
-                    // InternalRobotDSL.g:474:5: (lv_op_13_0= ruleArmOp )
+                    // InternalRobotDSL.g:529:4: ( (lv_op_13_0= ruleArmOp ) )
+                    // InternalRobotDSL.g:530:5: (lv_op_13_0= ruleArmOp )
                     {
-                    // InternalRobotDSL.g:474:5: (lv_op_13_0= ruleArmOp )
-                    // InternalRobotDSL.g:475:6: lv_op_13_0= ruleArmOp
+                    // InternalRobotDSL.g:530:5: (lv_op_13_0= ruleArmOp )
+                    // InternalRobotDSL.g:531:6: lv_op_13_0= ruleArmOp
                     {
 
                     						newCompositeNode(grammarAccess.getActionAccess().getOpArmOpEnumRuleCall_2_1_0());
@@ -1198,24 +1358,24 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalRobotDSL.g:494:3: (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) )
+                    // InternalRobotDSL.g:550:3: (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) )
                     {
-                    // InternalRobotDSL.g:494:3: (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) )
-                    // InternalRobotDSL.g:495:4: otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) )
+                    // InternalRobotDSL.g:550:3: (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) )
+                    // InternalRobotDSL.g:551:4: otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) )
                     {
-                    otherlv_14=(Token)match(input,27,FOLLOW_25); 
+                    otherlv_14=(Token)match(input,29,FOLLOW_28); 
 
                     				newLeafNode(otherlv_14, grammarAccess.getActionAccess().getPlayKeyword_3_0());
                     			
-                    otherlv_15=(Token)match(input,28,FOLLOW_26); 
+                    otherlv_15=(Token)match(input,30,FOLLOW_29); 
 
                     				newLeafNode(otherlv_15, grammarAccess.getActionAccess().getSoundKeyword_3_1());
                     			
-                    // InternalRobotDSL.g:503:4: ( (lv_sound_16_0= ruleSound ) )
-                    // InternalRobotDSL.g:504:5: (lv_sound_16_0= ruleSound )
+                    // InternalRobotDSL.g:559:4: ( (lv_sound_16_0= ruleSound ) )
+                    // InternalRobotDSL.g:560:5: (lv_sound_16_0= ruleSound )
                     {
-                    // InternalRobotDSL.g:504:5: (lv_sound_16_0= ruleSound )
-                    // InternalRobotDSL.g:505:6: lv_sound_16_0= ruleSound
+                    // InternalRobotDSL.g:560:5: (lv_sound_16_0= ruleSound )
+                    // InternalRobotDSL.g:561:6: lv_sound_16_0= ruleSound
                     {
 
                     						newCompositeNode(grammarAccess.getActionAccess().getSoundSoundEnumRuleCall_3_2_0());
@@ -1234,6 +1394,78 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     							"sound",
                     							lv_sound_16_0,
                     							"des.missionrobot.RobotDSL.Sound");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // InternalRobotDSL.g:580:3: (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) )
+                    {
+                    // InternalRobotDSL.g:580:3: (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) )
+                    // InternalRobotDSL.g:581:4: otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) )
+                    {
+                    otherlv_17=(Token)match(input,31,FOLLOW_4); 
+
+                    				newLeafNode(otherlv_17, grammarAccess.getActionAccess().getUpdateKeyword_4_0());
+                    			
+                    // InternalRobotDSL.g:585:4: ( (otherlv_18= RULE_ID ) )
+                    // InternalRobotDSL.g:586:5: (otherlv_18= RULE_ID )
+                    {
+                    // InternalRobotDSL.g:586:5: (otherlv_18= RULE_ID )
+                    // InternalRobotDSL.g:587:6: otherlv_18= RULE_ID
+                    {
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getActionRule());
+                    						}
+                    					
+                    otherlv_18=(Token)match(input,RULE_ID,FOLLOW_30); 
+
+                    						newLeafNode(otherlv_18, grammarAccess.getActionAccess().getFlagFlagCrossReference_4_1_0());
+                    					
+
+                    }
+
+
+                    }
+
+                    otherlv_19=(Token)match(input,32,FOLLOW_31); 
+
+                    				newLeafNode(otherlv_19, grammarAccess.getActionAccess().getToKeyword_4_2());
+                    			
+                    // InternalRobotDSL.g:602:4: ( (lv_bool_20_0= ruleBool ) )
+                    // InternalRobotDSL.g:603:5: (lv_bool_20_0= ruleBool )
+                    {
+                    // InternalRobotDSL.g:603:5: (lv_bool_20_0= ruleBool )
+                    // InternalRobotDSL.g:604:6: lv_bool_20_0= ruleBool
+                    {
+
+                    						newCompositeNode(grammarAccess.getActionAccess().getBoolBoolEnumRuleCall_4_3_0());
+                    					
+                    pushFollow(FOLLOW_2);
+                    lv_bool_20_0=ruleBool();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getActionRule());
+                    						}
+                    						set(
+                    							current,
+                    							"bool",
+                    							lv_bool_20_0,
+                    							"des.missionrobot.RobotDSL.Bool");
                     						afterParserOrEnumRuleCall();
                     					
 
@@ -1270,175 +1502,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleAction"
 
 
-    // $ANTLR start "entryRuleReaction"
-    // InternalRobotDSL.g:527:1: entryRuleReaction returns [EObject current=null] : iv_ruleReaction= ruleReaction EOF ;
-    public final EObject entryRuleReaction() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleReaction = null;
-
-
-        try {
-            // InternalRobotDSL.g:527:49: (iv_ruleReaction= ruleReaction EOF )
-            // InternalRobotDSL.g:528:2: iv_ruleReaction= ruleReaction EOF
-            {
-             newCompositeNode(grammarAccess.getReactionRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleReaction=ruleReaction();
-
-            state._fsp--;
-
-             current =iv_ruleReaction; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleReaction"
-
-
-    // $ANTLR start "ruleReaction"
-    // InternalRobotDSL.g:534:1: ruleReaction returns [EObject current=null] : (otherlv_0= 'if' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'triggered' otherlv_3= 'Do:' ( (lv_reactions_4_0= ruleAction ) )+ ) ;
-    public final EObject ruleReaction() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_0=null;
-        Token otherlv_1=null;
-        Token otherlv_2=null;
-        Token otherlv_3=null;
-        EObject lv_reactions_4_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalRobotDSL.g:540:2: ( (otherlv_0= 'if' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'triggered' otherlv_3= 'Do:' ( (lv_reactions_4_0= ruleAction ) )+ ) )
-            // InternalRobotDSL.g:541:2: (otherlv_0= 'if' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'triggered' otherlv_3= 'Do:' ( (lv_reactions_4_0= ruleAction ) )+ )
-            {
-            // InternalRobotDSL.g:541:2: (otherlv_0= 'if' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'triggered' otherlv_3= 'Do:' ( (lv_reactions_4_0= ruleAction ) )+ )
-            // InternalRobotDSL.g:542:3: otherlv_0= 'if' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'triggered' otherlv_3= 'Do:' ( (lv_reactions_4_0= ruleAction ) )+
-            {
-            otherlv_0=(Token)match(input,29,FOLLOW_4); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getReactionAccess().getIfKeyword_0());
-            		
-            // InternalRobotDSL.g:546:3: ( (otherlv_1= RULE_ID ) )
-            // InternalRobotDSL.g:547:4: (otherlv_1= RULE_ID )
-            {
-            // InternalRobotDSL.g:547:4: (otherlv_1= RULE_ID )
-            // InternalRobotDSL.g:548:5: otherlv_1= RULE_ID
-            {
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getReactionRule());
-            					}
-            				
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_27); 
-
-            					newLeafNode(otherlv_1, grammarAccess.getReactionAccess().getEventEventCrossReference_1_0());
-            				
-
-            }
-
-
-            }
-
-            otherlv_2=(Token)match(input,30,FOLLOW_28); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getReactionAccess().getTriggeredKeyword_2());
-            		
-            otherlv_3=(Token)match(input,31,FOLLOW_15); 
-
-            			newLeafNode(otherlv_3, grammarAccess.getReactionAccess().getDoKeyword_3());
-            		
-            // InternalRobotDSL.g:567:3: ( (lv_reactions_4_0= ruleAction ) )+
-            int cnt12=0;
-            loop12:
-            do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
-
-                if ( (LA12_0==19||LA12_0==24||(LA12_0>=26 && LA12_0<=27)) ) {
-                    alt12=1;
-                }
-
-
-                switch (alt12) {
-            	case 1 :
-            	    // InternalRobotDSL.g:568:4: (lv_reactions_4_0= ruleAction )
-            	    {
-            	    // InternalRobotDSL.g:568:4: (lv_reactions_4_0= ruleAction )
-            	    // InternalRobotDSL.g:569:5: lv_reactions_4_0= ruleAction
-            	    {
-
-            	    					newCompositeNode(grammarAccess.getReactionAccess().getReactionsActionParserRuleCall_4_0());
-            	    				
-            	    pushFollow(FOLLOW_16);
-            	    lv_reactions_4_0=ruleAction();
-
-            	    state._fsp--;
-
-
-            	    					if (current==null) {
-            	    						current = createModelElementForParent(grammarAccess.getReactionRule());
-            	    					}
-            	    					add(
-            	    						current,
-            	    						"reactions",
-            	    						lv_reactions_4_0,
-            	    						"des.missionrobot.RobotDSL.Action");
-            	    					afterParserOrEnumRuleCall();
-            	    				
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt12 >= 1 ) break loop12;
-                        EarlyExitException eee =
-                            new EarlyExitException(12, input);
-                        throw eee;
-                }
-                cnt12++;
-            } while (true);
-
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleReaction"
-
-
     // $ANTLR start "entryRuleTrigger"
-    // InternalRobotDSL.g:590:1: entryRuleTrigger returns [EObject current=null] : iv_ruleTrigger= ruleTrigger EOF ;
+    // InternalRobotDSL.g:626:1: entryRuleTrigger returns [EObject current=null] : iv_ruleTrigger= ruleTrigger EOF ;
     public final EObject entryRuleTrigger() throws RecognitionException {
         EObject current = null;
 
@@ -1446,8 +1511,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRobotDSL.g:590:48: (iv_ruleTrigger= ruleTrigger EOF )
-            // InternalRobotDSL.g:591:2: iv_ruleTrigger= ruleTrigger EOF
+            // InternalRobotDSL.g:626:48: (iv_ruleTrigger= ruleTrigger EOF )
+            // InternalRobotDSL.g:627:2: iv_ruleTrigger= ruleTrigger EOF
             {
              newCompositeNode(grammarAccess.getTriggerRule()); 
             pushFollow(FOLLOW_1);
@@ -1474,53 +1539,55 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTrigger"
-    // InternalRobotDSL.g:597:1: ruleTrigger returns [EObject current=null] : ( ( (lv_boolType_0_0= ruleBool ) )? ( (otherlv_1= RULE_ID ) )? ( (lv_sensor_2_0= ruleSensor ) ) ( (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) ) | (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' ) ) ) ;
+    // InternalRobotDSL.g:633:1: ruleTrigger returns [EObject current=null] : ( ( (lv_boolType_0_0= ruleBool ) )? ( ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) ) | ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) ) ) ) ;
     public final EObject ruleTrigger() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token otherlv_5=null;
-        Token otherlv_7=null;
-        Token lv_distance_8_0=null;
-        Token otherlv_9=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
+        Token otherlv_8=null;
+        Token lv_distance_9_0=null;
+        Token otherlv_10=null;
         Enumerator lv_boolType_0_0 = null;
 
-        Enumerator lv_sensor_2_0 = null;
+        Enumerator lv_neg_1_0 = null;
 
-        Enumerator lv_color_4_0 = null;
+        Enumerator lv_sensor_3_0 = null;
 
-        Enumerator lv_bool_6_0 = null;
+        Enumerator lv_color_5_0 = null;
+
+        Enumerator lv_bool_7_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:603:2: ( ( ( (lv_boolType_0_0= ruleBool ) )? ( (otherlv_1= RULE_ID ) )? ( (lv_sensor_2_0= ruleSensor ) ) ( (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) ) | (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' ) ) ) )
-            // InternalRobotDSL.g:604:2: ( ( (lv_boolType_0_0= ruleBool ) )? ( (otherlv_1= RULE_ID ) )? ( (lv_sensor_2_0= ruleSensor ) ) ( (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) ) | (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' ) ) )
+            // InternalRobotDSL.g:639:2: ( ( ( (lv_boolType_0_0= ruleBool ) )? ( ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) ) | ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) ) ) ) )
+            // InternalRobotDSL.g:640:2: ( ( (lv_boolType_0_0= ruleBool ) )? ( ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) ) | ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) ) ) )
             {
-            // InternalRobotDSL.g:604:2: ( ( (lv_boolType_0_0= ruleBool ) )? ( (otherlv_1= RULE_ID ) )? ( (lv_sensor_2_0= ruleSensor ) ) ( (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) ) | (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' ) ) )
-            // InternalRobotDSL.g:605:3: ( (lv_boolType_0_0= ruleBool ) )? ( (otherlv_1= RULE_ID ) )? ( (lv_sensor_2_0= ruleSensor ) ) ( (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) ) | (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' ) )
+            // InternalRobotDSL.g:640:2: ( ( (lv_boolType_0_0= ruleBool ) )? ( ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) ) | ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) ) ) )
+            // InternalRobotDSL.g:641:3: ( (lv_boolType_0_0= ruleBool ) )? ( ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) ) | ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) ) )
             {
-            // InternalRobotDSL.g:605:3: ( (lv_boolType_0_0= ruleBool ) )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalRobotDSL.g:641:3: ( (lv_boolType_0_0= ruleBool ) )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( ((LA13_0>=54 && LA13_0<=57)) ) {
-                alt13=1;
+            if ( ((LA15_0>=59 && LA15_0<=64)) ) {
+                alt15=1;
             }
-            switch (alt13) {
+            switch (alt15) {
                 case 1 :
-                    // InternalRobotDSL.g:606:4: (lv_boolType_0_0= ruleBool )
+                    // InternalRobotDSL.g:642:4: (lv_boolType_0_0= ruleBool )
                     {
-                    // InternalRobotDSL.g:606:4: (lv_boolType_0_0= ruleBool )
-                    // InternalRobotDSL.g:607:5: lv_boolType_0_0= ruleBool
+                    // InternalRobotDSL.g:642:4: (lv_boolType_0_0= ruleBool )
+                    // InternalRobotDSL.g:643:5: lv_boolType_0_0= ruleBool
                     {
 
                     					newCompositeNode(grammarAccess.getTriggerAccess().getBoolTypeBoolEnumRuleCall_0_0());
                     				
-                    pushFollow(FOLLOW_11);
+                    pushFollow(FOLLOW_10);
                     lv_boolType_0_0=ruleBool();
 
                     state._fsp--;
@@ -1545,120 +1612,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalRobotDSL.g:624:3: ( (otherlv_1= RULE_ID ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // InternalRobotDSL.g:660:3: ( ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) ) | ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) ) )
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA14_0==RULE_ID) ) {
-                alt14=1;
+            if ( (LA18_0==RULE_ID||LA18_0==65) ) {
+                alt18=1;
             }
-            switch (alt14) {
-                case 1 :
-                    // InternalRobotDSL.g:625:4: (otherlv_1= RULE_ID )
-                    {
-                    // InternalRobotDSL.g:625:4: (otherlv_1= RULE_ID )
-                    // InternalRobotDSL.g:626:5: otherlv_1= RULE_ID
-                    {
-
-                    					if (current==null) {
-                    						current = createModelElement(grammarAccess.getTriggerRule());
-                    					}
-                    				
-                    otherlv_1=(Token)match(input,RULE_ID,FOLLOW_11); 
-
-                    					newLeafNode(otherlv_1, grammarAccess.getTriggerAccess().getEventEventCrossReference_1_0());
-                    				
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            // InternalRobotDSL.g:637:3: ( (lv_sensor_2_0= ruleSensor ) )
-            // InternalRobotDSL.g:638:4: (lv_sensor_2_0= ruleSensor )
-            {
-            // InternalRobotDSL.g:638:4: (lv_sensor_2_0= ruleSensor )
-            // InternalRobotDSL.g:639:5: lv_sensor_2_0= ruleSensor
-            {
-
-            					newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorEnumRuleCall_2_0());
-            				
-            pushFollow(FOLLOW_29);
-            lv_sensor_2_0=ruleSensor();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getTriggerRule());
-            					}
-            					set(
-            						current,
-            						"sensor",
-            						lv_sensor_2_0,
-            						"des.missionrobot.RobotDSL.Sensor");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            // InternalRobotDSL.g:656:3: ( (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) ) | (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' ) )
-            int alt15=2;
-            int LA15_0 = input.LA(1);
-
-            if ( (LA15_0==32) ) {
-                alt15=1;
-            }
-            else if ( (LA15_0==33) ) {
-                alt15=2;
+            else if ( ((LA18_0>=49 && LA18_0<=53)) ) {
+                alt18=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 15, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
-            switch (alt15) {
+            switch (alt18) {
                 case 1 :
-                    // InternalRobotDSL.g:657:4: (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) )
+                    // InternalRobotDSL.g:661:4: ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) )
                     {
-                    // InternalRobotDSL.g:657:4: (otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) ) )
-                    // InternalRobotDSL.g:658:5: otherlv_3= 'is' ( (lv_color_4_0= ruleColor ) )
+                    // InternalRobotDSL.g:661:4: ( ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) ) )
+                    // InternalRobotDSL.g:662:5: ( (lv_neg_1_0= ruleNegation ) )? ( (otherlv_2= RULE_ID ) )
                     {
-                    otherlv_3=(Token)match(input,32,FOLLOW_30); 
+                    // InternalRobotDSL.g:662:5: ( (lv_neg_1_0= ruleNegation ) )?
+                    int alt16=2;
+                    int LA16_0 = input.LA(1);
 
-                    					newLeafNode(otherlv_3, grammarAccess.getTriggerAccess().getIsKeyword_3_0_0());
-                    				
-                    // InternalRobotDSL.g:662:5: ( (lv_color_4_0= ruleColor ) )
-                    // InternalRobotDSL.g:663:6: (lv_color_4_0= ruleColor )
+                    if ( (LA16_0==65) ) {
+                        alt16=1;
+                    }
+                    switch (alt16) {
+                        case 1 :
+                            // InternalRobotDSL.g:663:6: (lv_neg_1_0= ruleNegation )
+                            {
+                            // InternalRobotDSL.g:663:6: (lv_neg_1_0= ruleNegation )
+                            // InternalRobotDSL.g:664:7: lv_neg_1_0= ruleNegation
+                            {
+
+                            							newCompositeNode(grammarAccess.getTriggerAccess().getNegNegationEnumRuleCall_1_0_0_0());
+                            						
+                            pushFollow(FOLLOW_4);
+                            lv_neg_1_0=ruleNegation();
+
+                            state._fsp--;
+
+
+                            							if (current==null) {
+                            								current = createModelElementForParent(grammarAccess.getTriggerRule());
+                            							}
+                            							set(
+                            								current,
+                            								"neg",
+                            								lv_neg_1_0,
+                            								"des.missionrobot.RobotDSL.Negation");
+                            							afterParserOrEnumRuleCall();
+                            						
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    // InternalRobotDSL.g:681:5: ( (otherlv_2= RULE_ID ) )
+                    // InternalRobotDSL.g:682:6: (otherlv_2= RULE_ID )
                     {
-                    // InternalRobotDSL.g:663:6: (lv_color_4_0= ruleColor )
-                    // InternalRobotDSL.g:664:7: lv_color_4_0= ruleColor
+                    // InternalRobotDSL.g:682:6: (otherlv_2= RULE_ID )
+                    // InternalRobotDSL.g:683:7: otherlv_2= RULE_ID
                     {
-
-                    							newCompositeNode(grammarAccess.getTriggerAccess().getColorColorEnumRuleCall_3_0_1_0());
-                    						
-                    pushFollow(FOLLOW_2);
-                    lv_color_4_0=ruleColor();
-
-                    state._fsp--;
-
 
                     							if (current==null) {
-                    								current = createModelElementForParent(grammarAccess.getTriggerRule());
+                    								current = createModelElement(grammarAccess.getTriggerRule());
                     							}
-                    							set(
-                    								current,
-                    								"color",
-                    								lv_color_4_0,
-                    								"des.missionrobot.RobotDSL.Color");
-                    							afterParserOrEnumRuleCall();
+                    						
+                    otherlv_2=(Token)match(input,RULE_ID,FOLLOW_2); 
+
+                    							newLeafNode(otherlv_2, grammarAccess.getTriggerAccess().getFlagFlagCrossReference_1_0_1_0());
                     						
 
                     }
@@ -1673,26 +1705,22 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:683:4: (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' )
+                    // InternalRobotDSL.g:696:4: ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) )
                     {
-                    // InternalRobotDSL.g:683:4: (otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm' )
-                    // InternalRobotDSL.g:684:5: otherlv_5= 'distance' ( (lv_bool_6_0= ruleBool ) ) otherlv_7= 'than' ( (lv_distance_8_0= RULE_INT ) ) otherlv_9= 'cm'
+                    // InternalRobotDSL.g:696:4: ( ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) ) )
+                    // InternalRobotDSL.g:697:5: ( (lv_sensor_3_0= ruleSensor ) ) ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) )
                     {
-                    otherlv_5=(Token)match(input,33,FOLLOW_31); 
-
-                    					newLeafNode(otherlv_5, grammarAccess.getTriggerAccess().getDistanceKeyword_3_1_0());
-                    				
-                    // InternalRobotDSL.g:688:5: ( (lv_bool_6_0= ruleBool ) )
-                    // InternalRobotDSL.g:689:6: (lv_bool_6_0= ruleBool )
+                    // InternalRobotDSL.g:697:5: ( (lv_sensor_3_0= ruleSensor ) )
+                    // InternalRobotDSL.g:698:6: (lv_sensor_3_0= ruleSensor )
                     {
-                    // InternalRobotDSL.g:689:6: (lv_bool_6_0= ruleBool )
-                    // InternalRobotDSL.g:690:7: lv_bool_6_0= ruleBool
+                    // InternalRobotDSL.g:698:6: (lv_sensor_3_0= ruleSensor )
+                    // InternalRobotDSL.g:699:7: lv_sensor_3_0= ruleSensor
                     {
 
-                    							newCompositeNode(grammarAccess.getTriggerAccess().getBoolBoolEnumRuleCall_3_1_1_0());
+                    							newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorEnumRuleCall_1_1_0_0());
                     						
                     pushFollow(FOLLOW_32);
-                    lv_bool_6_0=ruleBool();
+                    lv_sensor_3_0=ruleSensor();
 
                     state._fsp--;
 
@@ -1702,9 +1730,9 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     							}
                     							set(
                     								current,
-                    								"bool",
-                    								lv_bool_6_0,
-                    								"des.missionrobot.RobotDSL.Bool");
+                    								"sensor",
+                    								lv_sensor_3_0,
+                    								"des.missionrobot.RobotDSL.Sensor");
                     							afterParserOrEnumRuleCall();
                     						
 
@@ -1713,40 +1741,154 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,34,FOLLOW_9); 
+                    // InternalRobotDSL.g:716:5: ( (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) ) | (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' ) )
+                    int alt17=2;
+                    int LA17_0 = input.LA(1);
 
-                    					newLeafNode(otherlv_7, grammarAccess.getTriggerAccess().getThanKeyword_3_1_2());
-                    				
-                    // InternalRobotDSL.g:711:5: ( (lv_distance_8_0= RULE_INT ) )
-                    // InternalRobotDSL.g:712:6: (lv_distance_8_0= RULE_INT )
-                    {
-                    // InternalRobotDSL.g:712:6: (lv_distance_8_0= RULE_INT )
-                    // InternalRobotDSL.g:713:7: lv_distance_8_0= RULE_INT
-                    {
-                    lv_distance_8_0=(Token)match(input,RULE_INT,FOLLOW_33); 
+                    if ( (LA17_0==33) ) {
+                        alt17=1;
+                    }
+                    else if ( (LA17_0==34) ) {
+                        alt17=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 17, 0, input);
 
-                    							newLeafNode(lv_distance_8_0, grammarAccess.getTriggerAccess().getDistanceINTTerminalRuleCall_3_1_3_0());
-                    						
+                        throw nvae;
+                    }
+                    switch (alt17) {
+                        case 1 :
+                            // InternalRobotDSL.g:717:6: (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) )
+                            {
+                            // InternalRobotDSL.g:717:6: (otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) ) )
+                            // InternalRobotDSL.g:718:7: otherlv_4= 'is' ( (lv_color_5_0= ruleColor ) )
+                            {
+                            otherlv_4=(Token)match(input,33,FOLLOW_33); 
 
-                    							if (current==null) {
-                    								current = createModelElement(grammarAccess.getTriggerRule());
-                    							}
-                    							setWithLastConsumed(
-                    								current,
-                    								"distance",
-                    								lv_distance_8_0,
-                    								"org.eclipse.xtext.common.Terminals.INT");
-                    						
+                            							newLeafNode(otherlv_4, grammarAccess.getTriggerAccess().getIsKeyword_1_1_1_0_0());
+                            						
+                            // InternalRobotDSL.g:722:7: ( (lv_color_5_0= ruleColor ) )
+                            // InternalRobotDSL.g:723:8: (lv_color_5_0= ruleColor )
+                            {
+                            // InternalRobotDSL.g:723:8: (lv_color_5_0= ruleColor )
+                            // InternalRobotDSL.g:724:9: lv_color_5_0= ruleColor
+                            {
+
+                            									newCompositeNode(grammarAccess.getTriggerAccess().getColorColorEnumRuleCall_1_1_1_0_1_0());
+                            								
+                            pushFollow(FOLLOW_2);
+                            lv_color_5_0=ruleColor();
+
+                            state._fsp--;
+
+
+                            									if (current==null) {
+                            										current = createModelElementForParent(grammarAccess.getTriggerRule());
+                            									}
+                            									set(
+                            										current,
+                            										"color",
+                            										lv_color_5_0,
+                            										"des.missionrobot.RobotDSL.Color");
+                            									afterParserOrEnumRuleCall();
+                            								
+
+                            }
+
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalRobotDSL.g:743:6: (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' )
+                            {
+                            // InternalRobotDSL.g:743:6: (otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm' )
+                            // InternalRobotDSL.g:744:7: otherlv_6= 'distance' ( (lv_bool_7_0= ruleBool ) ) otherlv_8= 'than' ( (lv_distance_9_0= RULE_INT ) ) otherlv_10= 'cm'
+                            {
+                            otherlv_6=(Token)match(input,34,FOLLOW_31); 
+
+                            							newLeafNode(otherlv_6, grammarAccess.getTriggerAccess().getDistanceKeyword_1_1_1_1_0());
+                            						
+                            // InternalRobotDSL.g:748:7: ( (lv_bool_7_0= ruleBool ) )
+                            // InternalRobotDSL.g:749:8: (lv_bool_7_0= ruleBool )
+                            {
+                            // InternalRobotDSL.g:749:8: (lv_bool_7_0= ruleBool )
+                            // InternalRobotDSL.g:750:9: lv_bool_7_0= ruleBool
+                            {
+
+                            									newCompositeNode(grammarAccess.getTriggerAccess().getBoolBoolEnumRuleCall_1_1_1_1_1_0());
+                            								
+                            pushFollow(FOLLOW_34);
+                            lv_bool_7_0=ruleBool();
+
+                            state._fsp--;
+
+
+                            									if (current==null) {
+                            										current = createModelElementForParent(grammarAccess.getTriggerRule());
+                            									}
+                            									set(
+                            										current,
+                            										"bool",
+                            										lv_bool_7_0,
+                            										"des.missionrobot.RobotDSL.Bool");
+                            									afterParserOrEnumRuleCall();
+                            								
+
+                            }
+
+
+                            }
+
+                            otherlv_8=(Token)match(input,35,FOLLOW_17); 
+
+                            							newLeafNode(otherlv_8, grammarAccess.getTriggerAccess().getThanKeyword_1_1_1_1_2());
+                            						
+                            // InternalRobotDSL.g:771:7: ( (lv_distance_9_0= RULE_INT ) )
+                            // InternalRobotDSL.g:772:8: (lv_distance_9_0= RULE_INT )
+                            {
+                            // InternalRobotDSL.g:772:8: (lv_distance_9_0= RULE_INT )
+                            // InternalRobotDSL.g:773:9: lv_distance_9_0= RULE_INT
+                            {
+                            lv_distance_9_0=(Token)match(input,RULE_INT,FOLLOW_35); 
+
+                            									newLeafNode(lv_distance_9_0, grammarAccess.getTriggerAccess().getDistanceINTTerminalRuleCall_1_1_1_1_3_0());
+                            								
+
+                            									if (current==null) {
+                            										current = createModelElement(grammarAccess.getTriggerRule());
+                            									}
+                            									setWithLastConsumed(
+                            										current,
+                            										"distance",
+                            										lv_distance_9_0,
+                            										"org.eclipse.xtext.common.Terminals.INT");
+                            								
+
+                            }
+
+
+                            }
+
+                            otherlv_10=(Token)match(input,36,FOLLOW_2); 
+
+                            							newLeafNode(otherlv_10, grammarAccess.getTriggerAccess().getCmKeyword_1_1_1_1_4());
+                            						
+
+                            }
+
+
+                            }
+                            break;
 
                     }
 
-
-                    }
-
-                    otherlv_9=(Token)match(input,35,FOLLOW_2); 
-
-                    					newLeafNode(otherlv_9, grammarAccess.getTriggerAccess().getCmKeyword_3_1_4());
-                    				
 
                     }
 
@@ -1778,8 +1920,275 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleTrigger"
 
 
+    // $ANTLR start "entryRuleFlag"
+    // InternalRobotDSL.g:801:1: entryRuleFlag returns [EObject current=null] : iv_ruleFlag= ruleFlag EOF ;
+    public final EObject entryRuleFlag() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleFlag = null;
+
+
+        try {
+            // InternalRobotDSL.g:801:45: (iv_ruleFlag= ruleFlag EOF )
+            // InternalRobotDSL.g:802:2: iv_ruleFlag= ruleFlag EOF
+            {
+             newCompositeNode(grammarAccess.getFlagRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleFlag=ruleFlag();
+
+            state._fsp--;
+
+             current =iv_ruleFlag; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleFlag"
+
+
+    // $ANTLR start "ruleFlag"
+    // InternalRobotDSL.g:808:1: ruleFlag returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) (otherlv_1= 'is' ( (lv_bool_2_0= ruleBool ) ) )? ) ;
+    public final EObject ruleFlag() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_name_0_0=null;
+        Token otherlv_1=null;
+        Enumerator lv_bool_2_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:814:2: ( ( ( (lv_name_0_0= RULE_ID ) ) (otherlv_1= 'is' ( (lv_bool_2_0= ruleBool ) ) )? ) )
+            // InternalRobotDSL.g:815:2: ( ( (lv_name_0_0= RULE_ID ) ) (otherlv_1= 'is' ( (lv_bool_2_0= ruleBool ) ) )? )
+            {
+            // InternalRobotDSL.g:815:2: ( ( (lv_name_0_0= RULE_ID ) ) (otherlv_1= 'is' ( (lv_bool_2_0= ruleBool ) ) )? )
+            // InternalRobotDSL.g:816:3: ( (lv_name_0_0= RULE_ID ) ) (otherlv_1= 'is' ( (lv_bool_2_0= ruleBool ) ) )?
+            {
+            // InternalRobotDSL.g:816:3: ( (lv_name_0_0= RULE_ID ) )
+            // InternalRobotDSL.g:817:4: (lv_name_0_0= RULE_ID )
+            {
+            // InternalRobotDSL.g:817:4: (lv_name_0_0= RULE_ID )
+            // InternalRobotDSL.g:818:5: lv_name_0_0= RULE_ID
+            {
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_36); 
+
+            					newLeafNode(lv_name_0_0, grammarAccess.getFlagAccess().getNameIDTerminalRuleCall_0_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getFlagRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"name",
+            						lv_name_0_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
+
+
+            }
+
+            // InternalRobotDSL.g:834:3: (otherlv_1= 'is' ( (lv_bool_2_0= ruleBool ) ) )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
+
+            if ( (LA19_0==33) ) {
+                alt19=1;
+            }
+            switch (alt19) {
+                case 1 :
+                    // InternalRobotDSL.g:835:4: otherlv_1= 'is' ( (lv_bool_2_0= ruleBool ) )
+                    {
+                    otherlv_1=(Token)match(input,33,FOLLOW_31); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getFlagAccess().getIsKeyword_1_0());
+                    			
+                    // InternalRobotDSL.g:839:4: ( (lv_bool_2_0= ruleBool ) )
+                    // InternalRobotDSL.g:840:5: (lv_bool_2_0= ruleBool )
+                    {
+                    // InternalRobotDSL.g:840:5: (lv_bool_2_0= ruleBool )
+                    // InternalRobotDSL.g:841:6: lv_bool_2_0= ruleBool
+                    {
+
+                    						newCompositeNode(grammarAccess.getFlagAccess().getBoolBoolEnumRuleCall_1_1_0());
+                    					
+                    pushFollow(FOLLOW_2);
+                    lv_bool_2_0=ruleBool();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getFlagRule());
+                    						}
+                    						set(
+                    							current,
+                    							"bool",
+                    							lv_bool_2_0,
+                    							"des.missionrobot.RobotDSL.Bool");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleFlag"
+
+
+    // $ANTLR start "entryRuleTime"
+    // InternalRobotDSL.g:863:1: entryRuleTime returns [EObject current=null] : iv_ruleTime= ruleTime EOF ;
+    public final EObject entryRuleTime() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleTime = null;
+
+
+        try {
+            // InternalRobotDSL.g:863:45: (iv_ruleTime= ruleTime EOF )
+            // InternalRobotDSL.g:864:2: iv_ruleTime= ruleTime EOF
+            {
+             newCompositeNode(grammarAccess.getTimeRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleTime=ruleTime();
+
+            state._fsp--;
+
+             current =iv_ruleTime; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTime"
+
+
+    // $ANTLR start "ruleTime"
+    // InternalRobotDSL.g:870:1: ruleTime returns [EObject current=null] : (otherlv_0= 'Time:' ( (lv_sec_1_0= RULE_INT ) ) otherlv_2= 'sec' ) ;
+    public final EObject ruleTime() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_sec_1_0=null;
+        Token otherlv_2=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:876:2: ( (otherlv_0= 'Time:' ( (lv_sec_1_0= RULE_INT ) ) otherlv_2= 'sec' ) )
+            // InternalRobotDSL.g:877:2: (otherlv_0= 'Time:' ( (lv_sec_1_0= RULE_INT ) ) otherlv_2= 'sec' )
+            {
+            // InternalRobotDSL.g:877:2: (otherlv_0= 'Time:' ( (lv_sec_1_0= RULE_INT ) ) otherlv_2= 'sec' )
+            // InternalRobotDSL.g:878:3: otherlv_0= 'Time:' ( (lv_sec_1_0= RULE_INT ) ) otherlv_2= 'sec'
+            {
+            otherlv_0=(Token)match(input,37,FOLLOW_17); 
+
+            			newLeafNode(otherlv_0, grammarAccess.getTimeAccess().getTimeKeyword_0());
+            		
+            // InternalRobotDSL.g:882:3: ( (lv_sec_1_0= RULE_INT ) )
+            // InternalRobotDSL.g:883:4: (lv_sec_1_0= RULE_INT )
+            {
+            // InternalRobotDSL.g:883:4: (lv_sec_1_0= RULE_INT )
+            // InternalRobotDSL.g:884:5: lv_sec_1_0= RULE_INT
+            {
+            lv_sec_1_0=(Token)match(input,RULE_INT,FOLLOW_22); 
+
+            					newLeafNode(lv_sec_1_0, grammarAccess.getTimeAccess().getSecINTTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getTimeRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"sec",
+            						lv_sec_1_0,
+            						"org.eclipse.xtext.common.Terminals.INT");
+            				
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,23,FOLLOW_2); 
+
+            			newLeafNode(otherlv_2, grammarAccess.getTimeAccess().getSecKeyword_2());
+            		
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTime"
+
+
     // $ANTLR start "ruleDirection"
-    // InternalRobotDSL.g:739:1: ruleDirection returns [Enumerator current=null] : ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) ;
+    // InternalRobotDSL.g:908:1: ruleDirection returns [Enumerator current=null] : ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) ;
     public final Enumerator ruleDirection() throws RecognitionException {
         Enumerator current = null;
 
@@ -1792,47 +2201,47 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:745:2: ( ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) )
-            // InternalRobotDSL.g:746:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
+            // InternalRobotDSL.g:914:2: ( ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) )
+            // InternalRobotDSL.g:915:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
             {
-            // InternalRobotDSL.g:746:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
-            int alt16=4;
+            // InternalRobotDSL.g:915:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
+            int alt20=4;
             switch ( input.LA(1) ) {
-            case 36:
-                {
-                alt16=1;
-                }
-                break;
-            case 37:
-                {
-                alt16=2;
-                }
-                break;
             case 38:
                 {
-                alt16=3;
+                alt20=1;
                 }
                 break;
             case 39:
                 {
-                alt16=4;
+                alt20=2;
+                }
+                break;
+            case 40:
+                {
+                alt20=3;
+                }
+                break;
+            case 41:
+                {
+                alt20=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt16) {
+            switch (alt20) {
                 case 1 :
-                    // InternalRobotDSL.g:747:3: (enumLiteral_0= 'forward' )
+                    // InternalRobotDSL.g:916:3: (enumLiteral_0= 'forward' )
                     {
-                    // InternalRobotDSL.g:747:3: (enumLiteral_0= 'forward' )
-                    // InternalRobotDSL.g:748:4: enumLiteral_0= 'forward'
+                    // InternalRobotDSL.g:916:3: (enumLiteral_0= 'forward' )
+                    // InternalRobotDSL.g:917:4: enumLiteral_0= 'forward'
                     {
-                    enumLiteral_0=(Token)match(input,36,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,38,FOLLOW_2); 
 
                     				current = grammarAccess.getDirectionAccess().getFORWARDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getDirectionAccess().getFORWARDEnumLiteralDeclaration_0());
@@ -1844,12 +2253,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:755:3: (enumLiteral_1= 'backward' )
+                    // InternalRobotDSL.g:924:3: (enumLiteral_1= 'backward' )
                     {
-                    // InternalRobotDSL.g:755:3: (enumLiteral_1= 'backward' )
-                    // InternalRobotDSL.g:756:4: enumLiteral_1= 'backward'
+                    // InternalRobotDSL.g:924:3: (enumLiteral_1= 'backward' )
+                    // InternalRobotDSL.g:925:4: enumLiteral_1= 'backward'
                     {
-                    enumLiteral_1=(Token)match(input,37,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,39,FOLLOW_2); 
 
                     				current = grammarAccess.getDirectionAccess().getBACKWARDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getDirectionAccess().getBACKWARDEnumLiteralDeclaration_1());
@@ -1861,12 +2270,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRobotDSL.g:763:3: (enumLiteral_2= 'left' )
+                    // InternalRobotDSL.g:932:3: (enumLiteral_2= 'left' )
                     {
-                    // InternalRobotDSL.g:763:3: (enumLiteral_2= 'left' )
-                    // InternalRobotDSL.g:764:4: enumLiteral_2= 'left'
+                    // InternalRobotDSL.g:932:3: (enumLiteral_2= 'left' )
+                    // InternalRobotDSL.g:933:4: enumLiteral_2= 'left'
                     {
-                    enumLiteral_2=(Token)match(input,38,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,40,FOLLOW_2); 
 
                     				current = grammarAccess.getDirectionAccess().getLEFTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getDirectionAccess().getLEFTEnumLiteralDeclaration_2());
@@ -1878,12 +2287,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalRobotDSL.g:771:3: (enumLiteral_3= 'right' )
+                    // InternalRobotDSL.g:940:3: (enumLiteral_3= 'right' )
                     {
-                    // InternalRobotDSL.g:771:3: (enumLiteral_3= 'right' )
-                    // InternalRobotDSL.g:772:4: enumLiteral_3= 'right'
+                    // InternalRobotDSL.g:940:3: (enumLiteral_3= 'right' )
+                    // InternalRobotDSL.g:941:4: enumLiteral_3= 'right'
                     {
-                    enumLiteral_3=(Token)match(input,39,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,41,FOLLOW_2); 
 
                     				current = grammarAccess.getDirectionAccess().getRIGHTEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getDirectionAccess().getRIGHTEnumLiteralDeclaration_3());
@@ -1917,7 +2326,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSpeed"
-    // InternalRobotDSL.g:782:1: ruleSpeed returns [Enumerator current=null] : ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) ;
+    // InternalRobotDSL.g:951:1: ruleSpeed returns [Enumerator current=null] : ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) ;
     public final Enumerator ruleSpeed() throws RecognitionException {
         Enumerator current = null;
 
@@ -1929,42 +2338,42 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:788:2: ( ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) )
-            // InternalRobotDSL.g:789:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
+            // InternalRobotDSL.g:957:2: ( ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) )
+            // InternalRobotDSL.g:958:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
             {
-            // InternalRobotDSL.g:789:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
-            int alt17=3;
+            // InternalRobotDSL.g:958:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
+            int alt21=3;
             switch ( input.LA(1) ) {
-            case 40:
-                {
-                alt17=1;
-                }
-                break;
-            case 41:
-                {
-                alt17=2;
-                }
-                break;
             case 42:
                 {
-                alt17=3;
+                alt21=1;
+                }
+                break;
+            case 43:
+                {
+                alt21=2;
+                }
+                break;
+            case 44:
+                {
+                alt21=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt17) {
+            switch (alt21) {
                 case 1 :
-                    // InternalRobotDSL.g:790:3: (enumLiteral_0= 'high' )
+                    // InternalRobotDSL.g:959:3: (enumLiteral_0= 'high' )
                     {
-                    // InternalRobotDSL.g:790:3: (enumLiteral_0= 'high' )
-                    // InternalRobotDSL.g:791:4: enumLiteral_0= 'high'
+                    // InternalRobotDSL.g:959:3: (enumLiteral_0= 'high' )
+                    // InternalRobotDSL.g:960:4: enumLiteral_0= 'high'
                     {
-                    enumLiteral_0=(Token)match(input,40,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,42,FOLLOW_2); 
 
                     				current = grammarAccess.getSpeedAccess().getHIGHEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getSpeedAccess().getHIGHEnumLiteralDeclaration_0());
@@ -1976,12 +2385,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:798:3: (enumLiteral_1= 'medium' )
+                    // InternalRobotDSL.g:967:3: (enumLiteral_1= 'medium' )
                     {
-                    // InternalRobotDSL.g:798:3: (enumLiteral_1= 'medium' )
-                    // InternalRobotDSL.g:799:4: enumLiteral_1= 'medium'
+                    // InternalRobotDSL.g:967:3: (enumLiteral_1= 'medium' )
+                    // InternalRobotDSL.g:968:4: enumLiteral_1= 'medium'
                     {
-                    enumLiteral_1=(Token)match(input,41,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,43,FOLLOW_2); 
 
                     				current = grammarAccess.getSpeedAccess().getMEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getSpeedAccess().getMEDEnumLiteralDeclaration_1());
@@ -1993,12 +2402,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRobotDSL.g:806:3: (enumLiteral_2= 'low' )
+                    // InternalRobotDSL.g:975:3: (enumLiteral_2= 'low' )
                     {
-                    // InternalRobotDSL.g:806:3: (enumLiteral_2= 'low' )
-                    // InternalRobotDSL.g:807:4: enumLiteral_2= 'low'
+                    // InternalRobotDSL.g:975:3: (enumLiteral_2= 'low' )
+                    // InternalRobotDSL.g:976:4: enumLiteral_2= 'low'
                     {
-                    enumLiteral_2=(Token)match(input,42,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,44,FOLLOW_2); 
 
                     				current = grammarAccess.getSpeedAccess().getLOWEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getSpeedAccess().getLOWEnumLiteralDeclaration_2());
@@ -2032,7 +2441,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArmOp"
-    // InternalRobotDSL.g:817:1: ruleArmOp returns [Enumerator current=null] : ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) ;
+    // InternalRobotDSL.g:986:1: ruleArmOp returns [Enumerator current=null] : ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) ;
     public final Enumerator ruleArmOp() throws RecognitionException {
         Enumerator current = null;
 
@@ -2043,33 +2452,33 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:823:2: ( ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) )
-            // InternalRobotDSL.g:824:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
+            // InternalRobotDSL.g:992:2: ( ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) )
+            // InternalRobotDSL.g:993:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
             {
-            // InternalRobotDSL.g:824:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // InternalRobotDSL.g:993:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA18_0==43) ) {
-                alt18=1;
+            if ( (LA22_0==45) ) {
+                alt22=1;
             }
-            else if ( (LA18_0==44) ) {
-                alt18=2;
+            else if ( (LA22_0==46) ) {
+                alt22=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
-            switch (alt18) {
+            switch (alt22) {
                 case 1 :
-                    // InternalRobotDSL.g:825:3: (enumLiteral_0= 'raise' )
+                    // InternalRobotDSL.g:994:3: (enumLiteral_0= 'raise' )
                     {
-                    // InternalRobotDSL.g:825:3: (enumLiteral_0= 'raise' )
-                    // InternalRobotDSL.g:826:4: enumLiteral_0= 'raise'
+                    // InternalRobotDSL.g:994:3: (enumLiteral_0= 'raise' )
+                    // InternalRobotDSL.g:995:4: enumLiteral_0= 'raise'
                     {
-                    enumLiteral_0=(Token)match(input,43,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,45,FOLLOW_2); 
 
                     				current = grammarAccess.getArmOpAccess().getUPEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getArmOpAccess().getUPEnumLiteralDeclaration_0());
@@ -2081,12 +2490,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:833:3: (enumLiteral_1= 'lower' )
+                    // InternalRobotDSL.g:1002:3: (enumLiteral_1= 'lower' )
                     {
-                    // InternalRobotDSL.g:833:3: (enumLiteral_1= 'lower' )
-                    // InternalRobotDSL.g:834:4: enumLiteral_1= 'lower'
+                    // InternalRobotDSL.g:1002:3: (enumLiteral_1= 'lower' )
+                    // InternalRobotDSL.g:1003:4: enumLiteral_1= 'lower'
                     {
-                    enumLiteral_1=(Token)match(input,44,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,46,FOLLOW_2); 
 
                     				current = grammarAccess.getArmOpAccess().getDOWNEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getArmOpAccess().getDOWNEnumLiteralDeclaration_1());
@@ -2120,7 +2529,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSound"
-    // InternalRobotDSL.g:844:1: ruleSound returns [Enumerator current=null] : ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) ;
+    // InternalRobotDSL.g:1013:1: ruleSound returns [Enumerator current=null] : ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) ;
     public final Enumerator ruleSound() throws RecognitionException {
         Enumerator current = null;
 
@@ -2131,33 +2540,33 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:850:2: ( ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) )
-            // InternalRobotDSL.g:851:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
+            // InternalRobotDSL.g:1019:2: ( ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) )
+            // InternalRobotDSL.g:1020:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
             {
-            // InternalRobotDSL.g:851:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            // InternalRobotDSL.g:1020:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA19_0==45) ) {
-                alt19=1;
+            if ( (LA23_0==47) ) {
+                alt23=1;
             }
-            else if ( (LA19_0==46) ) {
-                alt19=2;
+            else if ( (LA23_0==48) ) {
+                alt23=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
             }
-            switch (alt19) {
+            switch (alt23) {
                 case 1 :
-                    // InternalRobotDSL.g:852:3: (enumLiteral_0= 'buzz' )
+                    // InternalRobotDSL.g:1021:3: (enumLiteral_0= 'buzz' )
                     {
-                    // InternalRobotDSL.g:852:3: (enumLiteral_0= 'buzz' )
-                    // InternalRobotDSL.g:853:4: enumLiteral_0= 'buzz'
+                    // InternalRobotDSL.g:1021:3: (enumLiteral_0= 'buzz' )
+                    // InternalRobotDSL.g:1022:4: enumLiteral_0= 'buzz'
                     {
-                    enumLiteral_0=(Token)match(input,45,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,47,FOLLOW_2); 
 
                     				current = grammarAccess.getSoundAccess().getBuzzEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getSoundAccess().getBuzzEnumLiteralDeclaration_0());
@@ -2169,12 +2578,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:860:3: (enumLiteral_1= 'fanfare' )
+                    // InternalRobotDSL.g:1029:3: (enumLiteral_1= 'fanfare' )
                     {
-                    // InternalRobotDSL.g:860:3: (enumLiteral_1= 'fanfare' )
-                    // InternalRobotDSL.g:861:4: enumLiteral_1= 'fanfare'
+                    // InternalRobotDSL.g:1029:3: (enumLiteral_1= 'fanfare' )
+                    // InternalRobotDSL.g:1030:4: enumLiteral_1= 'fanfare'
                     {
-                    enumLiteral_1=(Token)match(input,46,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,48,FOLLOW_2); 
 
                     				current = grammarAccess.getSoundAccess().getFanfareEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getSoundAccess().getFanfareEnumLiteralDeclaration_1());
@@ -2208,7 +2617,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSensor"
-    // InternalRobotDSL.g:871:1: ruleSensor returns [Enumerator current=null] : ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) ;
+    // InternalRobotDSL.g:1040:1: ruleSensor returns [Enumerator current=null] : ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) ;
     public final Enumerator ruleSensor() throws RecognitionException {
         Enumerator current = null;
 
@@ -2222,52 +2631,52 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:877:2: ( ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) )
-            // InternalRobotDSL.g:878:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
+            // InternalRobotDSL.g:1046:2: ( ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) )
+            // InternalRobotDSL.g:1047:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
             {
-            // InternalRobotDSL.g:878:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
-            int alt20=5;
+            // InternalRobotDSL.g:1047:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
+            int alt24=5;
             switch ( input.LA(1) ) {
-            case 47:
-                {
-                alt20=1;
-                }
-                break;
-            case 48:
-                {
-                alt20=2;
-                }
-                break;
             case 49:
                 {
-                alt20=3;
+                alt24=1;
                 }
                 break;
             case 50:
                 {
-                alt20=4;
+                alt24=2;
                 }
                 break;
             case 51:
                 {
-                alt20=5;
+                alt24=3;
+                }
+                break;
+            case 52:
+                {
+                alt24=4;
+                }
+                break;
+            case 53:
+                {
+                alt24=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
+                    new NoViableAltException("", 24, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt20) {
+            switch (alt24) {
                 case 1 :
-                    // InternalRobotDSL.g:879:3: (enumLiteral_0= 'Color' )
+                    // InternalRobotDSL.g:1048:3: (enumLiteral_0= 'Color' )
                     {
-                    // InternalRobotDSL.g:879:3: (enumLiteral_0= 'Color' )
-                    // InternalRobotDSL.g:880:4: enumLiteral_0= 'Color'
+                    // InternalRobotDSL.g:1048:3: (enumLiteral_0= 'Color' )
+                    // InternalRobotDSL.g:1049:4: enumLiteral_0= 'Color'
                     {
-                    enumLiteral_0=(Token)match(input,47,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,49,FOLLOW_2); 
 
                     				current = grammarAccess.getSensorAccess().getCOLOREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getSensorAccess().getCOLOREnumLiteralDeclaration_0());
@@ -2279,12 +2688,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:887:3: (enumLiteral_1= 'LeftLight' )
+                    // InternalRobotDSL.g:1056:3: (enumLiteral_1= 'LeftLight' )
                     {
-                    // InternalRobotDSL.g:887:3: (enumLiteral_1= 'LeftLight' )
-                    // InternalRobotDSL.g:888:4: enumLiteral_1= 'LeftLight'
+                    // InternalRobotDSL.g:1056:3: (enumLiteral_1= 'LeftLight' )
+                    // InternalRobotDSL.g:1057:4: enumLiteral_1= 'LeftLight'
                     {
-                    enumLiteral_1=(Token)match(input,48,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,50,FOLLOW_2); 
 
                     				current = grammarAccess.getSensorAccess().getLEFTLIGHTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getSensorAccess().getLEFTLIGHTEnumLiteralDeclaration_1());
@@ -2296,12 +2705,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRobotDSL.g:895:3: (enumLiteral_2= 'RightLight' )
+                    // InternalRobotDSL.g:1064:3: (enumLiteral_2= 'RightLight' )
                     {
-                    // InternalRobotDSL.g:895:3: (enumLiteral_2= 'RightLight' )
-                    // InternalRobotDSL.g:896:4: enumLiteral_2= 'RightLight'
+                    // InternalRobotDSL.g:1064:3: (enumLiteral_2= 'RightLight' )
+                    // InternalRobotDSL.g:1065:4: enumLiteral_2= 'RightLight'
                     {
-                    enumLiteral_2=(Token)match(input,49,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,51,FOLLOW_2); 
 
                     				current = grammarAccess.getSensorAccess().getRIGHTLIGHTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getSensorAccess().getRIGHTLIGHTEnumLiteralDeclaration_2());
@@ -2313,12 +2722,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalRobotDSL.g:903:3: (enumLiteral_3= 'RearHeight' )
+                    // InternalRobotDSL.g:1072:3: (enumLiteral_3= 'RearHeight' )
                     {
-                    // InternalRobotDSL.g:903:3: (enumLiteral_3= 'RearHeight' )
-                    // InternalRobotDSL.g:904:4: enumLiteral_3= 'RearHeight'
+                    // InternalRobotDSL.g:1072:3: (enumLiteral_3= 'RearHeight' )
+                    // InternalRobotDSL.g:1073:4: enumLiteral_3= 'RearHeight'
                     {
-                    enumLiteral_3=(Token)match(input,50,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,52,FOLLOW_2); 
 
                     				current = grammarAccess.getSensorAccess().getBACKUSEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getSensorAccess().getBACKUSEnumLiteralDeclaration_3());
@@ -2330,12 +2739,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalRobotDSL.g:911:3: (enumLiteral_4= 'FrontDistance' )
+                    // InternalRobotDSL.g:1080:3: (enumLiteral_4= 'FrontDistance' )
                     {
-                    // InternalRobotDSL.g:911:3: (enumLiteral_4= 'FrontDistance' )
-                    // InternalRobotDSL.g:912:4: enumLiteral_4= 'FrontDistance'
+                    // InternalRobotDSL.g:1080:3: (enumLiteral_4= 'FrontDistance' )
+                    // InternalRobotDSL.g:1081:4: enumLiteral_4= 'FrontDistance'
                     {
-                    enumLiteral_4=(Token)match(input,51,FOLLOW_2); 
+                    enumLiteral_4=(Token)match(input,53,FOLLOW_2); 
 
                     				current = grammarAccess.getSensorAccess().getFRONTUSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_4, grammarAccess.getSensorAccess().getFRONTUSEnumLiteralDeclaration_4());
@@ -2369,44 +2778,66 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleColor"
-    // InternalRobotDSL.g:922:1: ruleColor returns [Enumerator current=null] : ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) ) ;
+    // InternalRobotDSL.g:1091:1: ruleColor returns [Enumerator current=null] : ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) ) ;
     public final Enumerator ruleColor() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
+        Token enumLiteral_4=null;
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:928:2: ( ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) ) )
-            // InternalRobotDSL.g:929:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) )
+            // InternalRobotDSL.g:1097:2: ( ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) ) )
+            // InternalRobotDSL.g:1098:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) )
             {
-            // InternalRobotDSL.g:929:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) )
-            int alt21=2;
-            int LA21_0 = input.LA(1);
-
-            if ( (LA21_0==52) ) {
-                alt21=1;
-            }
-            else if ( (LA21_0==53) ) {
-                alt21=2;
-            }
-            else {
+            // InternalRobotDSL.g:1098:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) )
+            int alt25=5;
+            switch ( input.LA(1) ) {
+            case 54:
+                {
+                alt25=1;
+                }
+                break;
+            case 55:
+                {
+                alt25=2;
+                }
+                break;
+            case 56:
+                {
+                alt25=3;
+                }
+                break;
+            case 57:
+                {
+                alt25=4;
+                }
+                break;
+            case 58:
+                {
+                alt25=5;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 25, 0, input);
 
                 throw nvae;
             }
-            switch (alt21) {
+
+            switch (alt25) {
                 case 1 :
-                    // InternalRobotDSL.g:930:3: (enumLiteral_0= 'red' )
+                    // InternalRobotDSL.g:1099:3: (enumLiteral_0= 'red' )
                     {
-                    // InternalRobotDSL.g:930:3: (enumLiteral_0= 'red' )
-                    // InternalRobotDSL.g:931:4: enumLiteral_0= 'red'
+                    // InternalRobotDSL.g:1099:3: (enumLiteral_0= 'red' )
+                    // InternalRobotDSL.g:1100:4: enumLiteral_0= 'red'
                     {
-                    enumLiteral_0=(Token)match(input,52,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,54,FOLLOW_2); 
 
                     				current = grammarAccess.getColorAccess().getREDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getColorAccess().getREDEnumLiteralDeclaration_0());
@@ -2418,15 +2849,66 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:938:3: (enumLiteral_1= 'white' )
+                    // InternalRobotDSL.g:1107:3: (enumLiteral_1= 'white' )
                     {
-                    // InternalRobotDSL.g:938:3: (enumLiteral_1= 'white' )
-                    // InternalRobotDSL.g:939:4: enumLiteral_1= 'white'
+                    // InternalRobotDSL.g:1107:3: (enumLiteral_1= 'white' )
+                    // InternalRobotDSL.g:1108:4: enumLiteral_1= 'white'
                     {
-                    enumLiteral_1=(Token)match(input,53,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,55,FOLLOW_2); 
 
                     				current = grammarAccess.getColorAccess().getWHITEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getColorAccess().getWHITEEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalRobotDSL.g:1115:3: (enumLiteral_2= 'black' )
+                    {
+                    // InternalRobotDSL.g:1115:3: (enumLiteral_2= 'black' )
+                    // InternalRobotDSL.g:1116:4: enumLiteral_2= 'black'
+                    {
+                    enumLiteral_2=(Token)match(input,56,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorAccess().getBLACKEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_2, grammarAccess.getColorAccess().getBLACKEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalRobotDSL.g:1123:3: (enumLiteral_3= 'green' )
+                    {
+                    // InternalRobotDSL.g:1123:3: (enumLiteral_3= 'green' )
+                    // InternalRobotDSL.g:1124:4: enumLiteral_3= 'green'
+                    {
+                    enumLiteral_3=(Token)match(input,57,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorAccess().getGREENEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_3, grammarAccess.getColorAccess().getGREENEnumLiteralDeclaration_3());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // InternalRobotDSL.g:1131:3: (enumLiteral_4= 'blue' )
+                    {
+                    // InternalRobotDSL.g:1131:3: (enumLiteral_4= 'blue' )
+                    // InternalRobotDSL.g:1132:4: enumLiteral_4= 'blue'
+                    {
+                    enumLiteral_4=(Token)match(input,58,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_4, grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4());
                     			
 
                     }
@@ -2457,7 +2939,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBool"
-    // InternalRobotDSL.g:949:1: ruleBool returns [Enumerator current=null] : ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) ) ;
+    // InternalRobotDSL.g:1142:1: ruleBool returns [Enumerator current=null] : ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) ) ;
     public final Enumerator ruleBool() throws RecognitionException {
         Enumerator current = null;
 
@@ -2465,52 +2947,64 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         Token enumLiteral_1=null;
         Token enumLiteral_2=null;
         Token enumLiteral_3=null;
+        Token enumLiteral_4=null;
+        Token enumLiteral_5=null;
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:955:2: ( ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) ) )
-            // InternalRobotDSL.g:956:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) )
+            // InternalRobotDSL.g:1148:2: ( ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) ) )
+            // InternalRobotDSL.g:1149:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) )
             {
-            // InternalRobotDSL.g:956:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) )
-            int alt22=4;
+            // InternalRobotDSL.g:1149:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) )
+            int alt26=6;
             switch ( input.LA(1) ) {
-            case 54:
+            case 59:
                 {
-                alt22=1;
+                alt26=1;
                 }
                 break;
-            case 55:
+            case 60:
                 {
-                alt22=2;
+                alt26=2;
                 }
                 break;
-            case 56:
+            case 61:
                 {
-                alt22=3;
+                alt26=3;
                 }
                 break;
-            case 57:
+            case 62:
                 {
-                alt22=4;
+                alt26=4;
+                }
+                break;
+            case 63:
+                {
+                alt26=5;
+                }
+                break;
+            case 64:
+                {
+                alt26=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 26, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt22) {
+            switch (alt26) {
                 case 1 :
-                    // InternalRobotDSL.g:957:3: (enumLiteral_0= 'less' )
+                    // InternalRobotDSL.g:1150:3: (enumLiteral_0= 'less' )
                     {
-                    // InternalRobotDSL.g:957:3: (enumLiteral_0= 'less' )
-                    // InternalRobotDSL.g:958:4: enumLiteral_0= 'less'
+                    // InternalRobotDSL.g:1150:3: (enumLiteral_0= 'less' )
+                    // InternalRobotDSL.g:1151:4: enumLiteral_0= 'less'
                     {
-                    enumLiteral_0=(Token)match(input,54,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,59,FOLLOW_2); 
 
                     				current = grammarAccess.getBoolAccess().getLEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getBoolAccess().getLEnumLiteralDeclaration_0());
@@ -2522,12 +3016,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:965:3: (enumLiteral_1= 'greater' )
+                    // InternalRobotDSL.g:1158:3: (enumLiteral_1= 'greater' )
                     {
-                    // InternalRobotDSL.g:965:3: (enumLiteral_1= 'greater' )
-                    // InternalRobotDSL.g:966:4: enumLiteral_1= 'greater'
+                    // InternalRobotDSL.g:1158:3: (enumLiteral_1= 'greater' )
+                    // InternalRobotDSL.g:1159:4: enumLiteral_1= 'greater'
                     {
-                    enumLiteral_1=(Token)match(input,55,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,60,FOLLOW_2); 
 
                     				current = grammarAccess.getBoolAccess().getGEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getBoolAccess().getGEnumLiteralDeclaration_1());
@@ -2539,12 +3033,12 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRobotDSL.g:973:3: (enumLiteral_2= 'and' )
+                    // InternalRobotDSL.g:1166:3: (enumLiteral_2= 'and' )
                     {
-                    // InternalRobotDSL.g:973:3: (enumLiteral_2= 'and' )
-                    // InternalRobotDSL.g:974:4: enumLiteral_2= 'and'
+                    // InternalRobotDSL.g:1166:3: (enumLiteral_2= 'and' )
+                    // InternalRobotDSL.g:1167:4: enumLiteral_2= 'and'
                     {
-                    enumLiteral_2=(Token)match(input,56,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,61,FOLLOW_2); 
 
                     				current = grammarAccess.getBoolAccess().getANDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getBoolAccess().getANDEnumLiteralDeclaration_2());
@@ -2556,15 +3050,49 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalRobotDSL.g:981:3: (enumLiteral_3= 'or' )
+                    // InternalRobotDSL.g:1174:3: (enumLiteral_3= 'or' )
                     {
-                    // InternalRobotDSL.g:981:3: (enumLiteral_3= 'or' )
-                    // InternalRobotDSL.g:982:4: enumLiteral_3= 'or'
+                    // InternalRobotDSL.g:1174:3: (enumLiteral_3= 'or' )
+                    // InternalRobotDSL.g:1175:4: enumLiteral_3= 'or'
                     {
-                    enumLiteral_3=(Token)match(input,57,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,62,FOLLOW_2); 
 
                     				current = grammarAccess.getBoolAccess().getOREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getBoolAccess().getOREnumLiteralDeclaration_3());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // InternalRobotDSL.g:1182:3: (enumLiteral_4= 'true' )
+                    {
+                    // InternalRobotDSL.g:1182:3: (enumLiteral_4= 'true' )
+                    // InternalRobotDSL.g:1183:4: enumLiteral_4= 'true'
+                    {
+                    enumLiteral_4=(Token)match(input,63,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolAccess().getTRUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_4, grammarAccess.getBoolAccess().getTRUEEnumLiteralDeclaration_4());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 6 :
+                    // InternalRobotDSL.g:1190:3: (enumLiteral_5= 'false' )
+                    {
+                    // InternalRobotDSL.g:1190:3: (enumLiteral_5= 'false' )
+                    // InternalRobotDSL.g:1191:4: enumLiteral_5= 'false'
+                    {
+                    enumLiteral_5=(Token)match(input,64,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolAccess().getFALSEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_5, grammarAccess.getBoolAccess().getFALSEEnumLiteralDeclaration_5());
                     			
 
                     }
@@ -2594,72 +3122,28 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleBool"
 
 
-    // $ANTLR start "ruleRepeat"
-    // InternalRobotDSL.g:992:1: ruleRepeat returns [Enumerator current=null] : ( (enumLiteral_0= 'once' ) | (enumLiteral_1= 'repeatable' ) ) ;
-    public final Enumerator ruleRepeat() throws RecognitionException {
+    // $ANTLR start "ruleNegation"
+    // InternalRobotDSL.g:1201:1: ruleNegation returns [Enumerator current=null] : (enumLiteral_0= 'not' ) ;
+    public final Enumerator ruleNegation() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:998:2: ( ( (enumLiteral_0= 'once' ) | (enumLiteral_1= 'repeatable' ) ) )
-            // InternalRobotDSL.g:999:2: ( (enumLiteral_0= 'once' ) | (enumLiteral_1= 'repeatable' ) )
+            // InternalRobotDSL.g:1207:2: ( (enumLiteral_0= 'not' ) )
+            // InternalRobotDSL.g:1208:2: (enumLiteral_0= 'not' )
             {
-            // InternalRobotDSL.g:999:2: ( (enumLiteral_0= 'once' ) | (enumLiteral_1= 'repeatable' ) )
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // InternalRobotDSL.g:1208:2: (enumLiteral_0= 'not' )
+            // InternalRobotDSL.g:1209:3: enumLiteral_0= 'not'
+            {
+            enumLiteral_0=(Token)match(input,65,FOLLOW_2); 
 
-            if ( (LA23_0==58) ) {
-                alt23=1;
-            }
-            else if ( (LA23_0==59) ) {
-                alt23=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
-
-                throw nvae;
-            }
-            switch (alt23) {
-                case 1 :
-                    // InternalRobotDSL.g:1000:3: (enumLiteral_0= 'once' )
-                    {
-                    // InternalRobotDSL.g:1000:3: (enumLiteral_0= 'once' )
-                    // InternalRobotDSL.g:1001:4: enumLiteral_0= 'once'
-                    {
-                    enumLiteral_0=(Token)match(input,58,FOLLOW_2); 
-
-                    				current = grammarAccess.getRepeatAccess().getONCEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getRepeatAccess().getONCEEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:1008:3: (enumLiteral_1= 'repeatable' )
-                    {
-                    // InternalRobotDSL.g:1008:3: (enumLiteral_1= 'repeatable' )
-                    // InternalRobotDSL.g:1009:4: enumLiteral_1= 'repeatable'
-                    {
-                    enumLiteral_1=(Token)match(input,59,FOLLOW_2); 
-
-                    				current = grammarAccess.getRepeatAccess().getREPEATEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getRepeatAccess().getREPEATEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
+            			current = grammarAccess.getNegationAccess().getNOTEnumLiteralDeclaration().getEnumLiteral().getInstance();
+            			newLeafNode(enumLiteral_0, grammarAccess.getNegationAccess().getNOTEnumLiteralDeclaration());
+            		
 
             }
 
@@ -2679,7 +3163,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleRepeat"
+    // $ANTLR end "ruleNegation"
 
     // Delegated rules
 
@@ -2691,33 +3175,36 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000802L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000050002L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x03CF800000000010L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x03CF800000060012L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000020040002L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x000000000D080000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x000000000D080002L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x000000F000000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000500002L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000400002L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000070000000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000002010L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000044000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000038002L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0xF83E000000000010L,0x0000000000000003L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0xF83E000000030012L,0x0000000000000003L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x00000000B4200000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x00000000B4200002L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000120000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0xF83E000000020010L,0x0000000000000003L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x000003C000000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000001400002L});
     public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000180000000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000600000000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000300000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0030000000000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x03C0000000000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000001000002L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x00001C0000000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000600000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0001800000000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0xF800000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000600000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x07C0000000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000200000002L});
 
 }
