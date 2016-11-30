@@ -98,6 +98,8 @@ public class MoveTest implements Behavior{
 	'''
 	}
 	def static toCondition(Trigger trig){
+		action = ""
+		sensor = ""
 		if(trig.sensor != null){	
 			switch (trig.sensor.sensorType) {
 				case LEFTLIGHT: {sensor = "sensorManager.getLeftLight"}
@@ -134,6 +136,7 @@ public class MoveTest implements Behavior{
 	
 	def static toAction(Action act){
 		if(act.moveDir != null){ // action is movement
+		action = ""
 			switch (act.moveDir.dir) {
 				case FORWARD: {
 					action = action +
