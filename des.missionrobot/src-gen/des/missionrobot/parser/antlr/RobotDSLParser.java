@@ -27,7 +27,7 @@ public class RobotDSLParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "MissionList";
+		return "Missions";
 	}
 
 	public RobotDSLGrammarAccess getGrammarAccess() {

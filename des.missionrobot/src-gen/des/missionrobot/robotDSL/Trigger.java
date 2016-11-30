@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getFlag <em>Flag</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Trigger#getBool <em>Bool</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Trigger#getDistance <em>Distance</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getDist <em>Dist</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger()
@@ -172,58 +171,29 @@ public interface Trigger extends EObject
   void setColor(Color value);
 
   /**
-   * Returns the value of the '<em><b>Bool</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Bool}.
+   * Returns the value of the '<em><b>Dist</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Bool</em>' attribute isn't clear,
+   * If the meaning of the '<em>Dist</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Bool</em>' attribute.
-   * @see des.missionrobot.robotDSL.Bool
-   * @see #setBool(Bool)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Bool()
-   * @model
+   * @return the value of the '<em>Dist</em>' containment reference.
+   * @see #setDist(Distance)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Dist()
+   * @model containment="true"
    * @generated
    */
-  Bool getBool();
+  Distance getDist();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getBool <em>Bool</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getDist <em>Dist</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Bool</em>' attribute.
-   * @see des.missionrobot.robotDSL.Bool
-   * @see #getBool()
+   * @param value the new value of the '<em>Dist</em>' containment reference.
+   * @see #getDist()
    * @generated
    */
-  void setBool(Bool value);
-
-  /**
-   * Returns the value of the '<em><b>Distance</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Distance</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Distance</em>' attribute.
-   * @see #setDistance(int)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Distance()
-   * @model
-   * @generated
-   */
-  int getDistance();
-
-  /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getDistance <em>Distance</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Distance</em>' attribute.
-   * @see #getDistance()
-   * @generated
-   */
-  void setDistance(int value);
+  void setDist(Distance value);
 
 } // Trigger

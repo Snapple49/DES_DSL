@@ -73,10 +73,10 @@ public class RobotDSLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case RobotDSLPackage.MISSION_LIST:
+      case RobotDSLPackage.MISSIONS:
       {
-        MissionList missionList = (MissionList)theEObject;
-        T result = caseMissionList(missionList);
+        Missions missions = (Missions)theEObject;
+        T result = caseMissions(missions);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -108,6 +108,13 @@ public class RobotDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RobotDSLPackage.DISTANCE:
+      {
+        Distance distance = (Distance)theEObject;
+        T result = caseDistance(distance);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RobotDSLPackage.FLAG:
       {
         Flag flag = (Flag)theEObject;
@@ -127,17 +134,17 @@ public class RobotDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Mission List</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Missions</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Mission List</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Missions</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMissionList(MissionList object)
+  public T caseMissions(Missions object)
   {
     return null;
   }
@@ -202,6 +209,22 @@ public class RobotDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTrigger(Trigger object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Distance</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Distance</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDistance(Distance object)
   {
     return null;
   }

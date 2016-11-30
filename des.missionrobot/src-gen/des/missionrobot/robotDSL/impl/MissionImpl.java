@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getFlagsList <em>Flags List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getBehaviorList <em>Behavior List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getTaskList <em>Task List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getGoalEvents <em>Goal Events</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getFinishActions <em>Finish Actions</em>}</li>
@@ -78,14 +78,14 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
   protected EList<Flag> flagsList;
 
   /**
-   * The cached value of the '{@link #getBehaviorList() <em>Behavior List</em>}' containment reference list.
+   * The cached value of the '{@link #getTaskList() <em>Task List</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBehaviorList()
+   * @see #getTaskList()
    * @generated
    * @ordered
    */
-  protected EList<Task> behaviorList;
+  protected EList<Task> taskList;
 
   /**
    * The cached value of the '{@link #getGoalEvents() <em>Goal Events</em>}' containment reference list.
@@ -180,13 +180,13 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Task> getBehaviorList()
+  public EList<Task> getTaskList()
   {
-    if (behaviorList == null)
+    if (taskList == null)
     {
-      behaviorList = new EObjectContainmentEList<Task>(Task.class, this, RobotDSLPackage.MISSION__BEHAVIOR_LIST);
+      taskList = new EObjectContainmentEList<Task>(Task.class, this, RobotDSLPackage.MISSION__TASK_LIST);
     }
-    return behaviorList;
+    return taskList;
   }
 
   /**
@@ -277,8 +277,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
     {
       case RobotDSLPackage.MISSION__FLAGS_LIST:
         return ((InternalEList<?>)getFlagsList()).basicRemove(otherEnd, msgs);
-      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
-        return ((InternalEList<?>)getBehaviorList()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.MISSION__TASK_LIST:
+        return ((InternalEList<?>)getTaskList()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         return ((InternalEList<?>)getGoalEvents()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.MISSION__TIMEOUT:
@@ -303,8 +303,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         return getName();
       case RobotDSLPackage.MISSION__FLAGS_LIST:
         return getFlagsList();
-      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
-        return getBehaviorList();
+      case RobotDSLPackage.MISSION__TASK_LIST:
+        return getTaskList();
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         return getGoalEvents();
       case RobotDSLPackage.MISSION__TIMEOUT:
@@ -333,9 +333,9 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         getFlagsList().clear();
         getFlagsList().addAll((Collection<? extends Flag>)newValue);
         return;
-      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
-        getBehaviorList().clear();
-        getBehaviorList().addAll((Collection<? extends Task>)newValue);
+      case RobotDSLPackage.MISSION__TASK_LIST:
+        getTaskList().clear();
+        getTaskList().addAll((Collection<? extends Task>)newValue);
         return;
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         getGoalEvents().clear();
@@ -368,8 +368,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
       case RobotDSLPackage.MISSION__FLAGS_LIST:
         getFlagsList().clear();
         return;
-      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
-        getBehaviorList().clear();
+      case RobotDSLPackage.MISSION__TASK_LIST:
+        getTaskList().clear();
         return;
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         getGoalEvents().clear();
@@ -398,8 +398,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RobotDSLPackage.MISSION__FLAGS_LIST:
         return flagsList != null && !flagsList.isEmpty();
-      case RobotDSLPackage.MISSION__BEHAVIOR_LIST:
-        return behaviorList != null && !behaviorList.isEmpty();
+      case RobotDSLPackage.MISSION__TASK_LIST:
+        return taskList != null && !taskList.isEmpty();
       case RobotDSLPackage.MISSION__GOAL_EVENTS:
         return goalEvents != null && !goalEvents.isEmpty();
       case RobotDSLPackage.MISSION__TIMEOUT:

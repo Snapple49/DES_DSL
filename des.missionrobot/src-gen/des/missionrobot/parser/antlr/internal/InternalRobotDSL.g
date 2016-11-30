@@ -44,7 +44,7 @@ import des.missionrobot.services.RobotDSLGrammarAccess;
 
     @Override
     protected String getFirstRuleName() {
-    	return "MissionList";
+    	return "Missions";
    	}
 
    	@Override
@@ -61,15 +61,15 @@ import des.missionrobot.services.RobotDSLGrammarAccess;
     }
 }
 
-// Entry rule entryRuleMissionList
-entryRuleMissionList returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getMissionListRule()); }
-	iv_ruleMissionList=ruleMissionList
-	{ $current=$iv_ruleMissionList.current; }
+// Entry rule entryRuleMissions
+entryRuleMissions returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMissionsRule()); }
+	iv_ruleMissions=ruleMissions
+	{ $current=$iv_ruleMissions.current; }
 	EOF;
 
-// Rule MissionList
-ruleMissionList returns [EObject current=null]
+// Rule Missions
+ruleMissions returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -77,24 +77,52 @@ ruleMissionList returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='Missionset'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getMissionsAccess().getMissionsetKeyword_0());
+		}
 		(
-			{
-				newCompositeNode(grammarAccess.getMissionListAccess().getMissionListMissionParserRuleCall_0());
-			}
-			lv_missionList_0_0=ruleMission
-			{
-				if ($current==null) {
-					$current = createModelElementForParent(grammarAccess.getMissionListRule());
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getMissionsAccess().getNameIDTerminalRuleCall_1_0());
 				}
-				add(
-					$current,
-					"missionList",
-					lv_missionList_0_0,
-					"des.missionrobot.RobotDSL.Mission");
-				afterParserOrEnumRuleCall();
-			}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMissionsRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
 		)
-	)+
+		otherlv_2='Missions:'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMissionsAccess().getMissionsKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMissionsAccess().getMissionListMissionParserRuleCall_3_0());
+				}
+				lv_missionList_3_0=ruleMission
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMissionsRule());
+					}
+					add(
+						$current,
+						"missionList",
+						lv_missionList_3_0,
+						"des.missionrobot.RobotDSL.Mission");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
 ;
 
 // Entry rule entryRuleMission
@@ -165,17 +193,17 @@ ruleMission returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMissionAccess().getBehaviorListTaskParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getMissionAccess().getTaskListTaskParserRuleCall_5_0());
 				}
-				lv_behaviorList_5_0=ruleTask
+				lv_taskList_5_0=ruleTask
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMissionRule());
 					}
 					add(
 						$current,
-						"behaviorList",
-						lv_behaviorList_5_0,
+						"taskList",
+						lv_taskList_5_0,
 						"des.missionrobot.RobotDSL.Task");
 					afterParserOrEnumRuleCall();
 				}
@@ -748,52 +776,90 @@ ruleTrigger returns [EObject current=null]
 						(
 							(
 								{
-									newCompositeNode(grammarAccess.getTriggerAccess().getBoolBoolEnumRuleCall_1_1_1_1_1_0());
+									newCompositeNode(grammarAccess.getTriggerAccess().getDistDistanceParserRuleCall_1_1_1_1_1_0());
 								}
-								lv_bool_7_0=ruleBool
+								lv_dist_7_0=ruleDistance
 								{
 									if ($current==null) {
 										$current = createModelElementForParent(grammarAccess.getTriggerRule());
 									}
 									set(
 										$current,
-										"bool",
-										lv_bool_7_0,
-										"des.missionrobot.RobotDSL.Bool");
+										"dist",
+										lv_dist_7_0,
+										"des.missionrobot.RobotDSL.Distance");
 									afterParserOrEnumRuleCall();
 								}
 							)
 						)
-						otherlv_8='than'
-						{
-							newLeafNode(otherlv_8, grammarAccess.getTriggerAccess().getThanKeyword_1_1_1_1_2());
-						}
-						(
-							(
-								lv_distance_9_0=RULE_INT
-								{
-									newLeafNode(lv_distance_9_0, grammarAccess.getTriggerAccess().getDistanceINTTerminalRuleCall_1_1_1_1_3_0());
-								}
-								{
-									if ($current==null) {
-										$current = createModelElement(grammarAccess.getTriggerRule());
-									}
-									setWithLastConsumed(
-										$current,
-										"distance",
-										lv_distance_9_0,
-										"org.eclipse.xtext.common.Terminals.INT");
-								}
-							)
-						)
-						otherlv_10='cm'
-						{
-							newLeafNode(otherlv_10, grammarAccess.getTriggerAccess().getCmKeyword_1_1_1_1_4());
-						}
 					)
 				)
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleDistance
+entryRuleDistance returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDistanceRule()); }
+	iv_ruleDistance=ruleDistance
+	{ $current=$iv_ruleDistance.current; }
+	EOF;
+
+// Rule Distance
+ruleDistance returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDistanceAccess().getRangeBoolBoolEnumRuleCall_0_0());
+				}
+				lv_rangeBool_0_0=ruleBool
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDistanceRule());
+					}
+					set(
+						$current,
+						"rangeBool",
+						lv_rangeBool_0_0,
+						"des.missionrobot.RobotDSL.Bool");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1='than'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDistanceAccess().getThanKeyword_1());
+		}
+		(
+			(
+				lv_distance_2_0=RULE_INT
+				{
+					newLeafNode(lv_distance_2_0, grammarAccess.getDistanceAccess().getDistanceINTTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDistanceRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"distance",
+						lv_distance_2_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		otherlv_3='cm'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getDistanceAccess().getCmKeyword_3());
+		}
 	)
 ;
 
@@ -1133,6 +1199,22 @@ ruleColor returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_4, grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4());
+			}
+		)
+		    |
+		(
+			enumLiteral_5='bright'
+			{
+				$current = grammarAccess.getColorAccess().getBRIGHTEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getColorAccess().getBRIGHTEnumLiteralDeclaration_5());
+			}
+		)
+		    |
+		(
+			enumLiteral_6='dark'
+			{
+				$current = grammarAccess.getColorAccess().getDARKEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_6, grammarAccess.getColorAccess().getDARKEnumLiteralDeclaration_6());
 			}
 		)
 	)

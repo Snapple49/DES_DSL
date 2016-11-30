@@ -8,9 +8,10 @@ import des.missionrobot.robotDSL.ArmOp;
 import des.missionrobot.robotDSL.Bool;
 import des.missionrobot.robotDSL.Color;
 import des.missionrobot.robotDSL.Direction;
+import des.missionrobot.robotDSL.Distance;
 import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.Mission;
-import des.missionrobot.robotDSL.MissionList;
+import des.missionrobot.robotDSL.Missions;
 import des.missionrobot.robotDSL.Negation;
 import des.missionrobot.robotDSL.RobotDSLFactory;
 import des.missionrobot.robotDSL.RobotDSLPackage;
@@ -42,7 +43,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass missionListEClass = null;
+  private EClass missionsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,6 +72,13 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * @generated
    */
   private EClass triggerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass distanceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -210,9 +218,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMissionList()
+  public EClass getMissions()
   {
-    return missionListEClass;
+    return missionsEClass;
   }
 
   /**
@@ -220,9 +228,19 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMissionList_MissionList()
+  public EAttribute getMissions_Name()
   {
-    return (EReference)missionListEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)missionsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMissions_MissionList()
+  {
+    return (EReference)missionsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -260,7 +278,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMission_BehaviorList()
+  public EReference getMission_TaskList()
   {
     return (EReference)missionEClass.getEStructuralFeatures().get(2);
   }
@@ -500,9 +518,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_Bool()
+  public EReference getTrigger_Dist()
   {
-    return (EAttribute)triggerEClass.getEStructuralFeatures().get(5);
+    return (EReference)triggerEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -510,9 +528,29 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_Distance()
+  public EClass getDistance()
   {
-    return (EAttribute)triggerEClass.getEStructuralFeatures().get(6);
+    return distanceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDistance_RangeBool()
+  {
+    return (EAttribute)distanceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDistance_Distance()
+  {
+    return (EAttribute)distanceEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -675,13 +713,14 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     isCreated = true;
 
     // Create classes and their features
-    missionListEClass = createEClass(MISSION_LIST);
-    createEReference(missionListEClass, MISSION_LIST__MISSION_LIST);
+    missionsEClass = createEClass(MISSIONS);
+    createEAttribute(missionsEClass, MISSIONS__NAME);
+    createEReference(missionsEClass, MISSIONS__MISSION_LIST);
 
     missionEClass = createEClass(MISSION);
     createEAttribute(missionEClass, MISSION__NAME);
     createEReference(missionEClass, MISSION__FLAGS_LIST);
-    createEReference(missionEClass, MISSION__BEHAVIOR_LIST);
+    createEReference(missionEClass, MISSION__TASK_LIST);
     createEReference(missionEClass, MISSION__GOAL_EVENTS);
     createEReference(missionEClass, MISSION__TIMEOUT);
     createEReference(missionEClass, MISSION__FINISH_ACTIONS);
@@ -708,8 +747,11 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEReference(triggerEClass, TRIGGER__FLAG);
     createEAttribute(triggerEClass, TRIGGER__SENSOR);
     createEAttribute(triggerEClass, TRIGGER__COLOR);
-    createEAttribute(triggerEClass, TRIGGER__BOOL);
-    createEAttribute(triggerEClass, TRIGGER__DISTANCE);
+    createEReference(triggerEClass, TRIGGER__DIST);
+
+    distanceEClass = createEClass(DISTANCE);
+    createEAttribute(distanceEClass, DISTANCE__RANGE_BOOL);
+    createEAttribute(distanceEClass, DISTANCE__DISTANCE);
 
     flagEClass = createEClass(FLAG);
     createEAttribute(flagEClass, FLAG__NAME);
@@ -760,13 +802,14 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(missionListEClass, MissionList.class, "MissionList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMissionList_MissionList(), this.getMission(), null, "missionList", null, 0, -1, MissionList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(missionsEClass, Missions.class, "Missions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMissions_Name(), ecorePackage.getEString(), "name", null, 0, 1, Missions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMissions_MissionList(), this.getMission(), null, "missionList", null, 0, -1, Missions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(missionEClass, Mission.class, "Mission", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMission_Name(), ecorePackage.getEString(), "name", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_FlagsList(), this.getFlag(), null, "flagsList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_BehaviorList(), this.getTask(), null, "behaviorList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMission_TaskList(), this.getTask(), null, "taskList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_GoalEvents(), this.getTrigger(), null, "goalEvents", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_Timeout(), this.getTime(), null, "timeout", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_FinishActions(), this.getAction(), null, "finishActions", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -793,8 +836,11 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEReference(getTrigger_Flag(), this.getFlag(), null, "flag", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTrigger_Sensor(), this.getSensor(), "sensor", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTrigger_Color(), this.getColor(), "color", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTrigger_Bool(), this.getBool(), "bool", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTrigger_Distance(), ecorePackage.getEInt(), "distance", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_Dist(), this.getDistance(), null, "dist", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(distanceEClass, Distance.class, "Distance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDistance_RangeBool(), this.getBool(), "rangeBool", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDistance_Distance(), ecorePackage.getEInt(), "distance", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(flagEClass, Flag.class, "Flag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFlag_Name(), ecorePackage.getEString(), "name", null, 0, 1, Flag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -836,6 +882,8 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     addEEnumLiteral(colorEEnum, Color.BLACK);
     addEEnumLiteral(colorEEnum, Color.GREEN);
     addEEnumLiteral(colorEEnum, Color.BLUE);
+    addEEnumLiteral(colorEEnum, Color.BRIGHT);
+    addEEnumLiteral(colorEEnum, Color.DARK);
 
     initEEnum(boolEEnum, Bool.class, "Bool");
     addEEnumLiteral(boolEEnum, Bool.L);

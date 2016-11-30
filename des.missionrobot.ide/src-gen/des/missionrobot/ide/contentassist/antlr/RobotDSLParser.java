@@ -45,6 +45,7 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSensorAccess().getAlternatives(), "rule__Sensor__Alternatives");
 					put(grammarAccess.getColorAccess().getAlternatives(), "rule__Color__Alternatives");
 					put(grammarAccess.getBoolAccess().getAlternatives(), "rule__Bool__Alternatives");
+					put(grammarAccess.getMissionsAccess().getGroup(), "rule__Missions__Group__0");
 					put(grammarAccess.getMissionAccess().getGroup(), "rule__Mission__Group__0");
 					put(grammarAccess.getMissionAccess().getGroup_7(), "rule__Mission__Group_7__0");
 					put(grammarAccess.getMissionAccess().getGroup_8(), "rule__Mission__Group_8__0");
@@ -63,13 +64,15 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTriggerAccess().getGroup_1_1(), "rule__Trigger__Group_1_1__0");
 					put(grammarAccess.getTriggerAccess().getGroup_1_1_1_0(), "rule__Trigger__Group_1_1_1_0__0");
 					put(grammarAccess.getTriggerAccess().getGroup_1_1_1_1(), "rule__Trigger__Group_1_1_1_1__0");
+					put(grammarAccess.getDistanceAccess().getGroup(), "rule__Distance__Group__0");
 					put(grammarAccess.getFlagAccess().getGroup(), "rule__Flag__Group__0");
 					put(grammarAccess.getFlagAccess().getGroup_1(), "rule__Flag__Group_1__0");
 					put(grammarAccess.getTimeAccess().getGroup(), "rule__Time__Group__0");
-					put(grammarAccess.getMissionListAccess().getMissionListAssignment(), "rule__MissionList__MissionListAssignment");
+					put(grammarAccess.getMissionsAccess().getNameAssignment_1(), "rule__Missions__NameAssignment_1");
+					put(grammarAccess.getMissionsAccess().getMissionListAssignment_3(), "rule__Missions__MissionListAssignment_3");
 					put(grammarAccess.getMissionAccess().getNameAssignment_1(), "rule__Mission__NameAssignment_1");
 					put(grammarAccess.getMissionAccess().getFlagsListAssignment_3(), "rule__Mission__FlagsListAssignment_3");
-					put(grammarAccess.getMissionAccess().getBehaviorListAssignment_5(), "rule__Mission__BehaviorListAssignment_5");
+					put(grammarAccess.getMissionAccess().getTaskListAssignment_5(), "rule__Mission__TaskListAssignment_5");
 					put(grammarAccess.getMissionAccess().getGoalEventsAssignment_7_1(), "rule__Mission__GoalEventsAssignment_7_1");
 					put(grammarAccess.getMissionAccess().getTimeoutAssignment_8_1(), "rule__Mission__TimeoutAssignment_8_1");
 					put(grammarAccess.getMissionAccess().getFinishActionsAssignment_9_1(), "rule__Mission__FinishActionsAssignment_9_1");
@@ -91,8 +94,9 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTriggerAccess().getFlagAssignment_1_0_1(), "rule__Trigger__FlagAssignment_1_0_1");
 					put(grammarAccess.getTriggerAccess().getSensorAssignment_1_1_0(), "rule__Trigger__SensorAssignment_1_1_0");
 					put(grammarAccess.getTriggerAccess().getColorAssignment_1_1_1_0_1(), "rule__Trigger__ColorAssignment_1_1_1_0_1");
-					put(grammarAccess.getTriggerAccess().getBoolAssignment_1_1_1_1_1(), "rule__Trigger__BoolAssignment_1_1_1_1_1");
-					put(grammarAccess.getTriggerAccess().getDistanceAssignment_1_1_1_1_3(), "rule__Trigger__DistanceAssignment_1_1_1_1_3");
+					put(grammarAccess.getTriggerAccess().getDistAssignment_1_1_1_1_1(), "rule__Trigger__DistAssignment_1_1_1_1_1");
+					put(grammarAccess.getDistanceAccess().getRangeBoolAssignment_0(), "rule__Distance__RangeBoolAssignment_0");
+					put(grammarAccess.getDistanceAccess().getDistanceAssignment_2(), "rule__Distance__DistanceAssignment_2");
 					put(grammarAccess.getFlagAccess().getNameAssignment_0(), "rule__Flag__NameAssignment_0");
 					put(grammarAccess.getFlagAccess().getBoolAssignment_1_1(), "rule__Flag__BoolAssignment_1_1");
 					put(grammarAccess.getTimeAccess().getSecAssignment_1(), "rule__Time__SecAssignment_1");
@@ -106,7 +110,7 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			InternalRobotDSLParser typedParser = (InternalRobotDSLParser) parser;
-			typedParser.entryRuleMissionList();
+			typedParser.entryRuleMissions();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

@@ -26,20 +26,41 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
-	public class MissionListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.MissionList");
-		private final Assignment cMissionListAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cMissionListMissionParserRuleCall_0 = (RuleCall)cMissionListAssignment.eContents().get(0);
+	public class MissionsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Missions");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMissionsetKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cMissionsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMissionListAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMissionListMissionParserRuleCall_3_0 = (RuleCall)cMissionListAssignment_3.eContents().get(0);
 		
-		//MissionList:
-		//	missionList+=Mission+;
+		//Missions:
+		//	'Missionset' name=ID
+		//	'Missions:' missionList+=Mission;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//missionList+=Mission+
-		public Assignment getMissionListAssignment() { return cMissionListAssignment; }
+		//'Missionset' name=ID 'Missions:' missionList+=Mission
+		public Group getGroup() { return cGroup; }
+		
+		//'Missionset'
+		public Keyword getMissionsetKeyword_0() { return cMissionsetKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'Missions:'
+		public Keyword getMissionsKeyword_2() { return cMissionsKeyword_2; }
+		
+		//missionList+=Mission
+		public Assignment getMissionListAssignment_3() { return cMissionListAssignment_3; }
 		
 		//Mission
-		public RuleCall getMissionListMissionParserRuleCall_0() { return cMissionListMissionParserRuleCall_0; }
+		public RuleCall getMissionListMissionParserRuleCall_3_0() { return cMissionListMissionParserRuleCall_3_0; }
 	}
 	public class MissionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Mission");
@@ -51,8 +72,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cFlagsListAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cFlagsListFlagParserRuleCall_3_0 = (RuleCall)cFlagsListAssignment_3.eContents().get(0);
 		private final Keyword cTasksKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cBehaviorListAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cBehaviorListTaskParserRuleCall_5_0 = (RuleCall)cBehaviorListAssignment_5.eContents().get(0);
+		private final Assignment cTaskListAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTaskListTaskParserRuleCall_5_0 = (RuleCall)cTaskListAssignment_5.eContents().get(0);
 		private final Keyword cGoalKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
 		private final Keyword cConditionKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
@@ -70,11 +91,11 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Mission:
 		//	'Mission' name=ID
 		//	'Flags:' flagsList+=Flag*
-		//	'Tasks:' behaviorList+=Task+
+		//	'Tasks:' taskList+=Task+
 		//	'Goal:' ('Condition:' goalEvents+=Trigger+)? ('timeout' timeout=Time)? ('Actions:' finishActions+=Action+)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Mission' name=ID 'Flags:' flagsList+=Flag* 'Tasks:' behaviorList+=Task+ 'Goal:' ('Condition:' goalEvents+=Trigger+)?
+		//'Mission' name=ID 'Flags:' flagsList+=Flag* 'Tasks:' taskList+=Task+ 'Goal:' ('Condition:' goalEvents+=Trigger+)?
 		//('timeout' timeout=Time)? ('Actions:' finishActions+=Action+)?
 		public Group getGroup() { return cGroup; }
 		
@@ -99,11 +120,11 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'Tasks:'
 		public Keyword getTasksKeyword_4() { return cTasksKeyword_4; }
 		
-		//behaviorList+=Task+
-		public Assignment getBehaviorListAssignment_5() { return cBehaviorListAssignment_5; }
+		//taskList+=Task+
+		public Assignment getTaskListAssignment_5() { return cTaskListAssignment_5; }
 		
 		//Task
-		public RuleCall getBehaviorListTaskParserRuleCall_5_0() { return cBehaviorListTaskParserRuleCall_5_0; }
+		public RuleCall getTaskListTaskParserRuleCall_5_0() { return cTaskListTaskParserRuleCall_5_0; }
 		
 		//'Goal:'
 		public Keyword getGoalKeyword_6() { return cGoalKeyword_6; }
@@ -399,20 +420,14 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cColorColorEnumRuleCall_1_1_1_0_1_0 = (RuleCall)cColorAssignment_1_1_1_0_1.eContents().get(0);
 		private final Group cGroup_1_1_1_1 = (Group)cAlternatives_1_1_1.eContents().get(1);
 		private final Keyword cDistanceKeyword_1_1_1_1_0 = (Keyword)cGroup_1_1_1_1.eContents().get(0);
-		private final Assignment cBoolAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
-		private final RuleCall cBoolBoolEnumRuleCall_1_1_1_1_1_0 = (RuleCall)cBoolAssignment_1_1_1_1_1.eContents().get(0);
-		private final Keyword cThanKeyword_1_1_1_1_2 = (Keyword)cGroup_1_1_1_1.eContents().get(2);
-		private final Assignment cDistanceAssignment_1_1_1_1_3 = (Assignment)cGroup_1_1_1_1.eContents().get(3);
-		private final RuleCall cDistanceINTTerminalRuleCall_1_1_1_1_3_0 = (RuleCall)cDistanceAssignment_1_1_1_1_3.eContents().get(0);
-		private final Keyword cCmKeyword_1_1_1_1_4 = (Keyword)cGroup_1_1_1_1.eContents().get(4);
+		private final Assignment cDistAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
+		private final RuleCall cDistDistanceParserRuleCall_1_1_1_1_1_0 = (RuleCall)cDistAssignment_1_1_1_1_1.eContents().get(0);
 		
 		//Trigger:
-		//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than'
-		//	distance=INT 'cm'));
+		//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance));
 		@Override public ParserRule getRule() { return rule; }
 		
-		//boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than' distance=INT
-		//'cm'))
+		//boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance))
 		public Group getGroup() { return cGroup; }
 		
 		//boolType=Bool?
@@ -421,7 +436,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Bool
 		public RuleCall getBoolTypeBoolEnumRuleCall_0_0() { return cBoolTypeBoolEnumRuleCall_0_0; }
 		
-		//(neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than' distance=INT 'cm'))
+		//(neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance))
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//neg=Negation? flag=[Flag]
@@ -442,7 +457,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getFlagFlagIDTerminalRuleCall_1_0_1_0_1() { return cFlagFlagIDTerminalRuleCall_1_0_1_0_1; }
 		
-		//sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than' distance=INT 'cm')
+		//sensor=Sensor ('is' color=Color | 'distance' dist=Distance)
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//sensor=Sensor
@@ -451,7 +466,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Sensor
 		public RuleCall getSensorSensorEnumRuleCall_1_1_0_0() { return cSensorSensorEnumRuleCall_1_1_0_0; }
 		
-		//('is' color=Color | 'distance' bool=Bool 'than' distance=INT 'cm')
+		//('is' color=Color | 'distance' dist=Distance)
 		public Alternatives getAlternatives_1_1_1() { return cAlternatives_1_1_1; }
 		
 		//'is' color=Color
@@ -466,29 +481,52 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Color
 		public RuleCall getColorColorEnumRuleCall_1_1_1_0_1_0() { return cColorColorEnumRuleCall_1_1_1_0_1_0; }
 		
-		//'distance' bool=Bool 'than' distance=INT 'cm'
+		//'distance' dist=Distance
 		public Group getGroup_1_1_1_1() { return cGroup_1_1_1_1; }
 		
 		//'distance'
 		public Keyword getDistanceKeyword_1_1_1_1_0() { return cDistanceKeyword_1_1_1_1_0; }
 		
-		//bool=Bool
-		public Assignment getBoolAssignment_1_1_1_1_1() { return cBoolAssignment_1_1_1_1_1; }
+		//dist=Distance
+		public Assignment getDistAssignment_1_1_1_1_1() { return cDistAssignment_1_1_1_1_1; }
+		
+		//Distance
+		public RuleCall getDistDistanceParserRuleCall_1_1_1_1_1_0() { return cDistDistanceParserRuleCall_1_1_1_1_1_0; }
+	}
+	public class DistanceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Distance");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cRangeBoolAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cRangeBoolBoolEnumRuleCall_0_0 = (RuleCall)cRangeBoolAssignment_0.eContents().get(0);
+		private final Keyword cThanKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cDistanceAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDistanceINTTerminalRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
+		private final Keyword cCmKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//Distance:
+		//	rangeBool=Bool 'than' distance=INT 'cm';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//rangeBool=Bool 'than' distance=INT 'cm'
+		public Group getGroup() { return cGroup; }
+		
+		//rangeBool=Bool
+		public Assignment getRangeBoolAssignment_0() { return cRangeBoolAssignment_0; }
 		
 		//Bool
-		public RuleCall getBoolBoolEnumRuleCall_1_1_1_1_1_0() { return cBoolBoolEnumRuleCall_1_1_1_1_1_0; }
+		public RuleCall getRangeBoolBoolEnumRuleCall_0_0() { return cRangeBoolBoolEnumRuleCall_0_0; }
 		
 		//'than'
-		public Keyword getThanKeyword_1_1_1_1_2() { return cThanKeyword_1_1_1_1_2; }
+		public Keyword getThanKeyword_1() { return cThanKeyword_1; }
 		
 		//distance=INT
-		public Assignment getDistanceAssignment_1_1_1_1_3() { return cDistanceAssignment_1_1_1_1_3; }
+		public Assignment getDistanceAssignment_2() { return cDistanceAssignment_2; }
 		
 		//INT
-		public RuleCall getDistanceINTTerminalRuleCall_1_1_1_1_3_0() { return cDistanceINTTerminalRuleCall_1_1_1_1_3_0; }
+		public RuleCall getDistanceINTTerminalRuleCall_2_0() { return cDistanceINTTerminalRuleCall_2_0; }
 		
 		//'cm'
-		public Keyword getCmKeyword_1_1_1_1_4() { return cCmKeyword_1_1_1_1_4; }
+		public Keyword getCmKeyword_3() { return cCmKeyword_3; }
 	}
 	public class FlagElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Flag");
@@ -760,16 +798,22 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGREENGreenKeyword_3_0 = (Keyword)cGREENEnumLiteralDeclaration_3.eContents().get(0);
 		private final EnumLiteralDeclaration cBLUEEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
 		private final Keyword cBLUEBlueKeyword_4_0 = (Keyword)cBLUEEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cBRIGHTEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cBRIGHTBrightKeyword_5_0 = (Keyword)cBRIGHTEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cDARKEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cDARKDarkKeyword_6_0 = (Keyword)cDARKEnumLiteralDeclaration_6.eContents().get(0);
 		
 		//enum Color:
 		//	RED='red' |
 		//	WHITE='white' |
 		//	BLACK='black' |
 		//	GREEN='green' |
-		//	BLUE='blue';
+		//	BLUE='blue' |
+		//	BRIGHT='bright' |
+		//	DARK='dark';
 		public EnumRule getRule() { return rule; }
 		
-		//RED='red' | WHITE='white' | BLACK='black' | GREEN='green' | BLUE='blue'
+		//RED='red' | WHITE='white' | BLACK='black' | GREEN='green' | BLUE='blue' | BRIGHT='bright' | DARK='dark'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//RED='red'
@@ -801,6 +845,18 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'blue'
 		public Keyword getBLUEBlueKeyword_4_0() { return cBLUEBlueKeyword_4_0; }
+		
+		//BRIGHT='bright'
+		public EnumLiteralDeclaration getBRIGHTEnumLiteralDeclaration_5() { return cBRIGHTEnumLiteralDeclaration_5; }
+		
+		//'bright'
+		public Keyword getBRIGHTBrightKeyword_5_0() { return cBRIGHTBrightKeyword_5_0; }
+		
+		//DARK='dark'
+		public EnumLiteralDeclaration getDARKEnumLiteralDeclaration_6() { return cDARKEnumLiteralDeclaration_6; }
+		
+		//'dark'
+		public Keyword getDARKDarkKeyword_6_0() { return cDARKDarkKeyword_6_0; }
 	}
 	public class BoolElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Bool");
@@ -882,11 +938,12 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getNOTNotKeyword_0() { return cNOTNotKeyword_0; }
 	}
 	
-	private final MissionListElements pMissionList;
+	private final MissionsElements pMissions;
 	private final MissionElements pMission;
 	private final TaskElements pTask;
 	private final ActionElements pAction;
 	private final TriggerElements pTrigger;
+	private final DistanceElements pDistance;
 	private final FlagElements pFlag;
 	private final TimeElements pTime;
 	private final DirectionElements eDirection;
@@ -907,11 +964,12 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pMissionList = new MissionListElements();
+		this.pMissions = new MissionsElements();
 		this.pMission = new MissionElements();
 		this.pTask = new TaskElements();
 		this.pAction = new ActionElements();
 		this.pTrigger = new TriggerElements();
+		this.pDistance = new DistanceElements();
 		this.pFlag = new FlagElements();
 		this.pTime = new TimeElements();
 		this.eDirection = new DirectionElements();
@@ -951,20 +1009,21 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//MissionList:
-	//	missionList+=Mission+;
-	public MissionListElements getMissionListAccess() {
-		return pMissionList;
+	//Missions:
+	//	'Missionset' name=ID
+	//	'Missions:' missionList+=Mission;
+	public MissionsElements getMissionsAccess() {
+		return pMissions;
 	}
 	
-	public ParserRule getMissionListRule() {
-		return getMissionListAccess().getRule();
+	public ParserRule getMissionsRule() {
+		return getMissionsAccess().getRule();
 	}
 	
 	//Mission:
 	//	'Mission' name=ID
 	//	'Flags:' flagsList+=Flag*
-	//	'Tasks:' behaviorList+=Task+
+	//	'Tasks:' taskList+=Task+
 	//	'Goal:' ('Condition:' goalEvents+=Trigger+)? ('timeout' timeout=Time)? ('Actions:' finishActions+=Action+)?;
 	public MissionElements getMissionAccess() {
 		return pMission;
@@ -1001,14 +1060,23 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Trigger:
-	//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' bool=Bool 'than'
-	//	distance=INT 'cm'));
+	//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance));
 	public TriggerElements getTriggerAccess() {
 		return pTrigger;
 	}
 	
 	public ParserRule getTriggerRule() {
 		return getTriggerAccess().getRule();
+	}
+	
+	//Distance:
+	//	rangeBool=Bool 'than' distance=INT 'cm';
+	public DistanceElements getDistanceAccess() {
+		return pDistance;
+	}
+	
+	public ParserRule getDistanceRule() {
+		return getDistanceAccess().getRule();
 	}
 	
 	//Flag:
@@ -1097,7 +1165,9 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	WHITE='white' |
 	//	BLACK='black' |
 	//	GREEN='green' |
-	//	BLUE='blue';
+	//	BLUE='blue' |
+	//	BRIGHT='bright' |
+	//	DARK='dark';
 	public ColorElements getColorAccess() {
 		return eColor;
 	}

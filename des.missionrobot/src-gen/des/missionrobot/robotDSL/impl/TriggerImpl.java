@@ -5,6 +5,7 @@ package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Bool;
 import des.missionrobot.robotDSL.Color;
+import des.missionrobot.robotDSL.Distance;
 import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.Negation;
 import des.missionrobot.robotDSL.RobotDSLPackage;
@@ -12,6 +13,7 @@ import des.missionrobot.robotDSL.Sensor;
 import des.missionrobot.robotDSL.Trigger;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -32,8 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getFlag <em>Flag</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getSensor <em>Sensor</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getColor <em>Color</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getBool <em>Bool</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getDistance <em>Distance</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getDist <em>Dist</em>}</li>
  * </ul>
  *
  * @generated
@@ -131,44 +132,14 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   protected Color color = COLOR_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * The cached value of the '{@link #getDist() <em>Dist</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBool()
+   * @see #getDist()
    * @generated
    * @ordered
    */
-  protected static final Bool BOOL_EDEFAULT = Bool.L;
-
-  /**
-   * The cached value of the '{@link #getBool() <em>Bool</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBool()
-   * @generated
-   * @ordered
-   */
-  protected Bool bool = BOOL_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getDistance() <em>Distance</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDistance()
-   * @generated
-   * @ordered
-   */
-  protected static final int DISTANCE_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getDistance() <em>Distance</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDistance()
-   * @generated
-   * @ordered
-   */
-  protected int distance = DISTANCE_EDEFAULT;
+  protected Distance dist;
 
   /**
    * <!-- begin-user-doc -->
@@ -331,9 +302,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public Bool getBool()
+  public Distance getDist()
   {
-    return bool;
+    return dist;
   }
 
   /**
@@ -341,12 +312,16 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBool(Bool newBool)
+  public NotificationChain basicSetDist(Distance newDist, NotificationChain msgs)
   {
-    Bool oldBool = bool;
-    bool = newBool == null ? BOOL_EDEFAULT : newBool;
+    Distance oldDist = dist;
+    dist = newDist;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__BOOL, oldBool, bool));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__DIST, oldDist, newDist);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -354,9 +329,20 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getDistance()
+  public void setDist(Distance newDist)
   {
-    return distance;
+    if (newDist != dist)
+    {
+      NotificationChain msgs = null;
+      if (dist != null)
+        msgs = ((InternalEObject)dist).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.TRIGGER__DIST, null, msgs);
+      if (newDist != null)
+        msgs = ((InternalEObject)newDist).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.TRIGGER__DIST, null, msgs);
+      msgs = basicSetDist(newDist, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__DIST, newDist, newDist));
   }
 
   /**
@@ -364,12 +350,15 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDistance(int newDistance)
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    int oldDistance = distance;
-    distance = newDistance;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__DISTANCE, oldDistance, distance));
+    switch (featureID)
+    {
+      case RobotDSLPackage.TRIGGER__DIST:
+        return basicSetDist(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -393,10 +382,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         return getSensor();
       case RobotDSLPackage.TRIGGER__COLOR:
         return getColor();
-      case RobotDSLPackage.TRIGGER__BOOL:
-        return getBool();
-      case RobotDSLPackage.TRIGGER__DISTANCE:
-        return getDistance();
+      case RobotDSLPackage.TRIGGER__DIST:
+        return getDist();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -426,11 +413,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__COLOR:
         setColor((Color)newValue);
         return;
-      case RobotDSLPackage.TRIGGER__BOOL:
-        setBool((Bool)newValue);
-        return;
-      case RobotDSLPackage.TRIGGER__DISTANCE:
-        setDistance((Integer)newValue);
+      case RobotDSLPackage.TRIGGER__DIST:
+        setDist((Distance)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -461,11 +445,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__COLOR:
         setColor(COLOR_EDEFAULT);
         return;
-      case RobotDSLPackage.TRIGGER__BOOL:
-        setBool(BOOL_EDEFAULT);
-        return;
-      case RobotDSLPackage.TRIGGER__DISTANCE:
-        setDistance(DISTANCE_EDEFAULT);
+      case RobotDSLPackage.TRIGGER__DIST:
+        setDist((Distance)null);
         return;
     }
     super.eUnset(featureID);
@@ -491,10 +472,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         return sensor != SENSOR_EDEFAULT;
       case RobotDSLPackage.TRIGGER__COLOR:
         return color != COLOR_EDEFAULT;
-      case RobotDSLPackage.TRIGGER__BOOL:
-        return bool != BOOL_EDEFAULT;
-      case RobotDSLPackage.TRIGGER__DISTANCE:
-        return distance != DISTANCE_EDEFAULT;
+      case RobotDSLPackage.TRIGGER__DIST:
+        return dist != null;
     }
     return super.eIsSet(featureID);
   }
@@ -518,10 +497,6 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
     result.append(sensor);
     result.append(", color: ");
     result.append(color);
-    result.append(", bool: ");
-    result.append(bool);
-    result.append(", distance: ");
-    result.append(distance);
     result.append(')');
     return result.toString();
   }

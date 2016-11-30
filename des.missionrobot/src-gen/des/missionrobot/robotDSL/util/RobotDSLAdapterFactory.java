@@ -76,9 +76,9 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
     new RobotDSLSwitch<Adapter>()
     {
       @Override
-      public Adapter caseMissionList(MissionList object)
+      public Adapter caseMissions(Missions object)
       {
-        return createMissionListAdapter();
+        return createMissionsAdapter();
       }
       @Override
       public Adapter caseMission(Mission object)
@@ -99,6 +99,11 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTrigger(Trigger object)
       {
         return createTriggerAdapter();
+      }
+      @Override
+      public Adapter caseDistance(Distance object)
+      {
+        return createDistanceAdapter();
       }
       @Override
       public Adapter caseFlag(Flag object)
@@ -133,16 +138,16 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.MissionList <em>Mission List</em>}'.
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Missions <em>Missions</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see des.missionrobot.robotDSL.MissionList
+   * @see des.missionrobot.robotDSL.Missions
    * @generated
    */
-  public Adapter createMissionListAdapter()
+  public Adapter createMissionsAdapter()
   {
     return null;
   }
@@ -203,6 +208,21 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTriggerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Distance <em>Distance</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see des.missionrobot.robotDSL.Distance
+   * @generated
+   */
+  public Adapter createDistanceAdapter()
   {
     return null;
   }

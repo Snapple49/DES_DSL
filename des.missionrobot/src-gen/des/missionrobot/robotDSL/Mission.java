@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getFlagsList <em>Flags List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Mission#getBehaviorList <em>Behavior List</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Mission#getTaskList <em>Task List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getGoalEvents <em>Goal Events</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Mission#getFinishActions <em>Finish Actions</em>}</li>
@@ -73,20 +73,20 @@ public interface Mission extends EObject
   EList<Flag> getFlagsList();
 
   /**
-   * Returns the value of the '<em><b>Behavior List</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Task List</b></em>' containment reference list.
    * The list contents are of type {@link des.missionrobot.robotDSL.Task}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Behavior List</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Task List</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Behavior List</em>' containment reference list.
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_BehaviorList()
+   * @return the value of the '<em>Task List</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getMission_TaskList()
    * @model containment="true"
    * @generated
    */
-  EList<Task> getBehaviorList();
+  EList<Task> getTaskList();
 
   /**
    * Returns the value of the '<em><b>Goal Events</b></em>' containment reference list.

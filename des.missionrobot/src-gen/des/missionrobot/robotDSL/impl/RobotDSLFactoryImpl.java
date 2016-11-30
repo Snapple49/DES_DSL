@@ -66,11 +66,12 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case RobotDSLPackage.MISSION_LIST: return createMissionList();
+      case RobotDSLPackage.MISSIONS: return createMissions();
       case RobotDSLPackage.MISSION: return createMission();
       case RobotDSLPackage.TASK: return createTask();
       case RobotDSLPackage.ACTION: return createAction();
       case RobotDSLPackage.TRIGGER: return createTrigger();
+      case RobotDSLPackage.DISTANCE: return createDistance();
       case RobotDSLPackage.FLAG: return createFlag();
       case RobotDSLPackage.TIME: return createTime();
       default:
@@ -145,10 +146,10 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public MissionList createMissionList()
+  public Missions createMissions()
   {
-    MissionListImpl missionList = new MissionListImpl();
-    return missionList;
+    MissionsImpl missions = new MissionsImpl();
+    return missions;
   }
 
   /**
@@ -193,6 +194,17 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     TriggerImpl trigger = new TriggerImpl();
     return trigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Distance createDistance()
+  {
+    DistanceImpl distance = new DistanceImpl();
+    return distance;
   }
 
   /**

@@ -24,13 +24,13 @@ public interface RobotDSLFactory extends EFactory
   RobotDSLFactory eINSTANCE = des.missionrobot.robotDSL.impl.RobotDSLFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Mission List</em>'.
+   * Returns a new object of class '<em>Missions</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Mission List</em>'.
+   * @return a new object of class '<em>Missions</em>'.
    * @generated
    */
-  MissionList createMissionList();
+  Missions createMissions();
 
   /**
    * Returns a new object of class '<em>Mission</em>'.
@@ -67,6 +67,15 @@ public interface RobotDSLFactory extends EFactory
    * @generated
    */
   Trigger createTrigger();
+
+  /**
+   * Returns a new object of class '<em>Distance</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Distance</em>'.
+   * @generated
+   */
+  Distance createDistance();
 
   /**
    * Returns a new object of class '<em>Flag</em>'.

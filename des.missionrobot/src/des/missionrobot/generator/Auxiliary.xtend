@@ -1,9 +1,5 @@
 package des.missionrobot.generator
-
-import des.missionrobot.robotDSL.Device
-import des.missionrobot.robotDSL.DeviceType
-import des.missionrobot.robotDSL.SensorType
-import des.missionrobot.robotDSL.Behavior
+/* 
 
 class Auxiliary {
 	def static makeDevice(Device theD){'''
@@ -31,4 +27,4 @@ class Auxiliary {
 		Behavior b«b.prio» = new «b.name»(«FOR d: b.deviceList SEPARATOR ", "»«d.name»«ENDFOR»);«"\n"»'''
 		
 	}
-}
+}*/

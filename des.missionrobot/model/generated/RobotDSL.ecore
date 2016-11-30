@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="robotDSL" nsURI="http://www.missionrobot.des/RobotDSL" nsPrefix="robotDSL">
-  <eClassifiers xsi:type="ecore:EClass" name="MissionList">
+  <eClassifiers xsi:type="ecore:EClass" name="Missions">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="missionList" upperBound="-1"
         eType="#//Mission" containment="true"/>
   </eClassifiers>
@@ -9,7 +10,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="flagsList" upperBound="-1"
         eType="#//Flag" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviorList" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskList" upperBound="-1"
         eType="#//Task" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="goalEvents" upperBound="-1"
         eType="#//Trigger" containment="true"/>
@@ -42,7 +43,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="flag" eType="#//Flag"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensor" eType="#//Sensor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bool" eType="#//Bool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dist" eType="#//Distance"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Distance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rangeBool" eType="#//Bool"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Flag">
@@ -84,6 +89,8 @@
     <eLiterals name="BLACK" value="2" literal="black"/>
     <eLiterals name="GREEN" value="3" literal="green"/>
     <eLiterals name="BLUE" value="4" literal="blue"/>
+    <eLiterals name="BRIGHT" value="5" literal="bright"/>
+    <eLiterals name="DARK" value="6" literal="dark"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Bool">
     <eLiterals name="L" literal="less"/>

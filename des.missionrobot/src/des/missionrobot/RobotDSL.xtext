@@ -1,14 +1,17 @@
 grammar des.missionrobot.RobotDSL with org.eclipse.xtext.common.Terminals
 
 generate robotDSL "http://www.missionrobot.des/RobotDSL"
-MissionList:
-	missionList += Mission+
+
+
+Missions: 
+	'Missionset' name = ID
+	'Missions:' missionList += Mission
 ;
 
 Mission:
 	'Mission' name = ID
 	'Flags:' flagsList += Flag*
-	'Tasks:' behaviorList += Task+
+	'Tasks:' taskList += Task+
 	'Goal:' ('Condition:'goalEvents += Trigger+)? ('timeout' timeout = Time)? ('Actions:' finishActions += Action+)?
 ;
 
@@ -32,7 +35,11 @@ Trigger:
 	(boolType = Bool)? 
 	((neg = Negation)? flag = [Flag] |
 	sensor = Sensor
-	(('is' color = Color) | ('distance' bool = Bool 'than' distance = INT 'cm' )))
+	(('is' color = Color) | ('distance' dist = Distance )))
+;
+
+Distance:
+	rangeBool = Bool 'than' distance = INT 'cm'
 ;
 
 Flag:
@@ -71,8 +78,7 @@ enum Sensor:
 	LEFTLIGHT = 'LeftLight' |
 	RIGHTLIGHT = 'RightLight' |
 	BACKUS = 'RearHeight' |
-	FRONTUS = 'FrontDistance' 
-	
+	FRONTUS = 'FrontDistance' 	
 ;
 
 enum Color:
@@ -80,7 +86,9 @@ enum Color:
 	WHITE = 'white' |
 	BLACK = 'black' |
 	GREEN = 'green' |
-	BLUE = 'blue'
+	BLUE = 'blue' |
+	BRIGHT = 'bright' |
+	DARK = 'dark'
 ;
 
 enum Bool:

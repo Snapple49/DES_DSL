@@ -4,9 +4,10 @@
 package des.missionrobot.serializer;
 
 import com.google.inject.Inject;
+import des.missionrobot.robotDSL.Distance;
 import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.Mission;
-import des.missionrobot.robotDSL.MissionList;
+import des.missionrobot.robotDSL.Missions;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Task;
 import des.missionrobot.robotDSL.Time;
@@ -40,14 +41,17 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case RobotDSLPackage.ACTION:
 				sequence_Action(context, (des.missionrobot.robotDSL.Action) semanticObject); 
 				return; 
+			case RobotDSLPackage.DISTANCE:
+				sequence_Distance(context, (Distance) semanticObject); 
+				return; 
 			case RobotDSLPackage.FLAG:
 				sequence_Flag(context, (Flag) semanticObject); 
 				return; 
 			case RobotDSLPackage.MISSION:
 				sequence_Mission(context, (Mission) semanticObject); 
 				return; 
-			case RobotDSLPackage.MISSION_LIST:
-				sequence_MissionList(context, (MissionList) semanticObject); 
+			case RobotDSLPackage.MISSIONS:
+				sequence_Missions(context, (Missions) semanticObject); 
 				return; 
 			case RobotDSLPackage.TASK:
 				sequence_Task(context, (Task) semanticObject); 
@@ -77,6 +81,27 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     Distance returns Distance
+	 *
+	 * Constraint:
+	 *     (rangeBool=Bool distance=INT)
+	 */
+	protected void sequence_Distance(ISerializationContext context, Distance semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.DISTANCE__RANGE_BOOL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.DISTANCE__RANGE_BOOL));
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.DISTANCE__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.DISTANCE__DISTANCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDistanceAccess().getRangeBoolBoolEnumRuleCall_0_0(), semanticObject.getRangeBool());
+		feeder.accept(grammarAccess.getDistanceAccess().getDistanceINTTerminalRuleCall_2_0(), semanticObject.getDistance());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Flag returns Flag
 	 *
 	 * Constraint:
@@ -89,31 +114,31 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     MissionList returns MissionList
-	 *
-	 * Constraint:
-	 *     missionList+=Mission+
-	 */
-	protected void sequence_MissionList(ISerializationContext context, MissionList semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Mission returns Mission
 	 *
 	 * Constraint:
 	 *     (
 	 *         name=ID 
 	 *         flagsList+=Flag* 
-	 *         behaviorList+=Task+ 
+	 *         taskList+=Task+ 
 	 *         goalEvents+=Trigger* 
 	 *         timeout=Time? 
 	 *         finishActions+=Action*
 	 *     )
 	 */
 	protected void sequence_Mission(ISerializationContext context, Mission semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Missions returns Missions
+	 *
+	 * Constraint:
+	 *     (name=ID missionList+=Mission)
+	 */
+	protected void sequence_Missions(ISerializationContext context, Missions semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -153,7 +178,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Trigger returns Trigger
 	 *
 	 * Constraint:
-	 *     (boolType=Bool? ((neg=Negation? flag=[Flag|ID]) | (sensor=Sensor (color=Color | (bool=Bool distance=INT)))))
+	 *     (boolType=Bool? ((neg=Negation? flag=[Flag|ID]) | (sensor=Sensor (color=Color | dist=Distance))))
 	 */
 	protected void sequence_Trigger(ISerializationContext context, Trigger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

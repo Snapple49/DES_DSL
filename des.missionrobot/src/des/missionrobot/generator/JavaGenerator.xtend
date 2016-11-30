@@ -1,69 +1,67 @@
 package des.missionrobot.generator
 
 import des.missionrobot.robotDSL.Mission
-import des.missionrobot.robotDSL.Behavior
+import des.missionrobot.robotDSL.Task
 
 class JavaGenerator {
 	def static arbitratorMain(Mission root){'''
-	import java.io.DataInputStream;
-	import java.io.IOException;
-	import java.io.PrintWriter;
-	import java.util.HashMap;
+import java.util.TreeMap;
+
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.motor.EV3MediumRegulatedMotor;
+import lejos.hardware.port.MotorPort;
+import lejos.hardware.port.SensorPort;
+import lejos.hardware.sensor.EV3ColorSensor;
+import lejos.hardware.sensor.EV3GyroSensor;
+import lejos.hardware.sensor.EV3TouchSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
+import lejos.hardware.sensor.NXTLightSensor;
+import lejos.robotics.subsumption.Arbitrator;
+import lejos.robotics.subsumption.Behavior;
+
+public class «root.name» {
 	
-	import lejos.hardware.BrickFinder;
-	import lejos.hardware.Sound;
-	import lejos.hardware.ev3.LocalEV3;
-	import lejos.hardware.motor.EV3LargeRegulatedMotor;
-	import lejos.hardware.port.MotorPort;
-	import lejos.hardware.sensor.EV3ColorSensor;
-	import lejos.hardware.sensor.EV3TouchSensor;
-	import lejos.hardware.sensor.EV3UltrasonicSensor;
-	import lejos.remote.nxt.BTConnector;
-	import lejos.remote.nxt.NXTConnection;
-	import lejos.robotics.subsumption.*;
+	private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>(); 
 	
+	//devices
+	private static EV3LargeRegulatedMotor leftMotor = null;
+	private static EV3LargeRegulatedMotor rightMotor = null;
+	private static EV3MediumRegulatedMotor armMotor = null;
+	private static EV3ColorSensor colorSensor = null;
+	private static NXTLightSensor leftLight = null;
+	private static NXTLightSensor rightLight = null;
+	private static EV3UltrasonicSensor backUltrasonic = null;
+	private static EV3UltrasonicSensor frontUltrasonic = null;
+	private static EV3TouchSensor leftTouch = null;
+	private static EV3TouchSensor rightTouch = null;
+	private static EV3GyroSensor gyroSensor = null;
 	
-	public class «root.name» {
-		/* ============= Made by Oliver Stein 4846524 and Albin Ohlsson 4846060 ============= */
-		«FOR d : root.deviceList»static «Auxiliary.deviceName(d)»;«"\n"» «ENDFOR»
-		// create the sensor and motor objects
+	public static void main(String [] args){
 		
-		/*static EV3UltrasonicSensor distanceSensor;
-		static EV3LargeRegulatedMotor leftMotor, rightMotor;
-		static EV3ColorSensor colorSensor;
-		static EV3TouchSensor leftBmpr, rightBmpr;*/
-	
-		public static void main(String [] args){
-	
-			//initialize all sensors and motors with corresponding ports
-			«FOR d : root.deviceList»«Auxiliary.makeDevice(d)»«ENDFOR»
-			
-			/*leftMotor = new EV3LargeRegulatedMotor(LocalEV3.get().getPort("A"));
-			rightMotor = new EV3LargeRegulatedMotor(LocalEV3.get().getPort("D"));
-			distanceSensor = new EV3UltrasonicSensor(LocalEV3.get().getPort("S3"));
-			colorSensor = new EV3ColorSensor(LocalEV3.get().getPort("S2"));
-			leftBmpr = new EV3TouchSensor(LocalEV3.get().getPort("S1"));
-			rightBmpr = new EV3TouchSensor(LocalEV3.get().getPort("S4"));*/
-	
-	
-			//create the behaviors, providing the motor and sensor objects
-			
-			«FOR b : root.behaviorList»«Auxiliary.makeBehavior(b)»«ENDFOR»
-			
-			/*
-			Behavior b1 = new Move(leftMotor, rightMotor);
-			Behavior b2 = new EdgeAvoider(colorSensor, leftMotor, rightMotor);
-			Behavior b3 = new BumperAvoider(leftBmpr, rightBmpr, leftMotor, rightMotor);
-			Behavior b4 = new UltrasonicAvoider(distanceSensor, leftMotor, rightMotor);
-			Behavior b5 = new ColorFound(leftMotor, leftMotor, colorSensor);
-			Behavior b6 = new FinishedState(leftMotor, rightMotor);
-			*/
-			//create and initialize the arbitrator with the behavior array, and run it
-			Behavior [] behaviors = {b1, b5, b2, b3, b4, b6};
-			Arbitrator arby = new Arbitrator(behaviors);
-			arby.go();
-		}
+		leftMotor = new EV3LargeRegulatedMotor(MotorPort.A);
+		rightMotor = new EV3LargeRegulatedMotor(MotorPort.B);
+		armMotor = new EV3MediumRegulatedMotor(MotorPort.C);
+		leftLight = new NXTLightSensor(SensorPort.S1);
+		rightLight = new NXTLightSensor(SensorPort.S2);
+		backUltrasonic = new EV3UltrasonicSensor(SensorPort.S3);
+		colorSensor = new EV3ColorSensor(SensorPort.S4);
+«FOR t : root.taskList»		behaviorMap.put(«t.prio», new «t.name»(leftMotor, rightMotor, armMotor, colorSensor, leftLight, rightLight, 
+backUltrasonic, frontUltrasonic, leftTouch, rightTouch, gyroSensor));«"\n"»«ENDFOR»
+		Arbitrator arbitrator = new Arbitrator(sortBehaviors(behaviorMap));
+		arbitrator.go();
 	}
-	
-	'''}
+
+	private static Behavior[] sortBehaviors(TreeMap<Integer, Behavior> behaviorsToSort){
+		
+		Behavior[] behaviors = new Behavior[behaviorsToSort.keySet().size()];			
+		Object[] temp = behaviorsToSort.values().toArray();
+		for (int i = 0; i < behaviors.length; i++) {
+			behaviors[i] = (Behavior) temp[i];
+		}
+		return behaviors;
+	}
+}
+
+'''
+	}
 }
