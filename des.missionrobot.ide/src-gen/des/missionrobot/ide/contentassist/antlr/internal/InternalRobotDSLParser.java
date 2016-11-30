@@ -6544,31 +6544,31 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Action__Group_1__1__Impl"
-    // InternalRobotDSL.g:2009:1: rule__Action__Group_1__1__Impl : ( ( rule__Action__TurnirAssignment_1_1 ) ) ;
+    // InternalRobotDSL.g:2009:1: rule__Action__Group_1__1__Impl : ( ( rule__Action__TurnDirAssignment_1_1 ) ) ;
     public final void rule__Action__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRobotDSL.g:2013:1: ( ( ( rule__Action__TurnirAssignment_1_1 ) ) )
-            // InternalRobotDSL.g:2014:1: ( ( rule__Action__TurnirAssignment_1_1 ) )
+            // InternalRobotDSL.g:2013:1: ( ( ( rule__Action__TurnDirAssignment_1_1 ) ) )
+            // InternalRobotDSL.g:2014:1: ( ( rule__Action__TurnDirAssignment_1_1 ) )
             {
-            // InternalRobotDSL.g:2014:1: ( ( rule__Action__TurnirAssignment_1_1 ) )
-            // InternalRobotDSL.g:2015:2: ( rule__Action__TurnirAssignment_1_1 )
+            // InternalRobotDSL.g:2014:1: ( ( rule__Action__TurnDirAssignment_1_1 ) )
+            // InternalRobotDSL.g:2015:2: ( rule__Action__TurnDirAssignment_1_1 )
             {
-             before(grammarAccess.getActionAccess().getTurnirAssignment_1_1()); 
-            // InternalRobotDSL.g:2016:2: ( rule__Action__TurnirAssignment_1_1 )
-            // InternalRobotDSL.g:2016:3: rule__Action__TurnirAssignment_1_1
+             before(grammarAccess.getActionAccess().getTurnDirAssignment_1_1()); 
+            // InternalRobotDSL.g:2016:2: ( rule__Action__TurnDirAssignment_1_1 )
+            // InternalRobotDSL.g:2016:3: rule__Action__TurnDirAssignment_1_1
             {
             pushFollow(FOLLOW_2);
-            rule__Action__TurnirAssignment_1_1();
+            rule__Action__TurnDirAssignment_1_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getActionAccess().getTurnirAssignment_1_1()); 
+             after(grammarAccess.getActionAccess().getTurnDirAssignment_1_1()); 
 
             }
 
@@ -9743,9 +9743,9 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Action__SpeedAssignment_0_3_1"
 
 
-    // $ANTLR start "rule__Action__TurnirAssignment_1_1"
-    // InternalRobotDSL.g:3113:1: rule__Action__TurnirAssignment_1_1 : ( ruleDirection ) ;
-    public final void rule__Action__TurnirAssignment_1_1() throws RecognitionException {
+    // $ANTLR start "rule__Action__TurnDirAssignment_1_1"
+    // InternalRobotDSL.g:3113:1: rule__Action__TurnDirAssignment_1_1 : ( ruleDirection ) ;
+    public final void rule__Action__TurnDirAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -9756,13 +9756,13 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
             // InternalRobotDSL.g:3118:2: ( ruleDirection )
             // InternalRobotDSL.g:3119:3: ruleDirection
             {
-             before(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0()); 
+             before(grammarAccess.getActionAccess().getTurnDirDirectionParserRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
             ruleDirection();
 
             state._fsp--;
 
-             after(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0()); 
+             after(grammarAccess.getActionAccess().getTurnDirDirectionParserRuleCall_1_1_0()); 
 
             }
 
@@ -9781,7 +9781,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Action__TurnirAssignment_1_1"
+    // $ANTLR end "rule__Action__TurnDirAssignment_1_1"
 
 
     // $ANTLR start "rule__Action__DegrAssignment_1_2"

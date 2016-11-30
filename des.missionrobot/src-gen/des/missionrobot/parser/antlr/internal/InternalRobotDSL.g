@@ -509,17 +509,17 @@ ruleAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getActionAccess().getTurnDirDirectionParserRuleCall_1_1_0());
 					}
-					lv_turnir_9_0=ruleDirection
+					lv_turnDir_9_0=ruleDirection
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActionRule());
 						}
 						set(
 							$current,
-							"turnir",
-							lv_turnir_9_0,
+							"turnDir",
+							lv_turnDir_9_0,
 							"des.missionrobot.RobotDSL.Direction");
 						afterParserOrEnumRuleCall();
 					}

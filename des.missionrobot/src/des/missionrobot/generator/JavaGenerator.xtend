@@ -5,6 +5,7 @@ import des.missionrobot.robotDSL.Task
 
 class JavaGenerator {
 	def static arbitratorMain(Mission root){'''
+package lel;
 import java.util.TreeMap;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
@@ -36,7 +37,7 @@ public class «root.name» {
 	private static EV3TouchSensor rightTouch = null;
 	private static EV3GyroSensor gyroSensor = null;
 	
-	SensorManager sMgr;
+	static SensorManager sMgr;
 	
 	public static void main(String [] args){
 		
@@ -51,8 +52,7 @@ public class «root.name» {
 		sMgr = new SensorManager(colorSensor, leftLight, rightLight, backUltrasonic);
 		sMgr.start();
 		
-«FOR t : root.taskList»		behaviorMap.put(«t.prio», new «t.name»(leftMotor, rightMotor, armMotor, colorSensor, leftLight, rightLight, 
-backUltrasonic, frontUltrasonic, leftTouch, rightTouch, gyroSensor));«"\n"»«ENDFOR»
+«FOR t : root.taskList»		behaviorMap.put(«t.prio», new «t.name»(leftMotor, rightMotor, armMotor, sMgr));«"\n"»«ENDFOR»
 		Arbitrator arbitrator = new Arbitrator(sortBehaviors(behaviorMap));
 		arbitrator.go();
 	}
@@ -72,6 +72,8 @@ backUltrasonic, frontUltrasonic, leftTouch, rightTouch, gyroSensor));«"\n"»«ENDF
 	}
 	
 	def static sensorManager(){'''
+	package lel;
+	
 	import lejos.hardware.port.Port;
 	import lejos.hardware.port.SensorPort;
 	import lejos.hardware.sensor.EV3ColorSensor;
@@ -109,10 +111,10 @@ backUltrasonic, frontUltrasonic, leftTouch, rightTouch, gyroSensor));«"\n"»«ENDF
 			colorSampleProvider = colorSensor.getColorIDMode();
 			colorSamples = new float[colorSampleProvider.sampleSize()];
 			this.leftLight = leftLight;
-			leftLightSampleProvider = rightLight.getAmbientMode();
+			leftLightSampleProvider = leftLight.getRedMode();
 			leftLightSamples = new float[leftLightSampleProvider.sampleSize()];
 			this.rightLight = rightLight;
-			rightLightSampleProvider = rightLight.getAmbientMode();
+			rightLightSampleProvider = rightLight.getRedMode();
 			rightLightSamples = new float[rightLightSampleProvider.sampleSize()];
 			this.backUltrasonic = backUltrasonic;
 			backUltrasonicSampleProvider = backUltrasonic.getDistanceMode();

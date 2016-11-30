@@ -24,7 +24,7 @@ public abstract class Movement implements Behavior{
 		leftMotor.stop();
 	}
 
-	protected void waitMs(int waitTime) {
+	public void waitMs(int waitTime) {
 		startTime = System.currentTimeMillis();
 		curTime = startTime;
 		while(curTime < startTime + waitTime){

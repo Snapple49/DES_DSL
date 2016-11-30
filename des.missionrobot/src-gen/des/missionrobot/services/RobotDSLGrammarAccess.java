@@ -249,8 +249,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSpeedKeyword_0_3_2 = (Keyword)cGroup_0_3.eContents().get(2);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Keyword cTurnKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cTurnirAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cTurnirDirectionParserRuleCall_1_1_0 = (RuleCall)cTurnirAssignment_1_1.eContents().get(0);
+		private final Assignment cTurnDirAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cTurnDirDirectionParserRuleCall_1_1_0 = (RuleCall)cTurnDirAssignment_1_1.eContents().get(0);
 		private final Assignment cDegrAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cDegrINTTerminalRuleCall_1_2_0 = (RuleCall)cDegrAssignment_1_2.eContents().get(0);
 		private final Keyword cDegKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
@@ -274,13 +274,13 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Action:
 		//	'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? |
-		//	'Turn' turnir=Direction degr=INT 'deg' |
+		//	'Turn' turnDir=Direction degr=INT 'deg' |
 		//	'Arm' op=ArmOp |
 		//	'Play' 'sound' sound=Sound |
 		//	'Update' flag=[Flag] 'to' bool=Bool;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? | 'Turn' turnir=Direction degr=INT
+		//'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? | 'Turn' turnDir=Direction degr=INT
 		//'deg' | 'Arm' op=ArmOp | 'Play' 'sound' sound=Sound | 'Update' flag=[Flag] 'to' bool=Bool
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
@@ -326,17 +326,17 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'speed'
 		public Keyword getSpeedKeyword_0_3_2() { return cSpeedKeyword_0_3_2; }
 		
-		//'Turn' turnir=Direction degr=INT 'deg'
+		//'Turn' turnDir=Direction degr=INT 'deg'
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'Turn'
 		public Keyword getTurnKeyword_1_0() { return cTurnKeyword_1_0; }
 		
-		//turnir=Direction
-		public Assignment getTurnirAssignment_1_1() { return cTurnirAssignment_1_1; }
+		//turnDir=Direction
+		public Assignment getTurnDirAssignment_1_1() { return cTurnDirAssignment_1_1; }
 		
 		//Direction
-		public RuleCall getTurnirDirectionParserRuleCall_1_1_0() { return cTurnirDirectionParserRuleCall_1_1_0; }
+		public RuleCall getTurnDirDirectionParserRuleCall_1_1_0() { return cTurnDirDirectionParserRuleCall_1_1_0; }
 		
 		//degr=INT
 		public Assignment getDegrAssignment_1_2() { return cDegrAssignment_1_2; }
@@ -1166,7 +1166,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Action:
 	//	'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? |
-	//	'Turn' turnir=Direction degr=INT 'deg' |
+	//	'Turn' turnDir=Direction degr=INT 'deg' |
 	//	'Arm' op=ArmOp |
 	//	'Play' 'sound' sound=Sound |
 	//	'Update' flag=[Flag] 'to' bool=Bool;

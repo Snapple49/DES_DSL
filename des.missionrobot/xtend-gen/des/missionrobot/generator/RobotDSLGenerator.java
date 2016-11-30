@@ -45,6 +45,8 @@ public class RobotDSLGenerator extends AbstractGenerator {
           String _plus_2 = (_plus_1 + ".java");
           CharSequence _arbitratorMain = JavaGenerator.arbitratorMain(m);
           fsa.generateFile(_plus_2, _arbitratorMain);
+          CharSequence _sensorManager = JavaGenerator.sensorManager();
+          fsa.generateFile(((path + "SensorManager") + ".java"), _sensorManager);
           EList<Task> _taskList = m.getTaskList();
           for (final Task t : _taskList) {
             String _name_1 = t.getName();

@@ -1028,7 +1028,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAction"
-    // InternalRobotDSL.g:413:1: ruleAction returns [EObject current=null] : ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) ;
+    // InternalRobotDSL.g:413:1: ruleAction returns [EObject current=null] : ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnDir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) ;
     public final EObject ruleAction() throws RecognitionException {
         EObject current = null;
 
@@ -1051,7 +1051,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
         EObject lv_speed_6_0 = null;
 
-        EObject lv_turnir_9_0 = null;
+        EObject lv_turnDir_9_0 = null;
 
         EObject lv_op_13_0 = null;
 
@@ -1064,10 +1064,10 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:419:2: ( ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) )
-            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
+            // InternalRobotDSL.g:419:2: ( ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnDir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) )
+            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnDir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
             {
-            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
+            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnDir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
             int alt13=5;
             switch ( input.LA(1) ) {
             case 23:
@@ -1258,26 +1258,26 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
+                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_turnDir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
                     {
-                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
-                    // InternalRobotDSL.g:505:4: otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg'
+                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_turnDir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
+                    // InternalRobotDSL.g:505:4: otherlv_8= 'Turn' ( (lv_turnDir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg'
                     {
                     otherlv_8=(Token)match(input,28,FOLLOW_21); 
 
                     				newLeafNode(otherlv_8, grammarAccess.getActionAccess().getTurnKeyword_1_0());
                     			
-                    // InternalRobotDSL.g:509:4: ( (lv_turnir_9_0= ruleDirection ) )
-                    // InternalRobotDSL.g:510:5: (lv_turnir_9_0= ruleDirection )
+                    // InternalRobotDSL.g:509:4: ( (lv_turnDir_9_0= ruleDirection ) )
+                    // InternalRobotDSL.g:510:5: (lv_turnDir_9_0= ruleDirection )
                     {
-                    // InternalRobotDSL.g:510:5: (lv_turnir_9_0= ruleDirection )
-                    // InternalRobotDSL.g:511:6: lv_turnir_9_0= ruleDirection
+                    // InternalRobotDSL.g:510:5: (lv_turnDir_9_0= ruleDirection )
+                    // InternalRobotDSL.g:511:6: lv_turnDir_9_0= ruleDirection
                     {
 
-                    						newCompositeNode(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0());
+                    						newCompositeNode(grammarAccess.getActionAccess().getTurnDirDirectionParserRuleCall_1_1_0());
                     					
                     pushFollow(FOLLOW_18);
-                    lv_turnir_9_0=ruleDirection();
+                    lv_turnDir_9_0=ruleDirection();
 
                     state._fsp--;
 
@@ -1287,8 +1287,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     						}
                     						set(
                     							current,
-                    							"turnir",
-                    							lv_turnir_9_0,
+                    							"turnDir",
+                    							lv_turnDir_9_0,
                     							"des.missionrobot.RobotDSL.Direction");
                     						afterParserOrEnumRuleCall();
                     					

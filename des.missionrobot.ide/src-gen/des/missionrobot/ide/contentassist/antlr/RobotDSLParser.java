@@ -83,7 +83,7 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionAccess().getMoveDirAssignment_0_1(), "rule__Action__MoveDirAssignment_0_1");
 					put(grammarAccess.getActionAccess().getDurationAssignment_0_2_1(), "rule__Action__DurationAssignment_0_2_1");
 					put(grammarAccess.getActionAccess().getSpeedAssignment_0_3_1(), "rule__Action__SpeedAssignment_0_3_1");
-					put(grammarAccess.getActionAccess().getTurnirAssignment_1_1(), "rule__Action__TurnirAssignment_1_1");
+					put(grammarAccess.getActionAccess().getTurnDirAssignment_1_1(), "rule__Action__TurnDirAssignment_1_1");
 					put(grammarAccess.getActionAccess().getDegrAssignment_1_2(), "rule__Action__DegrAssignment_1_2");
 					put(grammarAccess.getActionAccess().getOpAssignment_2_1(), "rule__Action__OpAssignment_2_1");
 					put(grammarAccess.getActionAccess().getSoundAssignment_3_2(), "rule__Action__SoundAssignment_3_2");

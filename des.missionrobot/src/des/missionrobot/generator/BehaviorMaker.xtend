@@ -4,6 +4,7 @@ import des.missionrobot.robotDSL.Trigger
 import des.missionrobot.robotDSL.Action
 import des.missionrobot.robotDSL.Task
 import des.missionrobot.robotDSL.Sensor
+import org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl.Describer
 
 class BehaviorMaker {
 	
@@ -14,59 +15,58 @@ class BehaviorMaker {
 	static String action = ""
 	
 	def static makeBehaviorClass(Task t){'''
+package lel;
+
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
-/*import lejos.hardware.sensor.EV3ColorSensor;
-import lejos.hardware.sensor.EV3GyroSensor;
-import lejos.hardware.sensor.EV3TouchSensor;
-import lejos.hardware.sensor.EV3UltrasonicSensor;
-import lejos.hardware.sensor.NXTLightSensor;
-import lejos.robotics.subsumption.Behavior;*/
+import lejos.robotics.subsumption.Behavior;
 
-public class MoveTest implements Behavior{
+
+public class «t.name» implements Behavior{
 
 	//devices
 	private static EV3LargeRegulatedMotor leftMotor;
 	private static EV3LargeRegulatedMotor rightMotor;
 	private static EV3MediumRegulatedMotor armMotor;
 	private SensorManager sensorManager;
-	/*private static EV3ColorSensor colorSensor;
-	private static NXTLightSensor leftLight;
-	private static NXTLightSensor rightLight;
-	private static EV3UltrasonicSensor backUltrasonic;
-	private static EV3UltrasonicSensor frontUltrasonic;
-	private static EV3TouchSensor leftTouch;
-	private static EV3TouchSensor rightTouch;
-	private static EV3GyroSensor gyroSensor;*/
 	
 	//flags
 	private boolean suppressed = false;
 	
-	public MoveTest(EV3LargeRegulatedMotor lMotor,
+	private long startTime = 0;
+	private long curTime = 0;
+	
+	public «t.name»(EV3LargeRegulatedMotor lMotor,
 					EV3LargeRegulatedMotor rMotor,
 					EV3MediumRegulatedMotor aMotor,
-					SensorManager sM,
-					/*EV3ColorSensor cSensor,
-					NXTLightSensor lLight,
-					NXTLightSensor rLight,
-					EV3UltrasonicSensor bUltrasonic,
-					EV3UltrasonicSensor fUltrasonic,
-					EV3TouchSensor lTouch,
-					EV3TouchSensor rTouch,
-					EV3GyroSensor gSensor*/)
+					SensorManager sM)
 	{
 		leftMotor = lMotor;
 		rightMotor = rMotor;
 		armMotor = aMotor;
 		sensorManager = sM;
-		/*colorSensor = cSensor;
-		leftLight = lLight;
-		rightLight = rLight;
-		backUltrasonic = bUltrasonic;
-		frontUltrasonic = fUltrasonic;
-		leftTouch = lTouch;
-		rightTouch = rTouch;
-		gyroSensor = gSensor;*/
+	}
+	
+	public void turnDegrees(boolean turnRight, int turnDeg){
+		leftMotor.stop(true);
+		rightMotor.stop();
+		if(turnRight){
+			leftMotor.forward();			
+		}else{
+			rightMotor.forward();
+		}
+		waitMs(turnDeg);
+		rightMotor.stop(true);
+		leftMotor.stop();
+	}
+	
+	public void waitMs(int waitTime) {
+		startTime = System.currentTimeMillis();
+		curTime = startTime;
+		while(curTime < startTime + waitTime){
+			curTime = System.currentTimeMillis();
+			Thread.yield();
+		}
 	}
 	
 	@Override
@@ -77,12 +77,8 @@ public class MoveTest implements Behavior{
 	@Override
 	public void action() {
 		suppressed = false;
-		«FOR a : t.actionList»«toAction(a)»«ENDFOR»
-		test
-		leftMotor.forward();
-		rightMotor.forward();
 		while(!suppressed){
-			Thread.yield();
+			«FOR a : t.actionList»«toAction(a)»«ENDFOR»
 		}
 	}
 
@@ -102,10 +98,10 @@ public class MoveTest implements Behavior{
 		sensor = ""
 		if(trig.sensor != null){	
 			switch (trig.sensor.sensorType) {
-				case LEFTLIGHT: {sensor = "sensorManager.getLeftLight"}
-				case RIGHTLIGHT : {sensor = "sensorManager.getRightLight"}
-				case COLOR : {sensor = "sensorManager.getColor"}
-				case BACKUS :{sensor = "sensorManager.getRearUS"}
+				case LEFTLIGHT: {sensor = "sensorManager.getLeftLight()"}
+				case RIGHTLIGHT : {sensor = "sensorManager.getRightLight()"}
+				case COLOR : {sensor = "sensorManager.getColor()"}
+				case BACKUS :{sensor = "sensorManager.getBackUltrasonic()"}
 				default : {sensor = ""}
 			}
 			if (trig.dist == null){
@@ -135,22 +131,47 @@ public class MoveTest implements Behavior{
 	}
 	
 	def static toAction(Action act){
-		if(act.moveDir != null){ // action is movement
 		action = ""
+		if(act.moveDir != null){ // action is movement
 			switch (act.moveDir.dir) {
 				case FORWARD: {
 					action = action +
-					
-'''leftMotor.forward();
-	rightMotor.forward();'''
-					
-					if(act.duration > 0){
-						action = action + 
-						'''waitMs(«act.duration*100»);'''						
-					}
+					'''leftMotor.forward();
+rightMotor.forward();
+					'''
+				}
+				case BACKWARD:{
+					action = action +					
+					'''leftMotor.backward();
+rightMotor.backward();
+					'''
 				}
 				default: {
-					action = "error"
+					return action = "error"
+				}
+			}
+			if(act.duration > 0){
+				action = action + 
+				'''waitMs(«act.duration*100»);
+				'''						
+			}else{
+				action = action + 
+				'''Thread.yield();'''
+			}
+		}else if(act.turnDir != null){ //action is a turn
+			switch (act.turnDir.dir) {
+				case LEFT: {
+					action = action + 
+					'''turnDegrees(false, «act.degr»);
+					'''
+				}
+				case RIGHT: {
+					action = action + 
+					'''turnDegrees(true, «act.degr»);
+					'''
+				}
+				default: {
+					return action = "error"
 				}
 			}
 		}

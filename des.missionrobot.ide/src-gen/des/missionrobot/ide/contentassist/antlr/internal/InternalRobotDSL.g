@@ -2012,9 +2012,9 @@ rule__Action__Group_1__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getActionAccess().getTurnirAssignment_1_1()); }
-	(rule__Action__TurnirAssignment_1_1)
-	{ after(grammarAccess.getActionAccess().getTurnirAssignment_1_1()); }
+	{ before(grammarAccess.getActionAccess().getTurnDirAssignment_1_1()); }
+	(rule__Action__TurnDirAssignment_1_1)
+	{ after(grammarAccess.getActionAccess().getTurnDirAssignment_1_1()); }
 )
 ;
 finally {
@@ -3110,15 +3110,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Action__TurnirAssignment_1_1
+rule__Action__TurnDirAssignment_1_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0()); }
+		{ before(grammarAccess.getActionAccess().getTurnDirDirectionParserRuleCall_1_1_0()); }
 		ruleDirection
-		{ after(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0()); }
+		{ after(grammarAccess.getActionAccess().getTurnDirDirectionParserRuleCall_1_1_0()); }
 	)
 ;
 finally {

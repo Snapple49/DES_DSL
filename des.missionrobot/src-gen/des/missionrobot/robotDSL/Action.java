@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link des.missionrobot.robotDSL.Action#getMoveDir <em>Move Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getDuration <em>Duration</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.Action#getTurnir <em>Turnir</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getTurnDir <em>Turn Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}</li>
@@ -110,30 +110,30 @@ public interface Action extends EObject
   void setSpeed(Speed value);
 
   /**
-   * Returns the value of the '<em><b>Turnir</b></em>' containment reference.
+   * Returns the value of the '<em><b>Turn Dir</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Turnir</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Turn Dir</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Turnir</em>' containment reference.
-   * @see #setTurnir(Direction)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Turnir()
+   * @return the value of the '<em>Turn Dir</em>' containment reference.
+   * @see #setTurnDir(Direction)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_TurnDir()
    * @model containment="true"
    * @generated
    */
-  Direction getTurnir();
+  Direction getTurnDir();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getTurnir <em>Turnir</em>}' containment reference.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getTurnDir <em>Turn Dir</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Turnir</em>' containment reference.
-   * @see #getTurnir()
+   * @param value the new value of the '<em>Turn Dir</em>' containment reference.
+   * @see #getTurnDir()
    * @generated
    */
-  void setTurnir(Direction value);
+  void setTurnDir(Direction value);
 
   /**
    * Returns the value of the '<em><b>Degr</b></em>' attribute.

@@ -104,7 +104,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Action returns Action
 	 *
 	 * Constraint:
-	 *     ((moveDir=Direction duration=INT? speed=Speed?) | (turnir=Direction degr=INT) | op=ArmOp | sound=Sound | (flag=[Flag|ID] bool=Bool))
+	 *     ((moveDir=Direction duration=INT? speed=Speed?) | (turnDir=Direction degr=INT) | op=ArmOp | sound=Sound | (flag=[Flag|ID] bool=Bool))
 	 */
 	protected void sequence_Action(ISerializationContext context, des.missionrobot.robotDSL.Action semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

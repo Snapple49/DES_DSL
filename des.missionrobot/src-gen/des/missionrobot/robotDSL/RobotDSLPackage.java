@@ -261,13 +261,13 @@ public interface RobotDSLPackage extends EPackage
   int ACTION__SPEED = 2;
 
   /**
-   * The feature id for the '<em><b>Turnir</b></em>' containment reference.
+   * The feature id for the '<em><b>Turn Dir</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__TURNIR = 3;
+  int ACTION__TURN_DIR = 3;
 
   /**
    * The feature id for the '<em><b>Degr</b></em>' attribute.
@@ -999,15 +999,15 @@ public interface RobotDSLPackage extends EPackage
   EReference getAction_Speed();
 
   /**
-   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getTurnir <em>Turnir</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getTurnDir <em>Turn Dir</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Turnir</em>'.
-   * @see des.missionrobot.robotDSL.Action#getTurnir()
+   * @return the meta object for the containment reference '<em>Turn Dir</em>'.
+   * @see des.missionrobot.robotDSL.Action#getTurnDir()
    * @see #getAction()
    * @generated
    */
-  EReference getAction_Turnir();
+  EReference getAction_TurnDir();
 
   /**
    * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}'.
@@ -1647,12 +1647,12 @@ public interface RobotDSLPackage extends EPackage
     EReference ACTION__SPEED = eINSTANCE.getAction_Speed();
 
     /**
-     * The meta object literal for the '<em><b>Turnir</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Turn Dir</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ACTION__TURNIR = eINSTANCE.getAction_Turnir();
+    EReference ACTION__TURN_DIR = eINSTANCE.getAction_TurnDir();
 
     /**
      * The meta object literal for the '<em><b>Degr</b></em>' attribute feature.

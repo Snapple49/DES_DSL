@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getMoveDir <em>Move Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSpeed <em>Speed</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getTurnir <em>Turnir</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getTurnDir <em>Turn Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDegr <em>Degr</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSound <em>Sound</em>}</li>
@@ -85,14 +85,14 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected Speed speed;
 
   /**
-   * The cached value of the '{@link #getTurnir() <em>Turnir</em>}' containment reference.
+   * The cached value of the '{@link #getTurnDir() <em>Turn Dir</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTurnir()
+   * @see #getTurnDir()
    * @generated
    * @ordered
    */
-  protected Direction turnir;
+  protected Direction turnDir;
 
   /**
    * The default value of the '{@link #getDegr() <em>Degr</em>}' attribute.
@@ -299,9 +299,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public Direction getTurnir()
+  public Direction getTurnDir()
   {
-    return turnir;
+    return turnDir;
   }
 
   /**
@@ -309,13 +309,13 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTurnir(Direction newTurnir, NotificationChain msgs)
+  public NotificationChain basicSetTurnDir(Direction newTurnDir, NotificationChain msgs)
   {
-    Direction oldTurnir = turnir;
-    turnir = newTurnir;
+    Direction oldTurnDir = turnDir;
+    turnDir = newTurnDir;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__TURNIR, oldTurnir, newTurnir);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__TURN_DIR, oldTurnDir, newTurnDir);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -326,20 +326,20 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTurnir(Direction newTurnir)
+  public void setTurnDir(Direction newTurnDir)
   {
-    if (newTurnir != turnir)
+    if (newTurnDir != turnDir)
     {
       NotificationChain msgs = null;
-      if (turnir != null)
-        msgs = ((InternalEObject)turnir).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__TURNIR, null, msgs);
-      if (newTurnir != null)
-        msgs = ((InternalEObject)newTurnir).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__TURNIR, null, msgs);
-      msgs = basicSetTurnir(newTurnir, msgs);
+      if (turnDir != null)
+        msgs = ((InternalEObject)turnDir).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__TURN_DIR, null, msgs);
+      if (newTurnDir != null)
+        msgs = ((InternalEObject)newTurnDir).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__TURN_DIR, null, msgs);
+      msgs = basicSetTurnDir(newTurnDir, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__TURNIR, newTurnir, newTurnir));
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__TURN_DIR, newTurnDir, newTurnDir));
   }
 
   /**
@@ -566,8 +566,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return basicSetMoveDir(null, msgs);
       case RobotDSLPackage.ACTION__SPEED:
         return basicSetSpeed(null, msgs);
-      case RobotDSLPackage.ACTION__TURNIR:
-        return basicSetTurnir(null, msgs);
+      case RobotDSLPackage.ACTION__TURN_DIR:
+        return basicSetTurnDir(null, msgs);
       case RobotDSLPackage.ACTION__OP:
         return basicSetOp(null, msgs);
       case RobotDSLPackage.ACTION__SOUND:
@@ -594,8 +594,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return getDuration();
       case RobotDSLPackage.ACTION__SPEED:
         return getSpeed();
-      case RobotDSLPackage.ACTION__TURNIR:
-        return getTurnir();
+      case RobotDSLPackage.ACTION__TURN_DIR:
+        return getTurnDir();
       case RobotDSLPackage.ACTION__DEGR:
         return getDegr();
       case RobotDSLPackage.ACTION__OP:
@@ -630,8 +630,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case RobotDSLPackage.ACTION__SPEED:
         setSpeed((Speed)newValue);
         return;
-      case RobotDSLPackage.ACTION__TURNIR:
-        setTurnir((Direction)newValue);
+      case RobotDSLPackage.ACTION__TURN_DIR:
+        setTurnDir((Direction)newValue);
         return;
       case RobotDSLPackage.ACTION__DEGR:
         setDegr((Integer)newValue);
@@ -671,8 +671,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case RobotDSLPackage.ACTION__SPEED:
         setSpeed((Speed)null);
         return;
-      case RobotDSLPackage.ACTION__TURNIR:
-        setTurnir((Direction)null);
+      case RobotDSLPackage.ACTION__TURN_DIR:
+        setTurnDir((Direction)null);
         return;
       case RobotDSLPackage.ACTION__DEGR:
         setDegr(DEGR_EDEFAULT);
@@ -709,8 +709,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return duration != DURATION_EDEFAULT;
       case RobotDSLPackage.ACTION__SPEED:
         return speed != null;
-      case RobotDSLPackage.ACTION__TURNIR:
-        return turnir != null;
+      case RobotDSLPackage.ACTION__TURN_DIR:
+        return turnDir != null;
       case RobotDSLPackage.ACTION__DEGR:
         return degr != DEGR_EDEFAULT;
       case RobotDSLPackage.ACTION__OP:

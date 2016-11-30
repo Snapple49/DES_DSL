@@ -71,7 +71,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Action/moveDir"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Action/duration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Action/speed"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Action/turnir"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Action/turnDir"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Action/degr"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Action/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Action/sound"/>
