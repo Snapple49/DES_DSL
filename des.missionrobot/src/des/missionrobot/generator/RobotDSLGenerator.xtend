@@ -24,6 +24,7 @@ class RobotDSLGenerator extends AbstractGenerator {
  		var path = "generated/" + resource.getURI().lastSegment + "/"
  		for (Mission m: root.missionList){
 	 		fsa.generateFile(path+m.name + ".java", JavaGenerator.arbitratorMain(m))
+	 		fsa.generateFile(path+"SensorManager" + ".java", JavaGenerator.sensorManager())
 	 		for (Task t: m.taskList) {
 	 				fsa.generateFile(path+t.name + ".java", BehaviorMaker.makeBehaviorClass(t))
 	 		}		
