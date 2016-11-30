@@ -426,17 +426,17 @@ ruleAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActionAccess().getDirDirectionEnumRuleCall_0_1_0());
+						newCompositeNode(grammarAccess.getActionAccess().getMoveDirDirectionParserRuleCall_0_1_0());
 					}
-					lv_dir_1_0=ruleDirection
+					lv_moveDir_1_0=ruleDirection
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActionRule());
 						}
 						set(
 							$current,
-							"dir",
-							lv_dir_1_0,
+							"moveDir",
+							lv_moveDir_1_0,
 							"des.missionrobot.RobotDSL.Direction");
 						afterParserOrEnumRuleCall();
 					}
@@ -478,7 +478,7 @@ ruleAction returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getActionAccess().getSpeedSpeedEnumRuleCall_0_3_1_0());
+							newCompositeNode(grammarAccess.getActionAccess().getSpeedSpeedParserRuleCall_0_3_1_0());
 						}
 						lv_speed_6_0=ruleSpeed
 						{
@@ -509,17 +509,17 @@ ruleAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActionAccess().getDirDirectionEnumRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0());
 					}
-					lv_dir_9_0=ruleDirection
+					lv_turnir_9_0=ruleDirection
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActionRule());
 						}
 						set(
 							$current,
-							"dir",
-							lv_dir_9_0,
+							"turnir",
+							lv_turnir_9_0,
 							"des.missionrobot.RobotDSL.Direction");
 						afterParserOrEnumRuleCall();
 					}
@@ -557,7 +557,7 @@ ruleAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActionAccess().getOpArmOpEnumRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getActionAccess().getOpArmOpParserRuleCall_2_1_0());
 					}
 					lv_op_13_0=ruleArmOp
 					{
@@ -587,7 +587,7 @@ ruleAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActionAccess().getSoundSoundEnumRuleCall_3_2_0());
+						newCompositeNode(grammarAccess.getActionAccess().getSoundSoundParserRuleCall_3_2_0());
 					}
 					lv_sound_16_0=ruleSound
 					{
@@ -630,7 +630,7 @@ ruleAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActionAccess().getBoolBoolEnumRuleCall_4_3_0());
+						newCompositeNode(grammarAccess.getActionAccess().getBoolBoolParserRuleCall_4_3_0());
 					}
 					lv_bool_20_0=ruleBool
 					{
@@ -669,7 +669,7 @@ ruleTrigger returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTriggerAccess().getBoolTypeBoolEnumRuleCall_0_0());
+					newCompositeNode(grammarAccess.getTriggerAccess().getBoolTypeBoolParserRuleCall_0_0());
 				}
 				lv_boolType_0_0=ruleBool
 				{
@@ -690,7 +690,7 @@ ruleTrigger returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getTriggerAccess().getNegNegationEnumRuleCall_1_0_0_0());
+							newCompositeNode(grammarAccess.getTriggerAccess().getNegNegationParserRuleCall_1_0_0_0());
 						}
 						lv_neg_1_0=ruleNegation
 						{
@@ -725,7 +725,7 @@ ruleTrigger returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorEnumRuleCall_1_1_0_0());
+							newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorParserRuleCall_1_1_0_0());
 						}
 						lv_sensor_3_0=ruleSensor
 						{
@@ -750,7 +750,7 @@ ruleTrigger returns [EObject current=null]
 						(
 							(
 								{
-									newCompositeNode(grammarAccess.getTriggerAccess().getColorColorEnumRuleCall_1_1_1_0_1_0());
+									newCompositeNode(grammarAccess.getTriggerAccess().getColorColorParserRuleCall_1_1_1_0_1_0());
 								}
 								lv_color_5_0=ruleColor
 								{
@@ -818,7 +818,7 @@ ruleDistance returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDistanceAccess().getRangeBoolBoolEnumRuleCall_0_0());
+					newCompositeNode(grammarAccess.getDistanceAccess().getRangeBoolBoolParserRuleCall_0_0());
 				}
 				lv_rangeBool_0_0=ruleBool
 				{
@@ -905,7 +905,7 @@ ruleFlag returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFlagAccess().getBoolBoolEnumRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getFlagAccess().getBoolBoolParserRuleCall_1_1_0());
 					}
 					lv_bool_2_0=ruleBool
 					{
@@ -970,8 +970,291 @@ ruleTime returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleDirection
+entryRuleDirection returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDirectionRule()); }
+	iv_ruleDirection=ruleDirection
+	{ $current=$iv_ruleDirection.current; }
+	EOF;
+
 // Rule Direction
-ruleDirection returns [Enumerator current=null]
+ruleDirection returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getDirectionAccess().getDirDirectionValEnumRuleCall_0());
+			}
+			lv_dir_0_0=ruleDirectionVal
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getDirectionRule());
+				}
+				set(
+					$current,
+					"dir",
+					lv_dir_0_0,
+					"des.missionrobot.RobotDSL.DirectionVal");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleSpeed
+entryRuleSpeed returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSpeedRule()); }
+	iv_ruleSpeed=ruleSpeed
+	{ $current=$iv_ruleSpeed.current; }
+	EOF;
+
+// Rule Speed
+ruleSpeed returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getSpeedAccess().getSpeedSpeedValEnumRuleCall_0());
+			}
+			lv_speed_0_0=ruleSpeedVal
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getSpeedRule());
+				}
+				set(
+					$current,
+					"speed",
+					lv_speed_0_0,
+					"des.missionrobot.RobotDSL.SpeedVal");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleArmOp
+entryRuleArmOp returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getArmOpRule()); }
+	iv_ruleArmOp=ruleArmOp
+	{ $current=$iv_ruleArmOp.current; }
+	EOF;
+
+// Rule ArmOp
+ruleArmOp returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getArmOpAccess().getOpTypeArmOpTypeEnumRuleCall_0());
+			}
+			lv_opType_0_0=ruleArmOpType
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getArmOpRule());
+				}
+				set(
+					$current,
+					"opType",
+					lv_opType_0_0,
+					"des.missionrobot.RobotDSL.ArmOpType");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleSound
+entryRuleSound returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSoundRule()); }
+	iv_ruleSound=ruleSound
+	{ $current=$iv_ruleSound.current; }
+	EOF;
+
+// Rule Sound
+ruleSound returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getSoundAccess().getSoundNameSoundNameEnumRuleCall_0());
+			}
+			lv_soundName_0_0=ruleSoundName
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getSoundRule());
+				}
+				set(
+					$current,
+					"soundName",
+					lv_soundName_0_0,
+					"des.missionrobot.RobotDSL.SoundName");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleSensor
+entryRuleSensor returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSensorRule()); }
+	iv_ruleSensor=ruleSensor
+	{ $current=$iv_ruleSensor.current; }
+	EOF;
+
+// Rule Sensor
+ruleSensor returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getSensorAccess().getSensorTypeSensorTypeEnumRuleCall_0());
+			}
+			lv_sensorType_0_0=ruleSensorType
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getSensorRule());
+				}
+				set(
+					$current,
+					"sensorType",
+					lv_sensorType_0_0,
+					"des.missionrobot.RobotDSL.SensorType");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleColor
+entryRuleColor returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getColorRule()); }
+	iv_ruleColor=ruleColor
+	{ $current=$iv_ruleColor.current; }
+	EOF;
+
+// Rule Color
+ruleColor returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getColorAccess().getColorNameColorNameEnumRuleCall_0());
+			}
+			lv_colorName_0_0=ruleColorName
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getColorRule());
+				}
+				set(
+					$current,
+					"colorName",
+					lv_colorName_0_0,
+					"des.missionrobot.RobotDSL.ColorName");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleBool
+entryRuleBool returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getBoolRule()); }
+	iv_ruleBool=ruleBool
+	{ $current=$iv_ruleBool.current; }
+	EOF;
+
+// Rule Bool
+ruleBool returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getBoolAccess().getBoolTypeBoolTypeEnumRuleCall_0());
+			}
+			lv_boolType_0_0=ruleBoolType
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getBoolRule());
+				}
+				set(
+					$current,
+					"boolType",
+					lv_boolType_0_0,
+					"des.missionrobot.RobotDSL.BoolType");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleNegation
+entryRuleNegation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getNegationRule()); }
+	iv_ruleNegation=ruleNegation
+	{ $current=$iv_ruleNegation.current; }
+	EOF;
+
+// Rule Negation
+ruleNegation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_NOT_0_0='not'
+			{
+				newLeafNode(lv_NOT_0_0, grammarAccess.getNegationAccess().getNOTNotKeyword_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getNegationRule());
+				}
+				setWithLastConsumed($current, "NOT", lv_NOT_0_0, "not");
+			}
+		)
+	)
+;
+
+// Rule DirectionVal
+ruleDirectionVal returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -982,39 +1265,39 @@ ruleDirection returns [Enumerator current=null]
 		(
 			enumLiteral_0='forward'
 			{
-				$current = grammarAccess.getDirectionAccess().getFORWARDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getDirectionAccess().getFORWARDEnumLiteralDeclaration_0());
+				$current = grammarAccess.getDirectionValAccess().getFORWARDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getDirectionValAccess().getFORWARDEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
 			enumLiteral_1='backward'
 			{
-				$current = grammarAccess.getDirectionAccess().getBACKWARDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getDirectionAccess().getBACKWARDEnumLiteralDeclaration_1());
+				$current = grammarAccess.getDirectionValAccess().getBACKWARDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getDirectionValAccess().getBACKWARDEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
 			enumLiteral_2='left'
 			{
-				$current = grammarAccess.getDirectionAccess().getLEFTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getDirectionAccess().getLEFTEnumLiteralDeclaration_2());
+				$current = grammarAccess.getDirectionValAccess().getLEFTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getDirectionValAccess().getLEFTEnumLiteralDeclaration_2());
 			}
 		)
 		    |
 		(
 			enumLiteral_3='right'
 			{
-				$current = grammarAccess.getDirectionAccess().getRIGHTEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getDirectionAccess().getRIGHTEnumLiteralDeclaration_3());
+				$current = grammarAccess.getDirectionValAccess().getRIGHTEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getDirectionValAccess().getRIGHTEnumLiteralDeclaration_3());
 			}
 		)
 	)
 ;
 
-// Rule Speed
-ruleSpeed returns [Enumerator current=null]
+// Rule SpeedVal
+ruleSpeedVal returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1025,31 +1308,31 @@ ruleSpeed returns [Enumerator current=null]
 		(
 			enumLiteral_0='high'
 			{
-				$current = grammarAccess.getSpeedAccess().getHIGHEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getSpeedAccess().getHIGHEnumLiteralDeclaration_0());
+				$current = grammarAccess.getSpeedValAccess().getHIGHEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getSpeedValAccess().getHIGHEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
 			enumLiteral_1='medium'
 			{
-				$current = grammarAccess.getSpeedAccess().getMEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getSpeedAccess().getMEDEnumLiteralDeclaration_1());
+				$current = grammarAccess.getSpeedValAccess().getMEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSpeedValAccess().getMEDEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
 			enumLiteral_2='low'
 			{
-				$current = grammarAccess.getSpeedAccess().getLOWEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getSpeedAccess().getLOWEnumLiteralDeclaration_2());
+				$current = grammarAccess.getSpeedValAccess().getLOWEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getSpeedValAccess().getLOWEnumLiteralDeclaration_2());
 			}
 		)
 	)
 ;
 
-// Rule ArmOp
-ruleArmOp returns [Enumerator current=null]
+// Rule ArmOpType
+ruleArmOpType returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1060,23 +1343,23 @@ ruleArmOp returns [Enumerator current=null]
 		(
 			enumLiteral_0='raise'
 			{
-				$current = grammarAccess.getArmOpAccess().getUPEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getArmOpAccess().getUPEnumLiteralDeclaration_0());
+				$current = grammarAccess.getArmOpTypeAccess().getUPEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getArmOpTypeAccess().getUPEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
 			enumLiteral_1='lower'
 			{
-				$current = grammarAccess.getArmOpAccess().getDOWNEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getArmOpAccess().getDOWNEnumLiteralDeclaration_1());
+				$current = grammarAccess.getArmOpTypeAccess().getDOWNEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getArmOpTypeAccess().getDOWNEnumLiteralDeclaration_1());
 			}
 		)
 	)
 ;
 
-// Rule Sound
-ruleSound returns [Enumerator current=null]
+// Rule SoundName
+ruleSoundName returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1087,23 +1370,23 @@ ruleSound returns [Enumerator current=null]
 		(
 			enumLiteral_0='buzz'
 			{
-				$current = grammarAccess.getSoundAccess().getBuzzEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getSoundAccess().getBuzzEnumLiteralDeclaration_0());
+				$current = grammarAccess.getSoundNameAccess().getBUZZEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getSoundNameAccess().getBUZZEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
 			enumLiteral_1='fanfare'
 			{
-				$current = grammarAccess.getSoundAccess().getFanfareEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getSoundAccess().getFanfareEnumLiteralDeclaration_1());
+				$current = grammarAccess.getSoundNameAccess().getFANFAREEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSoundNameAccess().getFANFAREEnumLiteralDeclaration_1());
 			}
 		)
 	)
 ;
 
-// Rule Sensor
-ruleSensor returns [Enumerator current=null]
+// Rule SensorType
+ruleSensorType returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1114,47 +1397,47 @@ ruleSensor returns [Enumerator current=null]
 		(
 			enumLiteral_0='Color'
 			{
-				$current = grammarAccess.getSensorAccess().getCOLOREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getSensorAccess().getCOLOREnumLiteralDeclaration_0());
+				$current = grammarAccess.getSensorTypeAccess().getCOLOREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getSensorTypeAccess().getCOLOREnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
 			enumLiteral_1='LeftLight'
 			{
-				$current = grammarAccess.getSensorAccess().getLEFTLIGHTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getSensorAccess().getLEFTLIGHTEnumLiteralDeclaration_1());
+				$current = grammarAccess.getSensorTypeAccess().getLEFTLIGHTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSensorTypeAccess().getLEFTLIGHTEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
 			enumLiteral_2='RightLight'
 			{
-				$current = grammarAccess.getSensorAccess().getRIGHTLIGHTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getSensorAccess().getRIGHTLIGHTEnumLiteralDeclaration_2());
+				$current = grammarAccess.getSensorTypeAccess().getRIGHTLIGHTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getSensorTypeAccess().getRIGHTLIGHTEnumLiteralDeclaration_2());
 			}
 		)
 		    |
 		(
 			enumLiteral_3='RearHeight'
 			{
-				$current = grammarAccess.getSensorAccess().getBACKUSEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getSensorAccess().getBACKUSEnumLiteralDeclaration_3());
+				$current = grammarAccess.getSensorTypeAccess().getBACKUSEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getSensorTypeAccess().getBACKUSEnumLiteralDeclaration_3());
 			}
 		)
 		    |
 		(
 			enumLiteral_4='FrontDistance'
 			{
-				$current = grammarAccess.getSensorAccess().getFRONTUSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_4, grammarAccess.getSensorAccess().getFRONTUSEnumLiteralDeclaration_4());
+				$current = grammarAccess.getSensorTypeAccess().getFRONTUSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getSensorTypeAccess().getFRONTUSEnumLiteralDeclaration_4());
 			}
 		)
 	)
 ;
 
-// Rule Color
-ruleColor returns [Enumerator current=null]
+// Rule ColorName
+ruleColorName returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1165,63 +1448,63 @@ ruleColor returns [Enumerator current=null]
 		(
 			enumLiteral_0='red'
 			{
-				$current = grammarAccess.getColorAccess().getREDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getColorAccess().getREDEnumLiteralDeclaration_0());
+				$current = grammarAccess.getColorNameAccess().getREDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getColorNameAccess().getREDEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
 			enumLiteral_1='white'
 			{
-				$current = grammarAccess.getColorAccess().getWHITEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getColorAccess().getWHITEEnumLiteralDeclaration_1());
+				$current = grammarAccess.getColorNameAccess().getWHITEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getColorNameAccess().getWHITEEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
 			enumLiteral_2='black'
 			{
-				$current = grammarAccess.getColorAccess().getBLACKEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getColorAccess().getBLACKEnumLiteralDeclaration_2());
+				$current = grammarAccess.getColorNameAccess().getBLACKEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getColorNameAccess().getBLACKEnumLiteralDeclaration_2());
 			}
 		)
 		    |
 		(
 			enumLiteral_3='green'
 			{
-				$current = grammarAccess.getColorAccess().getGREENEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getColorAccess().getGREENEnumLiteralDeclaration_3());
+				$current = grammarAccess.getColorNameAccess().getGREENEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getColorNameAccess().getGREENEnumLiteralDeclaration_3());
 			}
 		)
 		    |
 		(
 			enumLiteral_4='blue'
 			{
-				$current = grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_4, grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4());
+				$current = grammarAccess.getColorNameAccess().getBLUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getColorNameAccess().getBLUEEnumLiteralDeclaration_4());
 			}
 		)
 		    |
 		(
 			enumLiteral_5='bright'
 			{
-				$current = grammarAccess.getColorAccess().getBRIGHTEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_5, grammarAccess.getColorAccess().getBRIGHTEnumLiteralDeclaration_5());
+				$current = grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5());
 			}
 		)
 		    |
 		(
 			enumLiteral_6='dark'
 			{
-				$current = grammarAccess.getColorAccess().getDARKEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_6, grammarAccess.getColorAccess().getDARKEnumLiteralDeclaration_6());
+				$current = grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_6, grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6());
 			}
 		)
 	)
 ;
 
-// Rule Bool
-ruleBool returns [Enumerator current=null]
+// Rule BoolType
+ruleBoolType returns [Enumerator current=null]
 @init {
 	enterRule();
 }
@@ -1232,67 +1515,50 @@ ruleBool returns [Enumerator current=null]
 		(
 			enumLiteral_0='less'
 			{
-				$current = grammarAccess.getBoolAccess().getLEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getBoolAccess().getLEnumLiteralDeclaration_0());
+				$current = grammarAccess.getBoolTypeAccess().getLEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getBoolTypeAccess().getLEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
 			enumLiteral_1='greater'
 			{
-				$current = grammarAccess.getBoolAccess().getGEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getBoolAccess().getGEnumLiteralDeclaration_1());
+				$current = grammarAccess.getBoolTypeAccess().getGEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getBoolTypeAccess().getGEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
 			enumLiteral_2='and'
 			{
-				$current = grammarAccess.getBoolAccess().getANDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getBoolAccess().getANDEnumLiteralDeclaration_2());
+				$current = grammarAccess.getBoolTypeAccess().getANDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getBoolTypeAccess().getANDEnumLiteralDeclaration_2());
 			}
 		)
 		    |
 		(
 			enumLiteral_3='or'
 			{
-				$current = grammarAccess.getBoolAccess().getOREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getBoolAccess().getOREnumLiteralDeclaration_3());
+				$current = grammarAccess.getBoolTypeAccess().getOREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getBoolTypeAccess().getOREnumLiteralDeclaration_3());
 			}
 		)
 		    |
 		(
 			enumLiteral_4='true'
 			{
-				$current = grammarAccess.getBoolAccess().getTRUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_4, grammarAccess.getBoolAccess().getTRUEEnumLiteralDeclaration_4());
+				$current = grammarAccess.getBoolTypeAccess().getTRUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getBoolTypeAccess().getTRUEEnumLiteralDeclaration_4());
 			}
 		)
 		    |
 		(
 			enumLiteral_5='false'
 			{
-				$current = grammarAccess.getBoolAccess().getFALSEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_5, grammarAccess.getBoolAccess().getFALSEEnumLiteralDeclaration_5());
+				$current = grammarAccess.getBoolTypeAccess().getFALSEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getBoolTypeAccess().getFALSEEnumLiteralDeclaration_5());
 			}
 		)
-	)
-;
-
-// Rule Negation
-ruleNegation returns [Enumerator current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		enumLiteral_0='not'
-		{
-			$current = grammarAccess.getNegationAccess().getNOTEnumLiteralDeclaration().getEnumLiteral().getInstance();
-			newLeafNode(enumLiteral_0, grammarAccess.getNegationAccess().getNOTEnumLiteralDeclaration());
-		}
 	)
 ;
 

@@ -234,13 +234,13 @@ public interface RobotDSLPackage extends EPackage
   int ACTION = 3;
 
   /**
-   * The feature id for the '<em><b>Dir</b></em>' attribute.
+   * The feature id for the '<em><b>Move Dir</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__DIR = 0;
+  int ACTION__MOVE_DIR = 0;
 
   /**
    * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -252,7 +252,7 @@ public interface RobotDSLPackage extends EPackage
   int ACTION__DURATION = 1;
 
   /**
-   * The feature id for the '<em><b>Speed</b></em>' attribute.
+   * The feature id for the '<em><b>Speed</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -261,31 +261,40 @@ public interface RobotDSLPackage extends EPackage
   int ACTION__SPEED = 2;
 
   /**
+   * The feature id for the '<em><b>Turnir</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION__TURNIR = 3;
+
+  /**
    * The feature id for the '<em><b>Degr</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__DEGR = 3;
+  int ACTION__DEGR = 4;
 
   /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * The feature id for the '<em><b>Op</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__OP = 4;
+  int ACTION__OP = 5;
 
   /**
-   * The feature id for the '<em><b>Sound</b></em>' attribute.
+   * The feature id for the '<em><b>Sound</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__SOUND = 5;
+  int ACTION__SOUND = 6;
 
   /**
    * The feature id for the '<em><b>Flag</b></em>' reference.
@@ -294,16 +303,16 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION__FLAG = 6;
+  int ACTION__FLAG = 7;
 
   /**
-   * The feature id for the '<em><b>Bool</b></em>' attribute.
+   * The feature id for the '<em><b>Bool</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__BOOL = 7;
+  int ACTION__BOOL = 8;
 
   /**
    * The number of structural features of the '<em>Action</em>' class.
@@ -312,7 +321,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_FEATURE_COUNT = 8;
+  int ACTION_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.TriggerImpl <em>Trigger</em>}' class.
@@ -325,7 +334,7 @@ public interface RobotDSLPackage extends EPackage
   int TRIGGER = 4;
 
   /**
-   * The feature id for the '<em><b>Bool Type</b></em>' attribute.
+   * The feature id for the '<em><b>Bool Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -334,7 +343,7 @@ public interface RobotDSLPackage extends EPackage
   int TRIGGER__BOOL_TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Neg</b></em>' attribute.
+   * The feature id for the '<em><b>Neg</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -352,7 +361,7 @@ public interface RobotDSLPackage extends EPackage
   int TRIGGER__FLAG = 2;
 
   /**
-   * The feature id for the '<em><b>Sensor</b></em>' attribute.
+   * The feature id for the '<em><b>Sensor</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -361,7 +370,7 @@ public interface RobotDSLPackage extends EPackage
   int TRIGGER__SENSOR = 3;
 
   /**
-   * The feature id for the '<em><b>Color</b></em>' attribute.
+   * The feature id for the '<em><b>Color</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -398,7 +407,7 @@ public interface RobotDSLPackage extends EPackage
   int DISTANCE = 5;
 
   /**
-   * The feature id for the '<em><b>Range Bool</b></em>' attribute.
+   * The feature id for the '<em><b>Range Bool</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -444,7 +453,7 @@ public interface RobotDSLPackage extends EPackage
   int FLAG__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Bool</b></em>' attribute.
+   * The feature id for the '<em><b>Bool</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -490,84 +499,298 @@ public interface RobotDSLPackage extends EPackage
   int TIME_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.Direction <em>Direction</em>}' enum.
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.DirectionImpl <em>Direction</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.Direction
+   * @see des.missionrobot.robotDSL.impl.DirectionImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDirection()
    * @generated
    */
   int DIRECTION = 8;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.Speed <em>Speed</em>}' enum.
+   * The feature id for the '<em><b>Dir</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.Speed
+   * @generated
+   * @ordered
+   */
+  int DIRECTION__DIR = 0;
+
+  /**
+   * The number of structural features of the '<em>Direction</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIRECTION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.SpeedImpl <em>Speed</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.SpeedImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSpeed()
    * @generated
    */
   int SPEED = 9;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.ArmOp <em>Arm Op</em>}' enum.
+   * The feature id for the '<em><b>Speed</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.ArmOp
+   * @generated
+   * @ordered
+   */
+  int SPEED__SPEED = 0;
+
+  /**
+   * The number of structural features of the '<em>Speed</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SPEED_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.ArmOpImpl <em>Arm Op</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.ArmOpImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getArmOp()
    * @generated
    */
   int ARM_OP = 10;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.Sound <em>Sound</em>}' enum.
+   * The feature id for the '<em><b>Op Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.Sound
+   * @generated
+   * @ordered
+   */
+  int ARM_OP__OP_TYPE = 0;
+
+  /**
+   * The number of structural features of the '<em>Arm Op</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARM_OP_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.SoundImpl <em>Sound</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.SoundImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSound()
    * @generated
    */
   int SOUND = 11;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.Sensor <em>Sensor</em>}' enum.
+   * The feature id for the '<em><b>Sound Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.Sensor
+   * @generated
+   * @ordered
+   */
+  int SOUND__SOUND_NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Sound</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOUND_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.SensorImpl <em>Sensor</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.SensorImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensor()
    * @generated
    */
   int SENSOR = 12;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.Color <em>Color</em>}' enum.
+   * The feature id for the '<em><b>Sensor Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.Color
+   * @generated
+   * @ordered
+   */
+  int SENSOR__SENSOR_TYPE = 0;
+
+  /**
+   * The number of structural features of the '<em>Sensor</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SENSOR_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.ColorImpl <em>Color</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.ColorImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getColor()
    * @generated
    */
   int COLOR = 13;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.Bool <em>Bool</em>}' enum.
+   * The feature id for the '<em><b>Color Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.Bool
+   * @generated
+   * @ordered
+   */
+  int COLOR__COLOR_NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Color</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLOR_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.BoolImpl <em>Bool</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.BoolImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBool()
    * @generated
    */
   int BOOL = 14;
 
   /**
-   * The meta object id for the '{@link des.missionrobot.robotDSL.Negation <em>Negation</em>}' enum.
+   * The feature id for the '<em><b>Bool Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see des.missionrobot.robotDSL.Negation
+   * @generated
+   * @ordered
+   */
+  int BOOL__BOOL_TYPE = 0;
+
+  /**
+   * The number of structural features of the '<em>Bool</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.NegationImpl <em>Negation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.NegationImpl
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getNegation()
    * @generated
    */
   int NEGATION = 15;
+
+  /**
+   * The feature id for the '<em><b>NOT</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION__NOT = 0;
+
+  /**
+   * The number of structural features of the '<em>Negation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.DirectionVal <em>Direction Val</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.DirectionVal
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDirectionVal()
+   * @generated
+   */
+  int DIRECTION_VAL = 16;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.SpeedVal <em>Speed Val</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.SpeedVal
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSpeedVal()
+   * @generated
+   */
+  int SPEED_VAL = 17;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.ArmOpType <em>Arm Op Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.ArmOpType
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getArmOpType()
+   * @generated
+   */
+  int ARM_OP_TYPE = 18;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.SoundName <em>Sound Name</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.SoundName
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSoundName()
+   * @generated
+   */
+  int SOUND_NAME = 19;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.SensorType <em>Sensor Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.SensorType
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensorType()
+   * @generated
+   */
+  int SENSOR_TYPE = 20;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.ColorName <em>Color Name</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.ColorName
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getColorName()
+   * @generated
+   */
+  int COLOR_NAME = 21;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.BoolType <em>Bool Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.BoolType
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBoolType()
+   * @generated
+   */
+  int BOOL_TYPE = 22;
 
 
   /**
@@ -743,15 +966,15 @@ public interface RobotDSLPackage extends EPackage
   EClass getAction();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getDir <em>Dir</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getMoveDir <em>Move Dir</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Dir</em>'.
-   * @see des.missionrobot.robotDSL.Action#getDir()
+   * @return the meta object for the containment reference '<em>Move Dir</em>'.
+   * @see des.missionrobot.robotDSL.Action#getMoveDir()
    * @see #getAction()
    * @generated
    */
-  EAttribute getAction_Dir();
+  EReference getAction_MoveDir();
 
   /**
    * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getDuration <em>Duration</em>}'.
@@ -765,15 +988,26 @@ public interface RobotDSLPackage extends EPackage
   EAttribute getAction_Duration();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Speed</em>'.
+   * @return the meta object for the containment reference '<em>Speed</em>'.
    * @see des.missionrobot.robotDSL.Action#getSpeed()
    * @see #getAction()
    * @generated
    */
-  EAttribute getAction_Speed();
+  EReference getAction_Speed();
+
+  /**
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getTurnir <em>Turnir</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Turnir</em>'.
+   * @see des.missionrobot.robotDSL.Action#getTurnir()
+   * @see #getAction()
+   * @generated
+   */
+  EReference getAction_Turnir();
 
   /**
    * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}'.
@@ -787,26 +1021,26 @@ public interface RobotDSLPackage extends EPackage
   EAttribute getAction_Degr();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Op</em>'.
+   * @return the meta object for the containment reference '<em>Op</em>'.
    * @see des.missionrobot.robotDSL.Action#getOp()
    * @see #getAction()
    * @generated
    */
-  EAttribute getAction_Op();
+  EReference getAction_Op();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sound</em>'.
+   * @return the meta object for the containment reference '<em>Sound</em>'.
    * @see des.missionrobot.robotDSL.Action#getSound()
    * @see #getAction()
    * @generated
    */
-  EAttribute getAction_Sound();
+  EReference getAction_Sound();
 
   /**
    * Returns the meta object for the reference '{@link des.missionrobot.robotDSL.Action#getFlag <em>Flag</em>}'.
@@ -820,15 +1054,15 @@ public interface RobotDSLPackage extends EPackage
   EReference getAction_Flag();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getBool <em>Bool</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getBool <em>Bool</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Bool</em>'.
+   * @return the meta object for the containment reference '<em>Bool</em>'.
    * @see des.missionrobot.robotDSL.Action#getBool()
    * @see #getAction()
    * @generated
    */
-  EAttribute getAction_Bool();
+  EReference getAction_Bool();
 
   /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Trigger <em>Trigger</em>}'.
@@ -841,26 +1075,26 @@ public interface RobotDSLPackage extends EPackage
   EClass getTrigger();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Trigger#getBoolType <em>Bool Type</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Trigger#getBoolType <em>Bool Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Bool Type</em>'.
+   * @return the meta object for the containment reference '<em>Bool Type</em>'.
    * @see des.missionrobot.robotDSL.Trigger#getBoolType()
    * @see #getTrigger()
    * @generated
    */
-  EAttribute getTrigger_BoolType();
+  EReference getTrigger_BoolType();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Trigger#getNeg <em>Neg</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Trigger#getNeg <em>Neg</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Neg</em>'.
+   * @return the meta object for the containment reference '<em>Neg</em>'.
    * @see des.missionrobot.robotDSL.Trigger#getNeg()
    * @see #getTrigger()
    * @generated
    */
-  EAttribute getTrigger_Neg();
+  EReference getTrigger_Neg();
 
   /**
    * Returns the meta object for the reference '{@link des.missionrobot.robotDSL.Trigger#getFlag <em>Flag</em>}'.
@@ -874,26 +1108,26 @@ public interface RobotDSLPackage extends EPackage
   EReference getTrigger_Flag();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sensor</em>'.
+   * @return the meta object for the containment reference '<em>Sensor</em>'.
    * @see des.missionrobot.robotDSL.Trigger#getSensor()
    * @see #getTrigger()
    * @generated
    */
-  EAttribute getTrigger_Sensor();
+  EReference getTrigger_Sensor();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Color</em>'.
+   * @return the meta object for the containment reference '<em>Color</em>'.
    * @see des.missionrobot.robotDSL.Trigger#getColor()
    * @see #getTrigger()
    * @generated
    */
-  EAttribute getTrigger_Color();
+  EReference getTrigger_Color();
 
   /**
    * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Trigger#getDist <em>Dist</em>}'.
@@ -917,15 +1151,15 @@ public interface RobotDSLPackage extends EPackage
   EClass getDistance();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Distance#getRangeBool <em>Range Bool</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Distance#getRangeBool <em>Range Bool</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Range Bool</em>'.
+   * @return the meta object for the containment reference '<em>Range Bool</em>'.
    * @see des.missionrobot.robotDSL.Distance#getRangeBool()
    * @see #getDistance()
    * @generated
    */
-  EAttribute getDistance_RangeBool();
+  EReference getDistance_RangeBool();
 
   /**
    * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Distance#getDistance <em>Distance</em>}'.
@@ -960,15 +1194,15 @@ public interface RobotDSLPackage extends EPackage
   EAttribute getFlag_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Flag#getBool <em>Bool</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Flag#getBool <em>Bool</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Bool</em>'.
+   * @return the meta object for the containment reference '<em>Bool</em>'.
    * @see des.missionrobot.robotDSL.Flag#getBool()
    * @see #getFlag()
    * @generated
    */
-  EAttribute getFlag_Bool();
+  EReference getFlag_Bool();
 
   /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Time <em>Time</em>}'.
@@ -992,84 +1226,242 @@ public interface RobotDSLPackage extends EPackage
   EAttribute getTime_Sec();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.Direction <em>Direction</em>}'.
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Direction <em>Direction</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Direction</em>'.
+   * @return the meta object for class '<em>Direction</em>'.
    * @see des.missionrobot.robotDSL.Direction
    * @generated
    */
-  EEnum getDirection();
+  EClass getDirection();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.Speed <em>Speed</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Direction#getDir <em>Dir</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Speed</em>'.
+   * @return the meta object for the attribute '<em>Dir</em>'.
+   * @see des.missionrobot.robotDSL.Direction#getDir()
+   * @see #getDirection()
+   * @generated
+   */
+  EAttribute getDirection_Dir();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Speed <em>Speed</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Speed</em>'.
    * @see des.missionrobot.robotDSL.Speed
    * @generated
    */
-  EEnum getSpeed();
+  EClass getSpeed();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.ArmOp <em>Arm Op</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Speed#getSpeed <em>Speed</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Arm Op</em>'.
+   * @return the meta object for the attribute '<em>Speed</em>'.
+   * @see des.missionrobot.robotDSL.Speed#getSpeed()
+   * @see #getSpeed()
+   * @generated
+   */
+  EAttribute getSpeed_Speed();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.ArmOp <em>Arm Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Arm Op</em>'.
    * @see des.missionrobot.robotDSL.ArmOp
    * @generated
    */
-  EEnum getArmOp();
+  EClass getArmOp();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.Sound <em>Sound</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.ArmOp#getOpType <em>Op Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Sound</em>'.
+   * @return the meta object for the attribute '<em>Op Type</em>'.
+   * @see des.missionrobot.robotDSL.ArmOp#getOpType()
+   * @see #getArmOp()
+   * @generated
+   */
+  EAttribute getArmOp_OpType();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Sound <em>Sound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Sound</em>'.
    * @see des.missionrobot.robotDSL.Sound
    * @generated
    */
-  EEnum getSound();
+  EClass getSound();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.Sensor <em>Sensor</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Sound#getSoundName <em>Sound Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Sensor</em>'.
+   * @return the meta object for the attribute '<em>Sound Name</em>'.
+   * @see des.missionrobot.robotDSL.Sound#getSoundName()
+   * @see #getSound()
+   * @generated
+   */
+  EAttribute getSound_SoundName();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Sensor <em>Sensor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Sensor</em>'.
    * @see des.missionrobot.robotDSL.Sensor
    * @generated
    */
-  EEnum getSensor();
+  EClass getSensor();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.Color <em>Color</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Sensor#getSensorType <em>Sensor Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Color</em>'.
+   * @return the meta object for the attribute '<em>Sensor Type</em>'.
+   * @see des.missionrobot.robotDSL.Sensor#getSensorType()
+   * @see #getSensor()
+   * @generated
+   */
+  EAttribute getSensor_SensorType();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Color <em>Color</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Color</em>'.
    * @see des.missionrobot.robotDSL.Color
    * @generated
    */
-  EEnum getColor();
+  EClass getColor();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.Bool <em>Bool</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Color#getColorName <em>Color Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Bool</em>'.
+   * @return the meta object for the attribute '<em>Color Name</em>'.
+   * @see des.missionrobot.robotDSL.Color#getColorName()
+   * @see #getColor()
+   * @generated
+   */
+  EAttribute getColor_ColorName();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Bool <em>Bool</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bool</em>'.
    * @see des.missionrobot.robotDSL.Bool
    * @generated
    */
-  EEnum getBool();
+  EClass getBool();
 
   /**
-   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.Negation <em>Negation</em>}'.
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Bool#getBoolType <em>Bool Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Negation</em>'.
+   * @return the meta object for the attribute '<em>Bool Type</em>'.
+   * @see des.missionrobot.robotDSL.Bool#getBoolType()
+   * @see #getBool()
+   * @generated
+   */
+  EAttribute getBool_BoolType();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Negation <em>Negation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Negation</em>'.
    * @see des.missionrobot.robotDSL.Negation
    * @generated
    */
-  EEnum getNegation();
+  EClass getNegation();
+
+  /**
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Negation#getNOT <em>NOT</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>NOT</em>'.
+   * @see des.missionrobot.robotDSL.Negation#getNOT()
+   * @see #getNegation()
+   * @generated
+   */
+  EAttribute getNegation_NOT();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.DirectionVal <em>Direction Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Direction Val</em>'.
+   * @see des.missionrobot.robotDSL.DirectionVal
+   * @generated
+   */
+  EEnum getDirectionVal();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.SpeedVal <em>Speed Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Speed Val</em>'.
+   * @see des.missionrobot.robotDSL.SpeedVal
+   * @generated
+   */
+  EEnum getSpeedVal();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.ArmOpType <em>Arm Op Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Arm Op Type</em>'.
+   * @see des.missionrobot.robotDSL.ArmOpType
+   * @generated
+   */
+  EEnum getArmOpType();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.SoundName <em>Sound Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Sound Name</em>'.
+   * @see des.missionrobot.robotDSL.SoundName
+   * @generated
+   */
+  EEnum getSoundName();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.SensorType <em>Sensor Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Sensor Type</em>'.
+   * @see des.missionrobot.robotDSL.SensorType
+   * @generated
+   */
+  EEnum getSensorType();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.ColorName <em>Color Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Color Name</em>'.
+   * @see des.missionrobot.robotDSL.ColorName
+   * @generated
+   */
+  EEnum getColorName();
+
+  /**
+   * Returns the meta object for enum '{@link des.missionrobot.robotDSL.BoolType <em>Bool Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Bool Type</em>'.
+   * @see des.missionrobot.robotDSL.BoolType
+   * @generated
+   */
+  EEnum getBoolType();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1231,12 +1623,12 @@ public interface RobotDSLPackage extends EPackage
     EClass ACTION = eINSTANCE.getAction();
 
     /**
-     * The meta object literal for the '<em><b>Dir</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Move Dir</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ACTION__DIR = eINSTANCE.getAction_Dir();
+    EReference ACTION__MOVE_DIR = eINSTANCE.getAction_MoveDir();
 
     /**
      * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
@@ -1247,12 +1639,20 @@ public interface RobotDSLPackage extends EPackage
     EAttribute ACTION__DURATION = eINSTANCE.getAction_Duration();
 
     /**
-     * The meta object literal for the '<em><b>Speed</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Speed</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ACTION__SPEED = eINSTANCE.getAction_Speed();
+    EReference ACTION__SPEED = eINSTANCE.getAction_Speed();
+
+    /**
+     * The meta object literal for the '<em><b>Turnir</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION__TURNIR = eINSTANCE.getAction_Turnir();
 
     /**
      * The meta object literal for the '<em><b>Degr</b></em>' attribute feature.
@@ -1263,20 +1663,20 @@ public interface RobotDSLPackage extends EPackage
     EAttribute ACTION__DEGR = eINSTANCE.getAction_Degr();
 
     /**
-     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Op</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ACTION__OP = eINSTANCE.getAction_Op();
+    EReference ACTION__OP = eINSTANCE.getAction_Op();
 
     /**
-     * The meta object literal for the '<em><b>Sound</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Sound</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ACTION__SOUND = eINSTANCE.getAction_Sound();
+    EReference ACTION__SOUND = eINSTANCE.getAction_Sound();
 
     /**
      * The meta object literal for the '<em><b>Flag</b></em>' reference feature.
@@ -1287,12 +1687,12 @@ public interface RobotDSLPackage extends EPackage
     EReference ACTION__FLAG = eINSTANCE.getAction_Flag();
 
     /**
-     * The meta object literal for the '<em><b>Bool</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Bool</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ACTION__BOOL = eINSTANCE.getAction_Bool();
+    EReference ACTION__BOOL = eINSTANCE.getAction_Bool();
 
     /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.TriggerImpl <em>Trigger</em>}' class.
@@ -1305,20 +1705,20 @@ public interface RobotDSLPackage extends EPackage
     EClass TRIGGER = eINSTANCE.getTrigger();
 
     /**
-     * The meta object literal for the '<em><b>Bool Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Bool Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRIGGER__BOOL_TYPE = eINSTANCE.getTrigger_BoolType();
+    EReference TRIGGER__BOOL_TYPE = eINSTANCE.getTrigger_BoolType();
 
     /**
-     * The meta object literal for the '<em><b>Neg</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Neg</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRIGGER__NEG = eINSTANCE.getTrigger_Neg();
+    EReference TRIGGER__NEG = eINSTANCE.getTrigger_Neg();
 
     /**
      * The meta object literal for the '<em><b>Flag</b></em>' reference feature.
@@ -1329,20 +1729,20 @@ public interface RobotDSLPackage extends EPackage
     EReference TRIGGER__FLAG = eINSTANCE.getTrigger_Flag();
 
     /**
-     * The meta object literal for the '<em><b>Sensor</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Sensor</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRIGGER__SENSOR = eINSTANCE.getTrigger_Sensor();
+    EReference TRIGGER__SENSOR = eINSTANCE.getTrigger_Sensor();
 
     /**
-     * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Color</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRIGGER__COLOR = eINSTANCE.getTrigger_Color();
+    EReference TRIGGER__COLOR = eINSTANCE.getTrigger_Color();
 
     /**
      * The meta object literal for the '<em><b>Dist</b></em>' containment reference feature.
@@ -1363,12 +1763,12 @@ public interface RobotDSLPackage extends EPackage
     EClass DISTANCE = eINSTANCE.getDistance();
 
     /**
-     * The meta object literal for the '<em><b>Range Bool</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Range Bool</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DISTANCE__RANGE_BOOL = eINSTANCE.getDistance_RangeBool();
+    EReference DISTANCE__RANGE_BOOL = eINSTANCE.getDistance_RangeBool();
 
     /**
      * The meta object literal for the '<em><b>Distance</b></em>' attribute feature.
@@ -1397,12 +1797,12 @@ public interface RobotDSLPackage extends EPackage
     EAttribute FLAG__NAME = eINSTANCE.getFlag_Name();
 
     /**
-     * The meta object literal for the '<em><b>Bool</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Bool</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FLAG__BOOL = eINSTANCE.getFlag_Bool();
+    EReference FLAG__BOOL = eINSTANCE.getFlag_Bool();
 
     /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.TimeImpl <em>Time</em>}' class.
@@ -1423,84 +1823,218 @@ public interface RobotDSLPackage extends EPackage
     EAttribute TIME__SEC = eINSTANCE.getTime_Sec();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.Direction <em>Direction</em>}' enum.
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.DirectionImpl <em>Direction</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.Direction
+     * @see des.missionrobot.robotDSL.impl.DirectionImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDirection()
      * @generated
      */
-    EEnum DIRECTION = eINSTANCE.getDirection();
+    EClass DIRECTION = eINSTANCE.getDirection();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.Speed <em>Speed</em>}' enum.
+     * The meta object literal for the '<em><b>Dir</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.Speed
+     * @generated
+     */
+    EAttribute DIRECTION__DIR = eINSTANCE.getDirection_Dir();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.SpeedImpl <em>Speed</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.SpeedImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSpeed()
      * @generated
      */
-    EEnum SPEED = eINSTANCE.getSpeed();
+    EClass SPEED = eINSTANCE.getSpeed();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.ArmOp <em>Arm Op</em>}' enum.
+     * The meta object literal for the '<em><b>Speed</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.ArmOp
+     * @generated
+     */
+    EAttribute SPEED__SPEED = eINSTANCE.getSpeed_Speed();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.ArmOpImpl <em>Arm Op</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.ArmOpImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getArmOp()
      * @generated
      */
-    EEnum ARM_OP = eINSTANCE.getArmOp();
+    EClass ARM_OP = eINSTANCE.getArmOp();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.Sound <em>Sound</em>}' enum.
+     * The meta object literal for the '<em><b>Op Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.Sound
+     * @generated
+     */
+    EAttribute ARM_OP__OP_TYPE = eINSTANCE.getArmOp_OpType();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.SoundImpl <em>Sound</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.SoundImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSound()
      * @generated
      */
-    EEnum SOUND = eINSTANCE.getSound();
+    EClass SOUND = eINSTANCE.getSound();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.Sensor <em>Sensor</em>}' enum.
+     * The meta object literal for the '<em><b>Sound Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.Sensor
+     * @generated
+     */
+    EAttribute SOUND__SOUND_NAME = eINSTANCE.getSound_SoundName();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.SensorImpl <em>Sensor</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.SensorImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensor()
      * @generated
      */
-    EEnum SENSOR = eINSTANCE.getSensor();
+    EClass SENSOR = eINSTANCE.getSensor();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.Color <em>Color</em>}' enum.
+     * The meta object literal for the '<em><b>Sensor Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.Color
+     * @generated
+     */
+    EAttribute SENSOR__SENSOR_TYPE = eINSTANCE.getSensor_SensorType();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.ColorImpl <em>Color</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.ColorImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getColor()
      * @generated
      */
-    EEnum COLOR = eINSTANCE.getColor();
+    EClass COLOR = eINSTANCE.getColor();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.Bool <em>Bool</em>}' enum.
+     * The meta object literal for the '<em><b>Color Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.Bool
+     * @generated
+     */
+    EAttribute COLOR__COLOR_NAME = eINSTANCE.getColor_ColorName();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.BoolImpl <em>Bool</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.BoolImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBool()
      * @generated
      */
-    EEnum BOOL = eINSTANCE.getBool();
+    EClass BOOL = eINSTANCE.getBool();
 
     /**
-     * The meta object literal for the '{@link des.missionrobot.robotDSL.Negation <em>Negation</em>}' enum.
+     * The meta object literal for the '<em><b>Bool Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see des.missionrobot.robotDSL.Negation
+     * @generated
+     */
+    EAttribute BOOL__BOOL_TYPE = eINSTANCE.getBool_BoolType();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.NegationImpl <em>Negation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.NegationImpl
      * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getNegation()
      * @generated
      */
-    EEnum NEGATION = eINSTANCE.getNegation();
+    EClass NEGATION = eINSTANCE.getNegation();
+
+    /**
+     * The meta object literal for the '<em><b>NOT</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NEGATION__NOT = eINSTANCE.getNegation_NOT();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.DirectionVal <em>Direction Val</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.DirectionVal
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDirectionVal()
+     * @generated
+     */
+    EEnum DIRECTION_VAL = eINSTANCE.getDirectionVal();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.SpeedVal <em>Speed Val</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.SpeedVal
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSpeedVal()
+     * @generated
+     */
+    EEnum SPEED_VAL = eINSTANCE.getSpeedVal();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.ArmOpType <em>Arm Op Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.ArmOpType
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getArmOpType()
+     * @generated
+     */
+    EEnum ARM_OP_TYPE = eINSTANCE.getArmOpType();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.SoundName <em>Sound Name</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.SoundName
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSoundName()
+     * @generated
+     */
+    EEnum SOUND_NAME = eINSTANCE.getSoundName();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.SensorType <em>Sensor Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.SensorType
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensorType()
+     * @generated
+     */
+    EEnum SENSOR_TYPE = eINSTANCE.getSensorType();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.ColorName <em>Color Name</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.ColorName
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getColorName()
+     * @generated
+     */
+    EEnum COLOR_NAME = eINSTANCE.getColorName();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.BoolType <em>Bool Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.BoolType
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBoolType()
+     * @generated
+     */
+    EEnum BOOL_TYPE = eINSTANCE.getBoolType();
 
   }
 

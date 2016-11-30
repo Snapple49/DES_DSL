@@ -29,58 +29,52 @@ import org.eclipse.emf.ecore.EObject;
 public interface Trigger extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Bool Type</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Bool}.
+   * Returns the value of the '<em><b>Bool Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Bool Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Bool Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Bool Type</em>' attribute.
-   * @see des.missionrobot.robotDSL.Bool
+   * @return the value of the '<em>Bool Type</em>' containment reference.
    * @see #setBoolType(Bool)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_BoolType()
-   * @model
+   * @model containment="true"
    * @generated
    */
   Bool getBoolType();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getBoolType <em>Bool Type</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getBoolType <em>Bool Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Bool Type</em>' attribute.
-   * @see des.missionrobot.robotDSL.Bool
+   * @param value the new value of the '<em>Bool Type</em>' containment reference.
    * @see #getBoolType()
    * @generated
    */
   void setBoolType(Bool value);
 
   /**
-   * Returns the value of the '<em><b>Neg</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Negation}.
+   * Returns the value of the '<em><b>Neg</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Neg</em>' attribute isn't clear,
+   * If the meaning of the '<em>Neg</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Neg</em>' attribute.
-   * @see des.missionrobot.robotDSL.Negation
+   * @return the value of the '<em>Neg</em>' containment reference.
    * @see #setNeg(Negation)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Neg()
-   * @model
+   * @model containment="true"
    * @generated
    */
   Negation getNeg();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getNeg <em>Neg</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getNeg <em>Neg</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Neg</em>' attribute.
-   * @see des.missionrobot.robotDSL.Negation
+   * @param value the new value of the '<em>Neg</em>' containment reference.
    * @see #getNeg()
    * @generated
    */
@@ -113,58 +107,52 @@ public interface Trigger extends EObject
   void setFlag(Flag value);
 
   /**
-   * Returns the value of the '<em><b>Sensor</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Sensor}.
+   * Returns the value of the '<em><b>Sensor</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sensor</em>' attribute isn't clear,
+   * If the meaning of the '<em>Sensor</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sensor</em>' attribute.
-   * @see des.missionrobot.robotDSL.Sensor
+   * @return the value of the '<em>Sensor</em>' containment reference.
    * @see #setSensor(Sensor)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Sensor()
-   * @model
+   * @model containment="true"
    * @generated
    */
   Sensor getSensor();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sensor</em>' attribute.
-   * @see des.missionrobot.robotDSL.Sensor
+   * @param value the new value of the '<em>Sensor</em>' containment reference.
    * @see #getSensor()
    * @generated
    */
   void setSensor(Sensor value);
 
   /**
-   * Returns the value of the '<em><b>Color</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Color}.
+   * Returns the value of the '<em><b>Color</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Color</em>' attribute isn't clear,
+   * If the meaning of the '<em>Color</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Color</em>' attribute.
-   * @see des.missionrobot.robotDSL.Color
+   * @return the value of the '<em>Color</em>' containment reference.
    * @see #setColor(Color)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Color()
-   * @model
+   * @model containment="true"
    * @generated
    */
   Color getColor();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Color</em>' attribute.
-   * @see des.missionrobot.robotDSL.Color
+   * @param value the new value of the '<em>Color</em>' containment reference.
    * @see #getColor()
    * @generated
    */

@@ -38,13 +38,13 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
 					put(grammarAccess.getTriggerAccess().getAlternatives_1(), "rule__Trigger__Alternatives_1");
 					put(grammarAccess.getTriggerAccess().getAlternatives_1_1_1(), "rule__Trigger__Alternatives_1_1_1");
-					put(grammarAccess.getDirectionAccess().getAlternatives(), "rule__Direction__Alternatives");
-					put(grammarAccess.getSpeedAccess().getAlternatives(), "rule__Speed__Alternatives");
-					put(grammarAccess.getArmOpAccess().getAlternatives(), "rule__ArmOp__Alternatives");
-					put(grammarAccess.getSoundAccess().getAlternatives(), "rule__Sound__Alternatives");
-					put(grammarAccess.getSensorAccess().getAlternatives(), "rule__Sensor__Alternatives");
-					put(grammarAccess.getColorAccess().getAlternatives(), "rule__Color__Alternatives");
-					put(grammarAccess.getBoolAccess().getAlternatives(), "rule__Bool__Alternatives");
+					put(grammarAccess.getDirectionValAccess().getAlternatives(), "rule__DirectionVal__Alternatives");
+					put(grammarAccess.getSpeedValAccess().getAlternatives(), "rule__SpeedVal__Alternatives");
+					put(grammarAccess.getArmOpTypeAccess().getAlternatives(), "rule__ArmOpType__Alternatives");
+					put(grammarAccess.getSoundNameAccess().getAlternatives(), "rule__SoundName__Alternatives");
+					put(grammarAccess.getSensorTypeAccess().getAlternatives(), "rule__SensorType__Alternatives");
+					put(grammarAccess.getColorNameAccess().getAlternatives(), "rule__ColorName__Alternatives");
+					put(grammarAccess.getBoolTypeAccess().getAlternatives(), "rule__BoolType__Alternatives");
 					put(grammarAccess.getMissionsAccess().getGroup(), "rule__Missions__Group__0");
 					put(grammarAccess.getMissionAccess().getGroup(), "rule__Mission__Group__0");
 					put(grammarAccess.getMissionAccess().getGroup_7(), "rule__Mission__Group_7__0");
@@ -80,10 +80,10 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTaskAccess().getPrioAssignment_3(), "rule__Task__PrioAssignment_3");
 					put(grammarAccess.getTaskAccess().getTriggerListAssignment_4_1(), "rule__Task__TriggerListAssignment_4_1");
 					put(grammarAccess.getTaskAccess().getActionListAssignment_6(), "rule__Task__ActionListAssignment_6");
-					put(grammarAccess.getActionAccess().getDirAssignment_0_1(), "rule__Action__DirAssignment_0_1");
+					put(grammarAccess.getActionAccess().getMoveDirAssignment_0_1(), "rule__Action__MoveDirAssignment_0_1");
 					put(grammarAccess.getActionAccess().getDurationAssignment_0_2_1(), "rule__Action__DurationAssignment_0_2_1");
 					put(grammarAccess.getActionAccess().getSpeedAssignment_0_3_1(), "rule__Action__SpeedAssignment_0_3_1");
-					put(grammarAccess.getActionAccess().getDirAssignment_1_1(), "rule__Action__DirAssignment_1_1");
+					put(grammarAccess.getActionAccess().getTurnirAssignment_1_1(), "rule__Action__TurnirAssignment_1_1");
 					put(grammarAccess.getActionAccess().getDegrAssignment_1_2(), "rule__Action__DegrAssignment_1_2");
 					put(grammarAccess.getActionAccess().getOpAssignment_2_1(), "rule__Action__OpAssignment_2_1");
 					put(grammarAccess.getActionAccess().getSoundAssignment_3_2(), "rule__Action__SoundAssignment_3_2");
@@ -100,6 +100,14 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFlagAccess().getNameAssignment_0(), "rule__Flag__NameAssignment_0");
 					put(grammarAccess.getFlagAccess().getBoolAssignment_1_1(), "rule__Flag__BoolAssignment_1_1");
 					put(grammarAccess.getTimeAccess().getSecAssignment_1(), "rule__Time__SecAssignment_1");
+					put(grammarAccess.getDirectionAccess().getDirAssignment(), "rule__Direction__DirAssignment");
+					put(grammarAccess.getSpeedAccess().getSpeedAssignment(), "rule__Speed__SpeedAssignment");
+					put(grammarAccess.getArmOpAccess().getOpTypeAssignment(), "rule__ArmOp__OpTypeAssignment");
+					put(grammarAccess.getSoundAccess().getSoundNameAssignment(), "rule__Sound__SoundNameAssignment");
+					put(grammarAccess.getSensorAccess().getSensorTypeAssignment(), "rule__Sensor__SensorTypeAssignment");
+					put(grammarAccess.getColorAccess().getColorNameAssignment(), "rule__Color__ColorNameAssignment");
+					put(grammarAccess.getBoolAccess().getBoolTypeAssignment(), "rule__Bool__BoolTypeAssignment");
+					put(grammarAccess.getNegationAccess().getNOTAssignment(), "rule__Negation__NOTAssignment");
 				}
 			};
 		}

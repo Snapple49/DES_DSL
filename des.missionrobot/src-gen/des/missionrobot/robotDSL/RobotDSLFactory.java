@@ -96,6 +96,78 @@ public interface RobotDSLFactory extends EFactory
   Time createTime();
 
   /**
+   * Returns a new object of class '<em>Direction</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Direction</em>'.
+   * @generated
+   */
+  Direction createDirection();
+
+  /**
+   * Returns a new object of class '<em>Speed</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Speed</em>'.
+   * @generated
+   */
+  Speed createSpeed();
+
+  /**
+   * Returns a new object of class '<em>Arm Op</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Arm Op</em>'.
+   * @generated
+   */
+  ArmOp createArmOp();
+
+  /**
+   * Returns a new object of class '<em>Sound</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sound</em>'.
+   * @generated
+   */
+  Sound createSound();
+
+  /**
+   * Returns a new object of class '<em>Sensor</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sensor</em>'.
+   * @generated
+   */
+  Sensor createSensor();
+
+  /**
+   * Returns a new object of class '<em>Color</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Color</em>'.
+   * @generated
+   */
+  Color createColor();
+
+  /**
+   * Returns a new object of class '<em>Bool</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bool</em>'.
+   * @generated
+   */
+  Bool createBool();
+
+  /**
+   * Returns a new object of class '<em>Negation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Negation</em>'.
+   * @generated
+   */
+  Negation createNegation();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

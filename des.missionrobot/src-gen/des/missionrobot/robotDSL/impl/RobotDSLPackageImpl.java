@@ -5,9 +5,13 @@ package des.missionrobot.robotDSL.impl;
 
 import des.missionrobot.robotDSL.Action;
 import des.missionrobot.robotDSL.ArmOp;
+import des.missionrobot.robotDSL.ArmOpType;
 import des.missionrobot.robotDSL.Bool;
+import des.missionrobot.robotDSL.BoolType;
 import des.missionrobot.robotDSL.Color;
+import des.missionrobot.robotDSL.ColorName;
 import des.missionrobot.robotDSL.Direction;
+import des.missionrobot.robotDSL.DirectionVal;
 import des.missionrobot.robotDSL.Distance;
 import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.Mission;
@@ -16,8 +20,11 @@ import des.missionrobot.robotDSL.Negation;
 import des.missionrobot.robotDSL.RobotDSLFactory;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Sensor;
+import des.missionrobot.robotDSL.SensorType;
 import des.missionrobot.robotDSL.Sound;
+import des.missionrobot.robotDSL.SoundName;
 import des.missionrobot.robotDSL.Speed;
+import des.missionrobot.robotDSL.SpeedVal;
 import des.missionrobot.robotDSL.Task;
 import des.missionrobot.robotDSL.Time;
 import des.missionrobot.robotDSL.Trigger;
@@ -99,56 +106,105 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum directionEEnum = null;
+  private EClass directionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum speedEEnum = null;
+  private EClass speedEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum armOpEEnum = null;
+  private EClass armOpEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum soundEEnum = null;
+  private EClass soundEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum sensorEEnum = null;
+  private EClass sensorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum colorEEnum = null;
+  private EClass colorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum boolEEnum = null;
+  private EClass boolEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum negationEEnum = null;
+  private EClass negationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum directionValEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum speedValEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum armOpTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum soundNameEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum sensorTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum colorNameEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum boolTypeEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -378,9 +434,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAction_Dir()
+  public EReference getAction_MoveDir()
   {
-    return (EAttribute)actionEClass.getEStructuralFeatures().get(0);
+    return (EReference)actionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -398,9 +454,19 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAction_Speed()
+  public EReference getAction_Speed()
   {
-    return (EAttribute)actionEClass.getEStructuralFeatures().get(2);
+    return (EReference)actionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAction_Turnir()
+  {
+    return (EReference)actionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -410,16 +476,6 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    */
   public EAttribute getAction_Degr()
   {
-    return (EAttribute)actionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getAction_Op()
-  {
     return (EAttribute)actionEClass.getEStructuralFeatures().get(4);
   }
 
@@ -428,9 +484,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAction_Sound()
+  public EReference getAction_Op()
   {
-    return (EAttribute)actionEClass.getEStructuralFeatures().get(5);
+    return (EReference)actionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -438,7 +494,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAction_Flag()
+  public EReference getAction_Sound()
   {
     return (EReference)actionEClass.getEStructuralFeatures().get(6);
   }
@@ -448,9 +504,19 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAction_Bool()
+  public EReference getAction_Flag()
   {
-    return (EAttribute)actionEClass.getEStructuralFeatures().get(7);
+    return (EReference)actionEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAction_Bool()
+  {
+    return (EReference)actionEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -468,9 +534,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_BoolType()
+  public EReference getTrigger_BoolType()
   {
-    return (EAttribute)triggerEClass.getEStructuralFeatures().get(0);
+    return (EReference)triggerEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -478,9 +544,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_Neg()
+  public EReference getTrigger_Neg()
   {
-    return (EAttribute)triggerEClass.getEStructuralFeatures().get(1);
+    return (EReference)triggerEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -498,9 +564,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_Sensor()
+  public EReference getTrigger_Sensor()
   {
-    return (EAttribute)triggerEClass.getEStructuralFeatures().get(3);
+    return (EReference)triggerEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -508,9 +574,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_Color()
+  public EReference getTrigger_Color()
   {
-    return (EAttribute)triggerEClass.getEStructuralFeatures().get(4);
+    return (EReference)triggerEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -538,9 +604,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDistance_RangeBool()
+  public EReference getDistance_RangeBool()
   {
-    return (EAttribute)distanceEClass.getEStructuralFeatures().get(0);
+    return (EReference)distanceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -578,9 +644,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFlag_Bool()
+  public EReference getFlag_Bool()
   {
-    return (EAttribute)flagEClass.getEStructuralFeatures().get(1);
+    return (EReference)flagEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -608,9 +674,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getDirection()
+  public EClass getDirection()
   {
-    return directionEEnum;
+    return directionEClass;
   }
 
   /**
@@ -618,9 +684,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getSpeed()
+  public EAttribute getDirection_Dir()
   {
-    return speedEEnum;
+    return (EAttribute)directionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -628,9 +694,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getArmOp()
+  public EClass getSpeed()
   {
-    return armOpEEnum;
+    return speedEClass;
   }
 
   /**
@@ -638,9 +704,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getSound()
+  public EAttribute getSpeed_Speed()
   {
-    return soundEEnum;
+    return (EAttribute)speedEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -648,9 +714,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getSensor()
+  public EClass getArmOp()
   {
-    return sensorEEnum;
+    return armOpEClass;
   }
 
   /**
@@ -658,9 +724,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getColor()
+  public EAttribute getArmOp_OpType()
   {
-    return colorEEnum;
+    return (EAttribute)armOpEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -668,9 +734,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getBool()
+  public EClass getSound()
   {
-    return boolEEnum;
+    return soundEClass;
   }
 
   /**
@@ -678,9 +744,159 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getNegation()
+  public EAttribute getSound_SoundName()
   {
-    return negationEEnum;
+    return (EAttribute)soundEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSensor()
+  {
+    return sensorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSensor_SensorType()
+  {
+    return (EAttribute)sensorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getColor()
+  {
+    return colorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColor_ColorName()
+  {
+    return (EAttribute)colorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBool()
+  {
+    return boolEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBool_BoolType()
+  {
+    return (EAttribute)boolEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNegation()
+  {
+    return negationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNegation_NOT()
+  {
+    return (EAttribute)negationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getDirectionVal()
+  {
+    return directionValEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getSpeedVal()
+  {
+    return speedValEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getArmOpType()
+  {
+    return armOpTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getSoundName()
+  {
+    return soundNameEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getSensorType()
+  {
+    return sensorTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getColorName()
+  {
+    return colorNameEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getBoolType()
+  {
+    return boolTypeEEnum;
   }
 
   /**
@@ -732,43 +948,67 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEReference(taskEClass, TASK__ACTION_LIST);
 
     actionEClass = createEClass(ACTION);
-    createEAttribute(actionEClass, ACTION__DIR);
+    createEReference(actionEClass, ACTION__MOVE_DIR);
     createEAttribute(actionEClass, ACTION__DURATION);
-    createEAttribute(actionEClass, ACTION__SPEED);
+    createEReference(actionEClass, ACTION__SPEED);
+    createEReference(actionEClass, ACTION__TURNIR);
     createEAttribute(actionEClass, ACTION__DEGR);
-    createEAttribute(actionEClass, ACTION__OP);
-    createEAttribute(actionEClass, ACTION__SOUND);
+    createEReference(actionEClass, ACTION__OP);
+    createEReference(actionEClass, ACTION__SOUND);
     createEReference(actionEClass, ACTION__FLAG);
-    createEAttribute(actionEClass, ACTION__BOOL);
+    createEReference(actionEClass, ACTION__BOOL);
 
     triggerEClass = createEClass(TRIGGER);
-    createEAttribute(triggerEClass, TRIGGER__BOOL_TYPE);
-    createEAttribute(triggerEClass, TRIGGER__NEG);
+    createEReference(triggerEClass, TRIGGER__BOOL_TYPE);
+    createEReference(triggerEClass, TRIGGER__NEG);
     createEReference(triggerEClass, TRIGGER__FLAG);
-    createEAttribute(triggerEClass, TRIGGER__SENSOR);
-    createEAttribute(triggerEClass, TRIGGER__COLOR);
+    createEReference(triggerEClass, TRIGGER__SENSOR);
+    createEReference(triggerEClass, TRIGGER__COLOR);
     createEReference(triggerEClass, TRIGGER__DIST);
 
     distanceEClass = createEClass(DISTANCE);
-    createEAttribute(distanceEClass, DISTANCE__RANGE_BOOL);
+    createEReference(distanceEClass, DISTANCE__RANGE_BOOL);
     createEAttribute(distanceEClass, DISTANCE__DISTANCE);
 
     flagEClass = createEClass(FLAG);
     createEAttribute(flagEClass, FLAG__NAME);
-    createEAttribute(flagEClass, FLAG__BOOL);
+    createEReference(flagEClass, FLAG__BOOL);
 
     timeEClass = createEClass(TIME);
     createEAttribute(timeEClass, TIME__SEC);
 
+    directionEClass = createEClass(DIRECTION);
+    createEAttribute(directionEClass, DIRECTION__DIR);
+
+    speedEClass = createEClass(SPEED);
+    createEAttribute(speedEClass, SPEED__SPEED);
+
+    armOpEClass = createEClass(ARM_OP);
+    createEAttribute(armOpEClass, ARM_OP__OP_TYPE);
+
+    soundEClass = createEClass(SOUND);
+    createEAttribute(soundEClass, SOUND__SOUND_NAME);
+
+    sensorEClass = createEClass(SENSOR);
+    createEAttribute(sensorEClass, SENSOR__SENSOR_TYPE);
+
+    colorEClass = createEClass(COLOR);
+    createEAttribute(colorEClass, COLOR__COLOR_NAME);
+
+    boolEClass = createEClass(BOOL);
+    createEAttribute(boolEClass, BOOL__BOOL_TYPE);
+
+    negationEClass = createEClass(NEGATION);
+    createEAttribute(negationEClass, NEGATION__NOT);
+
     // Create enums
-    directionEEnum = createEEnum(DIRECTION);
-    speedEEnum = createEEnum(SPEED);
-    armOpEEnum = createEEnum(ARM_OP);
-    soundEEnum = createEEnum(SOUND);
-    sensorEEnum = createEEnum(SENSOR);
-    colorEEnum = createEEnum(COLOR);
-    boolEEnum = createEEnum(BOOL);
-    negationEEnum = createEEnum(NEGATION);
+    directionValEEnum = createEEnum(DIRECTION_VAL);
+    speedValEEnum = createEEnum(SPEED_VAL);
+    armOpTypeEEnum = createEEnum(ARM_OP_TYPE);
+    soundNameEEnum = createEEnum(SOUND_NAME);
+    sensorTypeEEnum = createEEnum(SENSOR_TYPE);
+    colorNameEEnum = createEEnum(COLOR_NAME);
+    boolTypeEEnum = createEEnum(BOOL_TYPE);
   }
 
   /**
@@ -821,80 +1061,102 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEReference(getTask_ActionList(), this.getAction(), null, "actionList", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAction_Dir(), this.getDirection(), "dir", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_MoveDir(), this.getDirection(), null, "moveDir", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAction_Duration(), ecorePackage.getEInt(), "duration", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAction_Speed(), this.getSpeed(), "speed", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Speed(), this.getSpeed(), null, "speed", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Turnir(), this.getDirection(), null, "turnir", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAction_Degr(), ecorePackage.getEInt(), "degr", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAction_Op(), this.getArmOp(), "op", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAction_Sound(), this.getSound(), "sound", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Op(), this.getArmOp(), null, "op", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Sound(), this.getSound(), null, "sound", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_Flag(), this.getFlag(), null, "flag", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAction_Bool(), this.getBool(), "bool", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Bool(), this.getBool(), null, "bool", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTrigger_BoolType(), this.getBool(), "boolType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTrigger_Neg(), this.getNegation(), "neg", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_BoolType(), this.getBool(), null, "boolType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_Neg(), this.getNegation(), null, "neg", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTrigger_Flag(), this.getFlag(), null, "flag", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTrigger_Sensor(), this.getSensor(), "sensor", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTrigger_Color(), this.getColor(), "color", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_Sensor(), this.getSensor(), null, "sensor", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_Color(), this.getColor(), null, "color", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTrigger_Dist(), this.getDistance(), null, "dist", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(distanceEClass, Distance.class, "Distance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDistance_RangeBool(), this.getBool(), "rangeBool", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDistance_RangeBool(), this.getBool(), null, "rangeBool", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDistance_Distance(), ecorePackage.getEInt(), "distance", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(flagEClass, Flag.class, "Flag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFlag_Name(), ecorePackage.getEString(), "name", null, 0, 1, Flag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFlag_Bool(), this.getBool(), "bool", null, 0, 1, Flag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFlag_Bool(), this.getBool(), null, "bool", null, 0, 1, Flag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTime_Sec(), ecorePackage.getEInt(), "sec", null, 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(directionEClass, Direction.class, "Direction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDirection_Dir(), this.getDirectionVal(), "dir", null, 0, 1, Direction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(speedEClass, Speed.class, "Speed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSpeed_Speed(), this.getSpeedVal(), "speed", null, 0, 1, Speed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(armOpEClass, ArmOp.class, "ArmOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getArmOp_OpType(), this.getArmOpType(), "opType", null, 0, 1, ArmOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSound_SoundName(), this.getSoundName(), "soundName", null, 0, 1, Sound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(sensorEClass, Sensor.class, "Sensor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSensor_SensorType(), this.getSensorType(), "sensorType", null, 0, 1, Sensor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getColor_ColorName(), this.getColorName(), "colorName", null, 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(boolEClass, Bool.class, "Bool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBool_BoolType(), this.getBoolType(), "boolType", null, 0, 1, Bool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(negationEClass, Negation.class, "Negation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNegation_NOT(), ecorePackage.getEString(), "NOT", null, 0, 1, Negation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     // Initialize enums and add enum literals
-    initEEnum(directionEEnum, Direction.class, "Direction");
-    addEEnumLiteral(directionEEnum, Direction.FORWARD);
-    addEEnumLiteral(directionEEnum, Direction.BACKWARD);
-    addEEnumLiteral(directionEEnum, Direction.LEFT);
-    addEEnumLiteral(directionEEnum, Direction.RIGHT);
+    initEEnum(directionValEEnum, DirectionVal.class, "DirectionVal");
+    addEEnumLiteral(directionValEEnum, DirectionVal.FORWARD);
+    addEEnumLiteral(directionValEEnum, DirectionVal.BACKWARD);
+    addEEnumLiteral(directionValEEnum, DirectionVal.LEFT);
+    addEEnumLiteral(directionValEEnum, DirectionVal.RIGHT);
 
-    initEEnum(speedEEnum, Speed.class, "Speed");
-    addEEnumLiteral(speedEEnum, Speed.HIGH);
-    addEEnumLiteral(speedEEnum, Speed.MED);
-    addEEnumLiteral(speedEEnum, Speed.LOW);
+    initEEnum(speedValEEnum, SpeedVal.class, "SpeedVal");
+    addEEnumLiteral(speedValEEnum, SpeedVal.HIGH);
+    addEEnumLiteral(speedValEEnum, SpeedVal.MED);
+    addEEnumLiteral(speedValEEnum, SpeedVal.LOW);
 
-    initEEnum(armOpEEnum, ArmOp.class, "ArmOp");
-    addEEnumLiteral(armOpEEnum, ArmOp.UP);
-    addEEnumLiteral(armOpEEnum, ArmOp.DOWN);
+    initEEnum(armOpTypeEEnum, ArmOpType.class, "ArmOpType");
+    addEEnumLiteral(armOpTypeEEnum, ArmOpType.UP);
+    addEEnumLiteral(armOpTypeEEnum, ArmOpType.DOWN);
 
-    initEEnum(soundEEnum, Sound.class, "Sound");
-    addEEnumLiteral(soundEEnum, Sound.BUZZ);
-    addEEnumLiteral(soundEEnum, Sound.FANFARE);
+    initEEnum(soundNameEEnum, SoundName.class, "SoundName");
+    addEEnumLiteral(soundNameEEnum, SoundName.BUZZ);
+    addEEnumLiteral(soundNameEEnum, SoundName.FANFARE);
 
-    initEEnum(sensorEEnum, Sensor.class, "Sensor");
-    addEEnumLiteral(sensorEEnum, Sensor.COLOR);
-    addEEnumLiteral(sensorEEnum, Sensor.LEFTLIGHT);
-    addEEnumLiteral(sensorEEnum, Sensor.RIGHTLIGHT);
-    addEEnumLiteral(sensorEEnum, Sensor.BACKUS);
-    addEEnumLiteral(sensorEEnum, Sensor.FRONTUS);
+    initEEnum(sensorTypeEEnum, SensorType.class, "SensorType");
+    addEEnumLiteral(sensorTypeEEnum, SensorType.COLOR);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.LEFTLIGHT);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.RIGHTLIGHT);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.BACKUS);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.FRONTUS);
 
-    initEEnum(colorEEnum, Color.class, "Color");
-    addEEnumLiteral(colorEEnum, Color.RED);
-    addEEnumLiteral(colorEEnum, Color.WHITE);
-    addEEnumLiteral(colorEEnum, Color.BLACK);
-    addEEnumLiteral(colorEEnum, Color.GREEN);
-    addEEnumLiteral(colorEEnum, Color.BLUE);
-    addEEnumLiteral(colorEEnum, Color.BRIGHT);
-    addEEnumLiteral(colorEEnum, Color.DARK);
+    initEEnum(colorNameEEnum, ColorName.class, "ColorName");
+    addEEnumLiteral(colorNameEEnum, ColorName.RED);
+    addEEnumLiteral(colorNameEEnum, ColorName.WHITE);
+    addEEnumLiteral(colorNameEEnum, ColorName.BLACK);
+    addEEnumLiteral(colorNameEEnum, ColorName.GREEN);
+    addEEnumLiteral(colorNameEEnum, ColorName.BLUE);
+    addEEnumLiteral(colorNameEEnum, ColorName.BRIGHT);
+    addEEnumLiteral(colorNameEEnum, ColorName.DARK);
 
-    initEEnum(boolEEnum, Bool.class, "Bool");
-    addEEnumLiteral(boolEEnum, Bool.L);
-    addEEnumLiteral(boolEEnum, Bool.G);
-    addEEnumLiteral(boolEEnum, Bool.AND);
-    addEEnumLiteral(boolEEnum, Bool.OR);
-    addEEnumLiteral(boolEEnum, Bool.TRUE);
-    addEEnumLiteral(boolEEnum, Bool.FALSE);
-
-    initEEnum(negationEEnum, Negation.class, "Negation");
-    addEEnumLiteral(negationEEnum, Negation.NOT);
+    initEEnum(boolTypeEEnum, BoolType.class, "BoolType");
+    addEEnumLiteral(boolTypeEEnum, BoolType.L);
+    addEEnumLiteral(boolTypeEEnum, BoolType.G);
+    addEEnumLiteral(boolTypeEEnum, BoolType.AND);
+    addEEnumLiteral(boolTypeEEnum, BoolType.OR);
+    addEEnumLiteral(boolTypeEEnum, BoolType.TRUE);
+    addEEnumLiteral(boolTypeEEnum, BoolType.FALSE);
 
     // Create resource
     createResource(eNS_URI);

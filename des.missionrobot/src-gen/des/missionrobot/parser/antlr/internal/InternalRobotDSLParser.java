@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Missionset'", "'Missions:'", "'Mission'", "'Flags:'", "'Tasks:'", "'Goal:'", "'Condition:'", "'timeout'", "'Actions:'", "'Task:'", "'priority:'", "'Triggers:'", "'Move'", "'for'", "'sec'", "'at'", "'speed'", "'Turn'", "'deg'", "'Arm'", "'Play'", "'sound'", "'Update'", "'to'", "'is'", "'distance'", "'than'", "'cm'", "'Time:'", "'forward'", "'backward'", "'left'", "'right'", "'high'", "'medium'", "'low'", "'raise'", "'lower'", "'buzz'", "'fanfare'", "'Color'", "'LeftLight'", "'RightLight'", "'RearHeight'", "'FrontDistance'", "'red'", "'white'", "'black'", "'green'", "'blue'", "'bright'", "'dark'", "'less'", "'greater'", "'and'", "'or'", "'true'", "'false'", "'not'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Missionset'", "'Missions:'", "'Mission'", "'Flags:'", "'Tasks:'", "'Goal:'", "'Condition:'", "'timeout'", "'Actions:'", "'Task:'", "'priority:'", "'Triggers:'", "'Move'", "'for'", "'sec'", "'at'", "'speed'", "'Turn'", "'deg'", "'Arm'", "'Play'", "'sound'", "'Update'", "'to'", "'is'", "'distance'", "'than'", "'cm'", "'Time:'", "'not'", "'forward'", "'backward'", "'left'", "'right'", "'high'", "'medium'", "'low'", "'raise'", "'lower'", "'buzz'", "'fanfare'", "'Color'", "'LeftLight'", "'RightLight'", "'RearHeight'", "'FrontDistance'", "'red'", "'white'", "'black'", "'green'", "'blue'", "'bright'", "'dark'", "'less'", "'greater'", "'and'", "'or'", "'true'", "'false'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -512,7 +512,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                         int alt3=2;
                         int LA3_0 = input.LA(1);
 
-                        if ( (LA3_0==RULE_ID||(LA3_0>=51 && LA3_0<=55)||(LA3_0>=63 && LA3_0<=69)) ) {
+                        if ( (LA3_0==RULE_ID||LA3_0==40||(LA3_0>=52 && LA3_0<=56)||(LA3_0>=64 && LA3_0<=69)) ) {
                             alt3=1;
                         }
 
@@ -858,7 +858,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                         int alt8=2;
                         int LA8_0 = input.LA(1);
 
-                        if ( (LA8_0==RULE_ID||(LA8_0>=51 && LA8_0<=55)||(LA8_0>=63 && LA8_0<=69)) ) {
+                        if ( (LA8_0==RULE_ID||LA8_0==40||(LA8_0>=52 && LA8_0<=56)||(LA8_0>=64 && LA8_0<=69)) ) {
                             alt8=1;
                         }
 
@@ -1028,7 +1028,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAction"
-    // InternalRobotDSL.g:413:1: ruleAction returns [EObject current=null] : ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) ;
+    // InternalRobotDSL.g:413:1: ruleAction returns [EObject current=null] : ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) ;
     public final EObject ruleAction() throws RecognitionException {
         EObject current = null;
 
@@ -1047,27 +1047,27 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_17=null;
         Token otherlv_18=null;
         Token otherlv_19=null;
-        Enumerator lv_dir_1_0 = null;
+        EObject lv_moveDir_1_0 = null;
 
-        Enumerator lv_speed_6_0 = null;
+        EObject lv_speed_6_0 = null;
 
-        Enumerator lv_dir_9_0 = null;
+        EObject lv_turnir_9_0 = null;
 
-        Enumerator lv_op_13_0 = null;
+        EObject lv_op_13_0 = null;
 
-        Enumerator lv_sound_16_0 = null;
+        EObject lv_sound_16_0 = null;
 
-        Enumerator lv_bool_20_0 = null;
+        EObject lv_bool_20_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:419:2: ( ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) )
-            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
+            // InternalRobotDSL.g:419:2: ( ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) ) )
+            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
             {
-            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
+            // InternalRobotDSL.g:420:2: ( (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? ) | (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' ) | (otherlv_12= 'Arm' ( (lv_op_13_0= ruleArmOp ) ) ) | (otherlv_14= 'Play' otherlv_15= 'sound' ( (lv_sound_16_0= ruleSound ) ) ) | (otherlv_17= 'Update' ( (otherlv_18= RULE_ID ) ) otherlv_19= 'to' ( (lv_bool_20_0= ruleBool ) ) ) )
             int alt13=5;
             switch ( input.LA(1) ) {
             case 23:
@@ -1104,26 +1104,26 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt13) {
                 case 1 :
-                    // InternalRobotDSL.g:421:3: (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
+                    // InternalRobotDSL.g:421:3: (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
                     {
-                    // InternalRobotDSL.g:421:3: (otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
-                    // InternalRobotDSL.g:422:4: otherlv_0= 'Move' ( (lv_dir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )?
+                    // InternalRobotDSL.g:421:3: (otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )? )
+                    // InternalRobotDSL.g:422:4: otherlv_0= 'Move' ( (lv_moveDir_1_0= ruleDirection ) ) (otherlv_2= 'for' ( (lv_duration_3_0= RULE_INT ) ) otherlv_4= 'sec' )? (otherlv_5= 'at' ( (lv_speed_6_0= ruleSpeed ) ) otherlv_7= 'speed' )?
                     {
                     otherlv_0=(Token)match(input,23,FOLLOW_21); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getActionAccess().getMoveKeyword_0_0());
                     			
-                    // InternalRobotDSL.g:426:4: ( (lv_dir_1_0= ruleDirection ) )
-                    // InternalRobotDSL.g:427:5: (lv_dir_1_0= ruleDirection )
+                    // InternalRobotDSL.g:426:4: ( (lv_moveDir_1_0= ruleDirection ) )
+                    // InternalRobotDSL.g:427:5: (lv_moveDir_1_0= ruleDirection )
                     {
-                    // InternalRobotDSL.g:427:5: (lv_dir_1_0= ruleDirection )
-                    // InternalRobotDSL.g:428:6: lv_dir_1_0= ruleDirection
+                    // InternalRobotDSL.g:427:5: (lv_moveDir_1_0= ruleDirection )
+                    // InternalRobotDSL.g:428:6: lv_moveDir_1_0= ruleDirection
                     {
 
-                    						newCompositeNode(grammarAccess.getActionAccess().getDirDirectionEnumRuleCall_0_1_0());
+                    						newCompositeNode(grammarAccess.getActionAccess().getMoveDirDirectionParserRuleCall_0_1_0());
                     					
                     pushFollow(FOLLOW_22);
-                    lv_dir_1_0=ruleDirection();
+                    lv_moveDir_1_0=ruleDirection();
 
                     state._fsp--;
 
@@ -1133,8 +1133,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     						}
                     						set(
                     							current,
-                    							"dir",
-                    							lv_dir_1_0,
+                    							"moveDir",
+                    							lv_moveDir_1_0,
                     							"des.missionrobot.RobotDSL.Direction");
                     						afterParserOrEnumRuleCall();
                     					
@@ -1217,7 +1217,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                             // InternalRobotDSL.g:480:7: lv_speed_6_0= ruleSpeed
                             {
 
-                            							newCompositeNode(grammarAccess.getActionAccess().getSpeedSpeedEnumRuleCall_0_3_1_0());
+                            							newCompositeNode(grammarAccess.getActionAccess().getSpeedSpeedParserRuleCall_0_3_1_0());
                             						
                             pushFollow(FOLLOW_26);
                             lv_speed_6_0=ruleSpeed();
@@ -1258,26 +1258,26 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
+                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
                     {
-                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
-                    // InternalRobotDSL.g:505:4: otherlv_8= 'Turn' ( (lv_dir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg'
+                    // InternalRobotDSL.g:504:3: (otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg' )
+                    // InternalRobotDSL.g:505:4: otherlv_8= 'Turn' ( (lv_turnir_9_0= ruleDirection ) ) ( (lv_degr_10_0= RULE_INT ) ) otherlv_11= 'deg'
                     {
                     otherlv_8=(Token)match(input,28,FOLLOW_21); 
 
                     				newLeafNode(otherlv_8, grammarAccess.getActionAccess().getTurnKeyword_1_0());
                     			
-                    // InternalRobotDSL.g:509:4: ( (lv_dir_9_0= ruleDirection ) )
-                    // InternalRobotDSL.g:510:5: (lv_dir_9_0= ruleDirection )
+                    // InternalRobotDSL.g:509:4: ( (lv_turnir_9_0= ruleDirection ) )
+                    // InternalRobotDSL.g:510:5: (lv_turnir_9_0= ruleDirection )
                     {
-                    // InternalRobotDSL.g:510:5: (lv_dir_9_0= ruleDirection )
-                    // InternalRobotDSL.g:511:6: lv_dir_9_0= ruleDirection
+                    // InternalRobotDSL.g:510:5: (lv_turnir_9_0= ruleDirection )
+                    // InternalRobotDSL.g:511:6: lv_turnir_9_0= ruleDirection
                     {
 
-                    						newCompositeNode(grammarAccess.getActionAccess().getDirDirectionEnumRuleCall_1_1_0());
+                    						newCompositeNode(grammarAccess.getActionAccess().getTurnirDirectionParserRuleCall_1_1_0());
                     					
                     pushFollow(FOLLOW_18);
-                    lv_dir_9_0=ruleDirection();
+                    lv_turnir_9_0=ruleDirection();
 
                     state._fsp--;
 
@@ -1287,8 +1287,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     						}
                     						set(
                     							current,
-                    							"dir",
-                    							lv_dir_9_0,
+                    							"turnir",
+                    							lv_turnir_9_0,
                     							"des.missionrobot.RobotDSL.Direction");
                     						afterParserOrEnumRuleCall();
                     					
@@ -1351,7 +1351,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     // InternalRobotDSL.g:559:6: lv_op_13_0= ruleArmOp
                     {
 
-                    						newCompositeNode(grammarAccess.getActionAccess().getOpArmOpEnumRuleCall_2_1_0());
+                    						newCompositeNode(grammarAccess.getActionAccess().getOpArmOpParserRuleCall_2_1_0());
                     					
                     pushFollow(FOLLOW_2);
                     lv_op_13_0=ruleArmOp();
@@ -1402,7 +1402,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     // InternalRobotDSL.g:589:6: lv_sound_16_0= ruleSound
                     {
 
-                    						newCompositeNode(grammarAccess.getActionAccess().getSoundSoundEnumRuleCall_3_2_0());
+                    						newCompositeNode(grammarAccess.getActionAccess().getSoundSoundParserRuleCall_3_2_0());
                     					
                     pushFollow(FOLLOW_2);
                     lv_sound_16_0=ruleSound();
@@ -1474,7 +1474,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     // InternalRobotDSL.g:632:6: lv_bool_20_0= ruleBool
                     {
 
-                    						newCompositeNode(grammarAccess.getActionAccess().getBoolBoolEnumRuleCall_4_3_0());
+                    						newCompositeNode(grammarAccess.getActionAccess().getBoolBoolParserRuleCall_4_3_0());
                     					
                     pushFollow(FOLLOW_2);
                     lv_bool_20_0=ruleBool();
@@ -1570,13 +1570,13 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_2=null;
         Token otherlv_4=null;
         Token otherlv_6=null;
-        Enumerator lv_boolType_0_0 = null;
+        EObject lv_boolType_0_0 = null;
 
-        Enumerator lv_neg_1_0 = null;
+        EObject lv_neg_1_0 = null;
 
-        Enumerator lv_sensor_3_0 = null;
+        EObject lv_sensor_3_0 = null;
 
-        Enumerator lv_color_5_0 = null;
+        EObject lv_color_5_0 = null;
 
         EObject lv_dist_7_0 = null;
 
@@ -1595,7 +1595,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( ((LA14_0>=63 && LA14_0<=68)) ) {
+            if ( ((LA14_0>=64 && LA14_0<=69)) ) {
                 alt14=1;
             }
             switch (alt14) {
@@ -1606,7 +1606,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     // InternalRobotDSL.g:671:5: lv_boolType_0_0= ruleBool
                     {
 
-                    					newCompositeNode(grammarAccess.getTriggerAccess().getBoolTypeBoolEnumRuleCall_0_0());
+                    					newCompositeNode(grammarAccess.getTriggerAccess().getBoolTypeBoolParserRuleCall_0_0());
                     				
                     pushFollow(FOLLOW_11);
                     lv_boolType_0_0=ruleBool();
@@ -1637,10 +1637,10 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
             int alt17=2;
             int LA17_0 = input.LA(1);
 
-            if ( (LA17_0==RULE_ID||LA17_0==69) ) {
+            if ( (LA17_0==RULE_ID||LA17_0==40) ) {
                 alt17=1;
             }
-            else if ( ((LA17_0>=51 && LA17_0<=55)) ) {
+            else if ( ((LA17_0>=52 && LA17_0<=56)) ) {
                 alt17=2;
             }
             else {
@@ -1660,7 +1660,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     int alt15=2;
                     int LA15_0 = input.LA(1);
 
-                    if ( (LA15_0==69) ) {
+                    if ( (LA15_0==40) ) {
                         alt15=1;
                     }
                     switch (alt15) {
@@ -1671,7 +1671,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                             // InternalRobotDSL.g:692:7: lv_neg_1_0= ruleNegation
                             {
 
-                            							newCompositeNode(grammarAccess.getTriggerAccess().getNegNegationEnumRuleCall_1_0_0_0());
+                            							newCompositeNode(grammarAccess.getTriggerAccess().getNegNegationParserRuleCall_1_0_0_0());
                             						
                             pushFollow(FOLLOW_3);
                             lv_neg_1_0=ruleNegation();
@@ -1738,7 +1738,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     // InternalRobotDSL.g:727:7: lv_sensor_3_0= ruleSensor
                     {
 
-                    							newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorEnumRuleCall_1_1_0_0());
+                    							newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorParserRuleCall_1_1_0_0());
                     						
                     pushFollow(FOLLOW_33);
                     lv_sensor_3_0=ruleSensor();
@@ -1796,7 +1796,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                             // InternalRobotDSL.g:752:9: lv_color_5_0= ruleColor
                             {
 
-                            									newCompositeNode(grammarAccess.getTriggerAccess().getColorColorEnumRuleCall_1_1_1_0_1_0());
+                            									newCompositeNode(grammarAccess.getTriggerAccess().getColorColorParserRuleCall_1_1_1_0_1_0());
                             								
                             pushFollow(FOLLOW_2);
                             lv_color_5_0=ruleColor();
@@ -1951,7 +1951,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_1=null;
         Token lv_distance_2_0=null;
         Token otherlv_3=null;
-        Enumerator lv_rangeBool_0_0 = null;
+        EObject lv_rangeBool_0_0 = null;
 
 
 
@@ -1971,7 +1971,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
             // InternalRobotDSL.g:820:5: lv_rangeBool_0_0= ruleBool
             {
 
-            					newCompositeNode(grammarAccess.getDistanceAccess().getRangeBoolBoolEnumRuleCall_0_0());
+            					newCompositeNode(grammarAccess.getDistanceAccess().getRangeBoolBoolParserRuleCall_0_0());
             				
             pushFollow(FOLLOW_35);
             lv_rangeBool_0_0=ruleBool();
@@ -2094,7 +2094,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
 
         Token lv_name_0_0=null;
         Token otherlv_1=null;
-        Enumerator lv_bool_2_0 = null;
+        EObject lv_bool_2_0 = null;
 
 
 
@@ -2155,7 +2155,7 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
                     // InternalRobotDSL.g:907:6: lv_bool_2_0= ruleBool
                     {
 
-                    						newCompositeNode(grammarAccess.getFlagAccess().getBoolBoolEnumRuleCall_1_1_0());
+                    						newCompositeNode(grammarAccess.getFlagAccess().getBoolBoolParserRuleCall_1_1_0());
                     					
                     pushFollow(FOLLOW_2);
                     lv_bool_2_0=ruleBool();
@@ -2318,122 +2318,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleTime"
 
 
-    // $ANTLR start "ruleDirection"
-    // InternalRobotDSL.g:974:1: ruleDirection returns [Enumerator current=null] : ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) ;
-    public final Enumerator ruleDirection() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleDirection"
+    // InternalRobotDSL.g:974:1: entryRuleDirection returns [EObject current=null] : iv_ruleDirection= ruleDirection EOF ;
+    public final EObject entryRuleDirection() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
-        Token enumLiteral_2=null;
-        Token enumLiteral_3=null;
+        EObject iv_ruleDirection = null;
+
+
+        try {
+            // InternalRobotDSL.g:974:50: (iv_ruleDirection= ruleDirection EOF )
+            // InternalRobotDSL.g:975:2: iv_ruleDirection= ruleDirection EOF
+            {
+             newCompositeNode(grammarAccess.getDirectionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleDirection=ruleDirection();
+
+            state._fsp--;
+
+             current =iv_ruleDirection; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleDirection"
+
+
+    // $ANTLR start "ruleDirection"
+    // InternalRobotDSL.g:981:1: ruleDirection returns [EObject current=null] : ( (lv_dir_0_0= ruleDirectionVal ) ) ;
+    public final EObject ruleDirection() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_dir_0_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:980:2: ( ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) )
-            // InternalRobotDSL.g:981:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
+            // InternalRobotDSL.g:987:2: ( ( (lv_dir_0_0= ruleDirectionVal ) ) )
+            // InternalRobotDSL.g:988:2: ( (lv_dir_0_0= ruleDirectionVal ) )
             {
-            // InternalRobotDSL.g:981:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
-            int alt19=4;
-            switch ( input.LA(1) ) {
-            case 40:
-                {
-                alt19=1;
-                }
-                break;
-            case 41:
-                {
-                alt19=2;
-                }
-                break;
-            case 42:
-                {
-                alt19=3;
-                }
-                break;
-            case 43:
-                {
-                alt19=4;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+            // InternalRobotDSL.g:988:2: ( (lv_dir_0_0= ruleDirectionVal ) )
+            // InternalRobotDSL.g:989:3: (lv_dir_0_0= ruleDirectionVal )
+            {
+            // InternalRobotDSL.g:989:3: (lv_dir_0_0= ruleDirectionVal )
+            // InternalRobotDSL.g:990:4: lv_dir_0_0= ruleDirectionVal
+            {
 
-                throw nvae;
+            				newCompositeNode(grammarAccess.getDirectionAccess().getDirDirectionValEnumRuleCall_0());
+            			
+            pushFollow(FOLLOW_2);
+            lv_dir_0_0=ruleDirectionVal();
+
+            state._fsp--;
+
+
+            				if (current==null) {
+            					current = createModelElementForParent(grammarAccess.getDirectionRule());
+            				}
+            				set(
+            					current,
+            					"dir",
+            					lv_dir_0_0,
+            					"des.missionrobot.RobotDSL.DirectionVal");
+            				afterParserOrEnumRuleCall();
+            			
+
             }
 
-            switch (alt19) {
-                case 1 :
-                    // InternalRobotDSL.g:982:3: (enumLiteral_0= 'forward' )
-                    {
-                    // InternalRobotDSL.g:982:3: (enumLiteral_0= 'forward' )
-                    // InternalRobotDSL.g:983:4: enumLiteral_0= 'forward'
-                    {
-                    enumLiteral_0=(Token)match(input,40,FOLLOW_2); 
-
-                    				current = grammarAccess.getDirectionAccess().getFORWARDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getDirectionAccess().getFORWARDEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:990:3: (enumLiteral_1= 'backward' )
-                    {
-                    // InternalRobotDSL.g:990:3: (enumLiteral_1= 'backward' )
-                    // InternalRobotDSL.g:991:4: enumLiteral_1= 'backward'
-                    {
-                    enumLiteral_1=(Token)match(input,41,FOLLOW_2); 
-
-                    				current = grammarAccess.getDirectionAccess().getBACKWARDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getDirectionAccess().getBACKWARDEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalRobotDSL.g:998:3: (enumLiteral_2= 'left' )
-                    {
-                    // InternalRobotDSL.g:998:3: (enumLiteral_2= 'left' )
-                    // InternalRobotDSL.g:999:4: enumLiteral_2= 'left'
-                    {
-                    enumLiteral_2=(Token)match(input,42,FOLLOW_2); 
-
-                    				current = grammarAccess.getDirectionAccess().getLEFTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_2, grammarAccess.getDirectionAccess().getLEFTEnumLiteralDeclaration_2());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // InternalRobotDSL.g:1006:3: (enumLiteral_3= 'right' )
-                    {
-                    // InternalRobotDSL.g:1006:3: (enumLiteral_3= 'right' )
-                    // InternalRobotDSL.g:1007:4: enumLiteral_3= 'right'
-                    {
-                    enumLiteral_3=(Token)match(input,43,FOLLOW_2); 
-
-                    				current = grammarAccess.getDirectionAccess().getRIGHTEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_3, grammarAccess.getDirectionAccess().getRIGHTEnumLiteralDeclaration_3());
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2456,99 +2419,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleDirection"
 
 
-    // $ANTLR start "ruleSpeed"
-    // InternalRobotDSL.g:1017:1: ruleSpeed returns [Enumerator current=null] : ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) ;
-    public final Enumerator ruleSpeed() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleSpeed"
+    // InternalRobotDSL.g:1010:1: entryRuleSpeed returns [EObject current=null] : iv_ruleSpeed= ruleSpeed EOF ;
+    public final EObject entryRuleSpeed() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
-        Token enumLiteral_2=null;
+        EObject iv_ruleSpeed = null;
+
+
+        try {
+            // InternalRobotDSL.g:1010:46: (iv_ruleSpeed= ruleSpeed EOF )
+            // InternalRobotDSL.g:1011:2: iv_ruleSpeed= ruleSpeed EOF
+            {
+             newCompositeNode(grammarAccess.getSpeedRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleSpeed=ruleSpeed();
+
+            state._fsp--;
+
+             current =iv_ruleSpeed; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSpeed"
+
+
+    // $ANTLR start "ruleSpeed"
+    // InternalRobotDSL.g:1017:1: ruleSpeed returns [EObject current=null] : ( (lv_speed_0_0= ruleSpeedVal ) ) ;
+    public final EObject ruleSpeed() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_speed_0_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:1023:2: ( ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) )
-            // InternalRobotDSL.g:1024:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
+            // InternalRobotDSL.g:1023:2: ( ( (lv_speed_0_0= ruleSpeedVal ) ) )
+            // InternalRobotDSL.g:1024:2: ( (lv_speed_0_0= ruleSpeedVal ) )
             {
-            // InternalRobotDSL.g:1024:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
-            int alt20=3;
-            switch ( input.LA(1) ) {
-            case 44:
-                {
-                alt20=1;
-                }
-                break;
-            case 45:
-                {
-                alt20=2;
-                }
-                break;
-            case 46:
-                {
-                alt20=3;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
+            // InternalRobotDSL.g:1024:2: ( (lv_speed_0_0= ruleSpeedVal ) )
+            // InternalRobotDSL.g:1025:3: (lv_speed_0_0= ruleSpeedVal )
+            {
+            // InternalRobotDSL.g:1025:3: (lv_speed_0_0= ruleSpeedVal )
+            // InternalRobotDSL.g:1026:4: lv_speed_0_0= ruleSpeedVal
+            {
 
-                throw nvae;
+            				newCompositeNode(grammarAccess.getSpeedAccess().getSpeedSpeedValEnumRuleCall_0());
+            			
+            pushFollow(FOLLOW_2);
+            lv_speed_0_0=ruleSpeedVal();
+
+            state._fsp--;
+
+
+            				if (current==null) {
+            					current = createModelElementForParent(grammarAccess.getSpeedRule());
+            				}
+            				set(
+            					current,
+            					"speed",
+            					lv_speed_0_0,
+            					"des.missionrobot.RobotDSL.SpeedVal");
+            				afterParserOrEnumRuleCall();
+            			
+
             }
 
-            switch (alt20) {
-                case 1 :
-                    // InternalRobotDSL.g:1025:3: (enumLiteral_0= 'high' )
-                    {
-                    // InternalRobotDSL.g:1025:3: (enumLiteral_0= 'high' )
-                    // InternalRobotDSL.g:1026:4: enumLiteral_0= 'high'
-                    {
-                    enumLiteral_0=(Token)match(input,44,FOLLOW_2); 
-
-                    				current = grammarAccess.getSpeedAccess().getHIGHEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getSpeedAccess().getHIGHEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:1033:3: (enumLiteral_1= 'medium' )
-                    {
-                    // InternalRobotDSL.g:1033:3: (enumLiteral_1= 'medium' )
-                    // InternalRobotDSL.g:1034:4: enumLiteral_1= 'medium'
-                    {
-                    enumLiteral_1=(Token)match(input,45,FOLLOW_2); 
-
-                    				current = grammarAccess.getSpeedAccess().getMEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getSpeedAccess().getMEDEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalRobotDSL.g:1041:3: (enumLiteral_2= 'low' )
-                    {
-                    // InternalRobotDSL.g:1041:3: (enumLiteral_2= 'low' )
-                    // InternalRobotDSL.g:1042:4: enumLiteral_2= 'low'
-                    {
-                    enumLiteral_2=(Token)match(input,46,FOLLOW_2); 
-
-                    				current = grammarAccess.getSpeedAccess().getLOWEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_2, grammarAccess.getSpeedAccess().getLOWEnumLiteralDeclaration_2());
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2571,72 +2520,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleSpeed"
 
 
-    // $ANTLR start "ruleArmOp"
-    // InternalRobotDSL.g:1052:1: ruleArmOp returns [Enumerator current=null] : ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) ;
-    public final Enumerator ruleArmOp() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleArmOp"
+    // InternalRobotDSL.g:1046:1: entryRuleArmOp returns [EObject current=null] : iv_ruleArmOp= ruleArmOp EOF ;
+    public final EObject entryRuleArmOp() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
+        EObject iv_ruleArmOp = null;
+
+
+        try {
+            // InternalRobotDSL.g:1046:46: (iv_ruleArmOp= ruleArmOp EOF )
+            // InternalRobotDSL.g:1047:2: iv_ruleArmOp= ruleArmOp EOF
+            {
+             newCompositeNode(grammarAccess.getArmOpRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleArmOp=ruleArmOp();
+
+            state._fsp--;
+
+             current =iv_ruleArmOp; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleArmOp"
+
+
+    // $ANTLR start "ruleArmOp"
+    // InternalRobotDSL.g:1053:1: ruleArmOp returns [EObject current=null] : ( (lv_opType_0_0= ruleArmOpType ) ) ;
+    public final EObject ruleArmOp() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_opType_0_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:1058:2: ( ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) )
-            // InternalRobotDSL.g:1059:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
+            // InternalRobotDSL.g:1059:2: ( ( (lv_opType_0_0= ruleArmOpType ) ) )
+            // InternalRobotDSL.g:1060:2: ( (lv_opType_0_0= ruleArmOpType ) )
             {
-            // InternalRobotDSL.g:1059:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // InternalRobotDSL.g:1060:2: ( (lv_opType_0_0= ruleArmOpType ) )
+            // InternalRobotDSL.g:1061:3: (lv_opType_0_0= ruleArmOpType )
+            {
+            // InternalRobotDSL.g:1061:3: (lv_opType_0_0= ruleArmOpType )
+            // InternalRobotDSL.g:1062:4: lv_opType_0_0= ruleArmOpType
+            {
 
-            if ( (LA21_0==47) ) {
-                alt21=1;
+            				newCompositeNode(grammarAccess.getArmOpAccess().getOpTypeArmOpTypeEnumRuleCall_0());
+            			
+            pushFollow(FOLLOW_2);
+            lv_opType_0_0=ruleArmOpType();
+
+            state._fsp--;
+
+
+            				if (current==null) {
+            					current = createModelElementForParent(grammarAccess.getArmOpRule());
+            				}
+            				set(
+            					current,
+            					"opType",
+            					lv_opType_0_0,
+            					"des.missionrobot.RobotDSL.ArmOpType");
+            				afterParserOrEnumRuleCall();
+            			
+
             }
-            else if ( (LA21_0==48) ) {
-                alt21=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
 
-                throw nvae;
-            }
-            switch (alt21) {
-                case 1 :
-                    // InternalRobotDSL.g:1060:3: (enumLiteral_0= 'raise' )
-                    {
-                    // InternalRobotDSL.g:1060:3: (enumLiteral_0= 'raise' )
-                    // InternalRobotDSL.g:1061:4: enumLiteral_0= 'raise'
-                    {
-                    enumLiteral_0=(Token)match(input,47,FOLLOW_2); 
-
-                    				current = grammarAccess.getArmOpAccess().getUPEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getArmOpAccess().getUPEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:1068:3: (enumLiteral_1= 'lower' )
-                    {
-                    // InternalRobotDSL.g:1068:3: (enumLiteral_1= 'lower' )
-                    // InternalRobotDSL.g:1069:4: enumLiteral_1= 'lower'
-                    {
-                    enumLiteral_1=(Token)match(input,48,FOLLOW_2); 
-
-                    				current = grammarAccess.getArmOpAccess().getDOWNEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getArmOpAccess().getDOWNEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2659,72 +2621,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleArmOp"
 
 
-    // $ANTLR start "ruleSound"
-    // InternalRobotDSL.g:1079:1: ruleSound returns [Enumerator current=null] : ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) ;
-    public final Enumerator ruleSound() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleSound"
+    // InternalRobotDSL.g:1082:1: entryRuleSound returns [EObject current=null] : iv_ruleSound= ruleSound EOF ;
+    public final EObject entryRuleSound() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
+        EObject iv_ruleSound = null;
+
+
+        try {
+            // InternalRobotDSL.g:1082:46: (iv_ruleSound= ruleSound EOF )
+            // InternalRobotDSL.g:1083:2: iv_ruleSound= ruleSound EOF
+            {
+             newCompositeNode(grammarAccess.getSoundRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleSound=ruleSound();
+
+            state._fsp--;
+
+             current =iv_ruleSound; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSound"
+
+
+    // $ANTLR start "ruleSound"
+    // InternalRobotDSL.g:1089:1: ruleSound returns [EObject current=null] : ( (lv_soundName_0_0= ruleSoundName ) ) ;
+    public final EObject ruleSound() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_soundName_0_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:1085:2: ( ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) )
-            // InternalRobotDSL.g:1086:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
+            // InternalRobotDSL.g:1095:2: ( ( (lv_soundName_0_0= ruleSoundName ) ) )
+            // InternalRobotDSL.g:1096:2: ( (lv_soundName_0_0= ruleSoundName ) )
             {
-            // InternalRobotDSL.g:1086:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            // InternalRobotDSL.g:1096:2: ( (lv_soundName_0_0= ruleSoundName ) )
+            // InternalRobotDSL.g:1097:3: (lv_soundName_0_0= ruleSoundName )
+            {
+            // InternalRobotDSL.g:1097:3: (lv_soundName_0_0= ruleSoundName )
+            // InternalRobotDSL.g:1098:4: lv_soundName_0_0= ruleSoundName
+            {
 
-            if ( (LA22_0==49) ) {
-                alt22=1;
+            				newCompositeNode(grammarAccess.getSoundAccess().getSoundNameSoundNameEnumRuleCall_0());
+            			
+            pushFollow(FOLLOW_2);
+            lv_soundName_0_0=ruleSoundName();
+
+            state._fsp--;
+
+
+            				if (current==null) {
+            					current = createModelElementForParent(grammarAccess.getSoundRule());
+            				}
+            				set(
+            					current,
+            					"soundName",
+            					lv_soundName_0_0,
+            					"des.missionrobot.RobotDSL.SoundName");
+            				afterParserOrEnumRuleCall();
+            			
+
             }
-            else if ( (LA22_0==50) ) {
-                alt22=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
 
-                throw nvae;
-            }
-            switch (alt22) {
-                case 1 :
-                    // InternalRobotDSL.g:1087:3: (enumLiteral_0= 'buzz' )
-                    {
-                    // InternalRobotDSL.g:1087:3: (enumLiteral_0= 'buzz' )
-                    // InternalRobotDSL.g:1088:4: enumLiteral_0= 'buzz'
-                    {
-                    enumLiteral_0=(Token)match(input,49,FOLLOW_2); 
-
-                    				current = grammarAccess.getSoundAccess().getBuzzEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getSoundAccess().getBuzzEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:1095:3: (enumLiteral_1= 'fanfare' )
-                    {
-                    // InternalRobotDSL.g:1095:3: (enumLiteral_1= 'fanfare' )
-                    // InternalRobotDSL.g:1096:4: enumLiteral_1= 'fanfare'
-                    {
-                    enumLiteral_1=(Token)match(input,50,FOLLOW_2); 
-
-                    				current = grammarAccess.getSoundAccess().getFanfareEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getSoundAccess().getFanfareEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2747,145 +2722,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleSound"
 
 
-    // $ANTLR start "ruleSensor"
-    // InternalRobotDSL.g:1106:1: ruleSensor returns [Enumerator current=null] : ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) ;
-    public final Enumerator ruleSensor() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleSensor"
+    // InternalRobotDSL.g:1118:1: entryRuleSensor returns [EObject current=null] : iv_ruleSensor= ruleSensor EOF ;
+    public final EObject entryRuleSensor() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
-        Token enumLiteral_2=null;
-        Token enumLiteral_3=null;
-        Token enumLiteral_4=null;
+        EObject iv_ruleSensor = null;
+
+
+        try {
+            // InternalRobotDSL.g:1118:47: (iv_ruleSensor= ruleSensor EOF )
+            // InternalRobotDSL.g:1119:2: iv_ruleSensor= ruleSensor EOF
+            {
+             newCompositeNode(grammarAccess.getSensorRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleSensor=ruleSensor();
+
+            state._fsp--;
+
+             current =iv_ruleSensor; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSensor"
+
+
+    // $ANTLR start "ruleSensor"
+    // InternalRobotDSL.g:1125:1: ruleSensor returns [EObject current=null] : ( (lv_sensorType_0_0= ruleSensorType ) ) ;
+    public final EObject ruleSensor() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_sensorType_0_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:1112:2: ( ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) )
-            // InternalRobotDSL.g:1113:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
+            // InternalRobotDSL.g:1131:2: ( ( (lv_sensorType_0_0= ruleSensorType ) ) )
+            // InternalRobotDSL.g:1132:2: ( (lv_sensorType_0_0= ruleSensorType ) )
             {
-            // InternalRobotDSL.g:1113:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
-            int alt23=5;
-            switch ( input.LA(1) ) {
-            case 51:
-                {
-                alt23=1;
-                }
-                break;
-            case 52:
-                {
-                alt23=2;
-                }
-                break;
-            case 53:
-                {
-                alt23=3;
-                }
-                break;
-            case 54:
-                {
-                alt23=4;
-                }
-                break;
-            case 55:
-                {
-                alt23=5;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+            // InternalRobotDSL.g:1132:2: ( (lv_sensorType_0_0= ruleSensorType ) )
+            // InternalRobotDSL.g:1133:3: (lv_sensorType_0_0= ruleSensorType )
+            {
+            // InternalRobotDSL.g:1133:3: (lv_sensorType_0_0= ruleSensorType )
+            // InternalRobotDSL.g:1134:4: lv_sensorType_0_0= ruleSensorType
+            {
 
-                throw nvae;
+            				newCompositeNode(grammarAccess.getSensorAccess().getSensorTypeSensorTypeEnumRuleCall_0());
+            			
+            pushFollow(FOLLOW_2);
+            lv_sensorType_0_0=ruleSensorType();
+
+            state._fsp--;
+
+
+            				if (current==null) {
+            					current = createModelElementForParent(grammarAccess.getSensorRule());
+            				}
+            				set(
+            					current,
+            					"sensorType",
+            					lv_sensorType_0_0,
+            					"des.missionrobot.RobotDSL.SensorType");
+            				afterParserOrEnumRuleCall();
+            			
+
             }
 
-            switch (alt23) {
-                case 1 :
-                    // InternalRobotDSL.g:1114:3: (enumLiteral_0= 'Color' )
-                    {
-                    // InternalRobotDSL.g:1114:3: (enumLiteral_0= 'Color' )
-                    // InternalRobotDSL.g:1115:4: enumLiteral_0= 'Color'
-                    {
-                    enumLiteral_0=(Token)match(input,51,FOLLOW_2); 
-
-                    				current = grammarAccess.getSensorAccess().getCOLOREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getSensorAccess().getCOLOREnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:1122:3: (enumLiteral_1= 'LeftLight' )
-                    {
-                    // InternalRobotDSL.g:1122:3: (enumLiteral_1= 'LeftLight' )
-                    // InternalRobotDSL.g:1123:4: enumLiteral_1= 'LeftLight'
-                    {
-                    enumLiteral_1=(Token)match(input,52,FOLLOW_2); 
-
-                    				current = grammarAccess.getSensorAccess().getLEFTLIGHTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getSensorAccess().getLEFTLIGHTEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalRobotDSL.g:1130:3: (enumLiteral_2= 'RightLight' )
-                    {
-                    // InternalRobotDSL.g:1130:3: (enumLiteral_2= 'RightLight' )
-                    // InternalRobotDSL.g:1131:4: enumLiteral_2= 'RightLight'
-                    {
-                    enumLiteral_2=(Token)match(input,53,FOLLOW_2); 
-
-                    				current = grammarAccess.getSensorAccess().getRIGHTLIGHTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_2, grammarAccess.getSensorAccess().getRIGHTLIGHTEnumLiteralDeclaration_2());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // InternalRobotDSL.g:1138:3: (enumLiteral_3= 'RearHeight' )
-                    {
-                    // InternalRobotDSL.g:1138:3: (enumLiteral_3= 'RearHeight' )
-                    // InternalRobotDSL.g:1139:4: enumLiteral_3= 'RearHeight'
-                    {
-                    enumLiteral_3=(Token)match(input,54,FOLLOW_2); 
-
-                    				current = grammarAccess.getSensorAccess().getBACKUSEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_3, grammarAccess.getSensorAccess().getBACKUSEnumLiteralDeclaration_3());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 5 :
-                    // InternalRobotDSL.g:1146:3: (enumLiteral_4= 'FrontDistance' )
-                    {
-                    // InternalRobotDSL.g:1146:3: (enumLiteral_4= 'FrontDistance' )
-                    // InternalRobotDSL.g:1147:4: enumLiteral_4= 'FrontDistance'
-                    {
-                    enumLiteral_4=(Token)match(input,55,FOLLOW_2); 
-
-                    				current = grammarAccess.getSensorAccess().getFRONTUSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_4, grammarAccess.getSensorAccess().getFRONTUSEnumLiteralDeclaration_4());
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2908,191 +2823,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleSensor"
 
 
-    // $ANTLR start "ruleColor"
-    // InternalRobotDSL.g:1157:1: ruleColor returns [Enumerator current=null] : ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) ) ;
-    public final Enumerator ruleColor() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleColor"
+    // InternalRobotDSL.g:1154:1: entryRuleColor returns [EObject current=null] : iv_ruleColor= ruleColor EOF ;
+    public final EObject entryRuleColor() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
-        Token enumLiteral_2=null;
-        Token enumLiteral_3=null;
-        Token enumLiteral_4=null;
-        Token enumLiteral_5=null;
-        Token enumLiteral_6=null;
+        EObject iv_ruleColor = null;
+
+
+        try {
+            // InternalRobotDSL.g:1154:46: (iv_ruleColor= ruleColor EOF )
+            // InternalRobotDSL.g:1155:2: iv_ruleColor= ruleColor EOF
+            {
+             newCompositeNode(grammarAccess.getColorRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleColor=ruleColor();
+
+            state._fsp--;
+
+             current =iv_ruleColor; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleColor"
+
+
+    // $ANTLR start "ruleColor"
+    // InternalRobotDSL.g:1161:1: ruleColor returns [EObject current=null] : ( (lv_colorName_0_0= ruleColorName ) ) ;
+    public final EObject ruleColor() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_colorName_0_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:1163:2: ( ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) ) )
-            // InternalRobotDSL.g:1164:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) )
+            // InternalRobotDSL.g:1167:2: ( ( (lv_colorName_0_0= ruleColorName ) ) )
+            // InternalRobotDSL.g:1168:2: ( (lv_colorName_0_0= ruleColorName ) )
             {
-            // InternalRobotDSL.g:1164:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) )
-            int alt24=7;
-            switch ( input.LA(1) ) {
-            case 56:
-                {
-                alt24=1;
-                }
-                break;
-            case 57:
-                {
-                alt24=2;
-                }
-                break;
-            case 58:
-                {
-                alt24=3;
-                }
-                break;
-            case 59:
-                {
-                alt24=4;
-                }
-                break;
-            case 60:
-                {
-                alt24=5;
-                }
-                break;
-            case 61:
-                {
-                alt24=6;
-                }
-                break;
-            case 62:
-                {
-                alt24=7;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 24, 0, input);
+            // InternalRobotDSL.g:1168:2: ( (lv_colorName_0_0= ruleColorName ) )
+            // InternalRobotDSL.g:1169:3: (lv_colorName_0_0= ruleColorName )
+            {
+            // InternalRobotDSL.g:1169:3: (lv_colorName_0_0= ruleColorName )
+            // InternalRobotDSL.g:1170:4: lv_colorName_0_0= ruleColorName
+            {
 
-                throw nvae;
+            				newCompositeNode(grammarAccess.getColorAccess().getColorNameColorNameEnumRuleCall_0());
+            			
+            pushFollow(FOLLOW_2);
+            lv_colorName_0_0=ruleColorName();
+
+            state._fsp--;
+
+
+            				if (current==null) {
+            					current = createModelElementForParent(grammarAccess.getColorRule());
+            				}
+            				set(
+            					current,
+            					"colorName",
+            					lv_colorName_0_0,
+            					"des.missionrobot.RobotDSL.ColorName");
+            				afterParserOrEnumRuleCall();
+            			
+
             }
 
-            switch (alt24) {
-                case 1 :
-                    // InternalRobotDSL.g:1165:3: (enumLiteral_0= 'red' )
-                    {
-                    // InternalRobotDSL.g:1165:3: (enumLiteral_0= 'red' )
-                    // InternalRobotDSL.g:1166:4: enumLiteral_0= 'red'
-                    {
-                    enumLiteral_0=(Token)match(input,56,FOLLOW_2); 
-
-                    				current = grammarAccess.getColorAccess().getREDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getColorAccess().getREDEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:1173:3: (enumLiteral_1= 'white' )
-                    {
-                    // InternalRobotDSL.g:1173:3: (enumLiteral_1= 'white' )
-                    // InternalRobotDSL.g:1174:4: enumLiteral_1= 'white'
-                    {
-                    enumLiteral_1=(Token)match(input,57,FOLLOW_2); 
-
-                    				current = grammarAccess.getColorAccess().getWHITEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getColorAccess().getWHITEEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalRobotDSL.g:1181:3: (enumLiteral_2= 'black' )
-                    {
-                    // InternalRobotDSL.g:1181:3: (enumLiteral_2= 'black' )
-                    // InternalRobotDSL.g:1182:4: enumLiteral_2= 'black'
-                    {
-                    enumLiteral_2=(Token)match(input,58,FOLLOW_2); 
-
-                    				current = grammarAccess.getColorAccess().getBLACKEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_2, grammarAccess.getColorAccess().getBLACKEnumLiteralDeclaration_2());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // InternalRobotDSL.g:1189:3: (enumLiteral_3= 'green' )
-                    {
-                    // InternalRobotDSL.g:1189:3: (enumLiteral_3= 'green' )
-                    // InternalRobotDSL.g:1190:4: enumLiteral_3= 'green'
-                    {
-                    enumLiteral_3=(Token)match(input,59,FOLLOW_2); 
-
-                    				current = grammarAccess.getColorAccess().getGREENEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_3, grammarAccess.getColorAccess().getGREENEnumLiteralDeclaration_3());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 5 :
-                    // InternalRobotDSL.g:1197:3: (enumLiteral_4= 'blue' )
-                    {
-                    // InternalRobotDSL.g:1197:3: (enumLiteral_4= 'blue' )
-                    // InternalRobotDSL.g:1198:4: enumLiteral_4= 'blue'
-                    {
-                    enumLiteral_4=(Token)match(input,60,FOLLOW_2); 
-
-                    				current = grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_4, grammarAccess.getColorAccess().getBLUEEnumLiteralDeclaration_4());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 6 :
-                    // InternalRobotDSL.g:1205:3: (enumLiteral_5= 'bright' )
-                    {
-                    // InternalRobotDSL.g:1205:3: (enumLiteral_5= 'bright' )
-                    // InternalRobotDSL.g:1206:4: enumLiteral_5= 'bright'
-                    {
-                    enumLiteral_5=(Token)match(input,61,FOLLOW_2); 
-
-                    				current = grammarAccess.getColorAccess().getBRIGHTEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_5, grammarAccess.getColorAccess().getBRIGHTEnumLiteralDeclaration_5());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 7 :
-                    // InternalRobotDSL.g:1213:3: (enumLiteral_6= 'dark' )
-                    {
-                    // InternalRobotDSL.g:1213:3: (enumLiteral_6= 'dark' )
-                    // InternalRobotDSL.g:1214:4: enumLiteral_6= 'dark'
-                    {
-                    enumLiteral_6=(Token)match(input,62,FOLLOW_2); 
-
-                    				current = grammarAccess.getColorAccess().getDARKEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_6, grammarAccess.getColorAccess().getDARKEnumLiteralDeclaration_6());
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -3115,168 +2924,85 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleColor"
 
 
-    // $ANTLR start "ruleBool"
-    // InternalRobotDSL.g:1224:1: ruleBool returns [Enumerator current=null] : ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) ) ;
-    public final Enumerator ruleBool() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleBool"
+    // InternalRobotDSL.g:1190:1: entryRuleBool returns [EObject current=null] : iv_ruleBool= ruleBool EOF ;
+    public final EObject entryRuleBool() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
-        Token enumLiteral_2=null;
-        Token enumLiteral_3=null;
-        Token enumLiteral_4=null;
-        Token enumLiteral_5=null;
+        EObject iv_ruleBool = null;
+
+
+        try {
+            // InternalRobotDSL.g:1190:45: (iv_ruleBool= ruleBool EOF )
+            // InternalRobotDSL.g:1191:2: iv_ruleBool= ruleBool EOF
+            {
+             newCompositeNode(grammarAccess.getBoolRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleBool=ruleBool();
+
+            state._fsp--;
+
+             current =iv_ruleBool; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleBool"
+
+
+    // $ANTLR start "ruleBool"
+    // InternalRobotDSL.g:1197:1: ruleBool returns [EObject current=null] : ( (lv_boolType_0_0= ruleBoolType ) ) ;
+    public final EObject ruleBool() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_boolType_0_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:1230:2: ( ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) ) )
-            // InternalRobotDSL.g:1231:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) )
+            // InternalRobotDSL.g:1203:2: ( ( (lv_boolType_0_0= ruleBoolType ) ) )
+            // InternalRobotDSL.g:1204:2: ( (lv_boolType_0_0= ruleBoolType ) )
             {
-            // InternalRobotDSL.g:1231:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) )
-            int alt25=6;
-            switch ( input.LA(1) ) {
-            case 63:
-                {
-                alt25=1;
-                }
-                break;
-            case 64:
-                {
-                alt25=2;
-                }
-                break;
-            case 65:
-                {
-                alt25=3;
-                }
-                break;
-            case 66:
-                {
-                alt25=4;
-                }
-                break;
-            case 67:
-                {
-                alt25=5;
-                }
-                break;
-            case 68:
-                {
-                alt25=6;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 25, 0, input);
+            // InternalRobotDSL.g:1204:2: ( (lv_boolType_0_0= ruleBoolType ) )
+            // InternalRobotDSL.g:1205:3: (lv_boolType_0_0= ruleBoolType )
+            {
+            // InternalRobotDSL.g:1205:3: (lv_boolType_0_0= ruleBoolType )
+            // InternalRobotDSL.g:1206:4: lv_boolType_0_0= ruleBoolType
+            {
 
-                throw nvae;
+            				newCompositeNode(grammarAccess.getBoolAccess().getBoolTypeBoolTypeEnumRuleCall_0());
+            			
+            pushFollow(FOLLOW_2);
+            lv_boolType_0_0=ruleBoolType();
+
+            state._fsp--;
+
+
+            				if (current==null) {
+            					current = createModelElementForParent(grammarAccess.getBoolRule());
+            				}
+            				set(
+            					current,
+            					"boolType",
+            					lv_boolType_0_0,
+            					"des.missionrobot.RobotDSL.BoolType");
+            				afterParserOrEnumRuleCall();
+            			
+
             }
 
-            switch (alt25) {
-                case 1 :
-                    // InternalRobotDSL.g:1232:3: (enumLiteral_0= 'less' )
-                    {
-                    // InternalRobotDSL.g:1232:3: (enumLiteral_0= 'less' )
-                    // InternalRobotDSL.g:1233:4: enumLiteral_0= 'less'
-                    {
-                    enumLiteral_0=(Token)match(input,63,FOLLOW_2); 
-
-                    				current = grammarAccess.getBoolAccess().getLEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getBoolAccess().getLEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRobotDSL.g:1240:3: (enumLiteral_1= 'greater' )
-                    {
-                    // InternalRobotDSL.g:1240:3: (enumLiteral_1= 'greater' )
-                    // InternalRobotDSL.g:1241:4: enumLiteral_1= 'greater'
-                    {
-                    enumLiteral_1=(Token)match(input,64,FOLLOW_2); 
-
-                    				current = grammarAccess.getBoolAccess().getGEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getBoolAccess().getGEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalRobotDSL.g:1248:3: (enumLiteral_2= 'and' )
-                    {
-                    // InternalRobotDSL.g:1248:3: (enumLiteral_2= 'and' )
-                    // InternalRobotDSL.g:1249:4: enumLiteral_2= 'and'
-                    {
-                    enumLiteral_2=(Token)match(input,65,FOLLOW_2); 
-
-                    				current = grammarAccess.getBoolAccess().getANDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_2, grammarAccess.getBoolAccess().getANDEnumLiteralDeclaration_2());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // InternalRobotDSL.g:1256:3: (enumLiteral_3= 'or' )
-                    {
-                    // InternalRobotDSL.g:1256:3: (enumLiteral_3= 'or' )
-                    // InternalRobotDSL.g:1257:4: enumLiteral_3= 'or'
-                    {
-                    enumLiteral_3=(Token)match(input,66,FOLLOW_2); 
-
-                    				current = grammarAccess.getBoolAccess().getOREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_3, grammarAccess.getBoolAccess().getOREnumLiteralDeclaration_3());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 5 :
-                    // InternalRobotDSL.g:1264:3: (enumLiteral_4= 'true' )
-                    {
-                    // InternalRobotDSL.g:1264:3: (enumLiteral_4= 'true' )
-                    // InternalRobotDSL.g:1265:4: enumLiteral_4= 'true'
-                    {
-                    enumLiteral_4=(Token)match(input,67,FOLLOW_2); 
-
-                    				current = grammarAccess.getBoolAccess().getTRUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_4, grammarAccess.getBoolAccess().getTRUEEnumLiteralDeclaration_4());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 6 :
-                    // InternalRobotDSL.g:1272:3: (enumLiteral_5= 'false' )
-                    {
-                    // InternalRobotDSL.g:1272:3: (enumLiteral_5= 'false' )
-                    // InternalRobotDSL.g:1273:4: enumLiteral_5= 'false'
-                    {
-                    enumLiteral_5=(Token)match(input,68,FOLLOW_2); 
-
-                    				current = grammarAccess.getBoolAccess().getFALSEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_5, grammarAccess.getBoolAccess().getFALSEEnumLiteralDeclaration_5());
-                    			
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -3299,28 +3025,75 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleBool"
 
 
-    // $ANTLR start "ruleNegation"
-    // InternalRobotDSL.g:1283:1: ruleNegation returns [Enumerator current=null] : (enumLiteral_0= 'not' ) ;
-    public final Enumerator ruleNegation() throws RecognitionException {
-        Enumerator current = null;
+    // $ANTLR start "entryRuleNegation"
+    // InternalRobotDSL.g:1226:1: entryRuleNegation returns [EObject current=null] : iv_ruleNegation= ruleNegation EOF ;
+    public final EObject entryRuleNegation() throws RecognitionException {
+        EObject current = null;
 
-        Token enumLiteral_0=null;
+        EObject iv_ruleNegation = null;
+
+
+        try {
+            // InternalRobotDSL.g:1226:49: (iv_ruleNegation= ruleNegation EOF )
+            // InternalRobotDSL.g:1227:2: iv_ruleNegation= ruleNegation EOF
+            {
+             newCompositeNode(grammarAccess.getNegationRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleNegation=ruleNegation();
+
+            state._fsp--;
+
+             current =iv_ruleNegation; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleNegation"
+
+
+    // $ANTLR start "ruleNegation"
+    // InternalRobotDSL.g:1233:1: ruleNegation returns [EObject current=null] : ( (lv_NOT_0_0= 'not' ) ) ;
+    public final EObject ruleNegation() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_NOT_0_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalRobotDSL.g:1289:2: ( (enumLiteral_0= 'not' ) )
-            // InternalRobotDSL.g:1290:2: (enumLiteral_0= 'not' )
+            // InternalRobotDSL.g:1239:2: ( ( (lv_NOT_0_0= 'not' ) ) )
+            // InternalRobotDSL.g:1240:2: ( (lv_NOT_0_0= 'not' ) )
             {
-            // InternalRobotDSL.g:1290:2: (enumLiteral_0= 'not' )
-            // InternalRobotDSL.g:1291:3: enumLiteral_0= 'not'
+            // InternalRobotDSL.g:1240:2: ( (lv_NOT_0_0= 'not' ) )
+            // InternalRobotDSL.g:1241:3: (lv_NOT_0_0= 'not' )
             {
-            enumLiteral_0=(Token)match(input,69,FOLLOW_2); 
+            // InternalRobotDSL.g:1241:3: (lv_NOT_0_0= 'not' )
+            // InternalRobotDSL.g:1242:4: lv_NOT_0_0= 'not'
+            {
+            lv_NOT_0_0=(Token)match(input,40,FOLLOW_2); 
 
-            			current = grammarAccess.getNegationAccess().getNOTEnumLiteralDeclaration().getEnumLiteral().getInstance();
-            			newLeafNode(enumLiteral_0, grammarAccess.getNegationAccess().getNOTEnumLiteralDeclaration());
-            		
+            				newLeafNode(lv_NOT_0_0, grammarAccess.getNegationAccess().getNOTNotKeyword_0());
+            			
+
+            				if (current==null) {
+            					current = createModelElement(grammarAccess.getNegationRule());
+            				}
+            				setWithLastConsumed(current, "NOT", lv_NOT_0_0, "not");
+            			
+
+            }
+
 
             }
 
@@ -3342,6 +3115,987 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleNegation"
 
+
+    // $ANTLR start "ruleDirectionVal"
+    // InternalRobotDSL.g:1257:1: ruleDirectionVal returns [Enumerator current=null] : ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) ;
+    public final Enumerator ruleDirectionVal() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:1263:2: ( ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) ) )
+            // InternalRobotDSL.g:1264:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
+            {
+            // InternalRobotDSL.g:1264:2: ( (enumLiteral_0= 'forward' ) | (enumLiteral_1= 'backward' ) | (enumLiteral_2= 'left' ) | (enumLiteral_3= 'right' ) )
+            int alt19=4;
+            switch ( input.LA(1) ) {
+            case 41:
+                {
+                alt19=1;
+                }
+                break;
+            case 42:
+                {
+                alt19=2;
+                }
+                break;
+            case 43:
+                {
+                alt19=3;
+                }
+                break;
+            case 44:
+                {
+                alt19=4;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 19, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt19) {
+                case 1 :
+                    // InternalRobotDSL.g:1265:3: (enumLiteral_0= 'forward' )
+                    {
+                    // InternalRobotDSL.g:1265:3: (enumLiteral_0= 'forward' )
+                    // InternalRobotDSL.g:1266:4: enumLiteral_0= 'forward'
+                    {
+                    enumLiteral_0=(Token)match(input,41,FOLLOW_2); 
+
+                    				current = grammarAccess.getDirectionValAccess().getFORWARDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getDirectionValAccess().getFORWARDEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRobotDSL.g:1273:3: (enumLiteral_1= 'backward' )
+                    {
+                    // InternalRobotDSL.g:1273:3: (enumLiteral_1= 'backward' )
+                    // InternalRobotDSL.g:1274:4: enumLiteral_1= 'backward'
+                    {
+                    enumLiteral_1=(Token)match(input,42,FOLLOW_2); 
+
+                    				current = grammarAccess.getDirectionValAccess().getBACKWARDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getDirectionValAccess().getBACKWARDEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalRobotDSL.g:1281:3: (enumLiteral_2= 'left' )
+                    {
+                    // InternalRobotDSL.g:1281:3: (enumLiteral_2= 'left' )
+                    // InternalRobotDSL.g:1282:4: enumLiteral_2= 'left'
+                    {
+                    enumLiteral_2=(Token)match(input,43,FOLLOW_2); 
+
+                    				current = grammarAccess.getDirectionValAccess().getLEFTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_2, grammarAccess.getDirectionValAccess().getLEFTEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalRobotDSL.g:1289:3: (enumLiteral_3= 'right' )
+                    {
+                    // InternalRobotDSL.g:1289:3: (enumLiteral_3= 'right' )
+                    // InternalRobotDSL.g:1290:4: enumLiteral_3= 'right'
+                    {
+                    enumLiteral_3=(Token)match(input,44,FOLLOW_2); 
+
+                    				current = grammarAccess.getDirectionValAccess().getRIGHTEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_3, grammarAccess.getDirectionValAccess().getRIGHTEnumLiteralDeclaration_3());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleDirectionVal"
+
+
+    // $ANTLR start "ruleSpeedVal"
+    // InternalRobotDSL.g:1300:1: ruleSpeedVal returns [Enumerator current=null] : ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) ;
+    public final Enumerator ruleSpeedVal() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:1306:2: ( ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) ) )
+            // InternalRobotDSL.g:1307:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
+            {
+            // InternalRobotDSL.g:1307:2: ( (enumLiteral_0= 'high' ) | (enumLiteral_1= 'medium' ) | (enumLiteral_2= 'low' ) )
+            int alt20=3;
+            switch ( input.LA(1) ) {
+            case 45:
+                {
+                alt20=1;
+                }
+                break;
+            case 46:
+                {
+                alt20=2;
+                }
+                break;
+            case 47:
+                {
+                alt20=3;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 20, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt20) {
+                case 1 :
+                    // InternalRobotDSL.g:1308:3: (enumLiteral_0= 'high' )
+                    {
+                    // InternalRobotDSL.g:1308:3: (enumLiteral_0= 'high' )
+                    // InternalRobotDSL.g:1309:4: enumLiteral_0= 'high'
+                    {
+                    enumLiteral_0=(Token)match(input,45,FOLLOW_2); 
+
+                    				current = grammarAccess.getSpeedValAccess().getHIGHEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getSpeedValAccess().getHIGHEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRobotDSL.g:1316:3: (enumLiteral_1= 'medium' )
+                    {
+                    // InternalRobotDSL.g:1316:3: (enumLiteral_1= 'medium' )
+                    // InternalRobotDSL.g:1317:4: enumLiteral_1= 'medium'
+                    {
+                    enumLiteral_1=(Token)match(input,46,FOLLOW_2); 
+
+                    				current = grammarAccess.getSpeedValAccess().getMEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getSpeedValAccess().getMEDEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalRobotDSL.g:1324:3: (enumLiteral_2= 'low' )
+                    {
+                    // InternalRobotDSL.g:1324:3: (enumLiteral_2= 'low' )
+                    // InternalRobotDSL.g:1325:4: enumLiteral_2= 'low'
+                    {
+                    enumLiteral_2=(Token)match(input,47,FOLLOW_2); 
+
+                    				current = grammarAccess.getSpeedValAccess().getLOWEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_2, grammarAccess.getSpeedValAccess().getLOWEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSpeedVal"
+
+
+    // $ANTLR start "ruleArmOpType"
+    // InternalRobotDSL.g:1335:1: ruleArmOpType returns [Enumerator current=null] : ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) ;
+    public final Enumerator ruleArmOpType() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:1341:2: ( ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) ) )
+            // InternalRobotDSL.g:1342:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
+            {
+            // InternalRobotDSL.g:1342:2: ( (enumLiteral_0= 'raise' ) | (enumLiteral_1= 'lower' ) )
+            int alt21=2;
+            int LA21_0 = input.LA(1);
+
+            if ( (LA21_0==48) ) {
+                alt21=1;
+            }
+            else if ( (LA21_0==49) ) {
+                alt21=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 21, 0, input);
+
+                throw nvae;
+            }
+            switch (alt21) {
+                case 1 :
+                    // InternalRobotDSL.g:1343:3: (enumLiteral_0= 'raise' )
+                    {
+                    // InternalRobotDSL.g:1343:3: (enumLiteral_0= 'raise' )
+                    // InternalRobotDSL.g:1344:4: enumLiteral_0= 'raise'
+                    {
+                    enumLiteral_0=(Token)match(input,48,FOLLOW_2); 
+
+                    				current = grammarAccess.getArmOpTypeAccess().getUPEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getArmOpTypeAccess().getUPEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRobotDSL.g:1351:3: (enumLiteral_1= 'lower' )
+                    {
+                    // InternalRobotDSL.g:1351:3: (enumLiteral_1= 'lower' )
+                    // InternalRobotDSL.g:1352:4: enumLiteral_1= 'lower'
+                    {
+                    enumLiteral_1=(Token)match(input,49,FOLLOW_2); 
+
+                    				current = grammarAccess.getArmOpTypeAccess().getDOWNEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getArmOpTypeAccess().getDOWNEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleArmOpType"
+
+
+    // $ANTLR start "ruleSoundName"
+    // InternalRobotDSL.g:1362:1: ruleSoundName returns [Enumerator current=null] : ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) ;
+    public final Enumerator ruleSoundName() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:1368:2: ( ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) ) )
+            // InternalRobotDSL.g:1369:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
+            {
+            // InternalRobotDSL.g:1369:2: ( (enumLiteral_0= 'buzz' ) | (enumLiteral_1= 'fanfare' ) )
+            int alt22=2;
+            int LA22_0 = input.LA(1);
+
+            if ( (LA22_0==50) ) {
+                alt22=1;
+            }
+            else if ( (LA22_0==51) ) {
+                alt22=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 22, 0, input);
+
+                throw nvae;
+            }
+            switch (alt22) {
+                case 1 :
+                    // InternalRobotDSL.g:1370:3: (enumLiteral_0= 'buzz' )
+                    {
+                    // InternalRobotDSL.g:1370:3: (enumLiteral_0= 'buzz' )
+                    // InternalRobotDSL.g:1371:4: enumLiteral_0= 'buzz'
+                    {
+                    enumLiteral_0=(Token)match(input,50,FOLLOW_2); 
+
+                    				current = grammarAccess.getSoundNameAccess().getBUZZEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getSoundNameAccess().getBUZZEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRobotDSL.g:1378:3: (enumLiteral_1= 'fanfare' )
+                    {
+                    // InternalRobotDSL.g:1378:3: (enumLiteral_1= 'fanfare' )
+                    // InternalRobotDSL.g:1379:4: enumLiteral_1= 'fanfare'
+                    {
+                    enumLiteral_1=(Token)match(input,51,FOLLOW_2); 
+
+                    				current = grammarAccess.getSoundNameAccess().getFANFAREEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getSoundNameAccess().getFANFAREEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSoundName"
+
+
+    // $ANTLR start "ruleSensorType"
+    // InternalRobotDSL.g:1389:1: ruleSensorType returns [Enumerator current=null] : ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) ;
+    public final Enumerator ruleSensorType() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
+        Token enumLiteral_4=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:1395:2: ( ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) ) )
+            // InternalRobotDSL.g:1396:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
+            {
+            // InternalRobotDSL.g:1396:2: ( (enumLiteral_0= 'Color' ) | (enumLiteral_1= 'LeftLight' ) | (enumLiteral_2= 'RightLight' ) | (enumLiteral_3= 'RearHeight' ) | (enumLiteral_4= 'FrontDistance' ) )
+            int alt23=5;
+            switch ( input.LA(1) ) {
+            case 52:
+                {
+                alt23=1;
+                }
+                break;
+            case 53:
+                {
+                alt23=2;
+                }
+                break;
+            case 54:
+                {
+                alt23=3;
+                }
+                break;
+            case 55:
+                {
+                alt23=4;
+                }
+                break;
+            case 56:
+                {
+                alt23=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 23, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt23) {
+                case 1 :
+                    // InternalRobotDSL.g:1397:3: (enumLiteral_0= 'Color' )
+                    {
+                    // InternalRobotDSL.g:1397:3: (enumLiteral_0= 'Color' )
+                    // InternalRobotDSL.g:1398:4: enumLiteral_0= 'Color'
+                    {
+                    enumLiteral_0=(Token)match(input,52,FOLLOW_2); 
+
+                    				current = grammarAccess.getSensorTypeAccess().getCOLOREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getSensorTypeAccess().getCOLOREnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRobotDSL.g:1405:3: (enumLiteral_1= 'LeftLight' )
+                    {
+                    // InternalRobotDSL.g:1405:3: (enumLiteral_1= 'LeftLight' )
+                    // InternalRobotDSL.g:1406:4: enumLiteral_1= 'LeftLight'
+                    {
+                    enumLiteral_1=(Token)match(input,53,FOLLOW_2); 
+
+                    				current = grammarAccess.getSensorTypeAccess().getLEFTLIGHTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getSensorTypeAccess().getLEFTLIGHTEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalRobotDSL.g:1413:3: (enumLiteral_2= 'RightLight' )
+                    {
+                    // InternalRobotDSL.g:1413:3: (enumLiteral_2= 'RightLight' )
+                    // InternalRobotDSL.g:1414:4: enumLiteral_2= 'RightLight'
+                    {
+                    enumLiteral_2=(Token)match(input,54,FOLLOW_2); 
+
+                    				current = grammarAccess.getSensorTypeAccess().getRIGHTLIGHTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_2, grammarAccess.getSensorTypeAccess().getRIGHTLIGHTEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalRobotDSL.g:1421:3: (enumLiteral_3= 'RearHeight' )
+                    {
+                    // InternalRobotDSL.g:1421:3: (enumLiteral_3= 'RearHeight' )
+                    // InternalRobotDSL.g:1422:4: enumLiteral_3= 'RearHeight'
+                    {
+                    enumLiteral_3=(Token)match(input,55,FOLLOW_2); 
+
+                    				current = grammarAccess.getSensorTypeAccess().getBACKUSEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_3, grammarAccess.getSensorTypeAccess().getBACKUSEnumLiteralDeclaration_3());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // InternalRobotDSL.g:1429:3: (enumLiteral_4= 'FrontDistance' )
+                    {
+                    // InternalRobotDSL.g:1429:3: (enumLiteral_4= 'FrontDistance' )
+                    // InternalRobotDSL.g:1430:4: enumLiteral_4= 'FrontDistance'
+                    {
+                    enumLiteral_4=(Token)match(input,56,FOLLOW_2); 
+
+                    				current = grammarAccess.getSensorTypeAccess().getFRONTUSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_4, grammarAccess.getSensorTypeAccess().getFRONTUSEnumLiteralDeclaration_4());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSensorType"
+
+
+    // $ANTLR start "ruleColorName"
+    // InternalRobotDSL.g:1440:1: ruleColorName returns [Enumerator current=null] : ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) ) ;
+    public final Enumerator ruleColorName() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
+        Token enumLiteral_4=null;
+        Token enumLiteral_5=null;
+        Token enumLiteral_6=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:1446:2: ( ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) ) )
+            // InternalRobotDSL.g:1447:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) )
+            {
+            // InternalRobotDSL.g:1447:2: ( (enumLiteral_0= 'red' ) | (enumLiteral_1= 'white' ) | (enumLiteral_2= 'black' ) | (enumLiteral_3= 'green' ) | (enumLiteral_4= 'blue' ) | (enumLiteral_5= 'bright' ) | (enumLiteral_6= 'dark' ) )
+            int alt24=7;
+            switch ( input.LA(1) ) {
+            case 57:
+                {
+                alt24=1;
+                }
+                break;
+            case 58:
+                {
+                alt24=2;
+                }
+                break;
+            case 59:
+                {
+                alt24=3;
+                }
+                break;
+            case 60:
+                {
+                alt24=4;
+                }
+                break;
+            case 61:
+                {
+                alt24=5;
+                }
+                break;
+            case 62:
+                {
+                alt24=6;
+                }
+                break;
+            case 63:
+                {
+                alt24=7;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 24, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt24) {
+                case 1 :
+                    // InternalRobotDSL.g:1448:3: (enumLiteral_0= 'red' )
+                    {
+                    // InternalRobotDSL.g:1448:3: (enumLiteral_0= 'red' )
+                    // InternalRobotDSL.g:1449:4: enumLiteral_0= 'red'
+                    {
+                    enumLiteral_0=(Token)match(input,57,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorNameAccess().getREDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getColorNameAccess().getREDEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRobotDSL.g:1456:3: (enumLiteral_1= 'white' )
+                    {
+                    // InternalRobotDSL.g:1456:3: (enumLiteral_1= 'white' )
+                    // InternalRobotDSL.g:1457:4: enumLiteral_1= 'white'
+                    {
+                    enumLiteral_1=(Token)match(input,58,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorNameAccess().getWHITEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getColorNameAccess().getWHITEEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalRobotDSL.g:1464:3: (enumLiteral_2= 'black' )
+                    {
+                    // InternalRobotDSL.g:1464:3: (enumLiteral_2= 'black' )
+                    // InternalRobotDSL.g:1465:4: enumLiteral_2= 'black'
+                    {
+                    enumLiteral_2=(Token)match(input,59,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorNameAccess().getBLACKEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_2, grammarAccess.getColorNameAccess().getBLACKEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalRobotDSL.g:1472:3: (enumLiteral_3= 'green' )
+                    {
+                    // InternalRobotDSL.g:1472:3: (enumLiteral_3= 'green' )
+                    // InternalRobotDSL.g:1473:4: enumLiteral_3= 'green'
+                    {
+                    enumLiteral_3=(Token)match(input,60,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorNameAccess().getGREENEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_3, grammarAccess.getColorNameAccess().getGREENEnumLiteralDeclaration_3());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // InternalRobotDSL.g:1480:3: (enumLiteral_4= 'blue' )
+                    {
+                    // InternalRobotDSL.g:1480:3: (enumLiteral_4= 'blue' )
+                    // InternalRobotDSL.g:1481:4: enumLiteral_4= 'blue'
+                    {
+                    enumLiteral_4=(Token)match(input,61,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorNameAccess().getBLUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_4, grammarAccess.getColorNameAccess().getBLUEEnumLiteralDeclaration_4());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 6 :
+                    // InternalRobotDSL.g:1488:3: (enumLiteral_5= 'bright' )
+                    {
+                    // InternalRobotDSL.g:1488:3: (enumLiteral_5= 'bright' )
+                    // InternalRobotDSL.g:1489:4: enumLiteral_5= 'bright'
+                    {
+                    enumLiteral_5=(Token)match(input,62,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_5, grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 7 :
+                    // InternalRobotDSL.g:1496:3: (enumLiteral_6= 'dark' )
+                    {
+                    // InternalRobotDSL.g:1496:3: (enumLiteral_6= 'dark' )
+                    // InternalRobotDSL.g:1497:4: enumLiteral_6= 'dark'
+                    {
+                    enumLiteral_6=(Token)match(input,63,FOLLOW_2); 
+
+                    				current = grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_6, grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleColorName"
+
+
+    // $ANTLR start "ruleBoolType"
+    // InternalRobotDSL.g:1507:1: ruleBoolType returns [Enumerator current=null] : ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) ) ;
+    public final Enumerator ruleBoolType() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
+        Token enumLiteral_4=null;
+        Token enumLiteral_5=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalRobotDSL.g:1513:2: ( ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) ) )
+            // InternalRobotDSL.g:1514:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) )
+            {
+            // InternalRobotDSL.g:1514:2: ( (enumLiteral_0= 'less' ) | (enumLiteral_1= 'greater' ) | (enumLiteral_2= 'and' ) | (enumLiteral_3= 'or' ) | (enumLiteral_4= 'true' ) | (enumLiteral_5= 'false' ) )
+            int alt25=6;
+            switch ( input.LA(1) ) {
+            case 64:
+                {
+                alt25=1;
+                }
+                break;
+            case 65:
+                {
+                alt25=2;
+                }
+                break;
+            case 66:
+                {
+                alt25=3;
+                }
+                break;
+            case 67:
+                {
+                alt25=4;
+                }
+                break;
+            case 68:
+                {
+                alt25=5;
+                }
+                break;
+            case 69:
+                {
+                alt25=6;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 25, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt25) {
+                case 1 :
+                    // InternalRobotDSL.g:1515:3: (enumLiteral_0= 'less' )
+                    {
+                    // InternalRobotDSL.g:1515:3: (enumLiteral_0= 'less' )
+                    // InternalRobotDSL.g:1516:4: enumLiteral_0= 'less'
+                    {
+                    enumLiteral_0=(Token)match(input,64,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolTypeAccess().getLEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getBoolTypeAccess().getLEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRobotDSL.g:1523:3: (enumLiteral_1= 'greater' )
+                    {
+                    // InternalRobotDSL.g:1523:3: (enumLiteral_1= 'greater' )
+                    // InternalRobotDSL.g:1524:4: enumLiteral_1= 'greater'
+                    {
+                    enumLiteral_1=(Token)match(input,65,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolTypeAccess().getGEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getBoolTypeAccess().getGEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalRobotDSL.g:1531:3: (enumLiteral_2= 'and' )
+                    {
+                    // InternalRobotDSL.g:1531:3: (enumLiteral_2= 'and' )
+                    // InternalRobotDSL.g:1532:4: enumLiteral_2= 'and'
+                    {
+                    enumLiteral_2=(Token)match(input,66,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolTypeAccess().getANDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_2, grammarAccess.getBoolTypeAccess().getANDEnumLiteralDeclaration_2());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalRobotDSL.g:1539:3: (enumLiteral_3= 'or' )
+                    {
+                    // InternalRobotDSL.g:1539:3: (enumLiteral_3= 'or' )
+                    // InternalRobotDSL.g:1540:4: enumLiteral_3= 'or'
+                    {
+                    enumLiteral_3=(Token)match(input,67,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolTypeAccess().getOREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_3, grammarAccess.getBoolTypeAccess().getOREnumLiteralDeclaration_3());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // InternalRobotDSL.g:1547:3: (enumLiteral_4= 'true' )
+                    {
+                    // InternalRobotDSL.g:1547:3: (enumLiteral_4= 'true' )
+                    // InternalRobotDSL.g:1548:4: enumLiteral_4= 'true'
+                    {
+                    enumLiteral_4=(Token)match(input,68,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolTypeAccess().getTRUEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_4, grammarAccess.getBoolTypeAccess().getTRUEEnumLiteralDeclaration_4());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 6 :
+                    // InternalRobotDSL.g:1555:3: (enumLiteral_5= 'false' )
+                    {
+                    // InternalRobotDSL.g:1555:3: (enumLiteral_5= 'false' )
+                    // InternalRobotDSL.g:1556:4: enumLiteral_5= 'false'
+                    {
+                    enumLiteral_5=(Token)match(input,69,FOLLOW_2); 
+
+                    				current = grammarAccess.getBoolTypeAccess().getFALSEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_5, grammarAccess.getBoolTypeAccess().getFALSEEnumLiteralDeclaration_5());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBoolType"
+
     // Delegated rules
 
 
@@ -3357,8 +4111,8 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000110000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x00000000000E0002L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x80F8000000000010L,0x000000000000003FL});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x80F80000000C0012L,0x000000000000003FL});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x01F0010000000010L,0x000000000000003FL});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x01F00100000C0012L,0x000000000000003FL});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000008000000000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000080002L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x00000002D0800000L});
@@ -3366,21 +4120,21 @@ public class InternalRobotDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000480000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x80F8000000080010L,0x000000000000003FL});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x00000F0000000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x01F0010000080010L,0x000000000000003FL});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x00001E0000000000L});
     public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000005000002L});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000700000000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000E00000000000L});
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0001800000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0003000000000000L});
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0006000000000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x000C000000000000L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x8000000000000000L,0x000000000000001FL});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x000000000000003FL});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000001800000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x7F00000000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0xFE00000000000000L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000002000000000L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000800000002L});
