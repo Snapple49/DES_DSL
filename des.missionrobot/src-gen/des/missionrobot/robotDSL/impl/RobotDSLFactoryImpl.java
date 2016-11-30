@@ -74,6 +74,14 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
       case RobotDSLPackage.DISTANCE: return createDistance();
       case RobotDSLPackage.FLAG: return createFlag();
       case RobotDSLPackage.TIME: return createTime();
+      case RobotDSLPackage.DIRECTION: return createDirection();
+      case RobotDSLPackage.SPEED: return createSpeed();
+      case RobotDSLPackage.ARM_OP: return createArmOp();
+      case RobotDSLPackage.SOUND: return createSound();
+      case RobotDSLPackage.SENSOR: return createSensor();
+      case RobotDSLPackage.COLOR: return createColor();
+      case RobotDSLPackage.BOOL: return createBool();
+      case RobotDSLPackage.NEGATION: return createNegation();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -89,22 +97,20 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case RobotDSLPackage.DIRECTION:
-        return createDirectionFromString(eDataType, initialValue);
-      case RobotDSLPackage.SPEED:
-        return createSpeedFromString(eDataType, initialValue);
-      case RobotDSLPackage.ARM_OP:
-        return createArmOpFromString(eDataType, initialValue);
-      case RobotDSLPackage.SOUND:
-        return createSoundFromString(eDataType, initialValue);
-      case RobotDSLPackage.SENSOR:
-        return createSensorFromString(eDataType, initialValue);
-      case RobotDSLPackage.COLOR:
-        return createColorFromString(eDataType, initialValue);
-      case RobotDSLPackage.BOOL:
-        return createBoolFromString(eDataType, initialValue);
-      case RobotDSLPackage.NEGATION:
-        return createNegationFromString(eDataType, initialValue);
+      case RobotDSLPackage.DIRECTION_VAL:
+        return createDirectionValFromString(eDataType, initialValue);
+      case RobotDSLPackage.SPEED_VAL:
+        return createSpeedValFromString(eDataType, initialValue);
+      case RobotDSLPackage.ARM_OP_TYPE:
+        return createArmOpTypeFromString(eDataType, initialValue);
+      case RobotDSLPackage.SOUND_NAME:
+        return createSoundNameFromString(eDataType, initialValue);
+      case RobotDSLPackage.SENSOR_TYPE:
+        return createSensorTypeFromString(eDataType, initialValue);
+      case RobotDSLPackage.COLOR_NAME:
+        return createColorNameFromString(eDataType, initialValue);
+      case RobotDSLPackage.BOOL_TYPE:
+        return createBoolTypeFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -120,22 +126,20 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
-      case RobotDSLPackage.DIRECTION:
-        return convertDirectionToString(eDataType, instanceValue);
-      case RobotDSLPackage.SPEED:
-        return convertSpeedToString(eDataType, instanceValue);
-      case RobotDSLPackage.ARM_OP:
-        return convertArmOpToString(eDataType, instanceValue);
-      case RobotDSLPackage.SOUND:
-        return convertSoundToString(eDataType, instanceValue);
-      case RobotDSLPackage.SENSOR:
-        return convertSensorToString(eDataType, instanceValue);
-      case RobotDSLPackage.COLOR:
-        return convertColorToString(eDataType, instanceValue);
-      case RobotDSLPackage.BOOL:
-        return convertBoolToString(eDataType, instanceValue);
-      case RobotDSLPackage.NEGATION:
-        return convertNegationToString(eDataType, instanceValue);
+      case RobotDSLPackage.DIRECTION_VAL:
+        return convertDirectionValToString(eDataType, instanceValue);
+      case RobotDSLPackage.SPEED_VAL:
+        return convertSpeedValToString(eDataType, instanceValue);
+      case RobotDSLPackage.ARM_OP_TYPE:
+        return convertArmOpTypeToString(eDataType, instanceValue);
+      case RobotDSLPackage.SOUND_NAME:
+        return convertSoundNameToString(eDataType, instanceValue);
+      case RobotDSLPackage.SENSOR_TYPE:
+        return convertSensorTypeToString(eDataType, instanceValue);
+      case RobotDSLPackage.COLOR_NAME:
+        return convertColorNameToString(eDataType, instanceValue);
+      case RobotDSLPackage.BOOL_TYPE:
+        return convertBoolTypeToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -234,9 +238,97 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Direction createDirectionFromString(EDataType eDataType, String initialValue)
+  public Direction createDirection()
   {
-    Direction result = Direction.get(initialValue);
+    DirectionImpl direction = new DirectionImpl();
+    return direction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Speed createSpeed()
+  {
+    SpeedImpl speed = new SpeedImpl();
+    return speed;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ArmOp createArmOp()
+  {
+    ArmOpImpl armOp = new ArmOpImpl();
+    return armOp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Sound createSound()
+  {
+    SoundImpl sound = new SoundImpl();
+    return sound;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Sensor createSensor()
+  {
+    SensorImpl sensor = new SensorImpl();
+    return sensor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Color createColor()
+  {
+    ColorImpl color = new ColorImpl();
+    return color;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Bool createBool()
+  {
+    BoolImpl bool = new BoolImpl();
+    return bool;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Negation createNegation()
+  {
+    NegationImpl negation = new NegationImpl();
+    return negation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DirectionVal createDirectionValFromString(EDataType eDataType, String initialValue)
+  {
+    DirectionVal result = DirectionVal.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -246,7 +338,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertDirectionToString(EDataType eDataType, Object instanceValue)
+  public String convertDirectionValToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -256,9 +348,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Speed createSpeedFromString(EDataType eDataType, String initialValue)
+  public SpeedVal createSpeedValFromString(EDataType eDataType, String initialValue)
   {
-    Speed result = Speed.get(initialValue);
+    SpeedVal result = SpeedVal.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -268,7 +360,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertSpeedToString(EDataType eDataType, Object instanceValue)
+  public String convertSpeedValToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -278,9 +370,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ArmOp createArmOpFromString(EDataType eDataType, String initialValue)
+  public ArmOpType createArmOpTypeFromString(EDataType eDataType, String initialValue)
   {
-    ArmOp result = ArmOp.get(initialValue);
+    ArmOpType result = ArmOpType.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -290,7 +382,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertArmOpToString(EDataType eDataType, Object instanceValue)
+  public String convertArmOpTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -300,9 +392,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Sound createSoundFromString(EDataType eDataType, String initialValue)
+  public SoundName createSoundNameFromString(EDataType eDataType, String initialValue)
   {
-    Sound result = Sound.get(initialValue);
+    SoundName result = SoundName.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -312,7 +404,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertSoundToString(EDataType eDataType, Object instanceValue)
+  public String convertSoundNameToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -322,9 +414,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Sensor createSensorFromString(EDataType eDataType, String initialValue)
+  public SensorType createSensorTypeFromString(EDataType eDataType, String initialValue)
   {
-    Sensor result = Sensor.get(initialValue);
+    SensorType result = SensorType.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -334,7 +426,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertSensorToString(EDataType eDataType, Object instanceValue)
+  public String convertSensorTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -344,9 +436,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Color createColorFromString(EDataType eDataType, String initialValue)
+  public ColorName createColorNameFromString(EDataType eDataType, String initialValue)
   {
-    Color result = Color.get(initialValue);
+    ColorName result = ColorName.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -356,7 +448,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertColorToString(EDataType eDataType, Object instanceValue)
+  public String convertColorNameToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -366,9 +458,9 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Bool createBoolFromString(EDataType eDataType, String initialValue)
+  public BoolType createBoolTypeFromString(EDataType eDataType, String initialValue)
   {
-    Bool result = Bool.get(initialValue);
+    BoolType result = BoolType.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -378,29 +470,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertBoolToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Negation createNegationFromString(EDataType eDataType, String initialValue)
-  {
-    Negation result = Negation.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertNegationToString(EDataType eDataType, Object instanceValue)
+  public String convertBoolTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

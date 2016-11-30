@@ -9,8 +9,9 @@ class BehaviorMaker {
 	
 	
 	
-	static String sensor
-	static String value
+	static String sensor = ""
+	static String value = ""
+	static String action = ""
 	
 	def static makeBehaviorClass(Task t){'''
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
@@ -28,6 +29,7 @@ public class MoveTest implements Behavior{
 	private static EV3LargeRegulatedMotor leftMotor;
 	private static EV3LargeRegulatedMotor rightMotor;
 	private static EV3MediumRegulatedMotor armMotor;
+	private SensorManager sensorManager;
 	/*private static EV3ColorSensor colorSensor;
 	private static NXTLightSensor leftLight;
 	private static NXTLightSensor rightLight;
@@ -43,6 +45,7 @@ public class MoveTest implements Behavior{
 	public MoveTest(EV3LargeRegulatedMotor lMotor,
 					EV3LargeRegulatedMotor rMotor,
 					EV3MediumRegulatedMotor aMotor,
+					SensorManager sM,
 					/*EV3ColorSensor cSensor,
 					NXTLightSensor lLight,
 					NXTLightSensor rLight,
@@ -55,6 +58,7 @@ public class MoveTest implements Behavior{
 		leftMotor = lMotor;
 		rightMotor = rMotor;
 		armMotor = aMotor;
+		sensorManager = sM;
 		/*colorSensor = cSensor;
 		leftLight = lLight;
 		rightLight = rLight;
@@ -67,12 +71,14 @@ public class MoveTest implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return («IF t.triggerList == null»true«ELSE»«FOR trig : t.triggerList»«toCondition(trig)»«ENDFOR»«ENDIF»);
+		return («IF t.triggerList.size == 0»true«ELSE»«FOR trig : t.triggerList»«toCondition(trig)»«ENDFOR»«ENDIF»);
 	}
 
 	@Override
 	public void action() {
 		suppressed = false;
+		«FOR a : t.actionList»«toAction(a)»«ENDFOR»
+		test
 		leftMotor.forward();
 		rightMotor.forward();
 		while(!suppressed){
@@ -92,66 +98,60 @@ public class MoveTest implements Behavior{
 	'''
 	}
 	def static toCondition(Trigger trig){
-
-		switch (trig.sensor) {
-			case LEFTLIGHT: {
-				sensor = "SensorManager.LeftLight"
+		if(trig.sensor != null){	
+			switch (trig.sensor.sensorType) {
+				case LEFTLIGHT: {sensor = "sensorManager.getLeftLight"}
+				case RIGHTLIGHT : {sensor = "sensorManager.getRightLight"}
+				case COLOR : {sensor = "sensorManager.getColor"}
+				case BACKUS :{sensor = "sensorManager.getRearUS"}
+				default : {sensor = ""}
 			}
-			case RIGHTLIGHT : {
-				sensor = "SensorManager.RightLight"
-			}
-			case COLOR : {
-				sensor = "SensorManager.Color"
-			}
-			case BACKUS :{
-				sensor = "SensorManager.RearUS"
-			}
-			case FRONTUS: {
-				sensor = ""
-			}
-			default : {
-				sensor = ""
+			if (trig.dist == null){
+				switch (trig.color.colorName) {
+					case BRIGHT : {value = " > 0.5"}
+					case BLACK: {value = " == Color.BLACK"}
+					case BLUE: {value = " == Color.BLUE"}
+					case DARK: {value = " < 0.5"}
+					case GREEN: {value = " == Color.GREEN"}
+					case RED: {value = " == Color.RED"}
+					case WHITE: {value = " == Color.WHITE"}
+					default : {value = ""}
+				}
+			}else{
+				switch (trig.dist.rangeBool.boolType) {
+					case G: {value = " > " + (trig.dist.distance as float) /100}
+					case L: {value = " < " + (trig.dist.distance as float) /100}
+					default : {value = ""}
+				}
 			}
 		}
-		
-		switch (trig.color) {
-			case BRIGHT : {
-				value = " > 0.5"
-			}
-			case BLACK: {
-				value = " == Color.BLACK" 
-			}
-			case BLUE: {
-				value = " == Color.BLUE"
-			}
-			case DARK: {
-				value = " < 0.5"
-			}
-			case GREEN: {
-				value = " == Color.GREEN"
-			}
-			case RED: {
-				value = " == Color.RED"
-			}
-			case WHITE: {
-				value = " == Color.WHITE"
-			}
-			default : {
-				value = ""
-			}
-			
+		else{
+			return "false"
 		}
-		/*
-		switch (trig.dist.rangeBool) {
-			case G: {
-				value = " > " + trig.dist.distance
-			}
-			case L: {
-				value = " < " + trig.dist.distance
-			}
-		}*/
 		
 		return sensor + value
+	}
+	
+	def static toAction(Action act){
+		if(act.moveDir != null){ // action is movement
+			switch (act.moveDir.dir) {
+				case FORWARD: {
+					action = action +
+					
+'''leftMotor.forward();
+	rightMotor.forward();'''
+					
+					if(act.duration > 0){
+						action = action + 
+						'''waitMs(«act.duration*100»);'''						
+					}
+				}
+				default: {
+					action = "error"
+				}
+			}
+		}
+		return action
 	}
 }
 

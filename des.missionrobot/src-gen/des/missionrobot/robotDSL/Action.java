@@ -14,9 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link des.missionrobot.robotDSL.Action#getDir <em>Dir</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getMoveDir <em>Move Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getDuration <em>Duration</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getTurnir <em>Turnir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}</li>
@@ -31,33 +32,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Action extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Dir</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Direction}.
+   * Returns the value of the '<em><b>Move Dir</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Dir</em>' attribute isn't clear,
+   * If the meaning of the '<em>Move Dir</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Dir</em>' attribute.
-   * @see des.missionrobot.robotDSL.Direction
-   * @see #setDir(Direction)
-   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Dir()
-   * @model
+   * @return the value of the '<em>Move Dir</em>' containment reference.
+   * @see #setMoveDir(Direction)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_MoveDir()
+   * @model containment="true"
    * @generated
    */
-  Direction getDir();
+  Direction getMoveDir();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getDir <em>Dir</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getMoveDir <em>Move Dir</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dir</em>' attribute.
-   * @see des.missionrobot.robotDSL.Direction
-   * @see #getDir()
+   * @param value the new value of the '<em>Move Dir</em>' containment reference.
+   * @see #getMoveDir()
    * @generated
    */
-  void setDir(Direction value);
+  void setMoveDir(Direction value);
 
   /**
    * Returns the value of the '<em><b>Duration</b></em>' attribute.
@@ -86,33 +84,56 @@ public interface Action extends EObject
   void setDuration(int value);
 
   /**
-   * Returns the value of the '<em><b>Speed</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Speed}.
+   * Returns the value of the '<em><b>Speed</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Speed</em>' attribute isn't clear,
+   * If the meaning of the '<em>Speed</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Speed</em>' attribute.
-   * @see des.missionrobot.robotDSL.Speed
+   * @return the value of the '<em>Speed</em>' containment reference.
    * @see #setSpeed(Speed)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Speed()
-   * @model
+   * @model containment="true"
    * @generated
    */
   Speed getSpeed();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Speed</em>' attribute.
-   * @see des.missionrobot.robotDSL.Speed
+   * @param value the new value of the '<em>Speed</em>' containment reference.
    * @see #getSpeed()
    * @generated
    */
   void setSpeed(Speed value);
+
+  /**
+   * Returns the value of the '<em><b>Turnir</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Turnir</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Turnir</em>' containment reference.
+   * @see #setTurnir(Direction)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Turnir()
+   * @model containment="true"
+   * @generated
+   */
+  Direction getTurnir();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getTurnir <em>Turnir</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Turnir</em>' containment reference.
+   * @see #getTurnir()
+   * @generated
+   */
+  void setTurnir(Direction value);
 
   /**
    * Returns the value of the '<em><b>Degr</b></em>' attribute.
@@ -141,58 +162,52 @@ public interface Action extends EObject
   void setDegr(int value);
 
   /**
-   * Returns the value of the '<em><b>Op</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.ArmOp}.
+   * Returns the value of the '<em><b>Op</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Op</em>' attribute isn't clear,
+   * If the meaning of the '<em>Op</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Op</em>' attribute.
-   * @see des.missionrobot.robotDSL.ArmOp
+   * @return the value of the '<em>Op</em>' containment reference.
    * @see #setOp(ArmOp)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Op()
-   * @model
+   * @model containment="true"
    * @generated
    */
   ArmOp getOp();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Op</em>' attribute.
-   * @see des.missionrobot.robotDSL.ArmOp
+   * @param value the new value of the '<em>Op</em>' containment reference.
    * @see #getOp()
    * @generated
    */
   void setOp(ArmOp value);
 
   /**
-   * Returns the value of the '<em><b>Sound</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Sound}.
+   * Returns the value of the '<em><b>Sound</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sound</em>' attribute isn't clear,
+   * If the meaning of the '<em>Sound</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sound</em>' attribute.
-   * @see des.missionrobot.robotDSL.Sound
+   * @return the value of the '<em>Sound</em>' containment reference.
    * @see #setSound(Sound)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Sound()
-   * @model
+   * @model containment="true"
    * @generated
    */
   Sound getSound();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sound</em>' attribute.
-   * @see des.missionrobot.robotDSL.Sound
+   * @param value the new value of the '<em>Sound</em>' containment reference.
    * @see #getSound()
    * @generated
    */
@@ -225,29 +240,26 @@ public interface Action extends EObject
   void setFlag(Flag value);
 
   /**
-   * Returns the value of the '<em><b>Bool</b></em>' attribute.
-   * The literals are from the enumeration {@link des.missionrobot.robotDSL.Bool}.
+   * Returns the value of the '<em><b>Bool</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Bool</em>' attribute isn't clear,
+   * If the meaning of the '<em>Bool</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Bool</em>' attribute.
-   * @see des.missionrobot.robotDSL.Bool
+   * @return the value of the '<em>Bool</em>' containment reference.
    * @see #setBool(Bool)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Bool()
-   * @model
+   * @model containment="true"
    * @generated
    */
   Bool getBool();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getBool <em>Bool</em>}' attribute.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getBool <em>Bool</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Bool</em>' attribute.
-   * @see des.missionrobot.robotDSL.Bool
+   * @param value the new value of the '<em>Bool</em>' containment reference.
    * @see #getBool()
    * @generated
    */

@@ -13,6 +13,7 @@ import des.missionrobot.robotDSL.Sound;
 import des.missionrobot.robotDSL.Speed;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -28,9 +29,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDir <em>Dir</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getMoveDir <em>Move Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSpeed <em>Speed</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getTurnir <em>Turnir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDegr <em>Degr</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSound <em>Sound</em>}</li>
@@ -43,24 +45,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ActionImpl extends MinimalEObjectImpl.Container implements Action
 {
   /**
-   * The default value of the '{@link #getDir() <em>Dir</em>}' attribute.
+   * The cached value of the '{@link #getMoveDir() <em>Move Dir</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDir()
+   * @see #getMoveDir()
    * @generated
    * @ordered
    */
-  protected static final Direction DIR_EDEFAULT = Direction.FORWARD;
-
-  /**
-   * The cached value of the '{@link #getDir() <em>Dir</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDir()
-   * @generated
-   * @ordered
-   */
-  protected Direction dir = DIR_EDEFAULT;
+  protected Direction moveDir;
 
   /**
    * The default value of the '{@link #getDuration() <em>Duration</em>}' attribute.
@@ -83,24 +75,24 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected int duration = DURATION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
+   * The cached value of the '{@link #getSpeed() <em>Speed</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSpeed()
    * @generated
    * @ordered
    */
-  protected static final Speed SPEED_EDEFAULT = Speed.HIGH;
+  protected Speed speed;
 
   /**
-   * The cached value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
+   * The cached value of the '{@link #getTurnir() <em>Turnir</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSpeed()
+   * @see #getTurnir()
    * @generated
    * @ordered
    */
-  protected Speed speed = SPEED_EDEFAULT;
+  protected Direction turnir;
 
   /**
    * The default value of the '{@link #getDegr() <em>Degr</em>}' attribute.
@@ -123,44 +115,24 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected int degr = DEGR_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOp()
    * @generated
    * @ordered
    */
-  protected static final ArmOp OP_EDEFAULT = ArmOp.UP;
+  protected ArmOp op;
 
   /**
-   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected ArmOp op = OP_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getSound() <em>Sound</em>}' attribute.
+   * The cached value of the '{@link #getSound() <em>Sound</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSound()
    * @generated
    * @ordered
    */
-  protected static final Sound SOUND_EDEFAULT = Sound.BUZZ;
-
-  /**
-   * The cached value of the '{@link #getSound() <em>Sound</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSound()
-   * @generated
-   * @ordered
-   */
-  protected Sound sound = SOUND_EDEFAULT;
+  protected Sound sound;
 
   /**
    * The cached value of the '{@link #getFlag() <em>Flag</em>}' reference.
@@ -173,24 +145,14 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected Flag flag;
 
   /**
-   * The default value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * The cached value of the '{@link #getBool() <em>Bool</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBool()
    * @generated
    * @ordered
    */
-  protected static final Bool BOOL_EDEFAULT = Bool.L;
-
-  /**
-   * The cached value of the '{@link #getBool() <em>Bool</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBool()
-   * @generated
-   * @ordered
-   */
-  protected Bool bool = BOOL_EDEFAULT;
+  protected Bool bool;
 
   /**
    * <!-- begin-user-doc -->
@@ -218,9 +180,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public Direction getDir()
+  public Direction getMoveDir()
   {
-    return dir;
+    return moveDir;
   }
 
   /**
@@ -228,12 +190,37 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDir(Direction newDir)
+  public NotificationChain basicSetMoveDir(Direction newMoveDir, NotificationChain msgs)
   {
-    Direction oldDir = dir;
-    dir = newDir == null ? DIR_EDEFAULT : newDir;
+    Direction oldMoveDir = moveDir;
+    moveDir = newMoveDir;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__DIR, oldDir, dir));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__MOVE_DIR, oldMoveDir, newMoveDir);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMoveDir(Direction newMoveDir)
+  {
+    if (newMoveDir != moveDir)
+    {
+      NotificationChain msgs = null;
+      if (moveDir != null)
+        msgs = ((InternalEObject)moveDir).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__MOVE_DIR, null, msgs);
+      if (newMoveDir != null)
+        msgs = ((InternalEObject)newMoveDir).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__MOVE_DIR, null, msgs);
+      msgs = basicSetMoveDir(newMoveDir, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__MOVE_DIR, newMoveDir, newMoveDir));
   }
 
   /**
@@ -274,12 +261,85 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSpeed(Speed newSpeed)
+  public NotificationChain basicSetSpeed(Speed newSpeed, NotificationChain msgs)
   {
     Speed oldSpeed = speed;
-    speed = newSpeed == null ? SPEED_EDEFAULT : newSpeed;
+    speed = newSpeed;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SPEED, oldSpeed, speed));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SPEED, oldSpeed, newSpeed);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSpeed(Speed newSpeed)
+  {
+    if (newSpeed != speed)
+    {
+      NotificationChain msgs = null;
+      if (speed != null)
+        msgs = ((InternalEObject)speed).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__SPEED, null, msgs);
+      if (newSpeed != null)
+        msgs = ((InternalEObject)newSpeed).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__SPEED, null, msgs);
+      msgs = basicSetSpeed(newSpeed, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SPEED, newSpeed, newSpeed));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Direction getTurnir()
+  {
+    return turnir;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTurnir(Direction newTurnir, NotificationChain msgs)
+  {
+    Direction oldTurnir = turnir;
+    turnir = newTurnir;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__TURNIR, oldTurnir, newTurnir);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTurnir(Direction newTurnir)
+  {
+    if (newTurnir != turnir)
+    {
+      NotificationChain msgs = null;
+      if (turnir != null)
+        msgs = ((InternalEObject)turnir).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__TURNIR, null, msgs);
+      if (newTurnir != null)
+        msgs = ((InternalEObject)newTurnir).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__TURNIR, null, msgs);
+      msgs = basicSetTurnir(newTurnir, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__TURNIR, newTurnir, newTurnir));
   }
 
   /**
@@ -320,12 +380,37 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOp(ArmOp newOp)
+  public NotificationChain basicSetOp(ArmOp newOp, NotificationChain msgs)
   {
     ArmOp oldOp = op;
-    op = newOp == null ? OP_EDEFAULT : newOp;
+    op = newOp;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__OP, oldOp, op));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__OP, oldOp, newOp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOp(ArmOp newOp)
+  {
+    if (newOp != op)
+    {
+      NotificationChain msgs = null;
+      if (op != null)
+        msgs = ((InternalEObject)op).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__OP, null, msgs);
+      if (newOp != null)
+        msgs = ((InternalEObject)newOp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__OP, null, msgs);
+      msgs = basicSetOp(newOp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__OP, newOp, newOp));
   }
 
   /**
@@ -343,12 +428,37 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSound(Sound newSound)
+  public NotificationChain basicSetSound(Sound newSound, NotificationChain msgs)
   {
     Sound oldSound = sound;
-    sound = newSound == null ? SOUND_EDEFAULT : newSound;
+    sound = newSound;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SOUND, oldSound, sound));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SOUND, oldSound, newSound);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSound(Sound newSound)
+  {
+    if (newSound != sound)
+    {
+      NotificationChain msgs = null;
+      if (sound != null)
+        msgs = ((InternalEObject)sound).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__SOUND, null, msgs);
+      if (newSound != null)
+        msgs = ((InternalEObject)newSound).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__SOUND, null, msgs);
+      msgs = basicSetSound(newSound, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__SOUND, newSound, newSound));
   }
 
   /**
@@ -409,12 +519,63 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBool(Bool newBool)
+  public NotificationChain basicSetBool(Bool newBool, NotificationChain msgs)
   {
     Bool oldBool = bool;
-    bool = newBool == null ? BOOL_EDEFAULT : newBool;
+    bool = newBool;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__BOOL, oldBool, bool));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__BOOL, oldBool, newBool);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBool(Bool newBool)
+  {
+    if (newBool != bool)
+    {
+      NotificationChain msgs = null;
+      if (bool != null)
+        msgs = ((InternalEObject)bool).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__BOOL, null, msgs);
+      if (newBool != null)
+        msgs = ((InternalEObject)newBool).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.ACTION__BOOL, null, msgs);
+      msgs = basicSetBool(newBool, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__BOOL, newBool, newBool));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case RobotDSLPackage.ACTION__MOVE_DIR:
+        return basicSetMoveDir(null, msgs);
+      case RobotDSLPackage.ACTION__SPEED:
+        return basicSetSpeed(null, msgs);
+      case RobotDSLPackage.ACTION__TURNIR:
+        return basicSetTurnir(null, msgs);
+      case RobotDSLPackage.ACTION__OP:
+        return basicSetOp(null, msgs);
+      case RobotDSLPackage.ACTION__SOUND:
+        return basicSetSound(null, msgs);
+      case RobotDSLPackage.ACTION__BOOL:
+        return basicSetBool(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -427,12 +588,14 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
-      case RobotDSLPackage.ACTION__DIR:
-        return getDir();
+      case RobotDSLPackage.ACTION__MOVE_DIR:
+        return getMoveDir();
       case RobotDSLPackage.ACTION__DURATION:
         return getDuration();
       case RobotDSLPackage.ACTION__SPEED:
         return getSpeed();
+      case RobotDSLPackage.ACTION__TURNIR:
+        return getTurnir();
       case RobotDSLPackage.ACTION__DEGR:
         return getDegr();
       case RobotDSLPackage.ACTION__OP:
@@ -458,14 +621,17 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
-      case RobotDSLPackage.ACTION__DIR:
-        setDir((Direction)newValue);
+      case RobotDSLPackage.ACTION__MOVE_DIR:
+        setMoveDir((Direction)newValue);
         return;
       case RobotDSLPackage.ACTION__DURATION:
         setDuration((Integer)newValue);
         return;
       case RobotDSLPackage.ACTION__SPEED:
         setSpeed((Speed)newValue);
+        return;
+      case RobotDSLPackage.ACTION__TURNIR:
+        setTurnir((Direction)newValue);
         return;
       case RobotDSLPackage.ACTION__DEGR:
         setDegr((Integer)newValue);
@@ -496,29 +662,32 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
-      case RobotDSLPackage.ACTION__DIR:
-        setDir(DIR_EDEFAULT);
+      case RobotDSLPackage.ACTION__MOVE_DIR:
+        setMoveDir((Direction)null);
         return;
       case RobotDSLPackage.ACTION__DURATION:
         setDuration(DURATION_EDEFAULT);
         return;
       case RobotDSLPackage.ACTION__SPEED:
-        setSpeed(SPEED_EDEFAULT);
+        setSpeed((Speed)null);
+        return;
+      case RobotDSLPackage.ACTION__TURNIR:
+        setTurnir((Direction)null);
         return;
       case RobotDSLPackage.ACTION__DEGR:
         setDegr(DEGR_EDEFAULT);
         return;
       case RobotDSLPackage.ACTION__OP:
-        setOp(OP_EDEFAULT);
+        setOp((ArmOp)null);
         return;
       case RobotDSLPackage.ACTION__SOUND:
-        setSound(SOUND_EDEFAULT);
+        setSound((Sound)null);
         return;
       case RobotDSLPackage.ACTION__FLAG:
         setFlag((Flag)null);
         return;
       case RobotDSLPackage.ACTION__BOOL:
-        setBool(BOOL_EDEFAULT);
+        setBool((Bool)null);
         return;
     }
     super.eUnset(featureID);
@@ -534,22 +703,24 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
-      case RobotDSLPackage.ACTION__DIR:
-        return dir != DIR_EDEFAULT;
+      case RobotDSLPackage.ACTION__MOVE_DIR:
+        return moveDir != null;
       case RobotDSLPackage.ACTION__DURATION:
         return duration != DURATION_EDEFAULT;
       case RobotDSLPackage.ACTION__SPEED:
-        return speed != SPEED_EDEFAULT;
+        return speed != null;
+      case RobotDSLPackage.ACTION__TURNIR:
+        return turnir != null;
       case RobotDSLPackage.ACTION__DEGR:
         return degr != DEGR_EDEFAULT;
       case RobotDSLPackage.ACTION__OP:
-        return op != OP_EDEFAULT;
+        return op != null;
       case RobotDSLPackage.ACTION__SOUND:
-        return sound != SOUND_EDEFAULT;
+        return sound != null;
       case RobotDSLPackage.ACTION__FLAG:
         return flag != null;
       case RobotDSLPackage.ACTION__BOOL:
-        return bool != BOOL_EDEFAULT;
+        return bool != null;
     }
     return super.eIsSet(featureID);
   }
@@ -565,20 +736,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (dir: ");
-    result.append(dir);
-    result.append(", duration: ");
+    result.append(" (duration: ");
     result.append(duration);
-    result.append(", speed: ");
-    result.append(speed);
     result.append(", degr: ");
     result.append(degr);
-    result.append(", op: ");
-    result.append(op);
-    result.append(", sound: ");
-    result.append(sound);
-    result.append(", bool: ");
-    result.append(bool);
     result.append(')');
     return result.toString();
   }

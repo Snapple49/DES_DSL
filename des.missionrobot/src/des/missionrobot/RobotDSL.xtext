@@ -24,8 +24,8 @@ Task:
 
 
 Action: 
-	'Move' dir = Direction ('for' duration = INT 'sec')? ('at' speed = Speed 'speed' )? | 
-	'Turn' dir = Direction degr = INT 'deg' |
+	'Move' moveDir = Direction ('for' duration = INT 'sec')? ('at' speed = Speed 'speed' )? | 
+	'Turn' turnir = Direction degr = INT 'deg' |
 	'Arm' op = ArmOp |
 	'Play' 'sound' sound = Sound |
 	'Update' flag = [Flag] 'to' bool = Bool
@@ -50,30 +50,50 @@ Time:
 	'Time:' sec = INT 'sec'
 ;
 
-enum Direction:
+Direction:
+	dir = DirectionVal
+;
+
+enum DirectionVal:
 	FORWARD = 'forward' |
 	BACKWARD = 'backward' |
 	LEFT = 	'left' |
 	RIGHT = 'right'
 ;
 
-enum Speed:
+Speed:
+	speed = SpeedVal
+;
+
+enum SpeedVal:
 	HIGH = 'high' |
 	MED = 'medium' |
 	LOW = 'low'
 ;
-enum ArmOp:
+
+ArmOp:
+	opType = ArmOpType
+;
+
+enum ArmOpType:
 	UP = 'raise' |
 	DOWN = 'lower'
 ;
 
-enum Sound:
-	buzz = 'buzz' |
-	fanfare = 'fanfare'
+Sound:
+	soundName = SoundName
 ;
 
+enum SoundName:
+	BUZZ = 'buzz' |
+	FANFARE = 'fanfare'
+;
 
-enum Sensor:
+Sensor:
+	sensorType = SensorType
+;
+
+enum SensorType:
 	COLOR = 'Color' |
 	LEFTLIGHT = 'LeftLight' |
 	RIGHTLIGHT = 'RightLight' |
@@ -81,7 +101,11 @@ enum Sensor:
 	FRONTUS = 'FrontDistance' 	
 ;
 
-enum Color:
+Color:
+	colorName = ColorName
+;
+
+enum ColorName:
 	RED = 'red' |
 	WHITE = 'white' |
 	BLACK = 'black' |
@@ -91,7 +115,11 @@ enum Color:
 	DARK = 'dark'
 ;
 
-enum Bool:
+Bool:
+	boolType = BoolType
+;
+
+enum BoolType:
 	L = 'less' |
 	G = 'greater' |
 	AND = 'and' |
@@ -99,6 +127,7 @@ enum Bool:
 	TRUE = 'true' |
 	FALSE = 'false'
 ;
-enum Negation:
+
+Negation:
 	NOT = 'not'
 ;
