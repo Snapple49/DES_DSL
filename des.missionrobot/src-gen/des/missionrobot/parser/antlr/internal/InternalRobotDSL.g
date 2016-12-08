@@ -465,9 +465,9 @@ ruleAction returns [EObject current=null]
 						}
 					)
 				)
-				otherlv_4='sec'
+				otherlv_4='milisec'
 				{
-					newLeafNode(otherlv_4, grammarAccess.getActionAccess().getSecKeyword_0_2_2());
+					newLeafNode(otherlv_4, grammarAccess.getActionAccess().getMilisecKeyword_0_2_2());
 				}
 			)?
 			(

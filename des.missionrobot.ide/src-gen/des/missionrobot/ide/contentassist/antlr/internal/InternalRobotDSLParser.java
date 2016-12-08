@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalRobotDSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'forward'", "'backward'", "'left'", "'right'", "'high'", "'medium'", "'low'", "'raise'", "'lower'", "'buzz'", "'fanfare'", "'Color'", "'LeftLight'", "'RightLight'", "'RearHeight'", "'FrontDistance'", "'red'", "'white'", "'black'", "'green'", "'blue'", "'bright'", "'dark'", "'less'", "'greater'", "'and'", "'or'", "'true'", "'false'", "'Missionset'", "'Missions:'", "'Mission'", "'Flags:'", "'Tasks:'", "'Goal:'", "'Condition:'", "'timeout'", "'Actions:'", "'Task:'", "'priority:'", "'Triggers:'", "'Move'", "'for'", "'sec'", "'at'", "'speed'", "'Turn'", "'deg'", "'Arm'", "'Play'", "'sound'", "'Update'", "'to'", "'is'", "'distance'", "'than'", "'cm'", "'Time:'", "'not'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'forward'", "'backward'", "'left'", "'right'", "'high'", "'medium'", "'low'", "'raise'", "'lower'", "'buzz'", "'fanfare'", "'Color'", "'LeftLight'", "'RightLight'", "'RearHeight'", "'FrontDistance'", "'red'", "'white'", "'black'", "'green'", "'blue'", "'bright'", "'dark'", "'less'", "'greater'", "'and'", "'or'", "'true'", "'false'", "'Missionset'", "'Missions:'", "'Mission'", "'Flags:'", "'Tasks:'", "'Goal:'", "'Condition:'", "'timeout'", "'Actions:'", "'Task:'", "'priority:'", "'Triggers:'", "'Move'", "'for'", "'milisec'", "'at'", "'speed'", "'Turn'", "'deg'", "'Arm'", "'Play'", "'sound'", "'Update'", "'to'", "'is'", "'distance'", "'than'", "'cm'", "'Time:'", "'sec'", "'not'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -66,6 +66,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
     public static final int T__64=64;
     public static final int T__21=21;
     public static final int T__65=65;
+    public static final int T__70=70;
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__37=37;
@@ -1884,7 +1885,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==RULE_ID||LA2_0==69) ) {
+            if ( (LA2_0==RULE_ID||LA2_0==70) ) {
                 alt2=1;
             }
             else if ( ((LA2_0>=22 && LA2_0<=26)) ) {
@@ -4410,7 +4411,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
                 int alt16=2;
                 int LA16_0 = input.LA(1);
 
-                if ( (LA16_0==RULE_ID||(LA16_0>=22 && LA16_0<=26)||(LA16_0>=34 && LA16_0<=39)||LA16_0==69) ) {
+                if ( (LA16_0==RULE_ID||(LA16_0>=22 && LA16_0<=26)||(LA16_0>=34 && LA16_0<=39)||LA16_0==70) ) {
                     alt16=1;
                 }
 
@@ -5575,7 +5576,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
                 int alt20=2;
                 int LA20_0 = input.LA(1);
 
-                if ( (LA20_0==RULE_ID||(LA20_0>=22 && LA20_0<=26)||(LA20_0>=34 && LA20_0<=39)||LA20_0==69) ) {
+                if ( (LA20_0==RULE_ID||(LA20_0>=22 && LA20_0<=26)||(LA20_0>=34 && LA20_0<=39)||LA20_0==70) ) {
                     alt20=1;
                 }
 
@@ -6164,21 +6165,21 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Action__Group_0_2__2__Impl"
-    // InternalRobotDSL.g:1873:1: rule__Action__Group_0_2__2__Impl : ( 'sec' ) ;
+    // InternalRobotDSL.g:1873:1: rule__Action__Group_0_2__2__Impl : ( 'milisec' ) ;
     public final void rule__Action__Group_0_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRobotDSL.g:1877:1: ( ( 'sec' ) )
-            // InternalRobotDSL.g:1878:1: ( 'sec' )
+            // InternalRobotDSL.g:1877:1: ( ( 'milisec' ) )
+            // InternalRobotDSL.g:1878:1: ( 'milisec' )
             {
-            // InternalRobotDSL.g:1878:1: ( 'sec' )
-            // InternalRobotDSL.g:1879:2: 'sec'
+            // InternalRobotDSL.g:1878:1: ( 'milisec' )
+            // InternalRobotDSL.g:1879:2: 'milisec'
             {
-             before(grammarAccess.getActionAccess().getSecKeyword_0_2_2()); 
+             before(grammarAccess.getActionAccess().getMilisecKeyword_0_2_2()); 
             match(input,54,FOLLOW_2); 
-             after(grammarAccess.getActionAccess().getSecKeyword_0_2_2()); 
+             after(grammarAccess.getActionAccess().getMilisecKeyword_0_2_2()); 
 
             }
 
@@ -7677,7 +7678,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
             int alt24=2;
             int LA24_0 = input.LA(1);
 
-            if ( (LA24_0==69) ) {
+            if ( (LA24_0==70) ) {
                 alt24=1;
             }
             switch (alt24) {
@@ -9003,7 +9004,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
             // InternalRobotDSL.g:2838:1: ( rule__Time__Group__1__Impl rule__Time__Group__2 )
             // InternalRobotDSL.g:2839:2: rule__Time__Group__1__Impl rule__Time__Group__2
             {
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_38);
             rule__Time__Group__1__Impl();
 
             state._fsp--;
@@ -9125,7 +9126,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
             // InternalRobotDSL.g:2878:2: 'sec'
             {
              before(grammarAccess.getTimeAccess().getSecKeyword_2()); 
-            match(input,54,FOLLOW_2); 
+            match(input,69,FOLLOW_2); 
              after(grammarAccess.getTimeAccess().getSecKeyword_2()); 
 
             }
@@ -10737,7 +10738,7 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
             // InternalRobotDSL.g:3489:4: 'not'
             {
              before(grammarAccess.getNegationAccess().getNOTNotKeyword_0()); 
-            match(input,69,FOLLOW_2); 
+            match(input,70,FOLLOW_2); 
              after(grammarAccess.getNegationAccess().getNOTNotKeyword_0()); 
 
             }
@@ -10780,8 +10781,8 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0002000000000002L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0001C00000000000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x000000FC07C00010L,0x0000000000000020L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x000000FC07C00012L,0x0000000000000020L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x000000FC07C00010L,0x0000000000000040L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x000000FC07C00012L,0x0000000000000040L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x5A10000000000000L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x5A10000000000002L});
@@ -10799,11 +10800,12 @@ public class InternalRobotDSLParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000300000L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x8000000000000000L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x000000FC00000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000020L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000040L});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000003L});
     public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x00000003F8000000L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
 
 }

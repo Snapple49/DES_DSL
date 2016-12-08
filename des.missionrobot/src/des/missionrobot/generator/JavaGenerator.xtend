@@ -53,7 +53,8 @@ public class «root.name» {
 		sMgr.start();
 		
 «FOR t : root.taskList»		behaviorMap.put(«t.prio», new «t.name»(leftMotor, rightMotor, armMotor, sMgr));«"\n"»«ENDFOR»
-		Arbitrator arbitrator = new Arbitrator(sortBehaviors(behaviorMap));
+		Behavior[] behaviors = sortBehaviors(behaviorMap);
+		Arbitrator arbitrator = new Arbitrator(behaviors);
 		arbitrator.go();
 	}
 

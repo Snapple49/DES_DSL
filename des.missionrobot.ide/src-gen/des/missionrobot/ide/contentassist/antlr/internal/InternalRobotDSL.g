@@ -1876,9 +1876,9 @@ rule__Action__Group_0_2__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getActionAccess().getSecKeyword_0_2_2()); }
-	'sec'
-	{ after(grammarAccess.getActionAccess().getSecKeyword_0_2_2()); }
+	{ before(grammarAccess.getActionAccess().getMilisecKeyword_0_2_2()); }
+	'milisec'
+	{ after(grammarAccess.getActionAccess().getMilisecKeyword_0_2_2()); }
 )
 ;
 finally {

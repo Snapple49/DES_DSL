@@ -241,7 +241,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cForKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
 		private final Assignment cDurationAssignment_0_2_1 = (Assignment)cGroup_0_2.eContents().get(1);
 		private final RuleCall cDurationINTTerminalRuleCall_0_2_1_0 = (RuleCall)cDurationAssignment_0_2_1.eContents().get(0);
-		private final Keyword cSecKeyword_0_2_2 = (Keyword)cGroup_0_2.eContents().get(2);
+		private final Keyword cMilisecKeyword_0_2_2 = (Keyword)cGroup_0_2.eContents().get(2);
 		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
 		private final Keyword cAtKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
 		private final Assignment cSpeedAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
@@ -273,18 +273,18 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBoolBoolParserRuleCall_4_3_0 = (RuleCall)cBoolAssignment_4_3.eContents().get(0);
 		
 		//Action:
-		//	'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? |
+		//	'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? |
 		//	'Turn' turnDir=Direction degr=INT 'deg' |
 		//	'Arm' op=ArmOp |
 		//	'Play' 'sound' sound=Sound |
 		//	'Update' flag=[Flag] 'to' bool=Bool;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? | 'Turn' turnDir=Direction degr=INT
+		//'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? | 'Turn' turnDir=Direction degr=INT
 		//'deg' | 'Arm' op=ArmOp | 'Play' 'sound' sound=Sound | 'Update' flag=[Flag] 'to' bool=Bool
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')?
+		//'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'Move'
@@ -296,7 +296,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Direction
 		public RuleCall getMoveDirDirectionParserRuleCall_0_1_0() { return cMoveDirDirectionParserRuleCall_0_1_0; }
 		
-		//('for' duration=INT 'sec')?
+		//('for' duration=INT 'milisec')?
 		public Group getGroup_0_2() { return cGroup_0_2; }
 		
 		//'for'
@@ -308,8 +308,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getDurationINTTerminalRuleCall_0_2_1_0() { return cDurationINTTerminalRuleCall_0_2_1_0; }
 		
-		//'sec'
-		public Keyword getSecKeyword_0_2_2() { return cSecKeyword_0_2_2; }
+		//'milisec'
+		public Keyword getMilisecKeyword_0_2_2() { return cMilisecKeyword_0_2_2; }
 		
 		//('at' speed=Speed 'speed')?
 		public Group getGroup_0_3() { return cGroup_0_3; }
@@ -1165,7 +1165,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Action:
-	//	'Move' moveDir=Direction ('for' duration=INT 'sec')? ('at' speed=Speed 'speed')? |
+	//	'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? |
 	//	'Turn' turnDir=Direction degr=INT 'deg' |
 	//	'Arm' op=ArmOp |
 	//	'Play' 'sound' sound=Sound |
