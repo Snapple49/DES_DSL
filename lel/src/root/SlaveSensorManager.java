@@ -76,9 +76,9 @@ public class SlaveSensorManager extends Thread{
 	}
 	
 	public String serializeFloats(float[] floats){
-		String s = "";
-		for (float f : floats){
-			s = s + " " + Float.toString(f);
+		String s = Float.toString(floats[0]);
+		for (int i = 1; i < floats.length; i++){
+			s = s + " " + Float.toString(floats[i]);
 		}
 		return s;
 	}
