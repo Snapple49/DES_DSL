@@ -3,7 +3,6 @@ package root;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serializable;
 
 import lejos.hardware.Button;
 import lejos.hardware.Sound;
@@ -20,39 +19,47 @@ public class Slave {
 	private static EV3TouchSensor leftTouch = null;
 	private static EV3TouchSensor rightTouch = null;
 	private static EV3GyroSensor gyroSensor = null;
+	private static SlaveSensorManager slaveSensorManager;
+	
 	private static BTConnector connector;
 	private static NXTConnection connection;
 	private static PrintWriter writer;
 	private static DataInputStream reader;
-	private static int readValue;
+	private static String readValue;
 	
 	public static void main(String args[]){
-		frontUltrasonic = new EV3UltrasonicSensor(SensorPort.S3);
-		leftTouch = new EV3TouchSensor(SensorPort.S1);
-		rightTouch = new EV3TouchSensor(SensorPort.S2);
-		gyroSensor = new EV3GyroSensor(SensorPort.S4);
-		
 		//rediscover communication
 		connector = new BTConnector();
 		connection = connector.waitForConnection(60000, NXTConnection.RAW);
+		System.out.println("Connection received!");
 		writer = new PrintWriter(connection.openOutputStream());
 		reader = connection.openDataInputStream();
+		System.out.println("Reader and writer up!");
 		
 		try {
-			readValue = (int)reader.readByte();
+			readValue = reader.readLine();
 		} catch (IOException e) {
-			Sound.beepSequence();			
+			Sound.buzz();			
 		}
 
-		if(readValue == 1){
+		if(readValue.equals("REQUEST:CONNECT")){
 			Sound.beepSequenceUp();
-			writer.write(1);
+			System.out.println("Val read:" + readValue);
+			writer.println("ACK:CONNECT");
 			writer.flush();
 		}
 		//both robots are now communicating
 		
-		while(Button.ENTER.isUp()){
+		frontUltrasonic = new EV3UltrasonicSensor(SensorPort.S3);
+		leftTouch = new EV3TouchSensor(SensorPort.S1);
+		rightTouch = new EV3TouchSensor(SensorPort.S2);
+		gyroSensor = new EV3GyroSensor(SensorPort.S4);
 			
+		slaveSensorManager = new SlaveSensorManager(writer, frontUltrasonic, leftTouch, rightTouch, gyroSensor, 1000);
+		slaveSensorManager.start();
+		
+		while(Button.ENTER.isUp()){
+			Thread.yield();
 		}
 		
 	}

@@ -24,6 +24,7 @@ public class SlaveSensorManager extends Thread{
 	float[] leftBumperSamples;
 	float[] rightBumperSamples;
 	float[] frontUltrasonicSamples;
+	float[] arrayToSend;
 	
 	public SlaveSensorManager(PrintWriter writer, EV3UltrasonicSensor frontU, EV3TouchSensor leftT, EV3TouchSensor rightT, EV3GyroSensor gyroS, int period){
 		this.writer = writer;
@@ -45,7 +46,9 @@ public class SlaveSensorManager extends Thread{
 	public void run(){
 		running = true;
 		while(running){
-			transmit(serializeFloats(readValues()));
+			arrayToSend = readValues();
+			System.out.println(arrayToSend[0]);
+			transmit(serializeFloats(arrayToSend));
 			waitMs(period);
 		}
 	}

@@ -41,13 +41,19 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 	private static EV3TouchSensor leftTouch = null;
 	private static EV3TouchSensor rightTouch = null;
 	private static EV3GyroSensor gyroSensor = null;
-	//private static SensorUpdater sensorUpdater;
+	private static SensorUpdater sensorUpdater;
 	private static SensorManager sensorManager;
 	private static String readVal;
 	
 	//comms
 	private static PrintWriter writer;
 	private static DataInputStream reader;
+	
+	private static void clearScreen(){
+		for (int i = 0; i < 10; i++) {
+			System.out.println("");
+		}
+	}
 	
 	private static int setupCommunication(PrintWriter writer, DataInputStream reader){
 		int success = 0;
@@ -58,10 +64,9 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 			other = "Rover6";
 			break;
 		default:
-			other = "Rover7";
+			other = "Rover8";
 			break;
 		}
-		
 		BTConnector connector = new BTConnector();
 		NXTConnection connection = connector.connect(other, NXTConnection.RAW);
 		writer = new PrintWriter(connection.openOutputStream());
@@ -70,11 +75,12 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 		
 		reader = connection.openDataInputStream();
 		try {
-			readVal = reader.readUTF();
+			readVal = reader.readLine();
 			switch (readVal) {
 			case "ACK:CONNECT":
-				Sound.beep();
-				System.out.println("Connection success!");
+				success = 1;
+				Sound.beepSequenceUp();
+				System.out.println("Connection success!" + readVal);
 				break;
 			default:
 				Sound.beepSequence();
@@ -91,7 +97,10 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 	
 	public static void main(String[] args) {
 		
-		setupCommunication(writer, reader);
+		if(setupCommunication(writer, reader) != 1){
+			System.out.println("Communication failed");
+			return;
+		}
 		
 		leftMotor = new EV3LargeRegulatedMotor(MotorPort.A);
 		rightMotor = new EV3LargeRegulatedMotor(MotorPort.B);
@@ -101,24 +110,22 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 		backUltrasonic = new EV3UltrasonicSensor(SensorPort.S3);
 		colorSensor = new EV3ColorSensor(SensorPort.S4);
 		
-		
-		
 		sensorManager = new SensorManager(colorSensor, leftLight, rightLight, backUltrasonic);
 		sensorManager.start();
 	
-		
-		//sensorUpdater = new SensorUpdater();
-		
+		sensorUpdater = new SensorUpdater(sensorManager, reader);
+		sensorUpdater.start();
 		
 		Mission m1 = new MoveAndAvoidEdges(sensorManager, leftMotor, rightMotor, armMotor);
-		LCD.drawString("Hello, select stuff", 0, 0);
-		
+		clearScreen();
 		while(true){
-			LCD.drawString("Mission " + m1.toString(), 0, 1);
+			//LCD.drawString("Hello, select stuff", 0, 0);
+			//LCD.drawString("Mission " + m1.toString(), 0, 1);
 			Delay.msDelay(100);
-			if(Button.ENTER != null){
-				m1.RunArbitrator();				
+			if(Button.ENTER.isDown()){
+				//m1.RunArbitrator();				
 			}
+			System.out.println("Left Touch is: " + sensorManager.getLeftTouch());
 		}
 	}
 }
