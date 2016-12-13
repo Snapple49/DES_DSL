@@ -1,5 +1,6 @@
 package root;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
 
@@ -10,8 +11,9 @@ public class SensorUpdater extends Thread{
 	private DataInputStream reader;
 	private SensorManager sMgr;
 	private boolean running = false;
-	private float[] floats;
 	private float[] def = {0.0f, 0.0f, 0.0f, 0.0f};
+	private float[] floats = def;
+	private String readValue;
 	
 	
 	public SensorUpdater(SensorManager sMgr, DataInputStream reader){
@@ -22,15 +24,16 @@ public class SensorUpdater extends Thread{
 	@Override
 	public void run(){
 		running = true;
-		String readValue;
 		while(running){
 			try {
+				Thread.yield();
 				readValue = reader.readLine();
 				System.out.println(readValue);
-				floats = def;//parseFloats(readValue);
+				//floats = def;//parseFloats(readValue);
 			} catch (IOException e) {
-				floats = def;
+				e.printStackTrace();
 				Sound.buzz();
+				return;
 			}
 		}
 	}

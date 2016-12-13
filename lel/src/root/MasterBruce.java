@@ -1,7 +1,9 @@
 package root;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.TreeMap;
 
@@ -47,7 +49,7 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 	
 	//comms
 	private static PrintWriter writer;
-	private static DataInputStream reader;
+	private static BufferedReader reader;
 	
 	private static void clearScreen(){
 		for (int i = 0; i < 10; i++) {
@@ -55,7 +57,7 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 		}
 	}
 	
-	private static int setupCommunication(PrintWriter writer, DataInputStream reader){
+	private static int setupCommunication(PrintWriter writer, BufferedReader reader){
 		int success = 0;
 		String self = LocalEV3.get().getName();
 		String other;
@@ -73,7 +75,9 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 		writer.println("REQUEST:CONNECT");
 		writer.flush();
 		
-		reader = connection.openDataInputStream();
+		reader = new BufferedReader(new InputStreamReader(connection.openInputStream()));
+		Sound.buzz();
+		
 		try {
 			readVal = reader.readLine();
 			switch (readVal) {
@@ -112,9 +116,11 @@ private static TreeMap<Integer, Behavior> behaviorMap = new TreeMap<>();
 		
 		sensorManager = new SensorManager(colorSensor, leftLight, rightLight, backUltrasonic);
 		sensorManager.start();
+		System.out.println("Sm started");
 	
 		sensorUpdater = new SensorUpdater(sensorManager, reader);
 		sensorUpdater.start();
+		System.out.println("Su started");
 		
 		Mission m1 = new MoveAndAvoidEdges(sensorManager, leftMotor, rightMotor, armMotor);
 		clearScreen();

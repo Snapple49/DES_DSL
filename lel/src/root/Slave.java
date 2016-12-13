@@ -1,7 +1,9 @@
 package root;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import lejos.hardware.Button;
@@ -24,7 +26,7 @@ public class Slave {
 	private static BTConnector connector;
 	private static NXTConnection connection;
 	private static PrintWriter writer;
-	private static DataInputStream reader;
+	private static BufferedReader reader;
 	private static String readValue;
 	
 	public static void main(String args[]){
@@ -33,7 +35,7 @@ public class Slave {
 		connection = connector.waitForConnection(60000, NXTConnection.RAW);
 		System.out.println("Connection received!");
 		writer = new PrintWriter(connection.openOutputStream());
-		reader = connection.openDataInputStream();
+		reader = new BufferedReader(new InputStreamReader(connection.openDataInputStream()));
 		System.out.println("Reader and writer up!");
 		
 		try {
@@ -57,8 +59,9 @@ public class Slave {
 			
 		slaveSensorManager = new SlaveSensorManager(writer, frontUltrasonic, leftTouch, rightTouch, gyroSensor, 1000);
 		slaveSensorManager.start();
+		System.out.println("SSm started");
 		
-		while(Button.ENTER.isUp()){
+		while(true){
 			Thread.yield();
 		}
 		
