@@ -19,7 +19,8 @@ import lejos.utility.Delay;
 public class SlaveBTTesting {
 	
 	private static String readValue;
-	private static BTConReader reader;
+//	private static BTConReader reader;
+	private static BufferedReader reader;
 	private static PrintWriter writer;
 	
 	private static EV3UltrasonicSensor frontU;
@@ -30,35 +31,40 @@ public class SlaveBTTesting {
 	
 	
 	
-	private static int setUpCommSlave(PrintWriter writer, BTConReader reader){
+//	private static int setUpCommSlave(PrintWriter writer, BTConReader reader){
+	private static int setUpCommSlave(){
 		int success = 0;
 		BTConnector connector = new BTConnector();
 		NXTConnection connection = connector.waitForConnection(60000, NXTConnection.RAW);
 		System.out.println("Connection received!");
 		writer = new PrintWriter(connection.openOutputStream());
-		reader = new BTConReader(connection.openInputStream());
+//		reader = new BTConReader(connection.openInputStream());
+		reader = new BufferedReader(new InputStreamReader(connection.openInputStream()));
 		System.out.println("Reader and writer up!");
 		
 		try {
-			readValue = reader.readThatLine();
+			readValue = reader.readLine();
+			Sound.beep();
 		} catch (IOException e) {
 			Sound.buzz();			
 		}
 
 		if(readValue.equals("REQUEST:CONNECT")){
 			Sound.beepSequenceUp();
-			writer.println("ACK:CONNECT");
+			writer.println("ACK:CONNECT\n");
 			writer.flush();
-			System.out.println("Communication setup!");
 			success = 1;
 		}
 		return success;
 	}
 	
 	public static void main(String[] args) {
-		int retval = setUpCommSlave(writer, reader);
-		while (retval != 1){
+		int retval = setUpCommSlave();
+		/*while (retval != 1){
 			setUpCommSlave(writer, reader);
+		}*/
+		if(retval == 1){
+			System.out.println("Communication setup!");
 		}
 		
 		frontU = new EV3UltrasonicSensor(SensorPort.S3);
