@@ -30,6 +30,7 @@ public class SensorUpdater extends Thread{
 				readValue = reader.readLine();
 				System.out.println(readValue);
 				//floats = def;//parseFloats(readValue);
+				//sMgr.updateSlaveDevices(floats);
 			} catch (IOException e) {
 				e.printStackTrace();
 				Sound.buzz();
@@ -44,7 +45,6 @@ public class SensorUpdater extends Thread{
 		for (int i = 0; i < strings.length; i++){
 			floats[i] = Float.parseFloat(strings[i]);
 			System.out.println(floats.toString());
-			sMgr.updateSlaveDevices(floats);
 		}
 		return floats;
 	}

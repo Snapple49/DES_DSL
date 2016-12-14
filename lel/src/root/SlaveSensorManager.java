@@ -1,6 +1,7 @@
 package root;
 
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import lejos.hardware.sensor.EV3GyroSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
@@ -47,8 +48,8 @@ public class SlaveSensorManager extends Thread{
 		running = true;
 		while(running){
 			arrayToSend = readValues();
-			System.out.println(arrayToSend[0]);
-			transmit(serializeFloats(arrayToSend));
+			System.out.println(Arrays.toString(arrayToSend));
+			this.transmit("Hello");//serializeFloats(arrayToSend));
 			waitMs(period);
 		}
 	}
@@ -63,7 +64,11 @@ public class SlaveSensorManager extends Thread{
 	}
 	
 	public void transmit(String s){
-		writer.write(s);
+		if(s != null){
+			System.out.println(s);
+			writer.println(s);
+			writer.flush();
+		}
 	}
 	
 	public float[] readValues(){

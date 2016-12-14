@@ -5,18 +5,21 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import lejos.hardware.Sound;
+import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3GyroSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.remote.nxt.BTConnector;
 import lejos.remote.nxt.NXTConnection;
+import lejos.utility.Delay;
 
 public class SlaveBTTesting {
 	
 	private static String readValue;
-	private static DataInputStream reader;
+	private static BTConReader reader;
 	private static PrintWriter writer;
 	
 	private static EV3UltrasonicSensor frontU;
@@ -27,17 +30,17 @@ public class SlaveBTTesting {
 	
 	
 	
-	private static int setUpCommSlave(PrintWriter writer, DataInputStream reader){
+	private static int setUpCommSlave(PrintWriter writer, BTConReader reader){
 		int success = 0;
 		BTConnector connector = new BTConnector();
 		NXTConnection connection = connector.waitForConnection(60000, NXTConnection.RAW);
 		System.out.println("Connection received!");
 		writer = new PrintWriter(connection.openOutputStream());
-		reader = new DataInputStream(connection.openDataInputStream());
+		reader = new BTConReader(connection.openInputStream());
 		System.out.println("Reader and writer up!");
 		
 		try {
-			readValue = reader.readLine();
+			readValue = reader.readThatLine();
 		} catch (IOException e) {
 			Sound.buzz();			
 		}
@@ -58,12 +61,18 @@ public class SlaveBTTesting {
 			setUpCommSlave(writer, reader);
 		}
 		
+		frontU = new EV3UltrasonicSensor(SensorPort.S3);
+		leftT = new EV3TouchSensor(SensorPort.S1);
+		rightT = new EV3TouchSensor(SensorPort.S2);
+		gyroS = new EV3GyroSensor(SensorPort.S4);
+		
 		ssm = new SlaveSensorManager(writer, frontU, leftT, rightT, gyroS, 1000);
 		ssm.start();
 		System.out.println("Ssm started!");
 		
 		while(true){
-			
+			//System.out.println("" + Arrays.toString(ssm.readValues()));
+			Delay.msDelay(1000);
 		}
 		
 	}
