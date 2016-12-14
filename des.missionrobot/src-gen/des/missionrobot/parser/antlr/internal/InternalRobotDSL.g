@@ -1433,6 +1433,30 @@ ruleSensorType returns [Enumerator current=null]
 				newLeafNode(enumLiteral_4, grammarAccess.getSensorTypeAccess().getFRONTUSEnumLiteralDeclaration_4());
 			}
 		)
+		    |
+		(
+			enumLiteral_5='LeftTouch'
+			{
+				$current = grammarAccess.getSensorTypeAccess().getLEFTTOUCHEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getSensorTypeAccess().getLEFTTOUCHEnumLiteralDeclaration_5());
+			}
+		)
+		    |
+		(
+			enumLiteral_6='RightTouch'
+			{
+				$current = grammarAccess.getSensorTypeAccess().getRIGHTTOUCHEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_6, grammarAccess.getSensorTypeAccess().getRIGHTTOUCHEnumLiteralDeclaration_6());
+			}
+		)
+		    |
+		(
+			enumLiteral_7='Gyro'
+			{
+				$current = grammarAccess.getSensorTypeAccess().getGYROEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_7, grammarAccess.getSensorTypeAccess().getGYROEnumLiteralDeclaration_7());
+			}
+		)
 	)
 ;
 

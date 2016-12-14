@@ -1,6 +1,7 @@
-package root;
+package unused;
 
 import lejos.hardware.lcd.LCD;
+import root.SensorManager;
 
 public class PrinterThread extends Thread{
 	

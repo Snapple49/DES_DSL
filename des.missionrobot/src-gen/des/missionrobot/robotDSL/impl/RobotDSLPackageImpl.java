@@ -1140,6 +1140,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     addEEnumLiteral(sensorTypeEEnum, SensorType.RIGHTLIGHT);
     addEEnumLiteral(sensorTypeEEnum, SensorType.BACKUS);
     addEEnumLiteral(sensorTypeEEnum, SensorType.FRONTUS);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.LEFTTOUCH);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.RIGHTTOUCH);
+    addEEnumLiteral(sensorTypeEEnum, SensorType.GYRO);
 
     initEEnum(colorNameEEnum, ColorName.class, "ColorName");
     addEEnumLiteral(colorNameEEnum, ColorName.RED);

@@ -107,6 +107,9 @@
     <eLiterals name="RIGHTLIGHT" value="2" literal="RightLight"/>
     <eLiterals name="BACKUS" value="3" literal="RearHeight"/>
     <eLiterals name="FRONTUS" value="4" literal="FrontDistance"/>
+    <eLiterals name="LEFTTOUCH" value="5" literal="LeftTouch"/>
+    <eLiterals name="RIGHTTOUCH" value="6" literal="RightTouch"/>
+    <eLiterals name="GYRO" value="7" literal="Gyro"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Color">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="colorName" eType="#//ColorName"/>

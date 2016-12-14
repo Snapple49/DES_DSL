@@ -1,26 +1,24 @@
 package root;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import lejos.hardware.Sound;
 
 public class SensorUpdater extends Thread{
-	
+
 	private BTConReader reader;
 	private SensorManager sMgr;
 	private boolean running = false;
-	private float[] def = {0.0f, 0.0f, 0.0f, 0.0f};
-	private float[] floats = def;
+	private float[] floats = {0.0f, 0.0f, 0.0f, 0.0f};
 	private String readValue;
-	
-	
-	public SensorUpdater(SensorManager sMgr, BTConReader reader){
-		this.sMgr = sMgr;
-		this.reader = reader;
+
+
+	public SensorUpdater(SensorManager sM, BTConReader rdr){
+		this.sMgr = sM;
+		this.reader = rdr;
 	}
-	
+
 	@Override
 	public void run(){
 		running = true;
@@ -40,13 +38,15 @@ public class SensorUpdater extends Thread{
 	}
 
 	public float[] parseFloats(String s){
-		String[] strings = s.split(" ");
-		floats = new float[strings.length];
-		for (int i = 0; i < strings.length; i++){
-			floats[i] = Float.parseFloat(strings[i]);
-			System.out.println(floats.toString());
+		if(!s.isEmpty()){			
+			String[] strings = s.split(" ");
+			float[] floats = new float[strings.length];
+			for (int i = 0; i < strings.length; i++){
+				floats[i] = Float.parseFloat(strings[i]);
+				System.out.println(Arrays.toString(floats));
+			}
 		}
 		return floats;
 	}
-	
+
 }

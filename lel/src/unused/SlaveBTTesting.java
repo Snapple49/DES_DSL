@@ -1,4 +1,4 @@
-package root;
+package unused;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -15,6 +15,8 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.remote.nxt.BTConnector;
 import lejos.remote.nxt.NXTConnection;
 import lejos.utility.Delay;
+import root.BTConReader;
+import root.SlaveSensorManager;
 
 public class SlaveBTTesting {
 	

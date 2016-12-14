@@ -35,25 +35,31 @@ public class RobotDSLGenerator extends AbstractGenerator {
     if (_notEquals) {
       URI _uRI = resource.getURI();
       String _lastSegment = _uRI.lastSegment();
-      String _plus = ("generated/" + _lastSegment);
+      String _plus = ("generated/root/" + _lastSegment);
       String path = (_plus + "/");
       EList<Mission> _missionList = root.getMissionList();
       for (final Mission m : _missionList) {
         {
-          String _name = m.getName();
-          String _plus_1 = (path + _name);
-          String _plus_2 = (_plus_1 + ".java");
-          CharSequence _arbitratorMain = JavaGenerator.arbitratorMain(m);
-          fsa.generateFile(_plus_2, _arbitratorMain);
           CharSequence _sensorManager = JavaGenerator.sensorManager();
           fsa.generateFile(((path + "SensorManager") + ".java"), _sensorManager);
+          String _name = m.getName();
+          String _plus_1 = (path + _name);
+          String _plus_2 = (_plus_1 + "/");
+          String _name_1 = m.getName();
+          String _plus_3 = (_plus_2 + _name_1);
+          String _plus_4 = (_plus_3 + ".java");
+          CharSequence _arbitratorMain = JavaGenerator.arbitratorMain(m);
+          fsa.generateFile(_plus_4, _arbitratorMain);
           EList<Task> _taskList = m.getTaskList();
           for (final Task t : _taskList) {
-            String _name_1 = t.getName();
-            String _plus_3 = (path + _name_1);
-            String _plus_4 = (_plus_3 + ".java");
+            String _name_2 = m.getName();
+            String _plus_5 = (path + _name_2);
+            String _plus_6 = (_plus_5 + "/");
+            String _name_3 = t.getName();
+            String _plus_7 = (_plus_6 + _name_3);
+            String _plus_8 = (_plus_7 + ".java");
             CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(t);
-            fsa.generateFile(_plus_4, _makeBehaviorClass);
+            fsa.generateFile(_plus_8, _makeBehaviorClass);
           }
         }
       }

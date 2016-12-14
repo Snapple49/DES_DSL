@@ -9,10 +9,10 @@ public class SensorManager extends Thread{
 	
 	public boolean running;
 	
-	private static EV3ColorSensor colorSensor = null;
-	private static NXTLightSensor leftLight = null;
-	private static NXTLightSensor rightLight = null;
-	private static EV3UltrasonicSensor backUltrasonic = null;
+	private EV3ColorSensor colorSensor = null;
+	private NXTLightSensor leftLight = null;
+	private NXTLightSensor rightLight = null;
+	private EV3UltrasonicSensor backUltrasonic = null;
 	
 	//master devices
 	SampleProvider colorSampleProvider;

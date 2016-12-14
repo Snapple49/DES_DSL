@@ -27,7 +27,6 @@ public class BTConReader extends DataInputStream{
 			i++;
 		}
 		chars = Arrays.copyOf(chars, i);
-		//chars[chars.length-1] = '\n';
 		string = new String(chars);
 		chars = new char[maxLen];
 		return string;

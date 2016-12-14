@@ -778,6 +778,24 @@ rule__SensorType__Alternatives
 		('FrontDistance')
 		{ after(grammarAccess.getSensorTypeAccess().getFRONTUSEnumLiteralDeclaration_4()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getSensorTypeAccess().getLEFTTOUCHEnumLiteralDeclaration_5()); }
+		('LeftTouch')
+		{ after(grammarAccess.getSensorTypeAccess().getLEFTTOUCHEnumLiteralDeclaration_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSensorTypeAccess().getRIGHTTOUCHEnumLiteralDeclaration_6()); }
+		('RightTouch')
+		{ after(grammarAccess.getSensorTypeAccess().getRIGHTTOUCHEnumLiteralDeclaration_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSensorTypeAccess().getGYROEnumLiteralDeclaration_7()); }
+		('Gyro')
+		{ after(grammarAccess.getSensorTypeAccess().getGYROEnumLiteralDeclaration_7()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);

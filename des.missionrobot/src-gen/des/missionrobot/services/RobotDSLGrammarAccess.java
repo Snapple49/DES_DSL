@@ -863,16 +863,26 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBACKUSRearHeightKeyword_3_0 = (Keyword)cBACKUSEnumLiteralDeclaration_3.eContents().get(0);
 		private final EnumLiteralDeclaration cFRONTUSEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
 		private final Keyword cFRONTUSFrontDistanceKeyword_4_0 = (Keyword)cFRONTUSEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cLEFTTOUCHEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cLEFTTOUCHLeftTouchKeyword_5_0 = (Keyword)cLEFTTOUCHEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cRIGHTTOUCHEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cRIGHTTOUCHRightTouchKeyword_6_0 = (Keyword)cRIGHTTOUCHEnumLiteralDeclaration_6.eContents().get(0);
+		private final EnumLiteralDeclaration cGYROEnumLiteralDeclaration_7 = (EnumLiteralDeclaration)cAlternatives.eContents().get(7);
+		private final Keyword cGYROGyroKeyword_7_0 = (Keyword)cGYROEnumLiteralDeclaration_7.eContents().get(0);
 		
 		//enum SensorType:
 		//	COLOR='Color' |
 		//	LEFTLIGHT='LeftLight' |
 		//	RIGHTLIGHT='RightLight' |
 		//	BACKUS='RearHeight' |
-		//	FRONTUS='FrontDistance';
+		//	FRONTUS='FrontDistance' |
+		//	LEFTTOUCH='LeftTouch' |
+		//	RIGHTTOUCH='RightTouch' |
+		//	GYRO='Gyro';
 		public EnumRule getRule() { return rule; }
 		
-		//COLOR='Color' | LEFTLIGHT='LeftLight' | RIGHTLIGHT='RightLight' | BACKUS='RearHeight' | FRONTUS='FrontDistance'
+		//COLOR='Color' | LEFTLIGHT='LeftLight' | RIGHTLIGHT='RightLight' | BACKUS='RearHeight' | FRONTUS='FrontDistance' |
+		//LEFTTOUCH='LeftTouch' | RIGHTTOUCH='RightTouch' | GYRO='Gyro'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//COLOR='Color'
@@ -904,6 +914,24 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'FrontDistance'
 		public Keyword getFRONTUSFrontDistanceKeyword_4_0() { return cFRONTUSFrontDistanceKeyword_4_0; }
+		
+		//LEFTTOUCH='LeftTouch'
+		public EnumLiteralDeclaration getLEFTTOUCHEnumLiteralDeclaration_5() { return cLEFTTOUCHEnumLiteralDeclaration_5; }
+		
+		//'LeftTouch'
+		public Keyword getLEFTTOUCHLeftTouchKeyword_5_0() { return cLEFTTOUCHLeftTouchKeyword_5_0; }
+		
+		//RIGHTTOUCH='RightTouch'
+		public EnumLiteralDeclaration getRIGHTTOUCHEnumLiteralDeclaration_6() { return cRIGHTTOUCHEnumLiteralDeclaration_6; }
+		
+		//'RightTouch'
+		public Keyword getRIGHTTOUCHRightTouchKeyword_6_0() { return cRIGHTTOUCHRightTouchKeyword_6_0; }
+		
+		//GYRO='Gyro'
+		public EnumLiteralDeclaration getGYROEnumLiteralDeclaration_7() { return cGYROEnumLiteralDeclaration_7; }
+		
+		//'Gyro'
+		public Keyword getGYROGyroKeyword_7_0() { return cGYROGyroKeyword_7_0; }
 	}
 	public class ColorNameElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.ColorName");
@@ -1320,7 +1348,10 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	LEFTLIGHT='LeftLight' |
 	//	RIGHTLIGHT='RightLight' |
 	//	BACKUS='RearHeight' |
-	//	FRONTUS='FrontDistance';
+	//	FRONTUS='FrontDistance' |
+	//	LEFTTOUCH='LeftTouch' |
+	//	RIGHTTOUCH='RightTouch' |
+	//	GYRO='Gyro';
 	public SensorTypeElements getSensorTypeAccess() {
 		return eSensorType;
 	}

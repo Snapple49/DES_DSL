@@ -31,6 +31,9 @@
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/RIGHTLIGHT"/>
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/BACKUS"/>
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/FRONTUS"/>
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/LEFTTOUCH"/>
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/RIGHTTOUCH"/>
+      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//SensorType/GYRO"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RobotDSL.ecore#//ColorName">
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//ColorName/RED"/>

@@ -1,4 +1,4 @@
-package root;
+package unused;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -16,6 +16,9 @@ import lejos.hardware.sensor.NXTLightSensor;
 import lejos.remote.nxt.BTConnector;
 import lejos.remote.nxt.NXTConnection;
 import lejos.utility.Delay;
+import root.BTConReader;
+import root.SensorManager;
+import root.SensorUpdater;
 
 public class MasterBTTesting {
 	private static String readVal;
