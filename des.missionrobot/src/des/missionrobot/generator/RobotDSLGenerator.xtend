@@ -21,14 +21,14 @@ class RobotDSLGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
  	val root = resource.allContents.head as Missions;
  	if (root != null) {
- 		var path = "generated/" + resource.getURI().lastSegment + "/"
+ 		var path = "generated/root/" + resource.getURI().lastSegment + "/"
  		for (Mission m: root.missionList){
-	 		fsa.generateFile(path+m.name + ".java", JavaGenerator.arbitratorMain(m))
 	 		fsa.generateFile(path+"SensorManager" + ".java", JavaGenerator.sensorManager())
+	 		fsa.generateFile(path+m.name+"/"+m.name + ".java", JavaGenerator.arbitratorMain(m))
 	 		for (Task t: m.taskList) {
-	 				fsa.generateFile(path+t.name + ".java", BehaviorMaker.makeBehaviorClass(t))
+	 				fsa.generateFile(path+m.name+"/"+t.name + ".java", BehaviorMaker.makeBehaviorClass(t))
 	 		}		
- 		}
+ 		}//assntitties
  	}
  	
 	}
