@@ -18,8 +18,7 @@ import lejos.remote.nxt.NXTConnection;
 
 public class MasterBTTesting {
 	private static String readVal;
-//0	private static BTConReader reader;
-	private static BufferedReader reader;
+	private static BTConReader reader;
 	private static PrintWriter writer;
 	
 	private static SensorManager sm;
@@ -29,8 +28,7 @@ public class MasterBTTesting {
 	private static NXTLightSensor rlight;
 	private static EV3UltrasonicSensor bultrasonic;
 	
-//	private static int setUpCommMaster(PrintWriter writer, BTConReader reader){
-	private static int setUpCommMaster(){
+	private static int setUpCommMaster(PrintWriter writer, BTConReader reader){
 		int success = 0;
 		String self = LocalEV3.get().getName();
 		String other;
@@ -45,21 +43,20 @@ public class MasterBTTesting {
 		BTConnector connector = new BTConnector();
 		NXTConnection connection = connector.connect(other, NXTConnection.RAW);
 		writer = new PrintWriter(connection.openOutputStream());
-		writer.println("REQUEST:CONNECT\n");
+		writer.println("REQUEST:CONNECT");
 		writer.flush();
 		System.out.println("Request sent");
 		
-//		reader = new BTConReader(connection.openInputStream());
-
-		reader = new BufferedReader(new InputStreamReader(connection.openInputStream()));
-		System.out.println("Reader initialized");
+		reader = new BTConReader(connection.openInputStream());
+		
 		
 		try {
-			readVal = reader.readLine();
+			readVal = reader.readThatLine();
 			switch (readVal) {
 			case "ACK:CONNECT":
 				success = 1;
 				Sound.beepSequenceUp();
+				System.out.println("Connection success!" + readVal);
 				break;
 			default:
 				Sound.beepSequence();
@@ -75,12 +72,9 @@ public class MasterBTTesting {
 	}
 	
 	public static void main(String[] args) {
-		int retval = setUpCommMaster();
-/*		while(retval != 1){
+		int retval = setUpCommMaster(writer, reader);
+		while(retval != 1){
 			retval = setUpCommMaster(writer, reader);
-		}*/
-		if(retval == 1){
-			System.out.println("Connection success!" + readVal);
 		}
 		llight = new NXTLightSensor(SensorPort.S1);
 		rlight = new NXTLightSensor(SensorPort.S2);
@@ -98,7 +92,7 @@ public class MasterBTTesting {
 		while(true){
 			
 			try {
-				readVal = reader.readLine();
+				readVal = reader.readThatLine();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
