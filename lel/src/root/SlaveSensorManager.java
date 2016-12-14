@@ -49,7 +49,7 @@ public class SlaveSensorManager extends Thread{
 		while(running){
 			arrayToSend = readValues();
 			System.out.println(Arrays.toString(arrayToSend));
-			this.transmit("Hello");//serializeFloats(arrayToSend));
+			this.transmit(serializeFloats(arrayToSend));
 			waitMs(period);
 		}
 	}
@@ -65,7 +65,6 @@ public class SlaveSensorManager extends Thread{
 	
 	public void transmit(String s){
 		if(s != null){
-			System.out.println(s);
 			writer.println(s);
 			writer.flush();
 		}

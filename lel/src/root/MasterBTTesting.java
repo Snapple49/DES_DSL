@@ -15,6 +15,7 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.hardware.sensor.NXTLightSensor;
 import lejos.remote.nxt.BTConnector;
 import lejos.remote.nxt.NXTConnection;
+import lejos.utility.Delay;
 
 public class MasterBTTesting {
 	private static String readVal;
@@ -28,7 +29,7 @@ public class MasterBTTesting {
 	private static NXTLightSensor rlight;
 	private static EV3UltrasonicSensor bultrasonic;
 	
-	private static int setUpCommMaster(PrintWriter writer, BTConReader reader){
+	private static int setUpCommMaster(){
 		int success = 0;
 		String self = LocalEV3.get().getName();
 		String other;
@@ -72,10 +73,10 @@ public class MasterBTTesting {
 	}
 	
 	public static void main(String[] args) {
-		int retval = setUpCommMaster(writer, reader);
-		while(retval != 1){
+		int retval = setUpCommMaster();
+		/*while(retval != 1){
 			retval = setUpCommMaster(writer, reader);
-		}
+		}*/
 		llight = new NXTLightSensor(SensorPort.S1);
 		rlight = new NXTLightSensor(SensorPort.S2);
 		bultrasonic = new EV3UltrasonicSensor(SensorPort.S3);
@@ -86,22 +87,12 @@ public class MasterBTTesting {
 		System.out.println("Sensormanager up");
 		
 		su = new SensorUpdater(sm, reader);
-		//su.start();
+		su.start();
 		System.out.println("Sensorupdater up");
 		
 		while(true){
-			
-			try {
-				readVal = reader.readThatLine();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				Sound.buzz();
-			}
-			if(readVal != null){
-				System.out.println(readVal);
-			}
-			
+			System.out.println(sm.getLeftTouch());
+			Delay.msDelay(500);			
 		}
 	}
 }

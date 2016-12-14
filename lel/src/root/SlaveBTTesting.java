@@ -30,7 +30,7 @@ public class SlaveBTTesting {
 	
 	
 	
-	private static int setUpCommSlave(PrintWriter writer, BTConReader reader){
+	private static int setUpCommSlave(){
 		int success = 0;
 		BTConnector connector = new BTConnector();
 		NXTConnection connection = connector.waitForConnection(60000, NXTConnection.RAW);
@@ -56,10 +56,7 @@ public class SlaveBTTesting {
 	}
 	
 	public static void main(String[] args) {
-		int retval = setUpCommSlave(writer, reader);
-		while (retval != 1){
-			setUpCommSlave(writer, reader);
-		}
+		int retval = setUpCommSlave();
 		
 		frontU = new EV3UltrasonicSensor(SensorPort.S3);
 		leftT = new EV3TouchSensor(SensorPort.S1);
@@ -71,7 +68,7 @@ public class SlaveBTTesting {
 		System.out.println("Ssm started!");
 		
 		while(true){
-			//System.out.println("" + Arrays.toString(ssm.readValues()));
+			System.out.println(Arrays.toString(ssm.readValues()));
 			Delay.msDelay(1000);
 		}
 		

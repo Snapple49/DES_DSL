@@ -98,7 +98,10 @@ enum SensorType:
 	LEFTLIGHT = 'LeftLight' |
 	RIGHTLIGHT = 'RightLight' |
 	BACKUS = 'RearHeight' |
-	FRONTUS = 'FrontDistance' 	
+	FRONTUS = 'FrontDistance' |
+	LEFTTOUCH = 'LeftTouch' |
+	RIGHTTOUCH = 'RightTouch' |
+	GYRO = 'Gyro'
 ;
 
 Color:
