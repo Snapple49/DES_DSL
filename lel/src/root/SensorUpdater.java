@@ -8,7 +8,7 @@ import lejos.hardware.Sound;
 
 public class SensorUpdater extends Thread{
 	
-	private DataInputStream reader;
+	private BufferedReader reader;
 	private SensorManager sMgr;
 	private boolean running = false;
 	private float[] def = {0.0f, 0.0f, 0.0f, 0.0f};
@@ -16,7 +16,7 @@ public class SensorUpdater extends Thread{
 	private String readValue;
 	
 	
-	public SensorUpdater(SensorManager sMgr, DataInputStream reader){
+	public SensorUpdater(SensorManager sMgr, BufferedReader reader){
 		this.sMgr = sMgr;
 		this.reader = reader;
 	}

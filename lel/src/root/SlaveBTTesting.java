@@ -16,7 +16,7 @@ import lejos.remote.nxt.NXTConnection;
 public class SlaveBTTesting {
 	
 	private static String readValue;
-	private static DataInputStream reader;
+	private static BufferedReader reader;
 	private static PrintWriter writer;
 	
 	private static EV3UltrasonicSensor frontU;
@@ -27,13 +27,13 @@ public class SlaveBTTesting {
 	
 	
 	
-	private static int setUpCommSlave(PrintWriter writer, DataInputStream reader){
+	private static int setUpCommSlave(PrintWriter writer, BufferedReader reader){
 		int success = 0;
 		BTConnector connector = new BTConnector();
 		NXTConnection connection = connector.waitForConnection(60000, NXTConnection.RAW);
 		System.out.println("Connection received!");
 		writer = new PrintWriter(connection.openOutputStream());
-		reader = new DataInputStream(connection.openDataInputStream());
+		reader = new BufferedReader(new InputStreamReader(connection.openInputStream()));
 		System.out.println("Reader and writer up!");
 		
 		try {

@@ -18,7 +18,7 @@ import lejos.remote.nxt.NXTConnection;
 
 public class MasterBTTesting {
 	private static String readVal;
-	private static DataInputStream reader;
+	private static BufferedReader reader;
 	private static PrintWriter writer;
 	
 	private static SensorManager sm;
@@ -28,7 +28,7 @@ public class MasterBTTesting {
 	private static NXTLightSensor rlight;
 	private static EV3UltrasonicSensor bultrasonic;
 	
-	private static int setUpCommMaster(PrintWriter writer, DataInputStream reader){
+	private static int setUpCommMaster(PrintWriter writer, BufferedReader reader){
 		int success = 0;
 		String self = LocalEV3.get().getName();
 		String other;
@@ -47,7 +47,7 @@ public class MasterBTTesting {
 		writer.flush();
 		System.out.println("Request sent");
 		
-		reader = new DataInputStream(connection.openDataInputStream());
+		reader = new BufferedReader(new InputStreamReader(connection.openInputStream()));
 		
 		
 		try {
