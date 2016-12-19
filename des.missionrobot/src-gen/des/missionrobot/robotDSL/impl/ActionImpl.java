@@ -11,15 +11,23 @@ import des.missionrobot.robotDSL.Flag;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Sound;
 import des.missionrobot.robotDSL.Speed;
+import des.missionrobot.robotDSL.Trigger;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +42,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSpeed <em>Speed</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getTurnDir <em>Turn Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getDegr <em>Degr</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getTrig <em>Trig</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSound <em>Sound</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getFlag <em>Flag</em>}</li>
@@ -113,6 +122,16 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * @ordered
    */
   protected int degr = DEGR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTrig() <em>Trig</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTrig()
+   * @generated
+   * @ordered
+   */
+  protected EList<Trigger> trig;
 
   /**
    * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
@@ -370,6 +389,20 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Trigger> getTrig()
+  {
+    if (trig == null)
+    {
+      trig = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.ACTION__TRIG);
+    }
+    return trig;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ArmOp getOp()
   {
     return op;
@@ -568,6 +601,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return basicSetSpeed(null, msgs);
       case RobotDSLPackage.ACTION__TURN_DIR:
         return basicSetTurnDir(null, msgs);
+      case RobotDSLPackage.ACTION__TRIG:
+        return ((InternalEList<?>)getTrig()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.ACTION__OP:
         return basicSetOp(null, msgs);
       case RobotDSLPackage.ACTION__SOUND:
@@ -598,6 +633,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return getTurnDir();
       case RobotDSLPackage.ACTION__DEGR:
         return getDegr();
+      case RobotDSLPackage.ACTION__TRIG:
+        return getTrig();
       case RobotDSLPackage.ACTION__OP:
         return getOp();
       case RobotDSLPackage.ACTION__SOUND:
@@ -616,6 +653,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -635,6 +673,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return;
       case RobotDSLPackage.ACTION__DEGR:
         setDegr((Integer)newValue);
+        return;
+      case RobotDSLPackage.ACTION__TRIG:
+        getTrig().clear();
+        getTrig().addAll((Collection<? extends Trigger>)newValue);
         return;
       case RobotDSLPackage.ACTION__OP:
         setOp((ArmOp)newValue);
@@ -677,6 +719,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case RobotDSLPackage.ACTION__DEGR:
         setDegr(DEGR_EDEFAULT);
         return;
+      case RobotDSLPackage.ACTION__TRIG:
+        getTrig().clear();
+        return;
       case RobotDSLPackage.ACTION__OP:
         setOp((ArmOp)null);
         return;
@@ -713,6 +758,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return turnDir != null;
       case RobotDSLPackage.ACTION__DEGR:
         return degr != DEGR_EDEFAULT;
+      case RobotDSLPackage.ACTION__TRIG:
+        return trig != null && !trig.isEmpty();
       case RobotDSLPackage.ACTION__OP:
         return op != null;
       case RobotDSLPackage.ACTION__SOUND:

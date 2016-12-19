@@ -4,7 +4,8 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.robotics.subsumption.Behavior;
 import root.SensorManager;
-import root.AuxMethods;
+import lejos.robotics.Color;
+
 
 
 public class AvoidLeftEdge implements Behavior{
@@ -32,6 +33,30 @@ public class AvoidLeftEdge implements Behavior{
 		sensorManager = sM;
 	}
 	
+	public void turnDegrees(boolean turnRight, int turnDeg){
+		leftMotor.stop(true);
+		rightMotor.stop();
+		if(turnRight){
+			leftMotor.forward();
+			rightMotor.backward();			
+		}else{
+			rightMotor.forward();
+			leftMotor.backward();
+		}
+		waitMs(turnDeg);
+		rightMotor.stop(true);
+		leftMotor.stop();
+	}
+	
+	public void waitMs(int waitTime) {
+		startTime = System.currentTimeMillis();
+		curTime = startTime;
+		while(curTime < startTime + waitTime){
+			curTime = System.currentTimeMillis();
+			Thread.yield();
+		}
+	}
+	
 	@Override
 	public boolean takeControl() {
 		return (sensorManager.getLeftLight() > 0.55);
@@ -45,8 +70,8 @@ public class AvoidLeftEdge implements Behavior{
 		rightMotor.setSpeed((int)( leftMotor.getMaxSpeed()*0.35));
 		leftMotor.backward();
 		rightMotor.backward();
-		AuxMethods.waitMs(300);
-		AuxMethods.turnDegrees(true, 300, leftMotor, rightMotor);
+		waitMs(300);
+		turnDegrees(true, 300);
 		break;
 		}
 	}

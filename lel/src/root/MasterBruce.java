@@ -45,8 +45,11 @@ public class MasterBruce {
 		case "Rover5":
 			other = "Rover6";
 			break;
-		default:
+		case "Rover7":
 			other = "Rover8";
+			break;
+		default:
+			other = "Rover10";
 			break;
 		}
 		BTConnector connector = new BTConnector();
