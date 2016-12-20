@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import lejos.hardware.Button;
 import lejos.hardware.Sound;
 import lejos.hardware.ev3.LocalEV3;
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -103,7 +104,7 @@ public class MasterBruce {
 		
 		Mission m1 = new MoveAndAvoidEdges(sensorManager, leftMotor, rightMotor, armMotor);
 		AuxMethods.clearScreen();
-		
+		LCD.drawString("Press middle to run ", 0, 0);
 		while(true){
 			Delay.msDelay(100);
 			if(Button.ENTER.isDown()){

@@ -13,11 +13,14 @@ class JavaGenerator {
 	import root.Mission;
 	import root.SensorManager;
 	
-	public class «root.name» extends Mission {		
+	public class «root.name» extends Mission {
+		
+		«FOR f : root.flagsList»public boolean «f.name» = false;«"\n"»«ENDFOR»
+				
 		public MoveAndAvoidEdges(SensorManager sMgr, EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr, EV3MediumRegulatedMotor aMtr){
 			super(sMgr, lMtr, rMtr, aMtr);
 			
-			«FOR t : root.taskList»behaviorMap.put(«t.prio», new «t.name»(leftMotor, rightMotor, armMotor, sMgr));«"\n"»«ENDFOR»
+			«FOR t : root.taskList»behaviorMap.put(«t.prio», new «t.name»(this, leftMotor, rightMotor, armMotor, sMgr));«"\n"»«ENDFOR»
 			
 			Behavior[] behaviors = sortBehaviors(behaviorMap);
 			arby = new Arbitrator(behaviors);

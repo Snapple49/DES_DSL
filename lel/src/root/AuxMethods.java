@@ -47,7 +47,7 @@ public class AuxMethods {
 				rMtr.backward();
 			}
 			rMtr.stop();
-			if(sMgr.getColor() != Color.BLACK){
+			if(sMgr.getColor() == Color.BLACK){
 				lMtr.setSpeed(lMtr.getMaxSpeed()*0.2f);
 				rMtr.setSpeed(rMtr.getMaxSpeed()*0.2f);
 				lMtr.forward();

@@ -5,6 +5,7 @@ import des.missionrobot.robotDSL.Action
 import des.missionrobot.robotDSL.Task
 import java.util.List
 import des.missionrobot.robotDSL.Speed
+import javax.sound.sampled.BooleanControl.Type
 
 class BehaviorMaker {
 	
@@ -14,7 +15,9 @@ class BehaviorMaker {
 	static String value = ""
 	static String action = ""
 	static String actions = ""
+	static String prebool
 	static int onlyOnce = 0
+	
 	
 	def static makeBehaviorClass(Task t, String missionName){'''
 package root.«missionName»;
@@ -23,12 +26,15 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.robotics.subsumption.Behavior;
 import root.SensorManager;
+import root.AuxMethods.*;
 import lejos.robotics.Color;
 
 
 
 public class «t.name» implements Behavior{
-
+	
+	private «missionName» parent;
+	
 	//devices
 	private static EV3LargeRegulatedMotor leftMotor;
 	private static EV3LargeRegulatedMotor rightMotor;
@@ -41,7 +47,8 @@ public class «t.name» implements Behavior{
 	private long startTime = 0;
 	private long curTime = 0;
 	
-	public «t.name»(EV3LargeRegulatedMotor lMotor,
+	public «t.name»(«missionName» par,
+					EV3LargeRegulatedMotor lMotor,
 					EV3LargeRegulatedMotor rMotor,
 					EV3MediumRegulatedMotor aMotor,
 					SensorManager sM)
@@ -50,30 +57,7 @@ public class «t.name» implements Behavior{
 		rightMotor = rMotor;
 		armMotor = aMotor;
 		sensorManager = sM;
-	}
-	
-	public void turnDegrees(boolean turnRight, int turnDeg){
-		leftMotor.stop(true);
-		rightMotor.stop();
-		if(turnRight){
-			leftMotor.forward();
-			rightMotor.backward();			
-		}else{
-			rightMotor.forward();
-			leftMotor.backward();
-		}
-		waitMs(turnDeg);
-		rightMotor.stop(true);
-		leftMotor.stop();
-	}
-	
-	public void waitMs(int waitTime) {
-		startTime = System.currentTimeMillis();
-		curTime = startTime;
-		while(curTime < startTime + waitTime){
-			curTime = System.currentTimeMillis();
-			Thread.yield();
-		}
+		parent = par;
 	}
 	
 	@Override
@@ -97,9 +81,10 @@ public class «t.name» implements Behavior{
 	'''
 	}
 	def static toCondition(Trigger trig){
-		action = ""
+		value = ""
 		sensor = ""
-		if(trig.sensor != null){	
+		prebool = ""
+		if(trig.sensor != null){//trig is sensor	
 			switch (trig.sensor.sensorType) {
 				case LEFTLIGHT: {sensor = "sensorManager.getLeftLight()"}
 				case RIGHTLIGHT : {sensor = "sensorManager.getRightLight()"}
@@ -126,11 +111,33 @@ public class «t.name» implements Behavior{
 				}
 			}
 		}
-		else{
-			return "false"
+		else{ //trig is flag
+			value = "parent." + negation(trig)
+		}
+		
+		if(trig.boolType != null){
+			switch (trig.boolType.boolType) {
+				case AND: {
+					prebool = " && "
+				}
+				case OR: {
+					prebool = " || "
+				}
+				default: {
+					prebool = ""
+				}
+			}
 		}
 		
 		return sensor + value
+	}
+	
+	def static toFlag(Trigger trig){
+		if (trig.flag != null && trig.neg != null){
+			return "!(parent." + trig.flag.name + ")"
+		}else if(trig.flag != null){
+			return "parent." + trig.flag.name
+		}
 	}
 	
 	def static toAction(Action act){

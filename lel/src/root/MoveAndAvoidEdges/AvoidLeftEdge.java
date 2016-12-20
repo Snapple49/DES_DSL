@@ -9,7 +9,9 @@ import lejos.robotics.Color;
 
 
 public class AvoidLeftEdge implements Behavior{
-
+	
+	private MoveAndAvoidEdges parent;
+	
 	//devices
 	private static EV3LargeRegulatedMotor leftMotor;
 	private static EV3LargeRegulatedMotor rightMotor;
@@ -22,7 +24,8 @@ public class AvoidLeftEdge implements Behavior{
 	private long startTime = 0;
 	private long curTime = 0;
 	
-	public AvoidLeftEdge(EV3LargeRegulatedMotor lMotor,
+	public AvoidLeftEdge(MoveAndAvoidEdges par,
+					EV3LargeRegulatedMotor lMotor,
 					EV3LargeRegulatedMotor rMotor,
 					EV3MediumRegulatedMotor aMotor,
 					SensorManager sM)
@@ -31,6 +34,7 @@ public class AvoidLeftEdge implements Behavior{
 		rightMotor = rMotor;
 		armMotor = aMotor;
 		sensorManager = sM;
+		parent = par;
 	}
 	
 	public void turnDegrees(boolean turnRight, int turnDeg){

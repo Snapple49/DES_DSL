@@ -42,7 +42,6 @@ package root;
 				float[] floats = new float[strings.length];
 				for (int i = 0; i < strings.length; i++){
 					floats[i] = Float.parseFloat(strings[i]);
-					System.out.println(Arrays.toString(floats));
 				}
 			}
 			return floats;
