@@ -21,14 +21,22 @@ class RobotDSLGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
  	val root = resource.allContents.head as Missions;
  	if (root != null) {
- 		var path = "generated/root/" + resource.getURI().lastSegment + "/"
+ 		var path = "generated/root/"
+ 		fsa.generateFile(path+"Alfred.java", JavaGenerator.createAlfred())
+ 		fsa.generateFile(path+"MasterBruce.java", JavaGenerator.createMasterBruce())
+ 		fsa.generateFile(path+"AuxMethods.java", JavaGenerator.createAuxMethods())
+ 		fsa.generateFile(path+"Mission.java", JavaGenerator.createMission())
+ 		fsa.generateFile(path+"SensorManager.java", JavaGenerator.createSensorManager())
+ 		fsa.generateFile(path+"SensorUpdater.java", JavaGenerator.createSensorUpdater())
+ 		fsa.generateFile(path+"SlaveSensorManager.java", JavaGenerator.createSlaveSensorManager())
+ 		fsa.generateFile(path+"BTConReader.java", JavaGenerator.createBTConReader())
  		for (Mission m: root.missionList){
-	 		fsa.generateFile(path+"SensorManager" + ".java", JavaGenerator.sensorManager())
-	 		fsa.generateFile(path+m.name+"/"+m.name + ".java", JavaGenerator.arbitratorMain(m))
+ 			path = "generated/root/" + m.name + "/"
+	 		fsa.generateFile(path + m.name + ".java", JavaGenerator.missionGenerator(m))
 	 		for (Task t: m.taskList) {
-	 				fsa.generateFile(path+m.name+"/"+t.name + ".java", BehaviorMaker.makeBehaviorClass(t))
+	 				fsa.generateFile(path + t.name + ".java", BehaviorMaker.makeBehaviorClass(t, m.name))
 	 		}		
- 		}//assntitties
+ 		}
  	}
  	
 	}

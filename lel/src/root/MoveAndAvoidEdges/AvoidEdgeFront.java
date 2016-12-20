@@ -2,9 +2,10 @@ package root.MoveAndAvoidEdges;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
-import lejos.robotics.Color;
 import lejos.robotics.subsumption.Behavior;
 import root.SensorManager;
+import lejos.robotics.Color;
+
 
 
 public class AvoidEdgeFront implements Behavior{

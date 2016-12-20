@@ -3,11 +3,7 @@ package des.missionrobot.generator
 import des.missionrobot.robotDSL.Trigger
 import des.missionrobot.robotDSL.Action
 import des.missionrobot.robotDSL.Task
-import des.missionrobot.robotDSL.Sensor
-import org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl.Describer
 import java.util.List
-import des.missionrobot.robotDSL.DirectionVal
-import des.missionrobot.robotDSL.SpeedVal
 import des.missionrobot.robotDSL.Speed
 
 class BehaviorMaker {
@@ -20,12 +16,13 @@ class BehaviorMaker {
 	static String actions = ""
 	static int onlyOnce = 0
 	
-	def static makeBehaviorClass(Task t){'''
-package lel;
+	def static makeBehaviorClass(Task t, String missionName){'''
+package root.«missionName»;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.robotics.subsumption.Behavior;
+import root.SensorManager;
 import lejos.robotics.Color;
 
 

@@ -484,7 +484,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAction_Op()
+  public EReference getAction_Trig()
   {
     return (EReference)actionEClass.getEStructuralFeatures().get(5);
   }
@@ -494,7 +494,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAction_Sound()
+  public EReference getAction_Op()
   {
     return (EReference)actionEClass.getEStructuralFeatures().get(6);
   }
@@ -504,7 +504,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAction_Flag()
+  public EReference getAction_Sound()
   {
     return (EReference)actionEClass.getEStructuralFeatures().get(7);
   }
@@ -514,9 +514,19 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAction_Bool()
+  public EReference getAction_Flag()
   {
     return (EReference)actionEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAction_Bool()
+  {
+    return (EReference)actionEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -953,6 +963,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEReference(actionEClass, ACTION__SPEED);
     createEReference(actionEClass, ACTION__TURN_DIR);
     createEAttribute(actionEClass, ACTION__DEGR);
+    createEReference(actionEClass, ACTION__TRIG);
     createEReference(actionEClass, ACTION__OP);
     createEReference(actionEClass, ACTION__SOUND);
     createEReference(actionEClass, ACTION__FLAG);
@@ -1066,6 +1077,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEReference(getAction_Speed(), this.getSpeed(), null, "speed", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_TurnDir(), this.getDirection(), null, "turnDir", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAction_Degr(), ecorePackage.getEInt(), "degr", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Trig(), this.getTrigger(), null, "trig", null, 0, -1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_Op(), this.getArmOp(), null, "op", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_Sound(), this.getSound(), null, "sound", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_Flag(), this.getFlag(), null, "flag", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

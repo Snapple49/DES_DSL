@@ -36,6 +36,7 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
+					put(grammarAccess.getActionAccess().getAlternatives_1_2(), "rule__Action__Alternatives_1_2");
 					put(grammarAccess.getTriggerAccess().getAlternatives_1(), "rule__Trigger__Alternatives_1");
 					put(grammarAccess.getTriggerAccess().getAlternatives_1_1_1(), "rule__Trigger__Alternatives_1_1_1");
 					put(grammarAccess.getDirectionValAccess().getAlternatives(), "rule__DirectionVal__Alternatives");
@@ -56,6 +57,8 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionAccess().getGroup_0_2(), "rule__Action__Group_0_2__0");
 					put(grammarAccess.getActionAccess().getGroup_0_3(), "rule__Action__Group_0_3__0");
 					put(grammarAccess.getActionAccess().getGroup_1(), "rule__Action__Group_1__0");
+					put(grammarAccess.getActionAccess().getGroup_1_2_0(), "rule__Action__Group_1_2_0__0");
+					put(grammarAccess.getActionAccess().getGroup_1_2_1(), "rule__Action__Group_1_2_1__0");
 					put(grammarAccess.getActionAccess().getGroup_2(), "rule__Action__Group_2__0");
 					put(grammarAccess.getActionAccess().getGroup_3(), "rule__Action__Group_3__0");
 					put(grammarAccess.getActionAccess().getGroup_4(), "rule__Action__Group_4__0");
@@ -84,7 +87,8 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionAccess().getDurationAssignment_0_2_1(), "rule__Action__DurationAssignment_0_2_1");
 					put(grammarAccess.getActionAccess().getSpeedAssignment_0_3_1(), "rule__Action__SpeedAssignment_0_3_1");
 					put(grammarAccess.getActionAccess().getTurnDirAssignment_1_1(), "rule__Action__TurnDirAssignment_1_1");
-					put(grammarAccess.getActionAccess().getDegrAssignment_1_2(), "rule__Action__DegrAssignment_1_2");
+					put(grammarAccess.getActionAccess().getDegrAssignment_1_2_0_0(), "rule__Action__DegrAssignment_1_2_0_0");
+					put(grammarAccess.getActionAccess().getTrigAssignment_1_2_1_1(), "rule__Action__TrigAssignment_1_2_1_1");
 					put(grammarAccess.getActionAccess().getOpAssignment_2_1(), "rule__Action__OpAssignment_2_1");
 					put(grammarAccess.getActionAccess().getSoundAssignment_3_2(), "rule__Action__SoundAssignment_3_2");
 					put(grammarAccess.getActionAccess().getFlagAssignment_4_1(), "rule__Action__FlagAssignment_4_1");

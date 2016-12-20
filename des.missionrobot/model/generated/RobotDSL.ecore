@@ -36,6 +36,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="turnDir" eType="#//Direction"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="degr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trig" upperBound="-1" eType="#//Trigger"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="op" eType="#//ArmOp" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sound" eType="#//Sound"
         containment="true"/>

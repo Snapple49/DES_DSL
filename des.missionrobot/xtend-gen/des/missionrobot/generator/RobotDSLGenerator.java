@@ -11,7 +11,6 @@ import des.missionrobot.robotDSL.Missions;
 import des.missionrobot.robotDSL.Task;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
@@ -33,33 +32,43 @@ public class RobotDSLGenerator extends AbstractGenerator {
     final Missions root = ((Missions) _head);
     boolean _notEquals = (!Objects.equal(root, null));
     if (_notEquals) {
-      URI _uRI = resource.getURI();
-      String _lastSegment = _uRI.lastSegment();
-      String _plus = ("generated/root/" + _lastSegment);
-      String path = (_plus + "/");
+      String path = "generated/root/";
+      CharSequence _createAlfred = JavaGenerator.createAlfred();
+      fsa.generateFile((path + "Alfred.java"), _createAlfred);
+      CharSequence _createMasterBruce = JavaGenerator.createMasterBruce();
+      fsa.generateFile((path + "MasterBruce.java"), _createMasterBruce);
+      CharSequence _createAuxMethods = JavaGenerator.createAuxMethods();
+      fsa.generateFile((path + "AuxMethods.java"), _createAuxMethods);
+      CharSequence _createMission = JavaGenerator.createMission();
+      fsa.generateFile((path + "Mission.java"), _createMission);
+      CharSequence _createSensorManager = JavaGenerator.createSensorManager();
+      fsa.generateFile((path + "SensorManager.java"), _createSensorManager);
+      CharSequence _createSensorUpdater = JavaGenerator.createSensorUpdater();
+      fsa.generateFile((path + "SensorUpdater.java"), _createSensorUpdater);
+      CharSequence _createSlaveSensorManager = JavaGenerator.createSlaveSensorManager();
+      fsa.generateFile((path + "SlaveSensorManager.java"), _createSlaveSensorManager);
+      CharSequence _createBTConReader = JavaGenerator.createBTConReader();
+      fsa.generateFile((path + "BTConReader.java"), _createBTConReader);
       EList<Mission> _missionList = root.getMissionList();
       for (final Mission m : _missionList) {
         {
-          CharSequence _sensorManager = JavaGenerator.sensorManager();
-          fsa.generateFile(((path + "SensorManager") + ".java"), _sensorManager);
           String _name = m.getName();
-          String _plus_1 = (path + _name);
-          String _plus_2 = (_plus_1 + "/");
+          String _plus = ("generated/root/" + _name);
+          String _plus_1 = (_plus + "/");
+          path = _plus_1;
           String _name_1 = m.getName();
-          String _plus_3 = (_plus_2 + _name_1);
-          String _plus_4 = (_plus_3 + ".java");
-          CharSequence _arbitratorMain = JavaGenerator.arbitratorMain(m);
-          fsa.generateFile(_plus_4, _arbitratorMain);
+          String _plus_2 = (path + _name_1);
+          String _plus_3 = (_plus_2 + ".java");
+          CharSequence _missionGenerator = JavaGenerator.missionGenerator(m);
+          fsa.generateFile(_plus_3, _missionGenerator);
           EList<Task> _taskList = m.getTaskList();
           for (final Task t : _taskList) {
-            String _name_2 = m.getName();
-            String _plus_5 = (path + _name_2);
-            String _plus_6 = (_plus_5 + "/");
-            String _name_3 = t.getName();
-            String _plus_7 = (_plus_6 + _name_3);
-            String _plus_8 = (_plus_7 + ".java");
-            CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(t);
-            fsa.generateFile(_plus_8, _makeBehaviorClass);
+            String _name_2 = t.getName();
+            String _plus_4 = (path + _name_2);
+            String _plus_5 = (_plus_4 + ".java");
+            String _name_3 = m.getName();
+            CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(t, _name_3);
+            fsa.generateFile(_plus_5, _makeBehaviorClass);
           }
         }
       }

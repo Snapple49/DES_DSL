@@ -279,13 +279,22 @@ public interface RobotDSLPackage extends EPackage
   int ACTION__DEGR = 4;
 
   /**
+   * The feature id for the '<em><b>Trig</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION__TRIG = 5;
+
+  /**
    * The feature id for the '<em><b>Op</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__OP = 5;
+  int ACTION__OP = 6;
 
   /**
    * The feature id for the '<em><b>Sound</b></em>' containment reference.
@@ -294,7 +303,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION__SOUND = 6;
+  int ACTION__SOUND = 7;
 
   /**
    * The feature id for the '<em><b>Flag</b></em>' reference.
@@ -303,7 +312,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION__FLAG = 7;
+  int ACTION__FLAG = 8;
 
   /**
    * The feature id for the '<em><b>Bool</b></em>' containment reference.
@@ -312,7 +321,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION__BOOL = 8;
+  int ACTION__BOOL = 9;
 
   /**
    * The number of structural features of the '<em>Action</em>' class.
@@ -321,7 +330,7 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_FEATURE_COUNT = 9;
+  int ACTION_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.TriggerImpl <em>Trigger</em>}' class.
@@ -1021,6 +1030,17 @@ public interface RobotDSLPackage extends EPackage
   EAttribute getAction_Degr();
 
   /**
+   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Action#getTrig <em>Trig</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Trig</em>'.
+   * @see des.missionrobot.robotDSL.Action#getTrig()
+   * @see #getAction()
+   * @generated
+   */
+  EReference getAction_Trig();
+
+  /**
    * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1661,6 +1681,14 @@ public interface RobotDSLPackage extends EPackage
      * @generated
      */
     EAttribute ACTION__DEGR = eINSTANCE.getAction_Degr();
+
+    /**
+     * The meta object literal for the '<em><b>Trig</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION__TRIG = eINSTANCE.getAction_Trig();
 
     /**
      * The meta object literal for the '<em><b>Op</b></em>' containment reference feature.

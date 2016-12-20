@@ -98,3 +98,4 @@ public class SensorManager extends Thread{
 		gyroSamples = values[3];
 	}
 }
+

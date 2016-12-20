@@ -527,39 +527,69 @@ ruleAction returns [EObject current=null]
 			)
 			(
 				(
-					lv_degr_10_0=RULE_INT
+					(
+						(
+							lv_degr_10_0=RULE_INT
+							{
+								newLeafNode(lv_degr_10_0, grammarAccess.getActionAccess().getDegrINTTerminalRuleCall_1_2_0_0_0());
+							}
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getActionRule());
+								}
+								setWithLastConsumed(
+									$current,
+									"degr",
+									lv_degr_10_0,
+									"org.eclipse.xtext.common.Terminals.INT");
+							}
+						)
+					)
+					otherlv_11='deg'
 					{
-						newLeafNode(lv_degr_10_0, grammarAccess.getActionAccess().getDegrINTTerminalRuleCall_1_2_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getActionRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"degr",
-							lv_degr_10_0,
-							"org.eclipse.xtext.common.Terminals.INT");
+						newLeafNode(otherlv_11, grammarAccess.getActionAccess().getDegKeyword_1_2_0_1());
 					}
 				)
+				    |
+				(
+					otherlv_12='until'
+					{
+						newLeafNode(otherlv_12, grammarAccess.getActionAccess().getUntilKeyword_1_2_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getActionAccess().getTrigTriggerParserRuleCall_1_2_1_1_0());
+							}
+							lv_trig_13_0=ruleTrigger
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getActionRule());
+								}
+								add(
+									$current,
+									"trig",
+									lv_trig_13_0,
+									"des.missionrobot.RobotDSL.Trigger");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)+
+				)
 			)
-			otherlv_11='deg'
-			{
-				newLeafNode(otherlv_11, grammarAccess.getActionAccess().getDegKeyword_1_3());
-			}
 		)
 		    |
 		(
-			otherlv_12='Arm'
+			otherlv_14='Arm'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getActionAccess().getArmKeyword_2_0());
+				newLeafNode(otherlv_14, grammarAccess.getActionAccess().getArmKeyword_2_0());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getActionAccess().getOpArmOpParserRuleCall_2_1_0());
 					}
-					lv_op_13_0=ruleArmOp
+					lv_op_15_0=ruleArmOp
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActionRule());
@@ -567,7 +597,7 @@ ruleAction returns [EObject current=null]
 						set(
 							$current,
 							"op",
-							lv_op_13_0,
+							lv_op_15_0,
 							"des.missionrobot.RobotDSL.ArmOp");
 						afterParserOrEnumRuleCall();
 					}
@@ -576,20 +606,20 @@ ruleAction returns [EObject current=null]
 		)
 		    |
 		(
-			otherlv_14='Play'
+			otherlv_16='Play'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getActionAccess().getPlayKeyword_3_0());
+				newLeafNode(otherlv_16, grammarAccess.getActionAccess().getPlayKeyword_3_0());
 			}
-			otherlv_15='sound'
+			otherlv_17='sound'
 			{
-				newLeafNode(otherlv_15, grammarAccess.getActionAccess().getSoundKeyword_3_1());
+				newLeafNode(otherlv_17, grammarAccess.getActionAccess().getSoundKeyword_3_1());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getActionAccess().getSoundSoundParserRuleCall_3_2_0());
 					}
-					lv_sound_16_0=ruleSound
+					lv_sound_18_0=ruleSound
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActionRule());
@@ -597,7 +627,7 @@ ruleAction returns [EObject current=null]
 						set(
 							$current,
 							"sound",
-							lv_sound_16_0,
+							lv_sound_18_0,
 							"des.missionrobot.RobotDSL.Sound");
 						afterParserOrEnumRuleCall();
 					}
@@ -606,9 +636,9 @@ ruleAction returns [EObject current=null]
 		)
 		    |
 		(
-			otherlv_17='Update'
+			otherlv_19='Update'
 			{
-				newLeafNode(otherlv_17, grammarAccess.getActionAccess().getUpdateKeyword_4_0());
+				newLeafNode(otherlv_19, grammarAccess.getActionAccess().getUpdateKeyword_4_0());
 			}
 			(
 				(
@@ -617,22 +647,22 @@ ruleAction returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getActionRule());
 						}
 					}
-					otherlv_18=RULE_ID
+					otherlv_20=RULE_ID
 					{
-						newLeafNode(otherlv_18, grammarAccess.getActionAccess().getFlagFlagCrossReference_4_1_0());
+						newLeafNode(otherlv_20, grammarAccess.getActionAccess().getFlagFlagCrossReference_4_1_0());
 					}
 				)
 			)
-			otherlv_19='to'
+			otherlv_21='to'
 			{
-				newLeafNode(otherlv_19, grammarAccess.getActionAccess().getToKeyword_4_2());
+				newLeafNode(otherlv_21, grammarAccess.getActionAccess().getToKeyword_4_2());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getActionAccess().getBoolBoolParserRuleCall_4_3_0());
 					}
-					lv_bool_20_0=ruleBool
+					lv_bool_22_0=ruleBool
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getActionRule());
@@ -640,7 +670,7 @@ ruleAction returns [EObject current=null]
 						set(
 							$current,
 							"bool",
-							lv_bool_20_0,
+							lv_bool_22_0,
 							"des.missionrobot.RobotDSL.Bool");
 						afterParserOrEnumRuleCall();
 					}

@@ -3,6 +3,8 @@
  */
 package des.missionrobot.robotDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link des.missionrobot.robotDSL.Action#getSpeed <em>Speed</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getTurnDir <em>Turn Dir</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getDegr <em>Degr</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getTrig <em>Trig</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getOp <em>Op</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getFlag <em>Flag</em>}</li>
@@ -160,6 +163,22 @@ public interface Action extends EObject
    * @generated
    */
   void setDegr(int value);
+
+  /**
+   * Returns the value of the '<em><b>Trig</b></em>' containment reference list.
+   * The list contents are of type {@link des.missionrobot.robotDSL.Trigger}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Trig</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Trig</em>' containment reference list.
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Trig()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Trigger> getTrig();
 
   /**
    * Returns the value of the '<em><b>Op</b></em>' containment reference.
