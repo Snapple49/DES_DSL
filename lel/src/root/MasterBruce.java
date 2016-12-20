@@ -76,6 +76,10 @@ public class MasterBruce {
 		return success;
 	}
 	
+	public static void Calibrate(){
+		
+	}
+	
 	public static void main(String[] args) {
 		int retval = setupCommMaster();
 		if(retval != 1){
@@ -99,11 +103,19 @@ public class MasterBruce {
 		
 		Mission m1 = new MoveAndAvoidEdges(sensorManager, leftMotor, rightMotor, armMotor);
 		AuxMethods.clearScreen();
+		
 		while(true){
 			Delay.msDelay(100);
 			if(Button.ENTER.isDown()){
 				m1.RunArbitrator();				
 			}
+			if(Button.UP.isDown()){
+				Calibrate();
+			}
+			if(Button.ESCAPE.isDown()){
+				break;
+			}
 		}
+		System.exit(0);
 	}
 }

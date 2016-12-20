@@ -48,7 +48,6 @@ package root;
 			running = true;
 			while(running){
 				arrayToSend = readValues();
-				System.out.println(Arrays.toString(arrayToSend));
 				this.transmit(serializeFloats(arrayToSend));
 				waitMs(period);
 			}

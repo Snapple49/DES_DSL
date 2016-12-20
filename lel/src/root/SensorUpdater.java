@@ -26,7 +26,6 @@ package root;
 				try {
 					Thread.yield();
 					readValue = reader.readThatLine();
-					System.out.println(readValue);
 					floats = parseFloats(readValue);
 					sMgr.updateSlaveDevices(floats);
 				} catch (IOException e) {

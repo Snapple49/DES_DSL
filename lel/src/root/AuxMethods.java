@@ -1,7 +1,6 @@
 package root;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
-import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.Color;
 
 public class AuxMethods {

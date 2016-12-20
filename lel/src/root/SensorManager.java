@@ -7,7 +7,7 @@ import lejos.robotics.SampleProvider;
 
 public class SensorManager extends Thread{
 	
-	public float blackThreshold = 0.5f;
+	public float blackThreshold = 0.4f;
 	public float whiteThreshold = 0.55f;
 	
 	public boolean running;
