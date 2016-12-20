@@ -1,6 +1,8 @@
 package root;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.sensor.EV3ColorSensor;
+import lejos.robotics.Color;
 
 public class AuxMethods {
 
@@ -35,7 +37,27 @@ public class AuxMethods {
 	}
 	
 	static public void centralize(SensorManager sMgr, EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr){
-		
+		while(!(sMgr.getLeftLight() < sMgr.blackThreshold && sMgr.getRightLight() < sMgr.blackThreshold && sMgr.getColor() != Color.BLACK)){
+			while(sMgr.getLeftLight() > sMgr.blackThreshold){
+				lMtr.setSpeed(lMtr.getMaxSpeed()*0.2f);
+				lMtr.backward();
+			}
+			lMtr.stop();
+			while(sMgr.getRightLight() > sMgr.blackThreshold){
+				rMtr.setSpeed(rMtr.getMaxSpeed()*0.2f);
+				rMtr.backward();
+			}
+			rMtr.stop();
+			if(sMgr.getColor() != Color.BLACK){
+				lMtr.setSpeed(lMtr.getMaxSpeed()*0.2f);
+				rMtr.setSpeed(rMtr.getMaxSpeed()*0.2f);
+				lMtr.forward();
+				rMtr.forward();
+				waitMs(300);
+				lMtr.stop();
+				rMtr.stop();
+			}
+		}
 	}
 	
 }
