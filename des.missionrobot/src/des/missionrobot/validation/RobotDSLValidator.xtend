@@ -3,6 +3,15 @@
  */
 package des.missionrobot.validation
 
+import des.missionrobot.robotDSL.Missions
+import org.eclipse.xtext.validation.Check
+import des.missionrobot.robotDSL.Mission
+import des.missionrobot.robotDSL.Task
+import java.util.List
+import java.util.HashSet
+import java.util.Set
+import org.eclipse.emf.common.util.EList
+import des.missionrobot.robotDSL.RobotDSLPackage
 
 /**
  * This class contains custom validation rules. 
@@ -21,5 +30,12 @@ class RobotDSLValidator extends AbstractRobotDSLValidator {
 //					INVALID_NAME)
 //		}
 //	}
+
+	@Check
+	def checkPriorityCorrect(Mission m){
+		if(Auxiliary.hasDuplicates(m.taskList)){
+			warning('Priority should be unique', null)
+		}
+	}
 	
 }

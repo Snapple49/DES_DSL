@@ -3,7 +3,12 @@
  */
 package des.missionrobot.validation;
 
+import des.missionrobot.robotDSL.Mission;
+import des.missionrobot.robotDSL.Task;
 import des.missionrobot.validation.AbstractRobotDSLValidator;
+import des.missionrobot.validation.Auxiliary;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.validation.Check;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +17,12 @@ import des.missionrobot.validation.AbstractRobotDSLValidator;
  */
 @SuppressWarnings("all")
 public class RobotDSLValidator extends AbstractRobotDSLValidator {
+  @Check
+  public void checkPriorityCorrect(final Mission m) {
+    EList<Task> _taskList = m.getTaskList();
+    boolean _hasDuplicates = Auxiliary.hasDuplicates(_taskList);
+    if (_hasDuplicates) {
+      this.warning("Priority should be unique", null);
+    }
+  }
 }
