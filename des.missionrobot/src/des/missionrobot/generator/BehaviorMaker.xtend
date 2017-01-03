@@ -5,7 +5,7 @@ import des.missionrobot.robotDSL.Action
 import des.missionrobot.robotDSL.Task
 import java.util.List
 import des.missionrobot.robotDSL.Speed
-import javax.sound.sampled.BooleanControl.Type
+import des.missionrobot.robotDSL.BoolType
 
 class BehaviorMaker {
 	
@@ -15,7 +15,7 @@ class BehaviorMaker {
 	static String value = ""
 	static String action = ""
 	static String actions = ""
-	static String prebool
+	static String prebool = ""
 	static int onlyOnce = 0
 	
 	
@@ -26,7 +26,7 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.robotics.subsumption.Behavior;
 import root.SensorManager;
-import root.AuxMethods.*;
+import root.AuxMethods;
 import lejos.robotics.Color;
 
 
@@ -43,9 +43,6 @@ public class «t.name» implements Behavior{
 	
 	//flags
 	private boolean suppressed = false;
-	
-	private long startTime = 0;
-	private long curTime = 0;
 	
 	public «t.name»(«missionName» par,
 					EV3LargeRegulatedMotor lMotor,
@@ -90,14 +87,17 @@ public class «t.name» implements Behavior{
 				case RIGHTLIGHT : {sensor = "sensorManager.getRightLight()"}
 				case COLOR : {sensor = "sensorManager.getColor()"}
 				case BACKUS :{sensor = "sensorManager.getBackUltrasonic()"}
+				case FRONTUS : {sensor = "sensorManager.getFrontUltrasonic()"}
+				case LEFTTOUCH : {sensor = "sensorManager.getLeftTouch()"}
+				case RIGHTTOUCH : {sensor = "sensorManager.getRightTouch()"}
 				default : {sensor = ""}
 			}
 			if (trig.dist == null){
 				switch (trig.color.colorName) {
-					case BRIGHT : {value = " > 0.55"}
+					case BRIGHT : {value = " > sensorManager.whiteThreshold"}
 					case BLACK: {value = " == Color.BLACK"}
 					case BLUE: {value = " == Color.BLUE"}
-					case DARK: {value = " < 0.4"}
+					case DARK: {value = " < sensorManager.blackThreshold"}
 					case GREEN: {value = " == Color.GREEN"}
 					case RED: {value = " == Color.RED"}
 					case WHITE: {value = " == Color.WHITE"}
@@ -112,7 +112,7 @@ public class «t.name» implements Behavior{
 			}
 		}
 		else{ //trig is flag
-			value = "parent." + negation(trig)
+			value = toFlag(trig)
 		}
 		
 		if(trig.boolType != null){
@@ -126,10 +126,11 @@ public class «t.name» implements Behavior{
 				default: {
 					prebool = ""
 				}
+				
 			}
 		}
 		
-		return sensor + value
+		return prebool + sensor + value
 	}
 	
 	def static toFlag(Trigger trig){
@@ -169,25 +170,59 @@ rightMotor.backward();
 			}
 			if(act.duration > 0){
 				action = action + 
-				'''waitMs(«act.duration»);
+				'''AuxMethods.waitMs(«act.duration»);
 				'''						
 			}
 		}else if(act.turnDir != null){ //action is a turn
 			switch (act.turnDir.dir) {
 				case LEFT: {
 					action = action + 
-					'''turnDegrees(false, «act.degr*100»);
+					'''AuxMethods.turnDegrees(false, «act.degr*100», leftMotor, rightMotor);
 					'''
 				}
 				case RIGHT: {
 					action = action + 
-					'''turnDegrees(true, «act.degr*100»);
+					'''AuxMethods.turnDegrees(true, «act.degr*100», leftMotor, rightMotor);
 					'''
 				}
 				default: {
 					return action = "error"
 				}
 			}
+		}else if(act.op != null){ //action is arm operation
+			switch (act.op.opType) {
+				case UP: {
+					action = '''armMotor.rotate(90);
+					'''
+				}
+				default: {
+					action = '''armMotor.rotate(-90);
+					'''
+				}
+			}
+		}else if(act.flag != null){ //action is update flag
+			action = "parent." + act.flag.name
+			if (act.bool.boolType == BoolType.TRUE){
+				action = action + ''' = true;
+				'''
+			}else{
+				action = action + '''= false;
+				'''
+			}
+		}else if(act.sound != null){ //action is sound
+			switch (act.sound.soundName) {
+				case FANFARE: {
+					action = '''Sound.beepSequenceUp();
+					'''
+				}
+				default: {
+					action = '''Sound.buzz();
+					'''
+				}
+			}
+		} else { //action is centralize 
+			action = '''AuxMethods.centralize(sensorManager, leftMotor, rightMotor);
+			'''
 		}
 		return action
 	}
@@ -224,17 +259,17 @@ break;
 	}
 	def static getSpeed(Speed speed){
 		if (speed == null){
-			return "(int)( leftMotor.getMaxSpeed()*0.5)"
+			return "leftMotor.getMaxSpeed()*0.5f"
 		}
 		switch (speed.speed) {
 			case HIGH: {
-				return "(int)( leftMotor.getMaxSpeed()*0.7)"
+				return "fleftMotor.getMaxSpeed()*0.7f"
 			}
 			case LOW: {
-				return "(int)( leftMotor.getMaxSpeed()*0.35)"	
+				return "leftMotor.getMaxSpeed()*0.35f"	
 			}
 			default:{
-				return "(int)( leftMotor.getMaxSpeed()*0.5)"
+				return "leftMotor.getMaxSpeed()*0.5f"
 			}
 		}
 	}

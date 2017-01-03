@@ -5,14 +5,18 @@ generate robotDSL "http://www.missionrobot.des/RobotDSL"
 
 Missions: 
 	'Missionset' name = ID
-	'Missions:' missionList += Mission
+	'Missions:' missionList += Mission+
 ;
 
 Mission:
 	'Mission' name = ID
 	'Flags:' flagsList += Flag*
 	'Tasks:' taskList += Task+
-	'Goal:' ('Condition:'goalEvents += Trigger+)? ('timeout' timeout = Time)? ('Actions:' finishActions += Action+)?
+	'Goal:' goal = Goal
+;
+
+Goal:
+	('Condition:'goalEvents += Trigger+)? (timeout = Time)? ('Actions:' finishActions += Action+)?
 ;
 
 Task:
@@ -28,7 +32,8 @@ Action:
 	'Turn' turnDir = Direction (degr = INT 'deg' | 'until' trig += Trigger+) |
 	'Arm' op = ArmOp |
 	'Play' 'sound' sound = Sound |
-	'Update' flag = [Flag] 'to' bool = Bool
+	'Update' flag = [Flag] 'to' bool = Bool |
+	cent = 'Centalize'
 ;
 
 Trigger: 
@@ -43,7 +48,7 @@ Distance:
 ;
 
 Flag:
-	name = ID ('is' bool = Bool)?
+	name = ID
 ;
 
 Time:

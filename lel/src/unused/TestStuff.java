@@ -37,6 +37,8 @@ public class TestStuff {
 		}
 		String s = new String(bytes);
 		System.out.println(s);
+		System.out.println(Float.POSITIVE_INFINITY);
+		System.out.println(20f < Float.POSITIVE_INFINITY);
 		
 		/*
 		System.out.println(src);

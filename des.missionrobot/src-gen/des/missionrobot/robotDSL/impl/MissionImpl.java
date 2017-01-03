@@ -3,13 +3,11 @@
  */
 package des.missionrobot.robotDSL.impl;
 
-import des.missionrobot.robotDSL.Action;
 import des.missionrobot.robotDSL.Flag;
+import des.missionrobot.robotDSL.Goal;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Task;
-import des.missionrobot.robotDSL.Time;
-import des.missionrobot.robotDSL.Trigger;
 
 import java.util.Collection;
 
@@ -38,9 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getName <em>Name</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getFlagsList <em>Flags List</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getTaskList <em>Task List</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getGoalEvents <em>Goal Events</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getTimeout <em>Timeout</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getFinishActions <em>Finish Actions</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.MissionImpl#getGoal <em>Goal</em>}</li>
  * </ul>
  *
  * @generated
@@ -88,34 +84,14 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
   protected EList<Task> taskList;
 
   /**
-   * The cached value of the '{@link #getGoalEvents() <em>Goal Events</em>}' containment reference list.
+   * The cached value of the '{@link #getGoal() <em>Goal</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGoalEvents()
+   * @see #getGoal()
    * @generated
    * @ordered
    */
-  protected EList<Trigger> goalEvents;
-
-  /**
-   * The cached value of the '{@link #getTimeout() <em>Timeout</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTimeout()
-   * @generated
-   * @ordered
-   */
-  protected Time timeout;
-
-  /**
-   * The cached value of the '{@link #getFinishActions() <em>Finish Actions</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFinishActions()
-   * @generated
-   * @ordered
-   */
-  protected EList<Action> finishActions;
+  protected Goal goal;
 
   /**
    * <!-- begin-user-doc -->
@@ -194,13 +170,9 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Trigger> getGoalEvents()
+  public Goal getGoal()
   {
-    if (goalEvents == null)
-    {
-      goalEvents = new EObjectContainmentEList<Trigger>(Trigger.class, this, RobotDSLPackage.MISSION__GOAL_EVENTS);
-    }
-    return goalEvents;
+    return goal;
   }
 
   /**
@@ -208,23 +180,13 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public Time getTimeout()
+  public NotificationChain basicSetGoal(Goal newGoal, NotificationChain msgs)
   {
-    return timeout;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTimeout(Time newTimeout, NotificationChain msgs)
-  {
-    Time oldTimeout = timeout;
-    timeout = newTimeout;
+    Goal oldGoal = goal;
+    goal = newGoal;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.MISSION__TIMEOUT, oldTimeout, newTimeout);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.MISSION__GOAL, oldGoal, newGoal);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -235,34 +197,20 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTimeout(Time newTimeout)
+  public void setGoal(Goal newGoal)
   {
-    if (newTimeout != timeout)
+    if (newGoal != goal)
     {
       NotificationChain msgs = null;
-      if (timeout != null)
-        msgs = ((InternalEObject)timeout).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.MISSION__TIMEOUT, null, msgs);
-      if (newTimeout != null)
-        msgs = ((InternalEObject)newTimeout).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.MISSION__TIMEOUT, null, msgs);
-      msgs = basicSetTimeout(newTimeout, msgs);
+      if (goal != null)
+        msgs = ((InternalEObject)goal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.MISSION__GOAL, null, msgs);
+      if (newGoal != null)
+        msgs = ((InternalEObject)newGoal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.MISSION__GOAL, null, msgs);
+      msgs = basicSetGoal(newGoal, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.MISSION__TIMEOUT, newTimeout, newTimeout));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Action> getFinishActions()
-  {
-    if (finishActions == null)
-    {
-      finishActions = new EObjectContainmentEList<Action>(Action.class, this, RobotDSLPackage.MISSION__FINISH_ACTIONS);
-    }
-    return finishActions;
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.MISSION__GOAL, newGoal, newGoal));
   }
 
   /**
@@ -279,12 +227,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         return ((InternalEList<?>)getFlagsList()).basicRemove(otherEnd, msgs);
       case RobotDSLPackage.MISSION__TASK_LIST:
         return ((InternalEList<?>)getTaskList()).basicRemove(otherEnd, msgs);
-      case RobotDSLPackage.MISSION__GOAL_EVENTS:
-        return ((InternalEList<?>)getGoalEvents()).basicRemove(otherEnd, msgs);
-      case RobotDSLPackage.MISSION__TIMEOUT:
-        return basicSetTimeout(null, msgs);
-      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
-        return ((InternalEList<?>)getFinishActions()).basicRemove(otherEnd, msgs);
+      case RobotDSLPackage.MISSION__GOAL:
+        return basicSetGoal(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -305,12 +249,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         return getFlagsList();
       case RobotDSLPackage.MISSION__TASK_LIST:
         return getTaskList();
-      case RobotDSLPackage.MISSION__GOAL_EVENTS:
-        return getGoalEvents();
-      case RobotDSLPackage.MISSION__TIMEOUT:
-        return getTimeout();
-      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
-        return getFinishActions();
+      case RobotDSLPackage.MISSION__GOAL:
+        return getGoal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -337,16 +277,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         getTaskList().clear();
         getTaskList().addAll((Collection<? extends Task>)newValue);
         return;
-      case RobotDSLPackage.MISSION__GOAL_EVENTS:
-        getGoalEvents().clear();
-        getGoalEvents().addAll((Collection<? extends Trigger>)newValue);
-        return;
-      case RobotDSLPackage.MISSION__TIMEOUT:
-        setTimeout((Time)newValue);
-        return;
-      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
-        getFinishActions().clear();
-        getFinishActions().addAll((Collection<? extends Action>)newValue);
+      case RobotDSLPackage.MISSION__GOAL:
+        setGoal((Goal)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -371,14 +303,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
       case RobotDSLPackage.MISSION__TASK_LIST:
         getTaskList().clear();
         return;
-      case RobotDSLPackage.MISSION__GOAL_EVENTS:
-        getGoalEvents().clear();
-        return;
-      case RobotDSLPackage.MISSION__TIMEOUT:
-        setTimeout((Time)null);
-        return;
-      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
-        getFinishActions().clear();
+      case RobotDSLPackage.MISSION__GOAL:
+        setGoal((Goal)null);
         return;
     }
     super.eUnset(featureID);
@@ -400,12 +326,8 @@ public class MissionImpl extends MinimalEObjectImpl.Container implements Mission
         return flagsList != null && !flagsList.isEmpty();
       case RobotDSLPackage.MISSION__TASK_LIST:
         return taskList != null && !taskList.isEmpty();
-      case RobotDSLPackage.MISSION__GOAL_EVENTS:
-        return goalEvents != null && !goalEvents.isEmpty();
-      case RobotDSLPackage.MISSION__TIMEOUT:
-        return timeout != null;
-      case RobotDSLPackage.MISSION__FINISH_ACTIONS:
-        return finishActions != null && !finishActions.isEmpty();
+      case RobotDSLPackage.MISSION__GOAL:
+        return goal != null;
     }
     return super.eIsSet(featureID);
   }

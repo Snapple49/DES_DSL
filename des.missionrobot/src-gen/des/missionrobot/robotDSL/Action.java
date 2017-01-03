@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link des.missionrobot.robotDSL.Action#getSound <em>Sound</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getFlag <em>Flag</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Action#getBool <em>Bool</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Action#getCent <em>Cent</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction()
@@ -283,5 +284,31 @@ public interface Action extends EObject
    * @generated
    */
   void setBool(Bool value);
+
+  /**
+   * Returns the value of the '<em><b>Cent</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Cent</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Cent</em>' attribute.
+   * @see #setCent(String)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getAction_Cent()
+   * @model
+   * @generated
+   */
+  String getCent();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Action#getCent <em>Cent</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Cent</em>' attribute.
+   * @see #getCent()
+   * @generated
+   */
+  void setCent(String value);
 
 } // Action

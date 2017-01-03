@@ -22,20 +22,23 @@ class RobotDSLGenerator extends AbstractGenerator {
  	val root = resource.allContents.head as Missions;
  	if (root != null) {
  		var path = "generated/root/"
- 		fsa.generateFile(path+"Alfred.java", JavaGenerator.createAlfred())
- 		fsa.generateFile(path+"MasterBruce.java", JavaGenerator.createMasterBruce())
- 		fsa.generateFile(path+"AuxMethods.java", JavaGenerator.createAuxMethods())
- 		fsa.generateFile(path+"Mission.java", JavaGenerator.createMission())
- 		fsa.generateFile(path+"SensorManager.java", JavaGenerator.createSensorManager())
- 		fsa.generateFile(path+"SensorUpdater.java", JavaGenerator.createSensorUpdater())
- 		fsa.generateFile(path+"SlaveSensorManager.java", JavaGenerator.createSlaveSensorManager())
- 		fsa.generateFile(path+"BTConReader.java", JavaGenerator.createBTConReader())
+ 		fsa.generateFile(path+"Alfred.java", Auxiliary.createAlfred())
+ 		fsa.generateFile(path+"MasterBruce.java", Auxiliary.createMasterBruce())
+ 		fsa.generateFile(path+"AuxMethods.java", Auxiliary.createAuxMethods())
+ 		fsa.generateFile(path+"Mission.java", Auxiliary.createMission())
+ 		fsa.generateFile(path+"SensorManager.java", Auxiliary.createSensorManager())
+ 		fsa.generateFile(path+"SensorUpdater.java", Auxiliary.createSensorUpdater())
+ 		fsa.generateFile(path+"SlaveSensorManager.java", Auxiliary.createSlaveSensorManager())
+ 		fsa.generateFile(path+"BTConReader.java", Auxiliary.createBTConReader())
+ 		fsa.generateFile(path+"BetterArbitrator.java", Auxiliary.createBetterArbitrator())
+ 		
  		for (Mission m: root.missionList){
  			path = "generated/root/" + m.name + "/"
 	 		fsa.generateFile(path + m.name + ".java", JavaGenerator.missionGenerator(m))
 	 		for (Task t: m.taskList) {
-	 				fsa.generateFile(path + t.name + ".java", BehaviorMaker.makeBehaviorClass(t, m.name))
-	 		}		
+ 				fsa.generateFile(path + t.name + ".java", BehaviorMaker.makeBehaviorClass(t, m.name))
+	 		}
+	 		fsa.generateFile(path + "Goal.java", GoalMaker.makeGoal(m.goal, m.name))
  		}
  	}
  	

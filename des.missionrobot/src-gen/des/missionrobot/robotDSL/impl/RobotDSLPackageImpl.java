@@ -14,6 +14,7 @@ import des.missionrobot.robotDSL.Direction;
 import des.missionrobot.robotDSL.DirectionVal;
 import des.missionrobot.robotDSL.Distance;
 import des.missionrobot.robotDSL.Flag;
+import des.missionrobot.robotDSL.Goal;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.Missions;
 import des.missionrobot.robotDSL.Negation;
@@ -58,6 +59,13 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * @generated
    */
   private EClass missionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass goalEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -344,7 +352,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMission_GoalEvents()
+  public EReference getMission_Goal()
   {
     return (EReference)missionEClass.getEStructuralFeatures().get(3);
   }
@@ -354,9 +362,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMission_Timeout()
+  public EClass getGoal()
   {
-    return (EReference)missionEClass.getEStructuralFeatures().get(4);
+    return goalEClass;
   }
 
   /**
@@ -364,9 +372,29 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMission_FinishActions()
+  public EReference getGoal_GoalEvents()
   {
-    return (EReference)missionEClass.getEStructuralFeatures().get(5);
+    return (EReference)goalEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGoal_Timeout()
+  {
+    return (EReference)goalEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGoal_FinishActions()
+  {
+    return (EReference)goalEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -534,6 +562,16 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getAction_Cent()
+  {
+    return (EAttribute)actionEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getTrigger()
   {
     return triggerEClass;
@@ -647,16 +685,6 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
   public EAttribute getFlag_Name()
   {
     return (EAttribute)flagEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFlag_Bool()
-  {
-    return (EReference)flagEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -947,9 +975,12 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEAttribute(missionEClass, MISSION__NAME);
     createEReference(missionEClass, MISSION__FLAGS_LIST);
     createEReference(missionEClass, MISSION__TASK_LIST);
-    createEReference(missionEClass, MISSION__GOAL_EVENTS);
-    createEReference(missionEClass, MISSION__TIMEOUT);
-    createEReference(missionEClass, MISSION__FINISH_ACTIONS);
+    createEReference(missionEClass, MISSION__GOAL);
+
+    goalEClass = createEClass(GOAL);
+    createEReference(goalEClass, GOAL__GOAL_EVENTS);
+    createEReference(goalEClass, GOAL__TIMEOUT);
+    createEReference(goalEClass, GOAL__FINISH_ACTIONS);
 
     taskEClass = createEClass(TASK);
     createEAttribute(taskEClass, TASK__NAME);
@@ -968,6 +999,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEReference(actionEClass, ACTION__SOUND);
     createEReference(actionEClass, ACTION__FLAG);
     createEReference(actionEClass, ACTION__BOOL);
+    createEAttribute(actionEClass, ACTION__CENT);
 
     triggerEClass = createEClass(TRIGGER);
     createEReference(triggerEClass, TRIGGER__BOOL_TYPE);
@@ -983,7 +1015,6 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
 
     flagEClass = createEClass(FLAG);
     createEAttribute(flagEClass, FLAG__NAME);
-    createEReference(flagEClass, FLAG__BOOL);
 
     timeEClass = createEClass(TIME);
     createEAttribute(timeEClass, TIME__SEC);
@@ -1061,9 +1092,12 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEAttribute(getMission_Name(), ecorePackage.getEString(), "name", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_FlagsList(), this.getFlag(), null, "flagsList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMission_TaskList(), this.getTask(), null, "taskList", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_GoalEvents(), this.getTrigger(), null, "goalEvents", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_Timeout(), this.getTime(), null, "timeout", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMission_FinishActions(), this.getAction(), null, "finishActions", null, 0, -1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMission_Goal(), this.getGoal(), null, "goal", null, 0, 1, Mission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(goalEClass, Goal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGoal_GoalEvents(), this.getTrigger(), null, "goalEvents", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGoal_Timeout(), this.getTime(), null, "timeout", null, 0, 1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGoal_FinishActions(), this.getAction(), null, "finishActions", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTask_Name(), ecorePackage.getEString(), "name", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1082,6 +1116,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEReference(getAction_Sound(), this.getSound(), null, "sound", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_Flag(), this.getFlag(), null, "flag", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_Bool(), this.getBool(), null, "bool", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAction_Cent(), ecorePackage.getEString(), "cent", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTrigger_BoolType(), this.getBool(), null, "boolType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1097,7 +1132,6 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
 
     initEClass(flagEClass, Flag.class, "Flag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFlag_Name(), ecorePackage.getEString(), "name", null, 0, 1, Flag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFlag_Bool(), this.getBool(), null, "bool", null, 0, 1, Flag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTime_Sec(), ecorePackage.getEInt(), "sec", null, 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

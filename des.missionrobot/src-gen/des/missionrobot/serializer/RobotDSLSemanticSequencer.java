@@ -10,6 +10,7 @@ import des.missionrobot.robotDSL.Color;
 import des.missionrobot.robotDSL.Direction;
 import des.missionrobot.robotDSL.Distance;
 import des.missionrobot.robotDSL.Flag;
+import des.missionrobot.robotDSL.Goal;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.Missions;
 import des.missionrobot.robotDSL.Negation;
@@ -67,6 +68,9 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case RobotDSLPackage.FLAG:
 				sequence_Flag(context, (Flag) semanticObject); 
 				return; 
+			case RobotDSLPackage.GOAL:
+				sequence_Goal(context, (Goal) semanticObject); 
+				return; 
 			case RobotDSLPackage.MISSION:
 				sequence_Mission(context, (Mission) semanticObject); 
 				return; 
@@ -104,7 +108,14 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Action returns Action
 	 *
 	 * Constraint:
-	 *     ((moveDir=Direction duration=INT? speed=Speed?) | (turnDir=Direction (degr=INT | trig+=Trigger+)) | op=ArmOp | sound=Sound | (flag=[Flag|ID] bool=Bool))
+	 *     (
+	 *         (moveDir=Direction duration=INT? speed=Speed?) | 
+	 *         (turnDir=Direction (degr=INT | trig+=Trigger+)) | 
+	 *         op=ArmOp | 
+	 *         sound=Sound | 
+	 *         (flag=[Flag|ID] bool=Bool) | 
+	 *         cent='Centalize'
+	 *     )
 	 */
 	protected void sequence_Action(ISerializationContext context, des.missionrobot.robotDSL.Action semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -209,9 +220,27 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Flag returns Flag
 	 *
 	 * Constraint:
-	 *     (name=ID bool=Bool?)
+	 *     name=ID
 	 */
 	protected void sequence_Flag(ISerializationContext context, Flag semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RobotDSLPackage.Literals.FLAG__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RobotDSLPackage.Literals.FLAG__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFlagAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Goal returns Goal
+	 *
+	 * Constraint:
+	 *     ((goalEvents+=Trigger* timeout=Time finishActions+=Action+) | (goalEvents+=Trigger* finishActions+=Action+) | finishActions+=Action+)?
+	 */
+	protected void sequence_Goal(ISerializationContext context, Goal semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -221,14 +250,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Mission returns Mission
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         flagsList+=Flag* 
-	 *         taskList+=Task+ 
-	 *         goalEvents+=Trigger* 
-	 *         timeout=Time? 
-	 *         finishActions+=Action*
-	 *     )
+	 *     (name=ID flagsList+=Flag* taskList+=Task+ goal=Goal)
 	 */
 	protected void sequence_Mission(ISerializationContext context, Mission semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -240,7 +262,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Missions returns Missions
 	 *
 	 * Constraint:
-	 *     (name=ID missionList+=Mission)
+	 *     (name=ID missionList+=Mission+)
 	 */
 	protected void sequence_Missions(ISerializationContext context, Missions semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

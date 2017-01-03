@@ -1,16 +1,17 @@
 package root;
-	
+			
 	import java.io.IOException;
 	import java.util.Arrays;
 	
 	import lejos.hardware.Sound;
+	import lejos.hardware.lcd.LCD;
 	
 	public class SensorUpdater extends Thread{
 	
 		private BTConReader reader;
 		private SensorManager sMgr;
 		private boolean running = false;
-		private float[] floats = {0.0f, 0.0f, 0.0f, 0.0f};
+		private float[] floats;
 		private String readValue;
 	
 	
@@ -37,14 +38,14 @@ package root;
 		}
 	
 		public float[] parseFloats(String s){
+			float[] flts = new float[4];
 			if(!s.isEmpty()){			
 				String[] strings = s.split(" ");
-				float[] floats = new float[strings.length];
 				for (int i = 0; i < strings.length; i++){
-					floats[i] = Float.parseFloat(strings[i]);
+					flts[i] = Float.parseFloat(strings[i]);
 				}
 			}
-			return floats;
+			return flts;
 		}
 	
 	}

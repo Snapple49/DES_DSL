@@ -38,10 +38,10 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Missions:
 		//	'Missionset' name=ID
-		//	'Missions:' missionList+=Mission;
+		//	'Missions:' missionList+=Mission+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Missionset' name=ID 'Missions:' missionList+=Mission
+		//'Missionset' name=ID 'Missions:' missionList+=Mission+
 		public Group getGroup() { return cGroup; }
 		
 		//'Missionset'
@@ -56,7 +56,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'Missions:'
 		public Keyword getMissionsKeyword_2() { return cMissionsKeyword_2; }
 		
-		//missionList+=Mission
+		//missionList+=Mission+
 		public Assignment getMissionListAssignment_3() { return cMissionListAssignment_3; }
 		
 		//Mission
@@ -75,28 +75,17 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTaskListAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cTaskListTaskParserRuleCall_5_0 = (RuleCall)cTaskListAssignment_5.eContents().get(0);
 		private final Keyword cGoalKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cConditionKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cGoalEventsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cGoalEventsTriggerParserRuleCall_7_1_0 = (RuleCall)cGoalEventsAssignment_7_1.eContents().get(0);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cTimeoutKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cTimeoutAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cTimeoutTimeParserRuleCall_8_1_0 = (RuleCall)cTimeoutAssignment_8_1.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cActionsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cFinishActionsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cFinishActionsActionParserRuleCall_9_1_0 = (RuleCall)cFinishActionsAssignment_9_1.eContents().get(0);
+		private final Assignment cGoalAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cGoalGoalParserRuleCall_7_0 = (RuleCall)cGoalAssignment_7.eContents().get(0);
 		
 		//Mission:
 		//	'Mission' name=ID
 		//	'Flags:' flagsList+=Flag*
 		//	'Tasks:' taskList+=Task+
-		//	'Goal:' ('Condition:' goalEvents+=Trigger+)? ('timeout' timeout=Time)? ('Actions:' finishActions+=Action+)?;
+		//	'Goal:' goal=Goal;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Mission' name=ID 'Flags:' flagsList+=Flag* 'Tasks:' taskList+=Task+ 'Goal:' ('Condition:' goalEvents+=Trigger+)?
-		//('timeout' timeout=Time)? ('Actions:' finishActions+=Action+)?
+		//'Mission' name=ID 'Flags:' flagsList+=Flag* 'Tasks:' taskList+=Task+ 'Goal:' goal=Goal
 		public Group getGroup() { return cGroup; }
 		
 		//'Mission'
@@ -129,41 +118,62 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'Goal:'
 		public Keyword getGoalKeyword_6() { return cGoalKeyword_6; }
 		
+		//goal=Goal
+		public Assignment getGoalAssignment_7() { return cGoalAssignment_7; }
+		
+		//Goal
+		public RuleCall getGoalGoalParserRuleCall_7_0() { return cGoalGoalParserRuleCall_7_0; }
+	}
+	public class GoalElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Goal");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cConditionKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cGoalEventsAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cGoalEventsTriggerParserRuleCall_0_1_0 = (RuleCall)cGoalEventsAssignment_0_1.eContents().get(0);
+		private final Assignment cTimeoutAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTimeoutTimeParserRuleCall_1_0 = (RuleCall)cTimeoutAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cActionsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cFinishActionsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cFinishActionsActionParserRuleCall_2_1_0 = (RuleCall)cFinishActionsAssignment_2_1.eContents().get(0);
+		
+		//Goal:
+		//	('Condition:' goalEvents+=Trigger+)? timeout=Time? ('Actions:' finishActions+=Action+)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//('Condition:' goalEvents+=Trigger+)? timeout=Time? ('Actions:' finishActions+=Action+)?
+		public Group getGroup() { return cGroup; }
+		
 		//('Condition:' goalEvents+=Trigger+)?
-		public Group getGroup_7() { return cGroup_7; }
+		public Group getGroup_0() { return cGroup_0; }
 		
 		//'Condition:'
-		public Keyword getConditionKeyword_7_0() { return cConditionKeyword_7_0; }
+		public Keyword getConditionKeyword_0_0() { return cConditionKeyword_0_0; }
 		
 		//goalEvents+=Trigger+
-		public Assignment getGoalEventsAssignment_7_1() { return cGoalEventsAssignment_7_1; }
+		public Assignment getGoalEventsAssignment_0_1() { return cGoalEventsAssignment_0_1; }
 		
 		//Trigger
-		public RuleCall getGoalEventsTriggerParserRuleCall_7_1_0() { return cGoalEventsTriggerParserRuleCall_7_1_0; }
+		public RuleCall getGoalEventsTriggerParserRuleCall_0_1_0() { return cGoalEventsTriggerParserRuleCall_0_1_0; }
 		
-		//('timeout' timeout=Time)?
-		public Group getGroup_8() { return cGroup_8; }
-		
-		//'timeout'
-		public Keyword getTimeoutKeyword_8_0() { return cTimeoutKeyword_8_0; }
-		
-		//timeout=Time
-		public Assignment getTimeoutAssignment_8_1() { return cTimeoutAssignment_8_1; }
+		//timeout=Time?
+		public Assignment getTimeoutAssignment_1() { return cTimeoutAssignment_1; }
 		
 		//Time
-		public RuleCall getTimeoutTimeParserRuleCall_8_1_0() { return cTimeoutTimeParserRuleCall_8_1_0; }
+		public RuleCall getTimeoutTimeParserRuleCall_1_0() { return cTimeoutTimeParserRuleCall_1_0; }
 		
 		//('Actions:' finishActions+=Action+)?
-		public Group getGroup_9() { return cGroup_9; }
+		public Group getGroup_2() { return cGroup_2; }
 		
 		//'Actions:'
-		public Keyword getActionsKeyword_9_0() { return cActionsKeyword_9_0; }
+		public Keyword getActionsKeyword_2_0() { return cActionsKeyword_2_0; }
 		
 		//finishActions+=Action+
-		public Assignment getFinishActionsAssignment_9_1() { return cFinishActionsAssignment_9_1; }
+		public Assignment getFinishActionsAssignment_2_1() { return cFinishActionsAssignment_2_1; }
 		
 		//Action
-		public RuleCall getFinishActionsActionParserRuleCall_9_1_0() { return cFinishActionsActionParserRuleCall_9_1_0; }
+		public RuleCall getFinishActionsActionParserRuleCall_2_1_0() { return cFinishActionsActionParserRuleCall_2_1_0; }
 	}
 	public class TaskElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Task");
@@ -277,18 +287,20 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cToKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		private final Assignment cBoolAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
 		private final RuleCall cBoolBoolParserRuleCall_4_3_0 = (RuleCall)cBoolAssignment_4_3.eContents().get(0);
+		private final Assignment cCentAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
+		private final Keyword cCentCentalizeKeyword_5_0 = (Keyword)cCentAssignment_5.eContents().get(0);
 		
 		//Action:
 		//	'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? |
 		//	'Turn' turnDir=Direction (degr=INT 'deg' | 'until' trig+=Trigger+) |
 		//	'Arm' op=ArmOp |
 		//	'Play' 'sound' sound=Sound |
-		//	'Update' flag=[Flag] 'to' bool=Bool;
+		//	'Update' flag=[Flag] 'to' bool=Bool | cent='Centalize';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? | 'Turn' turnDir=Direction
 		//(degr=INT 'deg' | 'until' trig+=Trigger+) | 'Arm' op=ArmOp | 'Play' 'sound' sound=Sound | 'Update' flag=[Flag] 'to'
-		//bool=Bool
+		//bool=Bool | cent='Centalize'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')?
@@ -422,6 +434,12 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Bool
 		public RuleCall getBoolBoolParserRuleCall_4_3_0() { return cBoolBoolParserRuleCall_4_3_0; }
+		
+		//cent='Centalize'
+		public Assignment getCentAssignment_5() { return cCentAssignment_5; }
+		
+		//'Centalize'
+		public Keyword getCentCentalizeKeyword_5_0() { return cCentCentalizeKeyword_5_0; }
 	}
 	public class TriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Trigger");
@@ -555,38 +573,18 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class FlagElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Flag");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cIsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cBoolAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cBoolBoolParserRuleCall_1_1_0 = (RuleCall)cBoolAssignment_1_1.eContents().get(0);
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
 		//Flag:
-		//	name=ID ('is' bool=Bool)?;
+		//	name=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ('is' bool=Bool)?
-		public Group getGroup() { return cGroup; }
-		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment() { return cNameAssignment; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
-		
-		//('is' bool=Bool)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//'is'
-		public Keyword getIsKeyword_1_0() { return cIsKeyword_1_0; }
-		
-		//bool=Bool
-		public Assignment getBoolAssignment_1_1() { return cBoolAssignment_1_1; }
-		
-		//Bool
-		public RuleCall getBoolBoolParserRuleCall_1_1_0() { return cBoolBoolParserRuleCall_1_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
 	}
 	public class TimeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Time");
@@ -1098,6 +1096,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final MissionsElements pMissions;
 	private final MissionElements pMission;
+	private final GoalElements pGoal;
 	private final TaskElements pTask;
 	private final ActionElements pAction;
 	private final TriggerElements pTrigger;
@@ -1131,6 +1130,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pMissions = new MissionsElements();
 		this.pMission = new MissionElements();
+		this.pGoal = new GoalElements();
 		this.pTask = new TaskElements();
 		this.pAction = new ActionElements();
 		this.pTrigger = new TriggerElements();
@@ -1183,7 +1183,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Missions:
 	//	'Missionset' name=ID
-	//	'Missions:' missionList+=Mission;
+	//	'Missions:' missionList+=Mission+;
 	public MissionsElements getMissionsAccess() {
 		return pMissions;
 	}
@@ -1196,13 +1196,23 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'Mission' name=ID
 	//	'Flags:' flagsList+=Flag*
 	//	'Tasks:' taskList+=Task+
-	//	'Goal:' ('Condition:' goalEvents+=Trigger+)? ('timeout' timeout=Time)? ('Actions:' finishActions+=Action+)?;
+	//	'Goal:' goal=Goal;
 	public MissionElements getMissionAccess() {
 		return pMission;
 	}
 	
 	public ParserRule getMissionRule() {
 		return getMissionAccess().getRule();
+	}
+	
+	//Goal:
+	//	('Condition:' goalEvents+=Trigger+)? timeout=Time? ('Actions:' finishActions+=Action+)?;
+	public GoalElements getGoalAccess() {
+		return pGoal;
+	}
+	
+	public ParserRule getGoalRule() {
+		return getGoalAccess().getRule();
 	}
 	
 	//Task:
@@ -1222,7 +1232,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'Turn' turnDir=Direction (degr=INT 'deg' | 'until' trig+=Trigger+) |
 	//	'Arm' op=ArmOp |
 	//	'Play' 'sound' sound=Sound |
-	//	'Update' flag=[Flag] 'to' bool=Bool;
+	//	'Update' flag=[Flag] 'to' bool=Bool | cent='Centalize';
 	public ActionElements getActionAccess() {
 		return pAction;
 	}
@@ -1252,7 +1262,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Flag:
-	//	name=ID ('is' bool=Bool)?;
+	//	name=ID;
 	public FlagElements getFlagAccess() {
 		return pFlag;
 	}

@@ -47,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getSound <em>Sound</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getFlag <em>Flag</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getBool <em>Bool</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.ActionImpl#getCent <em>Cent</em>}</li>
  * </ul>
  *
  * @generated
@@ -172,6 +173,26 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * @ordered
    */
   protected Bool bool;
+
+  /**
+   * The default value of the '{@link #getCent() <em>Cent</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCent()
+   * @generated
+   * @ordered
+   */
+  protected static final String CENT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCent() <em>Cent</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCent()
+   * @generated
+   * @ordered
+   */
+  protected String cent = CENT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -590,6 +611,29 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getCent()
+  {
+    return cent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCent(String newCent)
+  {
+    String oldCent = cent;
+    cent = newCent;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.ACTION__CENT, oldCent, cent));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -644,6 +688,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return basicGetFlag();
       case RobotDSLPackage.ACTION__BOOL:
         return getBool();
+      case RobotDSLPackage.ACTION__CENT:
+        return getCent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -690,6 +736,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case RobotDSLPackage.ACTION__BOOL:
         setBool((Bool)newValue);
         return;
+      case RobotDSLPackage.ACTION__CENT:
+        setCent((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -734,6 +783,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case RobotDSLPackage.ACTION__BOOL:
         setBool((Bool)null);
         return;
+      case RobotDSLPackage.ACTION__CENT:
+        setCent(CENT_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -768,6 +820,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return flag != null;
       case RobotDSLPackage.ACTION__BOOL:
         return bool != null;
+      case RobotDSLPackage.ACTION__CENT:
+        return CENT_EDEFAULT == null ? cent != null : !CENT_EDEFAULT.equals(cent);
     }
     return super.eIsSet(featureID);
   }
@@ -787,6 +841,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
     result.append(duration);
     result.append(", degr: ");
     result.append(degr);
+    result.append(", cent: ");
+    result.append(cent);
     result.append(')');
     return result.toString();
   }

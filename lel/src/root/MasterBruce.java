@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import lejos.hardware.Button;
 import lejos.hardware.Sound;
 import lejos.hardware.ev3.LocalEV3;
-import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -77,10 +76,6 @@ public class MasterBruce {
 		return success;
 	}
 	
-	public static void Calibrate(){
-		
-	}
-	
 	public static void main(String[] args) {
 		int retval = setupCommMaster();
 		if(retval != 1){
@@ -104,19 +99,11 @@ public class MasterBruce {
 		
 		Mission m1 = new MoveAndAvoidEdges(sensorManager, leftMotor, rightMotor, armMotor);
 		AuxMethods.clearScreen();
-		LCD.drawString("Press middle to run ", 0, 0);
 		while(true){
 			Delay.msDelay(100);
 			if(Button.ENTER.isDown()){
 				m1.RunArbitrator();				
 			}
-			if(Button.UP.isDown()){
-				Calibrate();
-			}
-			if(Button.ESCAPE.isDown()){
-				break;
-			}
 		}
-		System.exit(0);
 	}
 }

@@ -42,6 +42,15 @@ public interface RobotDSLFactory extends EFactory
   Mission createMission();
 
   /**
+   * Returns a new object of class '<em>Goal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Goal</em>'.
+   * @generated
+   */
+  Goal createGoal();
+
+  /**
    * Returns a new object of class '<em>Task</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

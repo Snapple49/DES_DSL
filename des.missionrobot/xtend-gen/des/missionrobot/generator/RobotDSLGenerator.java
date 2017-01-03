@@ -4,8 +4,11 @@
 package des.missionrobot.generator;
 
 import com.google.common.base.Objects;
+import des.missionrobot.generator.Auxiliary;
 import des.missionrobot.generator.BehaviorMaker;
+import des.missionrobot.generator.GoalMaker;
 import des.missionrobot.generator.JavaGenerator;
+import des.missionrobot.robotDSL.Goal;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.Missions;
 import des.missionrobot.robotDSL.Task;
@@ -33,22 +36,24 @@ public class RobotDSLGenerator extends AbstractGenerator {
     boolean _notEquals = (!Objects.equal(root, null));
     if (_notEquals) {
       String path = "generated/root/";
-      CharSequence _createAlfred = JavaGenerator.createAlfred();
+      CharSequence _createAlfred = Auxiliary.createAlfred();
       fsa.generateFile((path + "Alfred.java"), _createAlfred);
-      CharSequence _createMasterBruce = JavaGenerator.createMasterBruce();
+      CharSequence _createMasterBruce = Auxiliary.createMasterBruce();
       fsa.generateFile((path + "MasterBruce.java"), _createMasterBruce);
-      CharSequence _createAuxMethods = JavaGenerator.createAuxMethods();
+      CharSequence _createAuxMethods = Auxiliary.createAuxMethods();
       fsa.generateFile((path + "AuxMethods.java"), _createAuxMethods);
-      CharSequence _createMission = JavaGenerator.createMission();
+      CharSequence _createMission = Auxiliary.createMission();
       fsa.generateFile((path + "Mission.java"), _createMission);
-      CharSequence _createSensorManager = JavaGenerator.createSensorManager();
+      CharSequence _createSensorManager = Auxiliary.createSensorManager();
       fsa.generateFile((path + "SensorManager.java"), _createSensorManager);
-      CharSequence _createSensorUpdater = JavaGenerator.createSensorUpdater();
+      CharSequence _createSensorUpdater = Auxiliary.createSensorUpdater();
       fsa.generateFile((path + "SensorUpdater.java"), _createSensorUpdater);
-      CharSequence _createSlaveSensorManager = JavaGenerator.createSlaveSensorManager();
+      CharSequence _createSlaveSensorManager = Auxiliary.createSlaveSensorManager();
       fsa.generateFile((path + "SlaveSensorManager.java"), _createSlaveSensorManager);
-      CharSequence _createBTConReader = JavaGenerator.createBTConReader();
+      CharSequence _createBTConReader = Auxiliary.createBTConReader();
       fsa.generateFile((path + "BTConReader.java"), _createBTConReader);
+      CharSequence _createBetterArbitrator = Auxiliary.createBetterArbitrator();
+      fsa.generateFile((path + "BetterArbitrator.java"), _createBetterArbitrator);
       EList<Mission> _missionList = root.getMissionList();
       for (final Mission m : _missionList) {
         {
@@ -70,6 +75,10 @@ public class RobotDSLGenerator extends AbstractGenerator {
             CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(t, _name_3);
             fsa.generateFile(_plus_5, _makeBehaviorClass);
           }
+          Goal _goal = m.getGoal();
+          String _name_4 = m.getName();
+          CharSequence _makeGoal = GoalMaker.makeGoal(_goal, _name_4);
+          fsa.generateFile((path + "Goal.java"), _makeGoal);
         }
       }
     }

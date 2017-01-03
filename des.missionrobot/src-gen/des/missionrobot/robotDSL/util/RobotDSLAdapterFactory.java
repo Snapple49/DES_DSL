@@ -86,6 +86,11 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
         return createMissionAdapter();
       }
       @Override
+      public Adapter caseGoal(Goal object)
+      {
+        return createGoalAdapter();
+      }
+      @Override
       public Adapter caseTask(Task object)
       {
         return createTaskAdapter();
@@ -203,6 +208,21 @@ public class RobotDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMissionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link des.missionrobot.robotDSL.Goal <em>Goal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see des.missionrobot.robotDSL.Goal
+   * @generated
+   */
+  public Adapter createGoalAdapter()
   {
     return null;
   }

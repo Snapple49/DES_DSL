@@ -68,6 +68,7 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
     {
       case RobotDSLPackage.MISSIONS: return createMissions();
       case RobotDSLPackage.MISSION: return createMission();
+      case RobotDSLPackage.GOAL: return createGoal();
       case RobotDSLPackage.TASK: return createTask();
       case RobotDSLPackage.ACTION: return createAction();
       case RobotDSLPackage.TRIGGER: return createTrigger();
@@ -165,6 +166,17 @@ public class RobotDSLFactoryImpl extends EFactoryImpl implements RobotDSLFactory
   {
     MissionImpl mission = new MissionImpl();
     return mission;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Goal createGoal()
+  {
+    GoalImpl goal = new GoalImpl();
+    return goal;
   }
 
   /**

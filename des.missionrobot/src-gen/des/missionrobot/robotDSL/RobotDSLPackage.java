@@ -133,31 +133,13 @@ public interface RobotDSLPackage extends EPackage
   int MISSION__TASK_LIST = 2;
 
   /**
-   * The feature id for the '<em><b>Goal Events</b></em>' containment reference list.
+   * The feature id for the '<em><b>Goal</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MISSION__GOAL_EVENTS = 3;
-
-  /**
-   * The feature id for the '<em><b>Timeout</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MISSION__TIMEOUT = 4;
-
-  /**
-   * The feature id for the '<em><b>Finish Actions</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MISSION__FINISH_ACTIONS = 5;
+  int MISSION__GOAL = 3;
 
   /**
    * The number of structural features of the '<em>Mission</em>' class.
@@ -166,7 +148,53 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MISSION_FEATURE_COUNT = 6;
+  int MISSION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link des.missionrobot.robotDSL.impl.GoalImpl <em>Goal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see des.missionrobot.robotDSL.impl.GoalImpl
+   * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getGoal()
+   * @generated
+   */
+  int GOAL = 2;
+
+  /**
+   * The feature id for the '<em><b>Goal Events</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL__GOAL_EVENTS = 0;
+
+  /**
+   * The feature id for the '<em><b>Timeout</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL__TIMEOUT = 1;
+
+  /**
+   * The feature id for the '<em><b>Finish Actions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL__FINISH_ACTIONS = 2;
+
+  /**
+   * The number of structural features of the '<em>Goal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GOAL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.TaskImpl <em>Task</em>}' class.
@@ -176,7 +204,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getTask()
    * @generated
    */
-  int TASK = 2;
+  int TASK = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -231,7 +259,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getAction()
    * @generated
    */
-  int ACTION = 3;
+  int ACTION = 4;
 
   /**
    * The feature id for the '<em><b>Move Dir</b></em>' containment reference.
@@ -324,13 +352,22 @@ public interface RobotDSLPackage extends EPackage
   int ACTION__BOOL = 9;
 
   /**
+   * The feature id for the '<em><b>Cent</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION__CENT = 10;
+
+  /**
    * The number of structural features of the '<em>Action</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION_FEATURE_COUNT = 10;
+  int ACTION_FEATURE_COUNT = 11;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.TriggerImpl <em>Trigger</em>}' class.
@@ -340,7 +377,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getTrigger()
    * @generated
    */
-  int TRIGGER = 4;
+  int TRIGGER = 5;
 
   /**
    * The feature id for the '<em><b>Bool Type</b></em>' containment reference.
@@ -413,7 +450,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDistance()
    * @generated
    */
-  int DISTANCE = 5;
+  int DISTANCE = 6;
 
   /**
    * The feature id for the '<em><b>Range Bool</b></em>' containment reference.
@@ -450,7 +487,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getFlag()
    * @generated
    */
-  int FLAG = 6;
+  int FLAG = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -462,22 +499,13 @@ public interface RobotDSLPackage extends EPackage
   int FLAG__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Bool</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FLAG__BOOL = 1;
-
-  /**
    * The number of structural features of the '<em>Flag</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FLAG_FEATURE_COUNT = 2;
+  int FLAG_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.impl.TimeImpl <em>Time</em>}' class.
@@ -487,7 +515,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getTime()
    * @generated
    */
-  int TIME = 7;
+  int TIME = 8;
 
   /**
    * The feature id for the '<em><b>Sec</b></em>' attribute.
@@ -515,7 +543,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDirection()
    * @generated
    */
-  int DIRECTION = 8;
+  int DIRECTION = 9;
 
   /**
    * The feature id for the '<em><b>Dir</b></em>' attribute.
@@ -543,7 +571,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSpeed()
    * @generated
    */
-  int SPEED = 9;
+  int SPEED = 10;
 
   /**
    * The feature id for the '<em><b>Speed</b></em>' attribute.
@@ -571,7 +599,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getArmOp()
    * @generated
    */
-  int ARM_OP = 10;
+  int ARM_OP = 11;
 
   /**
    * The feature id for the '<em><b>Op Type</b></em>' attribute.
@@ -599,7 +627,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSound()
    * @generated
    */
-  int SOUND = 11;
+  int SOUND = 12;
 
   /**
    * The feature id for the '<em><b>Sound Name</b></em>' attribute.
@@ -627,7 +655,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensor()
    * @generated
    */
-  int SENSOR = 12;
+  int SENSOR = 13;
 
   /**
    * The feature id for the '<em><b>Sensor Type</b></em>' attribute.
@@ -655,7 +683,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getColor()
    * @generated
    */
-  int COLOR = 13;
+  int COLOR = 14;
 
   /**
    * The feature id for the '<em><b>Color Name</b></em>' attribute.
@@ -683,7 +711,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBool()
    * @generated
    */
-  int BOOL = 14;
+  int BOOL = 15;
 
   /**
    * The feature id for the '<em><b>Bool Type</b></em>' attribute.
@@ -711,7 +739,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getNegation()
    * @generated
    */
-  int NEGATION = 15;
+  int NEGATION = 16;
 
   /**
    * The feature id for the '<em><b>NOT</b></em>' attribute.
@@ -739,7 +767,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getDirectionVal()
    * @generated
    */
-  int DIRECTION_VAL = 16;
+  int DIRECTION_VAL = 17;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.SpeedVal <em>Speed Val</em>}' enum.
@@ -749,7 +777,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSpeedVal()
    * @generated
    */
-  int SPEED_VAL = 17;
+  int SPEED_VAL = 18;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.ArmOpType <em>Arm Op Type</em>}' enum.
@@ -759,7 +787,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getArmOpType()
    * @generated
    */
-  int ARM_OP_TYPE = 18;
+  int ARM_OP_TYPE = 19;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.SoundName <em>Sound Name</em>}' enum.
@@ -769,7 +797,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSoundName()
    * @generated
    */
-  int SOUND_NAME = 19;
+  int SOUND_NAME = 20;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.SensorType <em>Sensor Type</em>}' enum.
@@ -779,7 +807,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getSensorType()
    * @generated
    */
-  int SENSOR_TYPE = 20;
+  int SENSOR_TYPE = 21;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.ColorName <em>Color Name</em>}' enum.
@@ -789,7 +817,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getColorName()
    * @generated
    */
-  int COLOR_NAME = 21;
+  int COLOR_NAME = 22;
 
   /**
    * The meta object id for the '{@link des.missionrobot.robotDSL.BoolType <em>Bool Type</em>}' enum.
@@ -799,7 +827,7 @@ public interface RobotDSLPackage extends EPackage
    * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getBoolType()
    * @generated
    */
-  int BOOL_TYPE = 22;
+  int BOOL_TYPE = 23;
 
 
   /**
@@ -878,37 +906,58 @@ public interface RobotDSLPackage extends EPackage
   EReference getMission_TaskList();
 
   /**
-   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Mission#getGoalEvents <em>Goal Events</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Mission#getGoal <em>Goal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Goal</em>'.
+   * @see des.missionrobot.robotDSL.Mission#getGoal()
+   * @see #getMission()
+   * @generated
+   */
+  EReference getMission_Goal();
+
+  /**
+   * Returns the meta object for class '{@link des.missionrobot.robotDSL.Goal <em>Goal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Goal</em>'.
+   * @see des.missionrobot.robotDSL.Goal
+   * @generated
+   */
+  EClass getGoal();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Goal#getGoalEvents <em>Goal Events</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Goal Events</em>'.
-   * @see des.missionrobot.robotDSL.Mission#getGoalEvents()
-   * @see #getMission()
+   * @see des.missionrobot.robotDSL.Goal#getGoalEvents()
+   * @see #getGoal()
    * @generated
    */
-  EReference getMission_GoalEvents();
+  EReference getGoal_GoalEvents();
 
   /**
-   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Mission#getTimeout <em>Timeout</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Goal#getTimeout <em>Timeout</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Timeout</em>'.
-   * @see des.missionrobot.robotDSL.Mission#getTimeout()
-   * @see #getMission()
+   * @see des.missionrobot.robotDSL.Goal#getTimeout()
+   * @see #getGoal()
    * @generated
    */
-  EReference getMission_Timeout();
+  EReference getGoal_Timeout();
 
   /**
-   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Mission#getFinishActions <em>Finish Actions</em>}'.
+   * Returns the meta object for the containment reference list '{@link des.missionrobot.robotDSL.Goal#getFinishActions <em>Finish Actions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Finish Actions</em>'.
-   * @see des.missionrobot.robotDSL.Mission#getFinishActions()
-   * @see #getMission()
+   * @see des.missionrobot.robotDSL.Goal#getFinishActions()
+   * @see #getGoal()
    * @generated
    */
-  EReference getMission_FinishActions();
+  EReference getGoal_FinishActions();
 
   /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Task <em>Task</em>}'.
@@ -1085,6 +1134,17 @@ public interface RobotDSLPackage extends EPackage
   EReference getAction_Bool();
 
   /**
+   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Action#getCent <em>Cent</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cent</em>'.
+   * @see des.missionrobot.robotDSL.Action#getCent()
+   * @see #getAction()
+   * @generated
+   */
+  EAttribute getAction_Cent();
+
+  /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Trigger <em>Trigger</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1212,17 +1272,6 @@ public interface RobotDSLPackage extends EPackage
    * @generated
    */
   EAttribute getFlag_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Flag#getBool <em>Bool</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Bool</em>'.
-   * @see des.missionrobot.robotDSL.Flag#getBool()
-   * @see #getFlag()
-   * @generated
-   */
-  EReference getFlag_Bool();
 
   /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Time <em>Time</em>}'.
@@ -1567,12 +1616,30 @@ public interface RobotDSLPackage extends EPackage
     EReference MISSION__TASK_LIST = eINSTANCE.getMission_TaskList();
 
     /**
+     * The meta object literal for the '<em><b>Goal</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MISSION__GOAL = eINSTANCE.getMission_Goal();
+
+    /**
+     * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.GoalImpl <em>Goal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see des.missionrobot.robotDSL.impl.GoalImpl
+     * @see des.missionrobot.robotDSL.impl.RobotDSLPackageImpl#getGoal()
+     * @generated
+     */
+    EClass GOAL = eINSTANCE.getGoal();
+
+    /**
      * The meta object literal for the '<em><b>Goal Events</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MISSION__GOAL_EVENTS = eINSTANCE.getMission_GoalEvents();
+    EReference GOAL__GOAL_EVENTS = eINSTANCE.getGoal_GoalEvents();
 
     /**
      * The meta object literal for the '<em><b>Timeout</b></em>' containment reference feature.
@@ -1580,7 +1647,7 @@ public interface RobotDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MISSION__TIMEOUT = eINSTANCE.getMission_Timeout();
+    EReference GOAL__TIMEOUT = eINSTANCE.getGoal_Timeout();
 
     /**
      * The meta object literal for the '<em><b>Finish Actions</b></em>' containment reference list feature.
@@ -1588,7 +1655,7 @@ public interface RobotDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MISSION__FINISH_ACTIONS = eINSTANCE.getMission_FinishActions();
+    EReference GOAL__FINISH_ACTIONS = eINSTANCE.getGoal_FinishActions();
 
     /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.TaskImpl <em>Task</em>}' class.
@@ -1723,6 +1790,14 @@ public interface RobotDSLPackage extends EPackage
     EReference ACTION__BOOL = eINSTANCE.getAction_Bool();
 
     /**
+     * The meta object literal for the '<em><b>Cent</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ACTION__CENT = eINSTANCE.getAction_Cent();
+
+    /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.TriggerImpl <em>Trigger</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1823,14 +1898,6 @@ public interface RobotDSLPackage extends EPackage
      * @generated
      */
     EAttribute FLAG__NAME = eINSTANCE.getFlag_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Bool</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FLAG__BOOL = eINSTANCE.getFlag_Bool();
 
     /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.TimeImpl <em>Time</em>}' class.
