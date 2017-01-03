@@ -3,10 +3,23 @@
  */
 package des.missionrobot.generator;
 
+import com.google.common.base.Objects;
+import des.missionrobot.generator.Auxiliary;
+import des.missionrobot.generator.BehaviorMaker;
+import des.missionrobot.generator.GoalMaker;
+import des.missionrobot.generator.JavaGenerator;
+import des.missionrobot.robotDSL.Goal;
+import des.missionrobot.robotDSL.Mission;
+import des.missionrobot.robotDSL.Missions;
+import des.missionrobot.robotDSL.Task;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -17,9 +30,57 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class RobotDSLGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field GoalMaker is undefined"
-      + "\nThe method or field goal is undefined for the type Mission"
-      + "\nmakeGoal cannot be resolved");
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    EObject _head = IteratorExtensions.<EObject>head(_allContents);
+    final Missions root = ((Missions) _head);
+    boolean _notEquals = (!Objects.equal(root, null));
+    if (_notEquals) {
+      String path = "generated/root/";
+      CharSequence _createAlfred = Auxiliary.createAlfred();
+      fsa.generateFile((path + "Alfred.java"), _createAlfred);
+      CharSequence _createMasterBruce = Auxiliary.createMasterBruce();
+      fsa.generateFile((path + "MasterBruce.java"), _createMasterBruce);
+      CharSequence _createAuxMethods = Auxiliary.createAuxMethods();
+      fsa.generateFile((path + "AuxMethods.java"), _createAuxMethods);
+      CharSequence _createMission = Auxiliary.createMission();
+      fsa.generateFile((path + "Mission.java"), _createMission);
+      CharSequence _createSensorManager = Auxiliary.createSensorManager();
+      fsa.generateFile((path + "SensorManager.java"), _createSensorManager);
+      CharSequence _createSensorUpdater = Auxiliary.createSensorUpdater();
+      fsa.generateFile((path + "SensorUpdater.java"), _createSensorUpdater);
+      CharSequence _createSlaveSensorManager = Auxiliary.createSlaveSensorManager();
+      fsa.generateFile((path + "SlaveSensorManager.java"), _createSlaveSensorManager);
+      CharSequence _createBTConReader = Auxiliary.createBTConReader();
+      fsa.generateFile((path + "BTConReader.java"), _createBTConReader);
+      CharSequence _createBetterArbitrator = Auxiliary.createBetterArbitrator();
+      fsa.generateFile((path + "BetterArbitrator.java"), _createBetterArbitrator);
+      EList<Mission> _missionList = root.getMissionList();
+      for (final Mission m : _missionList) {
+        {
+          String _name = m.getName();
+          String _plus = ("generated/root/" + _name);
+          String _plus_1 = (_plus + "/");
+          path = _plus_1;
+          String _name_1 = m.getName();
+          String _plus_2 = (path + _name_1);
+          String _plus_3 = (_plus_2 + ".java");
+          CharSequence _missionGenerator = JavaGenerator.missionGenerator(m);
+          fsa.generateFile(_plus_3, _missionGenerator);
+          EList<Task> _taskList = m.getTaskList();
+          for (final Task t : _taskList) {
+            String _name_2 = t.getName();
+            String _plus_4 = (path + _name_2);
+            String _plus_5 = (_plus_4 + ".java");
+            String _name_3 = m.getName();
+            CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(t, _name_3);
+            fsa.generateFile(_plus_5, _makeBehaviorClass);
+          }
+          Goal _goal = m.getGoal();
+          String _name_4 = m.getName();
+          CharSequence _makeGoal = GoalMaker.makeGoal(_goal, _name_4);
+          fsa.generateFile((path + "Goal.java"), _makeGoal);
+        }
+      }
+    }
   }
 }

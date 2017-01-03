@@ -969,22 +969,16 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGREENGreenKeyword_3_0 = (Keyword)cGREENEnumLiteralDeclaration_3.eContents().get(0);
 		private final EnumLiteralDeclaration cBLUEEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
 		private final Keyword cBLUEBlueKeyword_4_0 = (Keyword)cBLUEEnumLiteralDeclaration_4.eContents().get(0);
-		private final EnumLiteralDeclaration cBRIGHTEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
-		private final Keyword cBRIGHTBrightKeyword_5_0 = (Keyword)cBRIGHTEnumLiteralDeclaration_5.eContents().get(0);
-		private final EnumLiteralDeclaration cDARKEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
-		private final Keyword cDARKDarkKeyword_6_0 = (Keyword)cDARKEnumLiteralDeclaration_6.eContents().get(0);
 		
 		//enum ColorName:
 		//	RED='red' |
 		//	WHITE='white' |
 		//	BLACK='black' |
 		//	GREEN='green' |
-		//	BLUE='blue' |
-		//	BRIGHT='bright' |
-		//	DARK='dark';
+		//	BLUE='blue';
 		public EnumRule getRule() { return rule; }
 		
-		//RED='red' | WHITE='white' | BLACK='black' | GREEN='green' | BLUE='blue' | BRIGHT='bright' | DARK='dark'
+		//RED='red' | WHITE='white' | BLACK='black' | GREEN='green' | BLUE='blue'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//RED='red'
@@ -1016,18 +1010,6 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'blue'
 		public Keyword getBLUEBlueKeyword_4_0() { return cBLUEBlueKeyword_4_0; }
-		
-		//BRIGHT='bright'
-		public EnumLiteralDeclaration getBRIGHTEnumLiteralDeclaration_5() { return cBRIGHTEnumLiteralDeclaration_5; }
-		
-		//'bright'
-		public Keyword getBRIGHTBrightKeyword_5_0() { return cBRIGHTBrightKeyword_5_0; }
-		
-		//DARK='dark'
-		public EnumLiteralDeclaration getDARKEnumLiteralDeclaration_6() { return cDARKEnumLiteralDeclaration_6; }
-		
-		//'dark'
-		public Keyword getDARKDarkKeyword_6_0() { return cDARKDarkKeyword_6_0; }
 	}
 	public class BoolTypeElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.BoolType");
@@ -1410,9 +1392,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	WHITE='white' |
 	//	BLACK='black' |
 	//	GREEN='green' |
-	//	BLUE='blue' |
-	//	BRIGHT='bright' |
-	//	DARK='dark';
+	//	BLUE='blue';
 	public ColorNameElements getColorNameAccess() {
 		return eColorName;
 	}

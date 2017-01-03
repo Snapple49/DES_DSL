@@ -887,18 +887,6 @@ rule__ColorName__Alternatives
 		('blue')
 		{ after(grammarAccess.getColorNameAccess().getBLUEEnumLiteralDeclaration_4()); }
 	)
-	|
-	(
-		{ before(grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5()); }
-		('bright')
-		{ after(grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6()); }
-		('dark')
-		{ after(grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6()); }
-	)
 ;
 finally {
 	restoreStackSize(stackSize);

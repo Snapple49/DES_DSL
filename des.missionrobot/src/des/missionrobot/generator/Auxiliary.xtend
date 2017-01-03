@@ -3,106 +3,108 @@ package des.missionrobot.generator
 
 class Auxiliary {
 	def static createSensorManager(){'''package root;
-	
-	import lejos.hardware.sensor.EV3ColorSensor;
-	import lejos.hardware.sensor.EV3UltrasonicSensor;
-	import lejos.hardware.sensor.NXTLightSensor;
-	import lejos.robotics.SampleProvider;
-	
-	public class SensorManager extends Thread{
 		
-		public float blackThreshold = 0.4f;
-		public float whiteThreshold = 0.55f;
+		import lejos.hardware.sensor.EV3ColorSensor;
+		import lejos.hardware.sensor.EV3UltrasonicSensor;
+		import lejos.hardware.sensor.NXTLightSensor;
+		import lejos.robotics.SampleProvider;
 		
-		public boolean running;
+		public class SensorManager extends Thread{
+			
+			public float leftBlackThreshold = 0.4f;
+			public float rightBlackThreshold = 0.4f;
+			public float leftWhiteThreshold = 0.55f;
+			public float rightWhiteThreshold = 0.55f;
+			
+			public boolean running;
+			
+			private EV3ColorSensor colorSensor = null;
+			private NXTLightSensor leftLight = null;
+			private NXTLightSensor rightLight = null;
+			private EV3UltrasonicSensor backUltrasonic = null;
+			
+			//master devices
+			SampleProvider colorSampleProvider;
+			SampleProvider leftLightSampleProvider;
+			SampleProvider rightLightSampleProvider;
+			SampleProvider backUltrasonicSampleProvider;
+			float[] colorSamples;
+			float[] leftLightSamples;
+			float[] rightLightSamples;
+			float[] backUltrasonicSamples;
+			
+			//slave devices
+			float leftTouchSamples;
+			float rightTouchSamples;
+			float gyroSamples;
+			float frontUltrasonicSamples;
+			
+			public SensorManager(EV3ColorSensor clS, NXTLightSensor lLi, NXTLightSensor rLi, EV3UltrasonicSensor bUs){
+				this.colorSensor = clS;
+				colorSampleProvider = colorSensor.getColorIDMode();
+				colorSamples = new float[colorSampleProvider.sampleSize()];
+				this.leftLight = lLi;
+				leftLightSampleProvider = leftLight.getRedMode();
+				leftLightSamples = new float[leftLightSampleProvider.sampleSize()];
+				this.rightLight = rLi;
+				rightLightSampleProvider = rightLight.getRedMode();
+				rightLightSamples = new float[rightLightSampleProvider.sampleSize()];
+				this.backUltrasonic = bUs;
+				backUltrasonicSampleProvider = backUltrasonic.getDistanceMode();
+				backUltrasonicSamples = new float[backUltrasonicSampleProvider.sampleSize()];
+			}
+			
+			@Override
+			public void run() {
+				running = true;
+				while(running){
+					colorSampleProvider.fetchSample(colorSamples, 0);
+					leftLightSampleProvider.fetchSample(leftLightSamples, 0);
+					rightLightSampleProvider.fetchSample(rightLightSamples, 0);
+					backUltrasonicSampleProvider.fetchSample(backUltrasonicSamples, 0);
+				}
+			}
+			
+			public float getColor(){
+				return colorSamples[0];
+			}
 		
-		private EV3ColorSensor colorSensor = null;
-		private NXTLightSensor leftLight = null;
-		private NXTLightSensor rightLight = null;
-		private EV3UltrasonicSensor backUltrasonic = null;
+			public float getLeftLight(){
+				return leftLightSamples[0];
+			}
+			
+			public float getRightLight(){
+				return rightLightSamples[0];
+			}
+			
+			public float getBackUltrasonic(){
+				return backUltrasonicSamples[0];
+			}
+			
+			public float getLeftTouch(){
+				return leftTouchSamples;
+			}
 		
-		//master devices
-		SampleProvider colorSampleProvider;
-		SampleProvider leftLightSampleProvider;
-		SampleProvider rightLightSampleProvider;
-		SampleProvider backUltrasonicSampleProvider;
-		float[] colorSamples;
-		float[] leftLightSamples;
-		float[] rightLightSamples;
-		float[] backUltrasonicSamples;
-		
-		//slave devices
-		float leftTouchSamples;
-		float rightTouchSamples;
-		float gyroSamples;
-		float frontUltrasonicSamples;
-		
-		public SensorManager(EV3ColorSensor clS, NXTLightSensor lLi, NXTLightSensor rLi, EV3UltrasonicSensor bUs){
-			this.colorSensor = clS;
-			colorSampleProvider = colorSensor.getColorIDMode();
-			colorSamples = new float[colorSampleProvider.sampleSize()];
-			this.leftLight = lLi;
-			leftLightSampleProvider = leftLight.getRedMode();
-			leftLightSamples = new float[leftLightSampleProvider.sampleSize()];
-			this.rightLight = rLi;
-			rightLightSampleProvider = rightLight.getRedMode();
-			rightLightSamples = new float[rightLightSampleProvider.sampleSize()];
-			this.backUltrasonic = bUs;
-			backUltrasonicSampleProvider = backUltrasonic.getDistanceMode();
-			backUltrasonicSamples = new float[backUltrasonicSampleProvider.sampleSize()];
-		}
-		
-		@Override
-		public void run() {
-			running = true;
-			while(running){
-				colorSampleProvider.fetchSample(colorSamples, 0);
-				leftLightSampleProvider.fetchSample(leftLightSamples, 0);
-				rightLightSampleProvider.fetchSample(rightLightSamples, 0);
-				backUltrasonicSampleProvider.fetchSample(backUltrasonicSamples, 0);
+			public float getRightTouch(){
+				return rightTouchSamples;
+			}
+			
+			public float getFrontUltrasonic(){
+				return frontUltrasonicSamples;
+			}
+			
+			public float getGyro(){
+				return gyroSamples;
+			}
+			
+			public void updateSlaveDevices(float[] values){
+				leftTouchSamples = values[0];
+				rightTouchSamples = values[1];
+				frontUltrasonicSamples = values[2];
+				gyroSamples = values[3];
 			}
 		}
 		
-		public float getColor(){
-			return colorSamples[0];
-		}
-	
-		public float getLeftLight(){
-			return leftLightSamples[0];
-		}
-		
-		public float getRightLight(){
-			return rightLightSamples[0];
-		}
-		
-		public float getBackUltrasonic(){
-			return backUltrasonicSamples[0];
-		}
-		
-		public float getLeftTouch(){
-			return leftTouchSamples;
-		}
-	
-		public float getRightTouch(){
-			return rightTouchSamples;
-		}
-		
-		public float getFrontUltrasonic(){
-			return frontUltrasonicSamples;
-		}
-		
-		public float getGyro(){
-			return gyroSamples;
-		}
-		
-		public void updateSlaveDevices(float[] values){
-			leftTouchSamples = values[0];
-			rightTouchSamples = values[1];
-			frontUltrasonicSamples = values[2];
-			gyroSamples = values[3];
-		}
-	}
-	
 '''}
 	
 	def static createMission(){'''package root;
@@ -120,24 +122,25 @@ class Auxiliary {
 		protected static EV3LargeRegulatedMotor rightMotor = null;
 		protected static EV3MediumRegulatedMotor armMotor = null;
 		protected SensorManager sensorManager;
-		
+	
 		public Mission(SensorManager sMgr, EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr, EV3MediumRegulatedMotor aMtr){
 			leftMotor = lMtr;
 			rightMotor = rMtr;
 			armMotor = aMtr;
 			sensorManager = sMgr;
 		}
-		
+	
 		public void RunArbitrator(){
 			arby.go();
 		}
-		
+	
 		public void StopArbitrator(){
 			arby.stop();
+			arby = null;
 		}
-		
+	
 		public static Behavior[] sortBehaviors(TreeMap<Integer, Behavior> behaviorsToSort){
-			
+	
 			Behavior[] behaviors = new Behavior[behaviorsToSort.keySet().size()];			
 			Object[] temp = behaviorsToSort.values().toArray();
 			for (int i = 0; i < behaviors.length; i++) {
@@ -150,6 +153,9 @@ class Auxiliary {
 
 	def static createAuxMethods(){'''package root;
 	
+	
+	import lejos.hardware.Button;
+	import lejos.hardware.lcd.LCD;
 	import lejos.hardware.motor.EV3LargeRegulatedMotor;
 	import lejos.robotics.Color;
 	
@@ -163,13 +169,45 @@ class Auxiliary {
 				Thread.yield();
 			}
 		}
-		
-		public static void clearScreen(){
+	
+		static public void clearScreen(){
 			for (int i = 0; i < 10; i++) {
 				System.out.println("");
 			}
+			LCD.clear();
+			LCD.clearDisplay();
 		}
-		
+	
+		static public boolean calibrate(SensorManager sm){
+			boolean success = false;
+	
+			clearScreen();
+			System.out.println("Put left light over white.");
+			while(!Button.ENTER.isDown()){
+			}
+			sm.leftWhiteThreshold = sm.getLeftLight() - 0.02f;
+			waitMs(500);
+			System.out.println("Put right light over white.");
+			while(!Button.ENTER.isDown()){
+			}
+			sm.rightWhiteThreshold = sm.getRightLight() - 0.02f;
+			waitMs(500);
+			System.out.println("Put left light over black.");
+			while(!Button.ENTER.isDown()){
+			}
+			sm.leftBlackThreshold = sm.getLeftLight() + 0.02f;
+			waitMs(500);
+			System.out.println("Put right light over black.");
+			while(!Button.ENTER.isDown()){
+			}
+			sm.rightBlackThreshold = sm.getRightLight() + 0.02f;
+			waitMs(500);
+			clearScreen();
+			success = true;
+	
+			return success;
+		}
+	
 		static public void turnDegrees(boolean turnRight, int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor){
 			leftMotor.stop(true);
 			rightMotor.stop();
@@ -184,20 +222,20 @@ class Auxiliary {
 			rightMotor.stop(true);
 			leftMotor.stop();
 		}
-		
+	
 		static public void centralize(SensorManager sMgr, EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr){
 			lMtr.stop(true);
 			rMtr.stop(true);
 			lMtr.setSpeed(lMtr.getMaxSpeed()*0.3f);
 			rMtr.setSpeed(rMtr.getMaxSpeed()*0.3f);
-			while(!(sMgr.getLeftLight() < sMgr.blackThreshold && sMgr.getRightLight() < sMgr.blackThreshold && sMgr.getColor() != Color.BLACK)){
-				
-				while(sMgr.getLeftLight() > sMgr.blackThreshold){
+			while(!(sMgr.getLeftLight() < sMgr.leftBlackThreshold && sMgr.getRightLight() < sMgr.rightBlackThreshold && sMgr.getColor() != Color.BLACK)){
+	
+				while(sMgr.getLeftLight() > sMgr.leftBlackThreshold){
 					lMtr.backward();
 				}
 				waitMs(100);
 				lMtr.stop();
-				while(sMgr.getRightLight() > sMgr.blackThreshold){
+				while(sMgr.getRightLight() > sMgr.rightBlackThreshold){
 					rMtr.backward();
 				}
 				waitMs(100);
@@ -211,7 +249,7 @@ class Auxiliary {
 				}
 			}
 		}
-		
+	
 	}'''
 		
 	}
@@ -290,8 +328,7 @@ class Auxiliary {
 		
 	}'''}
 
-	def static createMasterBruce(){'''
-	package root;
+	def static createMasterBruce(){'''package root;
 	
 	import java.io.IOException;
 	import java.io.PrintWriter;
@@ -308,11 +345,12 @@ class Auxiliary {
 	import lejos.hardware.sensor.NXTLightSensor;
 	import lejos.remote.nxt.BTConnector;
 	import lejos.remote.nxt.NXTConnection;
+	import lejos.robotics.Calibrate;
 	import lejos.utility.Delay;
-	import root.MoveAndAvoidEdges.*;
+	import root.FindLakes.*;
 	
 	public class MasterBruce {
-			
+	
 		//devices
 		private static EV3LargeRegulatedMotor leftMotor = null;
 		private static EV3LargeRegulatedMotor rightMotor = null;
@@ -323,13 +361,13 @@ class Auxiliary {
 		private static EV3UltrasonicSensor backUltrasonic = null;
 		private static SensorUpdater sensorUpdater;
 		private static SensorManager sensorManager;
-		
+	
 		//comms
 		private static PrintWriter writer;
 		private static BTConReader reader;
 		private static NXTConnection connection;
 		private static String readVal;
-		
+	
 		private static int setupCommMaster(){
 			int success = 0;
 			String self = LocalEV3.get().getName();
@@ -351,7 +389,7 @@ class Auxiliary {
 			writer.println("REQUEST:CONNECT");
 			writer.flush();
 			reader = new BTConReader(connection.openInputStream());
-			
+	
 			try {
 				readVal = reader.readThatLine();
 			}
@@ -365,17 +403,17 @@ class Auxiliary {
 			}else{
 				Sound.beepSequence();
 			}	
-			
+	
 			return success;
 		}
-		
+	
 		public static void main(String[] args) {
 			int retval = setupCommMaster();
 			if(retval != 1){
 				System.out.println("Communication failed");
 				return;
 			}
-			
+	
 			leftMotor = new EV3LargeRegulatedMotor(MotorPort.A);
 			rightMotor = new EV3LargeRegulatedMotor(MotorPort.B);
 			armMotor = new EV3MediumRegulatedMotor(MotorPort.C);
@@ -383,19 +421,32 @@ class Auxiliary {
 			rightLight = new NXTLightSensor(SensorPort.S2);
 			backUltrasonic = new EV3UltrasonicSensor(SensorPort.S3);
 			colorSensor = new EV3ColorSensor(SensorPort.S4);
-			
+	
 			sensorManager = new SensorManager(colorSensor, leftLight, rightLight, backUltrasonic);
 			sensorManager.start();
-		
+	
 			sensorUpdater = new SensorUpdater(sensorManager, reader);
 			sensorUpdater.start();
-			
-			Mission m1 = new MoveAndAvoidEdges(sensorManager, leftMotor, rightMotor, armMotor);
+	
+			Mission m1;
+			Mission m2;
 			AuxMethods.clearScreen();
 			while(true){
 				Delay.msDelay(100);
 				if(Button.ENTER.isDown()){
+					m1 = new FindLakes(sensorManager, leftMotor, rightMotor, armMotor);
 					m1.RunArbitrator();				
+				}
+				if(Button.LEFT.isDown()){
+					m2 = new FindLakes(sensorManager, leftMotor, rightMotor, armMotor);
+					m2.RunArbitrator();
+				}
+				if(Button.RIGHT.isDown()){
+					if(AuxMethods.calibrate(sensorManager)){
+						System.out.println("Sensors calibrated successfully!");
+					}else{
+						System.out.println("Calibration failed! Exiting to main menu");
+					}
 				}
 			}
 		}

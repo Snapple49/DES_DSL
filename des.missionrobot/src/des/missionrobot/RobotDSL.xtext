@@ -118,9 +118,7 @@ enum ColorName:
 	WHITE = 'white' |
 	BLACK = 'black' |
 	GREEN = 'green' |
-	BLUE = 'blue' |
-	BRIGHT = 'bright' |
-	DARK = 'dark'
+	BLUE = 'blue' 
 ;
 
 Bool:

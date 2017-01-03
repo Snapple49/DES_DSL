@@ -41,8 +41,6 @@
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//ColorName/BLACK"/>
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//ColorName/GREEN"/>
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//ColorName/BLUE"/>
-      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//ColorName/BRIGHT"/>
-      <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//ColorName/DARK"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RobotDSL.ecore#//BoolType">
       <genEnumLiterals ecoreEnumLiteral="RobotDSL.ecore#//BoolType/L"/>

@@ -125,8 +125,6 @@
     <eLiterals name="BLACK" value="2" literal="black"/>
     <eLiterals name="GREEN" value="3" literal="green"/>
     <eLiterals name="BLUE" value="4" literal="blue"/>
-    <eLiterals name="BRIGHT" value="5" literal="bright"/>
-    <eLiterals name="DARK" value="6" literal="dark"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Bool">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="boolType" eType="#//BoolType"/>

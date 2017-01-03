@@ -1558,22 +1558,6 @@ ruleColorName returns [Enumerator current=null]
 				newLeafNode(enumLiteral_4, grammarAccess.getColorNameAccess().getBLUEEnumLiteralDeclaration_4());
 			}
 		)
-		    |
-		(
-			enumLiteral_5='bright'
-			{
-				$current = grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_5, grammarAccess.getColorNameAccess().getBRIGHTEnumLiteralDeclaration_5());
-			}
-		)
-		    |
-		(
-			enumLiteral_6='dark'
-			{
-				$current = grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_6, grammarAccess.getColorNameAccess().getDARKEnumLiteralDeclaration_6());
-			}
-		)
 	)
 ;
 

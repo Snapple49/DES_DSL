@@ -1196,8 +1196,6 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     addEEnumLiteral(colorNameEEnum, ColorName.BLACK);
     addEEnumLiteral(colorNameEEnum, ColorName.GREEN);
     addEEnumLiteral(colorNameEEnum, ColorName.BLUE);
-    addEEnumLiteral(colorNameEEnum, ColorName.BRIGHT);
-    addEEnumLiteral(colorNameEEnum, ColorName.DARK);
 
     initEEnum(boolTypeEEnum, BoolType.class, "BoolType");
     addEEnumLiteral(boolTypeEEnum, BoolType.L);
