@@ -94,13 +94,23 @@ public class «t.name» implements Behavior{
 			}
 			if (trig.dist == null){
 				switch (trig.color.colorName) {
-					case BRIGHT : {value = " > sensorManager.whiteThreshold"}
-					case BLACK: {value = " == Color.BLACK"}
+					case WHITE : {
+						switch (trig.sensor.sensorType){
+							case LEFTLIGHT: {value = " > sensorManager.leftWhiteThreshold"}
+							case RIGHTLIGHT: {value = " > sensorManager.rightWhiteThreshold"}
+							default: {value = " == Color.WHITE"}
+						}
+					}
+					case BLACK : {
+						switch (trig.sensor.sensorType){
+							case LEFTLIGHT: {value = " > sensorManager.leftBlackThreshold"}
+							case RIGHTLIGHT: {value = " > sensorManager.rightBlackThreshold"}
+							default: {value = " == Color.BLACK"}
+						}
+					}
 					case BLUE: {value = " == Color.BLUE"}
-					case DARK: {value = " < sensorManager.blackThreshold"}
 					case GREEN: {value = " == Color.GREEN"}
 					case RED: {value = " == Color.RED"}
-					case WHITE: {value = " == Color.WHITE"}
 					default : {value = ""}
 				}
 			}else{
