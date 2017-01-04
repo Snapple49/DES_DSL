@@ -38,4 +38,11 @@ class RobotDSLValidator extends AbstractRobotDSLValidator {
 		}
 	}
 	
+	@Check
+	def checkButtStuff(Task t){
+		if(t.name == "butt"){
+			warning('name should not be butt', RobotDSLPackage.Literals.TASK__NAME)
+		}
+	}
+	
 }

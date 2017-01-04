@@ -3,6 +3,7 @@
  */
 package des.missionrobot.validation;
 
+import com.google.common.base.Objects;
 import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Task;
@@ -24,6 +25,15 @@ public class RobotDSLValidator extends AbstractRobotDSLValidator {
     boolean _hasDuplicates = Auxiliary.hasDuplicates(_taskList);
     if (_hasDuplicates) {
       this.warning("Priority should be unique", RobotDSLPackage.Literals.TASK__PRIO);
+    }
+  }
+  
+  @Check
+  public void checkButtStuff(final Task t) {
+    String _name = t.getName();
+    boolean _equals = Objects.equal(_name, "butt");
+    if (_equals) {
+      this.warning("name should not be butt", RobotDSLPackage.Literals.TASK__NAME);
     }
   }
 }
