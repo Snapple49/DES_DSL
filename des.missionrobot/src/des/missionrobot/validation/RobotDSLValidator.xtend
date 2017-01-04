@@ -33,7 +33,7 @@ class RobotDSLValidator extends AbstractRobotDSLValidator {
 
 	@Check
 	def checkPriorityCorrect(Mission m){
-		if(Auxiliary.hasDuplicates(m.taskList)){
+		if(m.taskList.head.prio == 1){
 			warning('Priority should be unique', RobotDSLPackage.Literals.TASK__PRIO)
 		}
 	}
