@@ -8,9 +8,9 @@ import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Task;
 import des.missionrobot.validation.AbstractRobotDSLValidator;
+import java.util.HashSet;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * This class contains custom validation rules.
@@ -21,12 +21,28 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 public class RobotDSLValidator extends AbstractRobotDSLValidator {
   @Check
   public void checkPriorityCorrect(final Mission m) {
+    HashSet<Integer> prios = new HashSet<Integer>();
+    boolean notUnique = false;
+    boolean notValid = false;
     EList<Task> _taskList = m.getTaskList();
-    Task _head = IterableExtensions.<Task>head(_taskList);
-    int _prio = _head.getPrio();
-    boolean _equals = (_prio == 1);
-    if (_equals) {
-      this.warning("Priority should be unique", RobotDSLPackage.Literals.TASK__PRIO);
+    for (final Task t : _taskList) {
+      {
+        int _prio = t.getPrio();
+        boolean _add = prios.add(Integer.valueOf(_prio));
+        boolean _not = (!_add);
+        if (_not) {
+          notUnique = true;
+        }
+        if (((t.getPrio() >= 99) || (t.getPrio() <= 0))) {
+          notValid = true;
+        }
+      }
+    }
+    if (notValid) {
+      this.error("Task priorities must be between 2 and 98 including", null);
+    }
+    if (notUnique) {
+      this.error("Tasks must have unique priorities within mission", null);
     }
   }
   

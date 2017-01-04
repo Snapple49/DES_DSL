@@ -12,6 +12,7 @@ import java.util.HashSet
 import java.util.Set
 import org.eclipse.emf.common.util.EList
 import des.missionrobot.robotDSL.RobotDSLPackage
+import java.util.ArrayList
 
 /**
  * This class contains custom validation rules. 
@@ -30,12 +31,27 @@ class RobotDSLValidator extends AbstractRobotDSLValidator {
 //					INVALID_NAME)
 //		}
 //	}
-
+	
 	@Check
 	def checkPriorityCorrect(Mission m){
-		if(m.taskList.head.prio == 1){
-			warning('Priority should be unique', RobotDSLPackage.Literals.TASK__PRIO)
+		var prios = new HashSet<Integer>()
+		var notUnique = false
+		var notValid = false
+		for (Task t : m.taskList) {
+			if(!prios.add(t.prio)){
+				notUnique = true
+			}
+			if(t.prio >= 99 || t.prio <= 0){
+				notValid = true
+			}
 		}
+		if(notValid){
+			error('Task priorities must be between 2 and 98 including', null)
+		}
+		if(notUnique){
+			error('Tasks must have unique priorities within mission', null)
+		}
+		
 	}
 	
 	@Check
