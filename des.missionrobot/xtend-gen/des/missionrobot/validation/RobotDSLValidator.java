@@ -8,9 +8,9 @@ import des.missionrobot.robotDSL.Mission;
 import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Task;
 import des.missionrobot.validation.AbstractRobotDSLValidator;
-import des.missionrobot.validation.Auxiliary;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * This class contains custom validation rules.
@@ -22,8 +22,10 @@ public class RobotDSLValidator extends AbstractRobotDSLValidator {
   @Check
   public void checkPriorityCorrect(final Mission m) {
     EList<Task> _taskList = m.getTaskList();
-    boolean _hasDuplicates = Auxiliary.hasDuplicates(_taskList);
-    if (_hasDuplicates) {
+    Task _head = IterableExtensions.<Task>head(_taskList);
+    int _prio = _head.getPrio();
+    boolean _equals = (_prio == 1);
+    if (_equals) {
       this.warning("Priority should be unique", RobotDSLPackage.Literals.TASK__PRIO);
     }
   }
