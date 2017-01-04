@@ -4,6 +4,7 @@
 package des.missionrobot.validation;
 
 import des.missionrobot.robotDSL.Mission;
+import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Task;
 import des.missionrobot.validation.AbstractRobotDSLValidator;
 import des.missionrobot.validation.Auxiliary;
@@ -22,7 +23,7 @@ public class RobotDSLValidator extends AbstractRobotDSLValidator {
     EList<Task> _taskList = m.getTaskList();
     boolean _hasDuplicates = Auxiliary.hasDuplicates(_taskList);
     if (_hasDuplicates) {
-      this.warning("Priority should be unique", null);
+      this.warning("Priority should be unique", RobotDSLPackage.Literals.TASK__PRIO);
     }
   }
 }
