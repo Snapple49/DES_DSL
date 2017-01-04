@@ -13,10 +13,10 @@ public class Auxiliary {
 	public static boolean hasDuplicates(EList<Task> listContainingDuplicates) {
 		 
 		boolean returnBool = false;
-		final Set<Object> set1 = new HashSet<Object>();
+		final Set<Integer> set1 = new HashSet<Integer>();
  
-		for (Object o: listContainingDuplicates) {
-			if (!set1.add(o)) {
+		for (Task t: listContainingDuplicates) {
+			if (!set1.add(t.getPrio())) {
 				returnBool = true;
 			}
 		}
