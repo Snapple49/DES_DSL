@@ -13,6 +13,11 @@ import java.util.Set
 import org.eclipse.emf.common.util.EList
 import des.missionrobot.robotDSL.RobotDSLPackage
 import java.util.ArrayList
+import des.missionrobot.robotDSL.Action
+import des.missionrobot.robotDSL.DirectionVal
+import des.missionrobot.robotDSL.Trigger
+import des.missionrobot.robotDSL.Distance
+import des.missionrobot.robotDSL.Time
 
 /**
  * This class contains custom validation rules. 
@@ -55,10 +60,39 @@ class RobotDSLValidator extends AbstractRobotDSLValidator {
 	}
 	
 	@Check
-	def checkButtStuff(Task t){
-		if(t.name == "butt"){
-			warning('name should not be butt', RobotDSLPackage.Literals.TASK__NAME)
+	def checkDurationCorrect(Action a){
+		if(a.duration <= 0){
+			warning('Duration should be > 0', null)
 		}
 	}
+	
+	@Check
+	def checkMoveDirCorrect(Action a){
+		if(a.moveDir == DirectionVal.LEFT || a.moveDir == DirectionVal.RIGHT){
+			warning('Move can have directions \'forward\' or \'backward\'', null)
+		}
+	}
+	
+	@Check
+	def checkTurnDirCorrect(Action a){
+		if(a.turnDir == DirectionVal.FORWARD || a.moveDir == DirectionVal.BACKWARD){
+			warning('Turn can have directions \'left\' or \'right\'', null)
+		}
+	}
+	
+	@Check
+	def checkDistCorrect(Distance d){
+		if(d.distance < 0){
+			warning('Distance has to be >= 0', null)
+		}
+	}
+	
+	@Check
+	def checkTimeCorrect(Time t){
+		if(t.sec < 0){
+			warning('Time has to be >= 0', null)
+		}
+	}
+	
 	
 }
