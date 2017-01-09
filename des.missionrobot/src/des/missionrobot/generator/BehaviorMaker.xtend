@@ -192,12 +192,12 @@ rightMotor.backward();
 			switch (act.turnDir.dir) {
 				case LEFT: {
 					action = action + 
-					'''AuxMethods.turnDegrees(false, «act.degr*100», leftMotor, rightMotor);
+					'''AuxMethods.turnDegrees(false, «act.degr», leftMotor, rightMotor);
 					'''
 				}
 				case RIGHT: {
 					action = action + 
-					'''AuxMethods.turnDegrees(true, «act.degr*100», leftMotor, rightMotor);
+					'''AuxMethods.turnDegrees(true, «act.degr», leftMotor, rightMotor);
 					'''
 				}
 				default: {
