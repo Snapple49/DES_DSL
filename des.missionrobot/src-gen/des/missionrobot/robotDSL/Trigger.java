@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getSensor <em>Sensor</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getDist <em>Dist</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getPressed <em>Pressed</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger()
@@ -183,5 +184,31 @@ public interface Trigger extends EObject
    * @generated
    */
   void setDist(Distance value);
+
+  /**
+   * Returns the value of the '<em><b>Pressed</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pressed</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pressed</em>' attribute.
+   * @see #setPressed(String)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Pressed()
+   * @model
+   * @generated
+   */
+  String getPressed();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getPressed <em>Pressed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pressed</em>' attribute.
+   * @see #getPressed()
+   * @generated
+   */
+  void setPressed(String value);
 
 } // Trigger

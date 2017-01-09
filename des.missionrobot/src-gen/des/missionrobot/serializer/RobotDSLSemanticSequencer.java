@@ -376,7 +376,7 @@ public class RobotDSLSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Trigger returns Trigger
 	 *
 	 * Constraint:
-	 *     (boolType=Bool? ((neg=Negation? flag=[Flag|ID]) | (sensor=Sensor (color=Color | dist=Distance))))
+	 *     (boolType=Bool? ((neg=Negation? flag=[Flag|ID]) | (sensor=Sensor (color=Color | dist=Distance | pressed='touching'))))
 	 */
 	protected void sequence_Trigger(ISerializationContext context, Trigger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -99,6 +99,7 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTriggerAccess().getSensorAssignment_1_1_0(), "rule__Trigger__SensorAssignment_1_1_0");
 					put(grammarAccess.getTriggerAccess().getColorAssignment_1_1_1_0_1(), "rule__Trigger__ColorAssignment_1_1_1_0_1");
 					put(grammarAccess.getTriggerAccess().getDistAssignment_1_1_1_1_1(), "rule__Trigger__DistAssignment_1_1_1_1_1");
+					put(grammarAccess.getTriggerAccess().getPressedAssignment_1_1_1_2(), "rule__Trigger__PressedAssignment_1_1_1_2");
 					put(grammarAccess.getDistanceAccess().getRangeBoolAssignment_0(), "rule__Distance__RangeBoolAssignment_0");
 					put(grammarAccess.getDistanceAccess().getDistanceAssignment_2(), "rule__Distance__DistanceAssignment_2");
 					put(grammarAccess.getFlagAccess().getNameAssignment(), "rule__Flag__NameAssignment");

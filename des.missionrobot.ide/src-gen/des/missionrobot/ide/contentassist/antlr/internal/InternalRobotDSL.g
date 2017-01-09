@@ -689,6 +689,12 @@ rule__Trigger__Alternatives_1_1_1
 		(rule__Trigger__Group_1_1_1_1__0)
 		{ after(grammarAccess.getTriggerAccess().getGroup_1_1_1_1()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getTriggerAccess().getPressedAssignment_1_1_1_2()); }
+		(rule__Trigger__PressedAssignment_1_1_1_2)
+		{ after(grammarAccess.getTriggerAccess().getPressedAssignment_1_1_1_2()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1914,9 +1920,9 @@ rule__Action__Group_0_2__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getActionAccess().getMilisecKeyword_0_2_2()); }
-	'milisec'
-	{ after(grammarAccess.getActionAccess().getMilisecKeyword_0_2_2()); }
+	{ before(grammarAccess.getActionAccess().getMillisecKeyword_0_2_2()); }
+	'millisec'
+	{ after(grammarAccess.getActionAccess().getMillisecKeyword_0_2_2()); }
 )
 ;
 finally {
@@ -3359,6 +3365,25 @@ rule__Trigger__DistAssignment_1_1_1_1_1
 		{ before(grammarAccess.getTriggerAccess().getDistDistanceParserRuleCall_1_1_1_1_1_0()); }
 		ruleDistance
 		{ after(grammarAccess.getTriggerAccess().getDistDistanceParserRuleCall_1_1_1_1_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Trigger__PressedAssignment_1_1_1_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
+		(
+			{ before(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
+			'touching'
+			{ after(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
+		)
+		{ after(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
 	)
 ;
 finally {

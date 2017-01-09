@@ -91,6 +91,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Trigger/sensor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Trigger/color"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Trigger/dist"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RobotDSL.ecore#//Trigger/pressed"/>
     </genClasses>
     <genClasses ecoreClass="RobotDSL.ecore#//Distance">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RobotDSL.ecore#//Distance/rangeBool"/>

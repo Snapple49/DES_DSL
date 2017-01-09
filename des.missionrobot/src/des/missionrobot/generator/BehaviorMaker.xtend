@@ -61,7 +61,7 @@ public class «t.name» implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return («IF t.triggerList.size == 0»true«ELSE»«FOR trig : t.triggerList»«toCondition(trig)»«ENDFOR»«ENDIF»);
+		return («IF t.triggerList.size == 0»!parent.done«ELSE»«FOR trig : t.triggerList»«toCondition(trig)»«ENDFOR»«ENDIF»);
 	}
 
 	@Override

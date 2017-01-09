@@ -251,7 +251,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cForKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
 		private final Assignment cDurationAssignment_0_2_1 = (Assignment)cGroup_0_2.eContents().get(1);
 		private final RuleCall cDurationINTTerminalRuleCall_0_2_1_0 = (RuleCall)cDurationAssignment_0_2_1.eContents().get(0);
-		private final Keyword cMilisecKeyword_0_2_2 = (Keyword)cGroup_0_2.eContents().get(2);
+		private final Keyword cMillisecKeyword_0_2_2 = (Keyword)cGroup_0_2.eContents().get(2);
 		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
 		private final Keyword cAtKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
 		private final Assignment cSpeedAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
@@ -291,19 +291,19 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCentCentalizeKeyword_5_0 = (Keyword)cCentAssignment_5.eContents().get(0);
 		
 		//Action:
-		//	'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? |
+		//	'Move' moveDir=Direction ('for' duration=INT 'millisec')? ('at' speed=Speed 'speed')? |
 		//	'Turn' turnDir=Direction (degr=INT 'deg' | 'until' trig+=Trigger+) |
 		//	'Arm' op=ArmOp |
 		//	'Play' 'sound' sound=Sound |
 		//	'Update' flag=[Flag] 'to' bool=Bool | cent='Centalize';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? | 'Turn' turnDir=Direction
+		//'Move' moveDir=Direction ('for' duration=INT 'millisec')? ('at' speed=Speed 'speed')? | 'Turn' turnDir=Direction
 		//(degr=INT 'deg' | 'until' trig+=Trigger+) | 'Arm' op=ArmOp | 'Play' 'sound' sound=Sound | 'Update' flag=[Flag] 'to'
 		//bool=Bool | cent='Centalize'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')?
+		//'Move' moveDir=Direction ('for' duration=INT 'millisec')? ('at' speed=Speed 'speed')?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'Move'
@@ -315,7 +315,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Direction
 		public RuleCall getMoveDirDirectionParserRuleCall_0_1_0() { return cMoveDirDirectionParserRuleCall_0_1_0; }
 		
-		//('for' duration=INT 'milisec')?
+		//('for' duration=INT 'millisec')?
 		public Group getGroup_0_2() { return cGroup_0_2; }
 		
 		//'for'
@@ -327,8 +327,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getDurationINTTerminalRuleCall_0_2_1_0() { return cDurationINTTerminalRuleCall_0_2_1_0; }
 		
-		//'milisec'
-		public Keyword getMilisecKeyword_0_2_2() { return cMilisecKeyword_0_2_2; }
+		//'millisec'
+		public Keyword getMillisecKeyword_0_2_2() { return cMillisecKeyword_0_2_2; }
 		
 		//('at' speed=Speed 'speed')?
 		public Group getGroup_0_3() { return cGroup_0_3; }
@@ -465,12 +465,16 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDistanceKeyword_1_1_1_1_0 = (Keyword)cGroup_1_1_1_1.eContents().get(0);
 		private final Assignment cDistAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
 		private final RuleCall cDistDistanceParserRuleCall_1_1_1_1_1_0 = (RuleCall)cDistAssignment_1_1_1_1_1.eContents().get(0);
+		private final Assignment cPressedAssignment_1_1_1_2 = (Assignment)cAlternatives_1_1_1.eContents().get(2);
+		private final Keyword cPressedTouchingKeyword_1_1_1_2_0 = (Keyword)cPressedAssignment_1_1_1_2.eContents().get(0);
 		
 		//Trigger:
-		//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance));
+		//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance |
+		//	pressed='touching'));
 		@Override public ParserRule getRule() { return rule; }
 		
-		//boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance))
+		//boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance |
+		//pressed='touching'))
 		public Group getGroup() { return cGroup; }
 		
 		//boolType=Bool?
@@ -479,7 +483,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Bool
 		public RuleCall getBoolTypeBoolParserRuleCall_0_0() { return cBoolTypeBoolParserRuleCall_0_0; }
 		
-		//(neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance))
+		//(neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | pressed='touching'))
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//neg=Negation? flag=[Flag]
@@ -500,7 +504,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getFlagFlagIDTerminalRuleCall_1_0_1_0_1() { return cFlagFlagIDTerminalRuleCall_1_0_1_0_1; }
 		
-		//sensor=Sensor ('is' color=Color | 'distance' dist=Distance)
+		//sensor=Sensor ('is' color=Color | 'distance' dist=Distance | pressed='touching')
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//sensor=Sensor
@@ -509,7 +513,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Sensor
 		public RuleCall getSensorSensorParserRuleCall_1_1_0_0() { return cSensorSensorParserRuleCall_1_1_0_0; }
 		
-		//('is' color=Color | 'distance' dist=Distance)
+		//('is' color=Color | 'distance' dist=Distance | pressed='touching')
 		public Alternatives getAlternatives_1_1_1() { return cAlternatives_1_1_1; }
 		
 		//'is' color=Color
@@ -535,6 +539,12 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Distance
 		public RuleCall getDistDistanceParserRuleCall_1_1_1_1_1_0() { return cDistDistanceParserRuleCall_1_1_1_1_1_0; }
+		
+		//pressed='touching'
+		public Assignment getPressedAssignment_1_1_1_2() { return cPressedAssignment_1_1_1_2; }
+		
+		//'touching'
+		public Keyword getPressedTouchingKeyword_1_1_1_2_0() { return cPressedTouchingKeyword_1_1_1_2_0; }
 	}
 	public class DistanceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Distance");
@@ -1210,7 +1220,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Action:
-	//	'Move' moveDir=Direction ('for' duration=INT 'milisec')? ('at' speed=Speed 'speed')? |
+	//	'Move' moveDir=Direction ('for' duration=INT 'millisec')? ('at' speed=Speed 'speed')? |
 	//	'Turn' turnDir=Direction (degr=INT 'deg' | 'until' trig+=Trigger+) |
 	//	'Arm' op=ArmOp |
 	//	'Play' 'sound' sound=Sound |
@@ -1224,7 +1234,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Trigger:
-	//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance));
+	//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance |
+	//	pressed='touching'));
 	public TriggerElements getTriggerAccess() {
 		return pTrigger;
 	}

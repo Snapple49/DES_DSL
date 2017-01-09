@@ -497,9 +497,9 @@ ruleAction returns [EObject current=null]
 						}
 					)
 				)
-				otherlv_4='milisec'
+				otherlv_4='millisec'
 				{
-					newLeafNode(otherlv_4, grammarAccess.getActionAccess().getMilisecKeyword_0_2_2());
+					newLeafNode(otherlv_4, grammarAccess.getActionAccess().getMillisecKeyword_0_2_2());
 				}
 			)?
 			(
@@ -868,6 +868,21 @@ ruleTrigger returns [EObject current=null]
 									afterParserOrEnumRuleCall();
 								}
 							)
+						)
+					)
+					    |
+					(
+						(
+							lv_pressed_8_0='touching'
+							{
+								newLeafNode(lv_pressed_8_0, grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0());
+							}
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getTriggerRule());
+								}
+								setWithLastConsumed($current, "pressed", lv_pressed_8_0, "touching");
+							}
 						)
 					)
 				)
