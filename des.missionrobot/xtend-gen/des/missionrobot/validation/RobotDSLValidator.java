@@ -4,9 +4,12 @@
 package des.missionrobot.validation;
 
 import com.google.common.base.Objects;
+import des.missionrobot.robotDSL.Action;
+import des.missionrobot.robotDSL.DirectionVal;
+import des.missionrobot.robotDSL.Distance;
 import des.missionrobot.robotDSL.Mission;
-import des.missionrobot.robotDSL.RobotDSLPackage;
 import des.missionrobot.robotDSL.Task;
+import des.missionrobot.robotDSL.Time;
 import des.missionrobot.validation.AbstractRobotDSLValidator;
 import java.util.HashSet;
 import org.eclipse.emf.common.util.EList;
@@ -47,11 +50,43 @@ public class RobotDSLValidator extends AbstractRobotDSLValidator {
   }
   
   @Check
-  public void checkButtStuff(final Task t) {
-    String _name = t.getName();
-    boolean _equals = Objects.equal(_name, "butt");
-    if (_equals) {
-      this.warning("name should not be butt", RobotDSLPackage.Literals.TASK__NAME);
+  public void checkDurationCorrect(final Action a) {
+    int _duration = a.getDuration();
+    boolean _lessEqualsThan = (_duration <= 0);
+    if (_lessEqualsThan) {
+      this.warning("Duration should be > 0", null);
+    }
+  }
+  
+  @Check
+  public void checkMoveDirCorrect(final Action a) {
+    if ((Objects.equal(a.getMoveDir(), DirectionVal.LEFT) || Objects.equal(a.getMoveDir(), DirectionVal.RIGHT))) {
+      this.warning("Move can have directions \'forward\' or \'backward\'", null);
+    }
+  }
+  
+  @Check
+  public void checkTurnDirCorrect(final Action a) {
+    if ((Objects.equal(a.getTurnDir(), DirectionVal.FORWARD) || Objects.equal(a.getMoveDir(), DirectionVal.BACKWARD))) {
+      this.warning("Turn can have directions \'left\' or \'right\'", null);
+    }
+  }
+  
+  @Check
+  public void checkDistCorrect(final Distance d) {
+    int _distance = d.getDistance();
+    boolean _lessThan = (_distance < 0);
+    if (_lessThan) {
+      this.warning("Distance has to be >= 0", null);
+    }
+  }
+  
+  @Check
+  public void checkTimeCorrect(final Time t) {
+    int _sec = t.getSec();
+    boolean _lessThan = (_sec < 0);
+    if (_lessThan) {
+      this.warning("Time has to be >= 0", null);
     }
   }
 }
