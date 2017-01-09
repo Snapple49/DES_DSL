@@ -57,6 +57,7 @@ public class Goal implements Behavior{
 		leftMotor.stop(true);
 		rightMotor.stop(true);
 		armMotor.stop();
+		parent.done = true;
 		parent.StopArbitrator();
 	}
 
