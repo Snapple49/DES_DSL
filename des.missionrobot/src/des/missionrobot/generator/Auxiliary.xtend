@@ -240,12 +240,12 @@ public class AuxMethods {
 		return success;
 	}
 
-	static public void turnDegrees(int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor,
+	static public void turnDegrees(boolean turnRight, int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor,
 			SensorManager sMgr) {
 		float startDeg = sMgr.getGyro();
 		leftMotor.stop(true);
 		rightMotor.stop();
-		if (turnDeg >= 0) {
+		if (turnRight) {
 			leftMotor.forward();
 			rightMotor.backward();
 			while (sMgr.getGyro() > startDeg + turnDeg) {
@@ -254,7 +254,7 @@ public class AuxMethods {
 		} else {
 			rightMotor.forward();
 			leftMotor.backward();
-			while (sMgr.getGyro() < startDeg + turnDeg) {
+			while (sMgr.getGyro() < startDeg - turnDeg) {
 				waitMs(50);
 			}
 		}

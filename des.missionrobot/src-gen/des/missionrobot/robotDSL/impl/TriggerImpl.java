@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getSensor <em>Sensor</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getColor <em>Color</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getDist <em>Dist</em>}</li>
- *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getPressed <em>Pressed</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getTouching <em>Touching</em>}</li>
  * </ul>
  *
  * @generated
@@ -103,24 +103,14 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   protected Distance dist;
 
   /**
-   * The default value of the '{@link #getPressed() <em>Pressed</em>}' attribute.
+   * The cached value of the '{@link #getTouching() <em>Touching</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPressed()
+   * @see #getTouching()
    * @generated
    * @ordered
    */
-  protected static final String PRESSED_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPressed() <em>Pressed</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPressed()
-   * @generated
-   * @ordered
-   */
-  protected String pressed = PRESSED_EDEFAULT;
+  protected Bool touching;
 
   /**
    * <!-- begin-user-doc -->
@@ -431,9 +421,9 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPressed()
+  public Bool getTouching()
   {
-    return pressed;
+    return touching;
   }
 
   /**
@@ -441,12 +431,37 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPressed(String newPressed)
+  public NotificationChain basicSetTouching(Bool newTouching, NotificationChain msgs)
   {
-    String oldPressed = pressed;
-    pressed = newPressed;
+    Bool oldTouching = touching;
+    touching = newTouching;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__PRESSED, oldPressed, pressed));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__TOUCHING, oldTouching, newTouching);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTouching(Bool newTouching)
+  {
+    if (newTouching != touching)
+    {
+      NotificationChain msgs = null;
+      if (touching != null)
+        msgs = ((InternalEObject)touching).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.TRIGGER__TOUCHING, null, msgs);
+      if (newTouching != null)
+        msgs = ((InternalEObject)newTouching).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.TRIGGER__TOUCHING, null, msgs);
+      msgs = basicSetTouching(newTouching, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__TOUCHING, newTouching, newTouching));
   }
 
   /**
@@ -469,6 +484,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         return basicSetColor(null, msgs);
       case RobotDSLPackage.TRIGGER__DIST:
         return basicSetDist(null, msgs);
+      case RobotDSLPackage.TRIGGER__TOUCHING:
+        return basicSetTouching(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -496,8 +513,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         return getColor();
       case RobotDSLPackage.TRIGGER__DIST:
         return getDist();
-      case RobotDSLPackage.TRIGGER__PRESSED:
-        return getPressed();
+      case RobotDSLPackage.TRIGGER__TOUCHING:
+        return getTouching();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -530,8 +547,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__DIST:
         setDist((Distance)newValue);
         return;
-      case RobotDSLPackage.TRIGGER__PRESSED:
-        setPressed((String)newValue);
+      case RobotDSLPackage.TRIGGER__TOUCHING:
+        setTouching((Bool)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -565,8 +582,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__DIST:
         setDist((Distance)null);
         return;
-      case RobotDSLPackage.TRIGGER__PRESSED:
-        setPressed(PRESSED_EDEFAULT);
+      case RobotDSLPackage.TRIGGER__TOUCHING:
+        setTouching((Bool)null);
         return;
     }
     super.eUnset(featureID);
@@ -594,27 +611,10 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         return color != null;
       case RobotDSLPackage.TRIGGER__DIST:
         return dist != null;
-      case RobotDSLPackage.TRIGGER__PRESSED:
-        return PRESSED_EDEFAULT == null ? pressed != null : !PRESSED_EDEFAULT.equals(pressed);
+      case RobotDSLPackage.TRIGGER__TOUCHING:
+        return touching != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (pressed: ");
-    result.append(pressed);
-    result.append(')');
-    return result.toString();
   }
 
 } //TriggerImpl

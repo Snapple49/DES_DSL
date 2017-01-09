@@ -642,9 +642,9 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTrigger_Pressed()
+  public EReference getTrigger_Touching()
   {
-    return (EAttribute)triggerEClass.getEStructuralFeatures().get(6);
+    return (EReference)triggerEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1018,7 +1018,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     createEReference(triggerEClass, TRIGGER__SENSOR);
     createEReference(triggerEClass, TRIGGER__COLOR);
     createEReference(triggerEClass, TRIGGER__DIST);
-    createEAttribute(triggerEClass, TRIGGER__PRESSED);
+    createEReference(triggerEClass, TRIGGER__TOUCHING);
 
     distanceEClass = createEClass(DISTANCE);
     createEReference(distanceEClass, DISTANCE__RANGE_BOOL);
@@ -1136,7 +1136,7 @@ public class RobotDSLPackageImpl extends EPackageImpl implements RobotDSLPackage
     initEReference(getTrigger_Sensor(), this.getSensor(), null, "sensor", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTrigger_Color(), this.getColor(), null, "color", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTrigger_Dist(), this.getDistance(), null, "dist", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTrigger_Pressed(), ecorePackage.getEString(), "pressed", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrigger_Touching(), this.getBool(), null, "touching", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(distanceEClass, Distance.class, "Distance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDistance_RangeBool(), this.getBool(), null, "rangeBool", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -465,16 +465,18 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDistanceKeyword_1_1_1_1_0 = (Keyword)cGroup_1_1_1_1.eContents().get(0);
 		private final Assignment cDistAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
 		private final RuleCall cDistDistanceParserRuleCall_1_1_1_1_1_0 = (RuleCall)cDistAssignment_1_1_1_1_1.eContents().get(0);
-		private final Assignment cPressedAssignment_1_1_1_2 = (Assignment)cAlternatives_1_1_1.eContents().get(2);
-		private final Keyword cPressedTouchingKeyword_1_1_1_2_0 = (Keyword)cPressedAssignment_1_1_1_2.eContents().get(0);
+		private final Group cGroup_1_1_1_2 = (Group)cAlternatives_1_1_1.eContents().get(2);
+		private final Keyword cTouchingKeyword_1_1_1_2_0 = (Keyword)cGroup_1_1_1_2.eContents().get(0);
+		private final Assignment cTouchingAssignment_1_1_1_2_1 = (Assignment)cGroup_1_1_1_2.eContents().get(1);
+		private final RuleCall cTouchingBoolParserRuleCall_1_1_1_2_1_0 = (RuleCall)cTouchingAssignment_1_1_1_2_1.eContents().get(0);
 		
 		//Trigger:
-		//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance |
-		//	pressed='touching'));
+		//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching'
+		//	touching=Bool));
 		@Override public ParserRule getRule() { return rule; }
 		
-		//boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance |
-		//pressed='touching'))
+		//boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching'
+		//touching=Bool))
 		public Group getGroup() { return cGroup; }
 		
 		//boolType=Bool?
@@ -483,7 +485,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Bool
 		public RuleCall getBoolTypeBoolParserRuleCall_0_0() { return cBoolTypeBoolParserRuleCall_0_0; }
 		
-		//(neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | pressed='touching'))
+		//(neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool))
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//neg=Negation? flag=[Flag]
@@ -504,7 +506,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getFlagFlagIDTerminalRuleCall_1_0_1_0_1() { return cFlagFlagIDTerminalRuleCall_1_0_1_0_1; }
 		
-		//sensor=Sensor ('is' color=Color | 'distance' dist=Distance | pressed='touching')
+		//sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool)
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//sensor=Sensor
@@ -513,7 +515,7 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Sensor
 		public RuleCall getSensorSensorParserRuleCall_1_1_0_0() { return cSensorSensorParserRuleCall_1_1_0_0; }
 		
-		//('is' color=Color | 'distance' dist=Distance | pressed='touching')
+		//('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool)
 		public Alternatives getAlternatives_1_1_1() { return cAlternatives_1_1_1; }
 		
 		//'is' color=Color
@@ -540,11 +542,17 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Distance
 		public RuleCall getDistDistanceParserRuleCall_1_1_1_1_1_0() { return cDistDistanceParserRuleCall_1_1_1_1_1_0; }
 		
-		//pressed='touching'
-		public Assignment getPressedAssignment_1_1_1_2() { return cPressedAssignment_1_1_1_2; }
+		//'touching' touching=Bool
+		public Group getGroup_1_1_1_2() { return cGroup_1_1_1_2; }
 		
 		//'touching'
-		public Keyword getPressedTouchingKeyword_1_1_1_2_0() { return cPressedTouchingKeyword_1_1_1_2_0; }
+		public Keyword getTouchingKeyword_1_1_1_2_0() { return cTouchingKeyword_1_1_1_2_0; }
+		
+		//touching=Bool
+		public Assignment getTouchingAssignment_1_1_1_2_1() { return cTouchingAssignment_1_1_1_2_1; }
+		
+		//Bool
+		public RuleCall getTouchingBoolParserRuleCall_1_1_1_2_1_0() { return cTouchingBoolParserRuleCall_1_1_1_2_1_0; }
 	}
 	public class DistanceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Distance");
@@ -1234,8 +1242,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Trigger:
-	//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance |
-	//	pressed='touching'));
+	//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching'
+	//	touching=Bool));
 	public TriggerElements getTriggerAccess() {
 		return pTrigger;
 	}

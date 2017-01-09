@@ -872,17 +872,28 @@ ruleTrigger returns [EObject current=null]
 					)
 					    |
 					(
+						otherlv_8='touching'
+						{
+							newLeafNode(otherlv_8, grammarAccess.getTriggerAccess().getTouchingKeyword_1_1_1_2_0());
+						}
 						(
-							lv_pressed_8_0='touching'
-							{
-								newLeafNode(lv_pressed_8_0, grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0());
-							}
-							{
-								if ($current==null) {
-									$current = createModelElement(grammarAccess.getTriggerRule());
+							(
+								{
+									newCompositeNode(grammarAccess.getTriggerAccess().getTouchingBoolParserRuleCall_1_1_1_2_1_0());
 								}
-								setWithLastConsumed($current, "pressed", lv_pressed_8_0, "touching");
-							}
+								lv_touching_9_0=ruleBool
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getTriggerRule());
+									}
+									set(
+										$current,
+										"touching",
+										lv_touching_9_0,
+										"des.missionrobot.RobotDSL.Bool");
+									afterParserOrEnumRuleCall();
+								}
+							)
 						)
 					)
 				)

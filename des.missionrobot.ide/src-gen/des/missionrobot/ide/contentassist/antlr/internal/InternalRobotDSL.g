@@ -691,9 +691,9 @@ rule__Trigger__Alternatives_1_1_1
 	)
 	|
 	(
-		{ before(grammarAccess.getTriggerAccess().getPressedAssignment_1_1_1_2()); }
-		(rule__Trigger__PressedAssignment_1_1_1_2)
-		{ after(grammarAccess.getTriggerAccess().getPressedAssignment_1_1_1_2()); }
+		{ before(grammarAccess.getTriggerAccess().getGroup_1_1_1_2()); }
+		(rule__Trigger__Group_1_1_1_2__0)
+		{ after(grammarAccess.getTriggerAccess().getGroup_1_1_1_2()); }
 	)
 ;
 finally {
@@ -2720,6 +2720,60 @@ finally {
 }
 
 
+rule__Trigger__Group_1_1_1_2__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Trigger__Group_1_1_1_2__0__Impl
+	rule__Trigger__Group_1_1_1_2__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Trigger__Group_1_1_1_2__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getTriggerAccess().getTouchingKeyword_1_1_1_2_0()); }
+	'touching'
+	{ after(grammarAccess.getTriggerAccess().getTouchingKeyword_1_1_1_2_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Trigger__Group_1_1_1_2__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Trigger__Group_1_1_1_2__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Trigger__Group_1_1_1_2__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getTriggerAccess().getTouchingAssignment_1_1_1_2_1()); }
+	(rule__Trigger__TouchingAssignment_1_1_1_2_1)
+	{ after(grammarAccess.getTriggerAccess().getTouchingAssignment_1_1_1_2_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 rule__Distance__Group__0
 	@init {
 		int stackSize = keepStackSize();
@@ -3371,19 +3425,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Trigger__PressedAssignment_1_1_1_2
+rule__Trigger__TouchingAssignment_1_1_1_2_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
-		(
-			{ before(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
-			'touching'
-			{ after(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
-		)
-		{ after(grammarAccess.getTriggerAccess().getPressedTouchingKeyword_1_1_1_2_0()); }
+		{ before(grammarAccess.getTriggerAccess().getTouchingBoolParserRuleCall_1_1_1_2_1_0()); }
+		ruleBool
+		{ after(grammarAccess.getTriggerAccess().getTouchingBoolParserRuleCall_1_1_1_2_1_0()); }
 	)
 ;
 finally {

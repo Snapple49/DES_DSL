@@ -434,13 +434,13 @@ public interface RobotDSLPackage extends EPackage
   int TRIGGER__DIST = 5;
 
   /**
-   * The feature id for the '<em><b>Pressed</b></em>' attribute.
+   * The feature id for the '<em><b>Touching</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRIGGER__PRESSED = 6;
+  int TRIGGER__TOUCHING = 6;
 
   /**
    * The number of structural features of the '<em>Trigger</em>' class.
@@ -1230,15 +1230,15 @@ public interface RobotDSLPackage extends EPackage
   EReference getTrigger_Dist();
 
   /**
-   * Returns the meta object for the attribute '{@link des.missionrobot.robotDSL.Trigger#getPressed <em>Pressed</em>}'.
+   * Returns the meta object for the containment reference '{@link des.missionrobot.robotDSL.Trigger#getTouching <em>Touching</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Pressed</em>'.
-   * @see des.missionrobot.robotDSL.Trigger#getPressed()
+   * @return the meta object for the containment reference '<em>Touching</em>'.
+   * @see des.missionrobot.robotDSL.Trigger#getTouching()
    * @see #getTrigger()
    * @generated
    */
-  EAttribute getTrigger_Pressed();
+  EReference getTrigger_Touching();
 
   /**
    * Returns the meta object for class '{@link des.missionrobot.robotDSL.Distance <em>Distance</em>}'.
@@ -1876,12 +1876,12 @@ public interface RobotDSLPackage extends EPackage
     EReference TRIGGER__DIST = eINSTANCE.getTrigger_Dist();
 
     /**
-     * The meta object literal for the '<em><b>Pressed</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Touching</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRIGGER__PRESSED = eINSTANCE.getTrigger_Pressed();
+    EReference TRIGGER__TOUCHING = eINSTANCE.getTrigger_Touching();
 
     /**
      * The meta object literal for the '{@link des.missionrobot.robotDSL.impl.DistanceImpl <em>Distance</em>}' class.
