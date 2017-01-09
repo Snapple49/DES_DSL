@@ -21,7 +21,7 @@ class JavaGenerator {
 			super(sMgr, lMtr, rMtr, aMtr);
 			
 			«FOR t : root.taskList»behaviorMap.put(«t.prio», new «t.name»(this, leftMotor, rightMotor, armMotor, sensorManager));«"\n"»«ENDFOR»
-			behaviorMap.put(99, new Goal(this, leftMotor, rightMotor, armMotor, sensorManager));
+			behaviorMap.put(99, new root.«root.name».Goal(this, leftMotor, rightMotor, armMotor, sensorManager));
 			
 			Behavior[] behaviors = sortBehaviors(behaviorMap);
 			arby = new BetterArbitrator(behaviors);

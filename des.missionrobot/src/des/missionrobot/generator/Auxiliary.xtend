@@ -1,5 +1,7 @@
 package des.missionrobot.generator
 
+import des.missionrobot.robotDSL.Mission
+import java.util.List
 
 class Auxiliary {
 	def static createSensorManager(){'''package root;
@@ -152,105 +154,136 @@ class Auxiliary {
 	}
 
 	def static createAuxMethods(){'''package root;
+			
+			
+import lejos.hardware.Button;
+import lejos.hardware.ev3.EV3;
+import lejos.hardware.lcd.LCD;
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
+import lejos.hardware.motor.EV3MediumRegulatedMotor;
+import lejos.hardware.port.Port;
+import lejos.hardware.port.SensorPort;
+import lejos.robotics.Color;
+		
+public class AuxMethods {
 	
-	
-	import lejos.hardware.Button;
-	import lejos.hardware.lcd.LCD;
-	import lejos.hardware.motor.EV3LargeRegulatedMotor;
-	import lejos.robotics.Color;
-	
-	public class AuxMethods {
-	
-		static public void waitMs(int waitTime) {
-			long startTime = System.currentTimeMillis();
-			long curTime = startTime;
-			while(curTime < startTime + waitTime){
-				curTime = System.currentTimeMillis();
-				Thread.yield();
-			}
+	public enum SpeedLevel{
+		HIGH,
+		MID,
+		LOW
+	}
+
+	static public void setMotorSpeed(EV3LargeRegulatedMotor mtr, SpeedLevel speed){
+		switch (speed) {
+		case HIGH:
+			mtr.setSpeed(mtr.getMaxSpeed() * 0.5f);
+			break;
+		case MID:
+			mtr.setSpeed(mtr.getMaxSpeed() * 0.3f);
+			break;
+		case LOW:
+			mtr.setSpeed(mtr.getMaxSpeed() * 0.15f);
+			break;
 		}
+	}
 	
-		static public void clearScreen(){
-			for (int i = 0; i < 10; i++) {
-				System.out.println("");
-			}
-			LCD.clear();
-			LCD.clearDisplay();
+	static public void resetAll(EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr, EV3MediumRegulatedMotor aMtr, Mission mis){
+		lMtr.stop(true);
+		rMtr.stop(true);
+		aMtr.stop(true);
+		mis = null;
+	}
+	
+	static public void waitMs(int waitTime) {
+		long startTime = System.currentTimeMillis();
+		long curTime = startTime;
+		while(curTime < startTime + waitTime){
+			curTime = System.currentTimeMillis();
+			Thread.yield();
 		}
-	
-		static public boolean calibrate(SensorManager sm){
-			boolean success = false;
-	
-			clearScreen();
-			System.out.println("Put left light over white.");
-			while(!Button.ENTER.isDown()){
-			}
-			sm.leftWhiteThreshold = sm.getLeftLight() - 0.02f;
-			waitMs(500);
-			System.out.println("Put right light over white.");
-			while(!Button.ENTER.isDown()){
-			}
-			sm.rightWhiteThreshold = sm.getRightLight() - 0.02f;
-			waitMs(500);
-			System.out.println("Put left light over black.");
-			while(!Button.ENTER.isDown()){
-			}
-			sm.leftBlackThreshold = sm.getLeftLight() + 0.02f;
-			waitMs(500);
-			System.out.println("Put right light over black.");
-			while(!Button.ENTER.isDown()){
-			}
-			sm.rightBlackThreshold = sm.getRightLight() + 0.02f;
-			waitMs(500);
-			clearScreen();
-			success = true;
-	
-			return success;
+	}
+
+	static public void clearScreen(){
+		for (int i = 0; i < 10; i++) {
+			System.out.println("");
 		}
-	
-		static public void turnDegrees(boolean turnRight, int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor){
-			leftMotor.stop(true);
-			rightMotor.stop();
-			if(turnRight){
-				leftMotor.forward();
-				rightMotor.backward();			
-			}else{
-				rightMotor.forward();
-				leftMotor.backward();
-			}
-			waitMs(turnDeg);
-			rightMotor.stop(true);
-			leftMotor.stop();
+		LCD.clear();
+		LCD.clearDisplay();
+	}
+
+	static public boolean calibrate(SensorManager sm){
+		boolean success = false;
+		
+		clearScreen();
+		waitMs(1000);
+		System.out.println("Put left light over white.");
+		while(!Button.ENTER.isDown()){
 		}
-	
-		static public void centralize(SensorManager sMgr, EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr){
-			lMtr.stop(true);
-			rMtr.stop(true);
-			lMtr.setSpeed(lMtr.getMaxSpeed()*0.3f);
-			rMtr.setSpeed(rMtr.getMaxSpeed()*0.3f);
-			while(!(sMgr.getLeftLight() < sMgr.leftBlackThreshold && sMgr.getRightLight() < sMgr.rightBlackThreshold && sMgr.getColor() != Color.BLACK)){
-	
-				while(sMgr.getLeftLight() > sMgr.leftBlackThreshold){
-					lMtr.backward();
-				}
+		sm.leftWhiteThreshold = sm.getLeftLight() - 0.02f;
+		waitMs(500);
+		System.out.println("Put right light over white.");
+		while(!Button.ENTER.isDown()){
+		}
+		sm.rightWhiteThreshold = sm.getRightLight() - 0.02f;
+		waitMs(500);
+		System.out.println("Put left light over black.");
+		while(!Button.ENTER.isDown()){
+		}
+		sm.leftBlackThreshold = sm.getLeftLight() + 0.02f;
+		waitMs(500);
+		System.out.println("Put right light over black.");
+		while(!Button.ENTER.isDown()){
+		}
+		sm.rightBlackThreshold = sm.getRightLight() + 0.02f;
+		waitMs(500);
+		clearScreen();
+		success = true;
+
+		return success;
+	}
+
+	static public void turnDegrees(boolean turnRight, int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor){
+		leftMotor.stop(true);
+		rightMotor.stop();
+		if(turnRight){
+			leftMotor.forward();
+			rightMotor.backward();			
+		}else{
+			rightMotor.forward();
+			leftMotor.backward();
+		}
+		waitMs(turnDeg);
+		rightMotor.stop(true);
+		leftMotor.stop();
+	}
+
+	static public void centralize(SensorManager sMgr, EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr){
+		lMtr.stop(true);
+		rMtr.stop();
+		setMotorSpeed(rMtr, SpeedLevel.LOW);
+		setMotorSpeed(lMtr, SpeedLevel.LOW);
+		while(!(sMgr.getLeftLight() < sMgr.leftBlackThreshold && sMgr.getRightLight() < sMgr.rightBlackThreshold && sMgr.getColor() != Color.BLACK)){
+
+			while(sMgr.getLeftLight() > sMgr.leftBlackThreshold){
+				lMtr.backward();
+			}
+			waitMs(100);
+			lMtr.stop();
+			while(sMgr.getRightLight() > sMgr.rightBlackThreshold){
+				rMtr.backward();
+			}
+			waitMs(100);
+			rMtr.stop();
+			if(sMgr.getColor() == Color.BLACK){
+				lMtr.forward();
+				rMtr.forward();
 				waitMs(100);
-				lMtr.stop();
-				while(sMgr.getRightLight() > sMgr.rightBlackThreshold){
-					rMtr.backward();
-				}
-				waitMs(100);
-				rMtr.stop();
-				if(sMgr.getColor() == Color.BLACK){
-					lMtr.forward();
-					rMtr.forward();
-					waitMs(100);
-					lMtr.stop(true);
-					rMtr.stop(true);
-				}
+				lMtr.stop(true);
+				rMtr.stop(true);
 			}
 		}
-	
-	}'''
+	}
+}'''
 		
 	}
 
@@ -328,11 +361,12 @@ class Auxiliary {
 		
 	}'''}
 
-	def static createMasterBruce(){'''package root;
+	def static createMasterBruce(List<Mission> mL, String missionSet){'''package root;
 	
 	import java.io.IOException;
 	import java.io.PrintWriter;
 	
+	import lejos.hardware.lcd.LCD;
 	import lejos.hardware.Button;
 	import lejos.hardware.Sound;
 	import lejos.hardware.ev3.LocalEV3;
@@ -347,7 +381,9 @@ class Auxiliary {
 	import lejos.remote.nxt.NXTConnection;
 	import lejos.robotics.Calibrate;
 	import lejos.utility.Delay;
-	import root.FindLakes.*;
+	«FOR m : mL»
+		import root.«m.name».*;
+	«ENDFOR»
 	
 	public class MasterBruce {
 	
@@ -371,7 +407,7 @@ class Auxiliary {
 		private static int setupCommMaster(){
 			int success = 0;
 			String self = LocalEV3.get().getName();
-			String other;
+			String other = "";
 			switch (self) {
 			case "Rover5":
 				other = "Rover6";
@@ -379,7 +415,7 @@ class Auxiliary {
 			case "Rover7":
 				other = "Rover8";
 				break;
-			default:
+			case "Rover9":
 				other = "Rover10";
 				break;
 			}
@@ -427,27 +463,58 @@ class Auxiliary {
 	
 			sensorUpdater = new SensorUpdater(sensorManager, reader);
 			sensorUpdater.start();
+
+			AuxMethods.clearScreen();			
+			Mission[] missions = new Mission[3];
+			missions[0] = null;
+			missions[1] = null;
+			missions[2] = null;
+			int i = 0;
 	
-			Mission m1;
-			Mission m2;
-			AuxMethods.clearScreen();
 			while(true){
-				Delay.msDelay(100);
-				if(Button.ENTER.isDown()){
-					m1 = new FindLakes(sensorManager, leftMotor, rightMotor, armMotor);
-					m1.RunArbitrator();				
-				}
-				if(Button.LEFT.isDown()){
-					m2 = new FindLakes(sensorManager, leftMotor, rightMotor, armMotor);
-					m2.RunArbitrator();
-				}
-				if(Button.RIGHT.isDown()){
-					if(AuxMethods.calibrate(sensorManager)){
-						System.out.println("Sensors calibrated successfully!");
-					}else{
-						System.out.println("Calibration failed! Exiting to main menu");
+				LCD.drawString("Missionset «missionSet»", 0, 0);
+				LCD.drawString("Empty", 2, 1);
+				LCD.drawString("Empty", 2, 2);
+				LCD.drawString("Empty", 2, 3);
+				«FOR m : mL»
+					LCD.drawString("          ", 2, «mL.indexOf(m)+1»);
+					LCD.drawString("«m.name»", 2, «mL.indexOf(m)+1»);
+				«ENDFOR»
+				LCD.drawString("Calibrate sensor", 2, 4);
+				LCD.drawString(">", 0, i + 1);
+				if(Button.DOWN.isDown()){
+					i = (i + 1) % 4;
+					AuxMethods.waitMs(50);
+				}else if(Button.UP.isDown()){
+					i = (i + 3) % 4;
+					AuxMethods.waitMs(50);
+				}else if(Button.ENTER.isDown()){
+					switch (i) {
+					case 0:
+						«IF mL.length >= 1»missions[i] = new «mL.get(0).name»(sensorManager, leftMotor, rightMotor, armMotor);
+						AuxMethods.clearScreen();
+						missions[i].RunArbitrator();
+						AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);«ENDIF»
+						break;
+					case 1:
+						«IF mL.length >= 2»missions[i] = new «mL.get(1).name»(sensorManager, leftMotor, rightMotor, armMotor);
+						AuxMethods.clearScreen();
+						missions[i].RunArbitrator();
+						AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);«ENDIF»
+						break;
+					case 2:
+						«IF mL.length >= 3»missions[i] = new «mL.get(2).name»(sensorManager, leftMotor, rightMotor, armMotor);
+						AuxMethods.clearScreen();
+						missions[i].RunArbitrator();
+						AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);«ENDIF»
+						break;
+					case 3:
+						AuxMethods.calibrate(sensorManager);
+						break;
 					}
 				}
+				AuxMethods.waitMs(50);
+				AuxMethods.clearScreen();
 			}
 		}
 	}'''}

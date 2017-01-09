@@ -27,7 +27,9 @@ import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.robotics.subsumption.Behavior;
 import root.SensorManager;
 import root.AuxMethods;
+import root.AuxMethods.*;
 import lejos.robotics.Color;
+import lejos.hardware.Sound;
 
 
 
@@ -70,6 +72,9 @@ public class «t.name» implements Behavior{
 
 	@Override
 	public void suppress() {
+		leftMotor.stop(true);
+		rightMotor.stop(true);
+		armMotor.stop();
 		suppressed = true;
 	}
 	
@@ -156,8 +161,8 @@ public class «t.name» implements Behavior{
 		if(act.moveDir != null){ // action is movement
 			action = action +
 					'''
-		leftMotor.setSpeed(''' + getSpeed(act.speed) + ''');
-rightMotor.setSpeed(''' + getSpeed(act.speed) + ''');
+		AuxMethods.setMotorSpeed(leftMotor, SpeedLevel.''' + getSpeed(act.speed) + ''');
+AuxMethods.setMotorSpeed(rightMotor, SpeedLevel.''' + getSpeed(act.speed) + ''');
 '''
 			switch (act.moveDir.dir) {
 				case FORWARD: {
@@ -269,17 +274,17 @@ break;
 	}
 	def static getSpeed(Speed speed){
 		if (speed == null){
-			return "leftMotor.getMaxSpeed()*0.5f"
+			return "MID"
 		}
 		switch (speed.speed) {
 			case HIGH: {
-				return "fleftMotor.getMaxSpeed()*0.7f"
+				return "HIGH"
 			}
 			case LOW: {
-				return "leftMotor.getMaxSpeed()*0.35f"	
+				return "LOW"	
 			}
-			default:{
-				return "leftMotor.getMaxSpeed()*0.5f"
+			case MED:{
+				return "MID"
 			}
 		}
 	}

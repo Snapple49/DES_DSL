@@ -28,7 +28,7 @@ Task:
 
 
 Action: 
-	'Move' moveDir = Direction ('for' duration = INT 'milisec')? ('at' speed = Speed 'speed' )? | 
+	'Move' moveDir = Direction ('for' duration = INT 'millisec')? ('at' speed = Speed 'speed' )? | 
 	'Turn' turnDir = Direction (degr = INT 'deg' | 'until' trig += Trigger+) |
 	'Arm' op = ArmOp |
 	'Play' 'sound' sound = Sound |

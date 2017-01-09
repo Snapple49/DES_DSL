@@ -23,7 +23,7 @@ class RobotDSLGenerator extends AbstractGenerator {
  	if (root != null) {
  		var path = "generated/root/"
  		fsa.generateFile(path+"Alfred.java", Auxiliary.createAlfred())
- 		fsa.generateFile(path+"MasterBruce.java", Auxiliary.createMasterBruce())
+ 		fsa.generateFile(path+"MasterBruce.java", Auxiliary.createMasterBruce(root.missionList, root.name))
  		fsa.generateFile(path+"AuxMethods.java", Auxiliary.createAuxMethods())
  		fsa.generateFile(path+"Mission.java", Auxiliary.createMission())
  		fsa.generateFile(path+"SensorManager.java", Auxiliary.createSensorManager())

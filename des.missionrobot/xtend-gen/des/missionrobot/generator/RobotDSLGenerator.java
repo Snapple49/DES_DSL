@@ -38,7 +38,9 @@ public class RobotDSLGenerator extends AbstractGenerator {
       String path = "generated/root/";
       CharSequence _createAlfred = Auxiliary.createAlfred();
       fsa.generateFile((path + "Alfred.java"), _createAlfred);
-      CharSequence _createMasterBruce = Auxiliary.createMasterBruce();
+      EList<Mission> _missionList = root.getMissionList();
+      String _name = root.getName();
+      CharSequence _createMasterBruce = Auxiliary.createMasterBruce(_missionList, _name);
       fsa.generateFile((path + "MasterBruce.java"), _createMasterBruce);
       CharSequence _createAuxMethods = Auxiliary.createAuxMethods();
       fsa.generateFile((path + "AuxMethods.java"), _createAuxMethods);
@@ -54,30 +56,30 @@ public class RobotDSLGenerator extends AbstractGenerator {
       fsa.generateFile((path + "BTConReader.java"), _createBTConReader);
       CharSequence _createBetterArbitrator = Auxiliary.createBetterArbitrator();
       fsa.generateFile((path + "BetterArbitrator.java"), _createBetterArbitrator);
-      EList<Mission> _missionList = root.getMissionList();
-      for (final Mission m : _missionList) {
+      EList<Mission> _missionList_1 = root.getMissionList();
+      for (final Mission m : _missionList_1) {
         {
-          String _name = m.getName();
-          String _plus = ("generated/root/" + _name);
+          String _name_1 = m.getName();
+          String _plus = ("generated/root/" + _name_1);
           String _plus_1 = (_plus + "/");
           path = _plus_1;
-          String _name_1 = m.getName();
-          String _plus_2 = (path + _name_1);
+          String _name_2 = m.getName();
+          String _plus_2 = (path + _name_2);
           String _plus_3 = (_plus_2 + ".java");
           CharSequence _missionGenerator = JavaGenerator.missionGenerator(m);
           fsa.generateFile(_plus_3, _missionGenerator);
           EList<Task> _taskList = m.getTaskList();
           for (final Task t : _taskList) {
-            String _name_2 = t.getName();
-            String _plus_4 = (path + _name_2);
+            String _name_3 = t.getName();
+            String _plus_4 = (path + _name_3);
             String _plus_5 = (_plus_4 + ".java");
-            String _name_3 = m.getName();
-            CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(t, _name_3);
+            String _name_4 = m.getName();
+            CharSequence _makeBehaviorClass = BehaviorMaker.makeBehaviorClass(t, _name_4);
             fsa.generateFile(_plus_5, _makeBehaviorClass);
           }
           Goal _goal = m.getGoal();
-          String _name_4 = m.getName();
-          CharSequence _makeGoal = GoalMaker.makeGoal(_goal, _name_4);
+          String _name_5 = m.getName();
+          CharSequence _makeGoal = GoalMaker.makeGoal(_goal, _name_5);
           fsa.generateFile((path + "Goal.java"), _makeGoal);
         }
       }
