@@ -12,14 +12,14 @@ package root;
 	import lejos.hardware.port.MotorPort;
 	import lejos.hardware.port.SensorPort;
 	import lejos.hardware.sensor.EV3ColorSensor;
-	import lejos.hardware.sensor.EV3UltrasonicSensor;
+import lejos.hardware.sensor.EV3GyroSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
 	import lejos.hardware.sensor.NXTLightSensor;
 	import lejos.remote.nxt.BTConnector;
 	import lejos.remote.nxt.NXTConnection;
 	import lejos.robotics.Calibrate;
 	import lejos.utility.Delay;
 	import root.FindLakes.*;
-	import root.DieInstantly.*;
 	
 	public class MasterBruce {
 	
@@ -31,6 +31,7 @@ package root;
 		private static NXTLightSensor leftLight = null;
 		private static NXTLightSensor rightLight = null;
 		private static EV3UltrasonicSensor backUltrasonic = null;
+		private static EV3GyroSensor gyro = null;
 		private static SensorUpdater sensorUpdater;
 		private static SensorManager sensorManager;
 	
@@ -133,7 +134,7 @@ package root;
 						AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);
 						break;
 					case 1:
-						missions[i] = new DieInstantly(sensorManager, leftMotor, rightMotor, armMotor);
+						missions[i] = new FindLakes(sensorManager, leftMotor, rightMotor, armMotor);
 						AuxMethods.clearScreen();
 						missions[i].RunArbitrator();
 						AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);

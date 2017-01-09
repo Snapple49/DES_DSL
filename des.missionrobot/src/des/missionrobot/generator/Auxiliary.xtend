@@ -242,20 +242,27 @@ public class AuxMethods {
 		return success;
 	}
 
-	static public void turnDegrees(boolean turnRight, int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor){
-		leftMotor.stop(true);
-		rightMotor.stop();
-		if(turnRight){
-			leftMotor.forward();
-			rightMotor.backward();			
-		}else{
-			rightMotor.forward();
-			leftMotor.backward();
+	static public void turnDegrees(int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor,
+				SensorManager sMgr) {
+			float startDeg = sMgr.getGyro();
+			leftMotor.stop(true);
+			rightMotor.stop();
+			if (turnDeg >= 0) {
+				leftMotor.forward();
+				rightMotor.backward();
+				while (sMgr.getGyro() > startDeg + turnDeg) {
+					waitMs(50);
+				}
+			} else {
+				rightMotor.forward();
+				leftMotor.backward();
+				while (sMgr.getGyro() < startDeg + turnDeg) {
+					waitMs(50);
+				}
+			}
+			rightMotor.stop(true);
+			leftMotor.stop();
 		}
-		waitMs(turnDeg);
-		rightMotor.stop(true);
-		leftMotor.stop();
-	}
 
 	static public void centralize(SensorManager sMgr, EV3LargeRegulatedMotor lMtr, EV3LargeRegulatedMotor rMtr){
 		lMtr.stop(true);
