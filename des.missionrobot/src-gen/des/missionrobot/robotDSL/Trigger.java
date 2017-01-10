@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getColor <em>Color</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getDist <em>Dist</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.Trigger#getTouching <em>Touching</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.Trigger#getDegrees <em>Degrees</em>}</li>
  * </ul>
  *
  * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger()
@@ -186,29 +187,55 @@ public interface Trigger extends EObject
   void setDist(Distance value);
 
   /**
-   * Returns the value of the '<em><b>Touching</b></em>' containment reference.
+   * Returns the value of the '<em><b>Touching</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Touching</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Touching</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Touching</em>' containment reference.
-   * @see #setTouching(Bool)
+   * @return the value of the '<em>Touching</em>' attribute.
+   * @see #setTouching(String)
    * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Touching()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  Bool getTouching();
+  String getTouching();
 
   /**
-   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getTouching <em>Touching</em>}' containment reference.
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getTouching <em>Touching</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Touching</em>' containment reference.
+   * @param value the new value of the '<em>Touching</em>' attribute.
    * @see #getTouching()
    * @generated
    */
-  void setTouching(Bool value);
+  void setTouching(String value);
+
+  /**
+   * Returns the value of the '<em><b>Degrees</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Degrees</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Degrees</em>' attribute.
+   * @see #setDegrees(int)
+   * @see des.missionrobot.robotDSL.RobotDSLPackage#getTrigger_Degrees()
+   * @model
+   * @generated
+   */
+  int getDegrees();
+
+  /**
+   * Sets the value of the '{@link des.missionrobot.robotDSL.Trigger#getDegrees <em>Degrees</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Degrees</em>' attribute.
+   * @see #getDegrees()
+   * @generated
+   */
+  void setDegrees(int value);
 
 } // Trigger

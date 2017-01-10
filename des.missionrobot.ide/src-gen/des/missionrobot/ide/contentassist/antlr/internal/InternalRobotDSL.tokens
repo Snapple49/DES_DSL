@@ -46,7 +46,7 @@
 'lower'=19
 'medium'=16
 'millisec'=54
-'not'=73
+'not'=74
 'or'=38
 'priority:'=50
 'raise'=18
@@ -55,9 +55,10 @@
 'sec'=71
 'sound'=62
 'speed'=56
+'spun'=67
 'than'=68
 'to'=64
-'touching'=67
+'touching'=73
 'true'=39
 'until'=59
 'white'=31
@@ -131,3 +132,4 @@ T__70=70
 T__71=71
 T__72=72
 T__73=73
+T__74=74

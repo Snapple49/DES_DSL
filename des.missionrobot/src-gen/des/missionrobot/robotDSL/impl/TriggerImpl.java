@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getColor <em>Color</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getDist <em>Dist</em>}</li>
  *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getTouching <em>Touching</em>}</li>
+ *   <li>{@link des.missionrobot.robotDSL.impl.TriggerImpl#getDegrees <em>Degrees</em>}</li>
  * </ul>
  *
  * @generated
@@ -103,14 +104,44 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
   protected Distance dist;
 
   /**
-   * The cached value of the '{@link #getTouching() <em>Touching</em>}' containment reference.
+   * The default value of the '{@link #getTouching() <em>Touching</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTouching()
    * @generated
    * @ordered
    */
-  protected Bool touching;
+  protected static final String TOUCHING_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTouching() <em>Touching</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTouching()
+   * @generated
+   * @ordered
+   */
+  protected String touching = TOUCHING_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDegrees() <em>Degrees</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDegrees()
+   * @generated
+   * @ordered
+   */
+  protected static final int DEGREES_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getDegrees() <em>Degrees</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDegrees()
+   * @generated
+   * @ordered
+   */
+  protected int degrees = DEGREES_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -421,7 +452,7 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public Bool getTouching()
+  public String getTouching()
   {
     return touching;
   }
@@ -431,16 +462,12 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTouching(Bool newTouching, NotificationChain msgs)
+  public void setTouching(String newTouching)
   {
-    Bool oldTouching = touching;
+    String oldTouching = touching;
     touching = newTouching;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__TOUCHING, oldTouching, newTouching);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__TOUCHING, oldTouching, touching));
   }
 
   /**
@@ -448,20 +475,22 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTouching(Bool newTouching)
+  public int getDegrees()
   {
-    if (newTouching != touching)
-    {
-      NotificationChain msgs = null;
-      if (touching != null)
-        msgs = ((InternalEObject)touching).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.TRIGGER__TOUCHING, null, msgs);
-      if (newTouching != null)
-        msgs = ((InternalEObject)newTouching).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RobotDSLPackage.TRIGGER__TOUCHING, null, msgs);
-      msgs = basicSetTouching(newTouching, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__TOUCHING, newTouching, newTouching));
+    return degrees;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDegrees(int newDegrees)
+  {
+    int oldDegrees = degrees;
+    degrees = newDegrees;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RobotDSLPackage.TRIGGER__DEGREES, oldDegrees, degrees));
   }
 
   /**
@@ -484,8 +513,6 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         return basicSetColor(null, msgs);
       case RobotDSLPackage.TRIGGER__DIST:
         return basicSetDist(null, msgs);
-      case RobotDSLPackage.TRIGGER__TOUCHING:
-        return basicSetTouching(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -515,6 +542,8 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         return getDist();
       case RobotDSLPackage.TRIGGER__TOUCHING:
         return getTouching();
+      case RobotDSLPackage.TRIGGER__DEGREES:
+        return getDegrees();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -548,7 +577,10 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         setDist((Distance)newValue);
         return;
       case RobotDSLPackage.TRIGGER__TOUCHING:
-        setTouching((Bool)newValue);
+        setTouching((String)newValue);
+        return;
+      case RobotDSLPackage.TRIGGER__DEGREES:
+        setDegrees((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -583,7 +615,10 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
         setDist((Distance)null);
         return;
       case RobotDSLPackage.TRIGGER__TOUCHING:
-        setTouching((Bool)null);
+        setTouching(TOUCHING_EDEFAULT);
+        return;
+      case RobotDSLPackage.TRIGGER__DEGREES:
+        setDegrees(DEGREES_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -612,9 +647,30 @@ public class TriggerImpl extends MinimalEObjectImpl.Container implements Trigger
       case RobotDSLPackage.TRIGGER__DIST:
         return dist != null;
       case RobotDSLPackage.TRIGGER__TOUCHING:
-        return touching != null;
+        return TOUCHING_EDEFAULT == null ? touching != null : !TOUCHING_EDEFAULT.equals(touching);
+      case RobotDSLPackage.TRIGGER__DEGREES:
+        return degrees != DEGREES_EDEFAULT;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (touching: ");
+    result.append(touching);
+    result.append(", degrees: ");
+    result.append(degrees);
+    result.append(')');
+    return result.toString();
   }
 
 } //TriggerImpl

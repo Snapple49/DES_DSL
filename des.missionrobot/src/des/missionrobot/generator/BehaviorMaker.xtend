@@ -127,8 +127,14 @@ public class «t.name» implements Behavior{
 					case L: {value = " < " + (trig.dist.distance as float) /100}
 					default : {value = ""}
 				}
-			}else{
+			}else if(trig.touching != null){will this always be true?
 				value = " > 0"
+			}else if(trig.degrees != 0){
+				if(trig.degrees < 0){
+					value = " < " + trig.degrees	
+				}else{
+					value = " > " + trig.degrees
+				}
 			}
 			if(trig.neg != null){
 				negationOpen = "!("
