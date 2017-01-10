@@ -61,7 +61,7 @@ class RobotDSLValidator extends AbstractRobotDSLValidator {
 	
 	@Check
 	def checkDurationCorrect(Action a){
-		if(a.duration <= 0){
+		if(a.duration < 0){
 			warning('Duration should be > 0', null)
 		}
 	}

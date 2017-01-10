@@ -52,8 +52,8 @@ public class RobotDSLValidator extends AbstractRobotDSLValidator {
   @Check
   public void checkDurationCorrect(final Action a) {
     int _duration = a.getDuration();
-    boolean _lessEqualsThan = (_duration <= 0);
-    if (_lessEqualsThan) {
+    boolean _lessThan = (_duration < 0);
+    if (_lessThan) {
       this.warning("Duration should be > 0", null);
     }
   }
