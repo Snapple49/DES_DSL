@@ -4,7 +4,8 @@ import des.missionrobot.robotDSL.Mission
 import java.util.List
 
 class Auxiliary {
-	def static createSensorManager(){'''package root;
+	def static createSensorManager(){'''
+package root;
 
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
@@ -12,19 +13,19 @@ import lejos.hardware.sensor.NXTLightSensor;
 import lejos.robotics.SampleProvider;
 
 public class SensorManager extends Thread{
-	
+
 	public float leftBlackThreshold = 0.4f;
 	public float rightBlackThreshold = 0.4f;
 	public float leftWhiteThreshold = 0.55f;
 	public float rightWhiteThreshold = 0.55f;
-	
+
 	public boolean running;
-	
+
 	private EV3ColorSensor colorSensor = null;
 	private NXTLightSensor leftLight = null;
 	private NXTLightSensor rightLight = null;
 	private EV3UltrasonicSensor backUltrasonic = null;
-	
+
 	//master devices
 	SampleProvider colorSampleProvider;
 	SampleProvider leftLightSampleProvider;
@@ -34,13 +35,13 @@ public class SensorManager extends Thread{
 	float[] leftLightSamples;
 	float[] rightLightSamples;
 	float[] backUltrasonicSamples;
-	
+
 	//slave devices
 	float leftTouchSamples;
 	float rightTouchSamples;
 	float gyroSamples;
 	float frontUltrasonicSamples;
-	
+
 	public SensorManager(EV3ColorSensor clS, NXTLightSensor lLi, NXTLightSensor rLi, EV3UltrasonicSensor bUs){
 		this.colorSensor = clS;
 		colorSampleProvider = colorSensor.getColorIDMode();
@@ -55,7 +56,7 @@ public class SensorManager extends Thread{
 		backUltrasonicSampleProvider = backUltrasonic.getDistanceMode();
 		backUltrasonicSamples = new float[backUltrasonicSampleProvider.sampleSize()];
 	}
-	
+
 	@Override
 	public void run() {
 		running = true;
@@ -66,7 +67,7 @@ public class SensorManager extends Thread{
 			backUltrasonicSampleProvider.fetchSample(backUltrasonicSamples, 0);
 		}
 	}
-	
+
 	public float getColor(){
 		return colorSamples[0];
 	}
@@ -74,15 +75,15 @@ public class SensorManager extends Thread{
 	public float getLeftLight(){
 		return leftLightSamples[0];
 	}
-	
+
 	public float getRightLight(){
 		return rightLightSamples[0];
 	}
-	
+
 	public float getBackUltrasonic(){
 		return backUltrasonicSamples[0];
 	}
-	
+
 	public float getLeftTouch(){
 		return leftTouchSamples;
 	}
@@ -90,26 +91,26 @@ public class SensorManager extends Thread{
 	public float getRightTouch(){
 		return rightTouchSamples;
 	}
-	
+
 	public float getFrontUltrasonic(){
 		return frontUltrasonicSamples;
 	}
-	
+
 	public float getGyro(){
-		return gyroSamples;
+		return -gyroSamples;
 	}
-	
+
 	public void updateSlaveDevices(float[] values){
 		leftTouchSamples = values[0];
 		rightTouchSamples = values[1];
 		frontUltrasonicSamples = values[2];
 		gyroSamples = values[3];
 	}
-}		
-'''}
+}'''}
 	
-	def static createMission(){'''package root;
-	
+	def static createMission(){'''
+package root;
+
 import java.util.TreeMap;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
@@ -152,16 +153,13 @@ public class Mission {
 }'''	
 	}
 
-	def static createAuxMethods(){'''package root;
-
+	def static createAuxMethods(){'''
+package root;
 
 import lejos.hardware.Button;
-import lejos.hardware.ev3.EV3;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
-import lejos.hardware.port.Port;
-import lejos.hardware.port.SensorPort;
 import lejos.robotics.Color;
 
 public class AuxMethods {
@@ -243,19 +241,23 @@ public class AuxMethods {
 	static public void turnDegrees(boolean turnRight, int turnDeg, EV3LargeRegulatedMotor leftMotor, EV3LargeRegulatedMotor rightMotor,
 			SensorManager sMgr) {
 		float startDeg = sMgr.getGyro();
+		turnDeg = (int)(0.99*turnDeg);
+		setMotorSpeed(leftMotor, SpeedLevel.LOW);
+		setMotorSpeed(rightMotor, SpeedLevel.LOW);
+		long timeout = System.currentTimeMillis() + 5000;
 		leftMotor.stop(true);
 		rightMotor.stop();
 		if (turnRight) {
 			leftMotor.forward();
 			rightMotor.backward();
-			while (sMgr.getGyro() > startDeg + turnDeg) {
-				waitMs(50);
+			while (sMgr.getGyro() < startDeg + turnDeg && System.currentTimeMillis() < timeout) {
+				waitMs(10);
 			}
 		} else {
 			rightMotor.forward();
 			leftMotor.backward();
-			while (sMgr.getGyro() < startDeg - turnDeg) {
-				waitMs(50);
+			while (sMgr.getGyro() > startDeg - turnDeg && System.currentTimeMillis() < timeout) {
+				waitMs(10);
 			}
 		}
 		rightMotor.stop(true);
@@ -313,19 +315,19 @@ public class Alfred {
 	private static EV3TouchSensor rightTouch = null;
 	private static EV3GyroSensor gyroSensor = null;
 	private static SlaveSensorManager slaveSensorManager;
-	
+
 	private static NXTConnection connection;	
 	private static PrintWriter writer;
 	private static BTConReader reader;
 	private static String readValue;
-	
+
 	private static int setUpCommSlave(){
 		int success = 0;
 		BTConnector connector = new BTConnector();
 		connection = connector.waitForConnection(60000, NXTConnection.RAW);
 		writer = new PrintWriter(connection.openOutputStream());
 		reader = new BTConReader(connection.openInputStream());
-		
+
 		try {
 			readValue = reader.readThatLine();
 		} catch (IOException e) {
@@ -341,27 +343,27 @@ public class Alfred {
 		}
 		return success;
 	}
-	
+
 	public static void main(String args[]){
 		int retval = setUpCommSlave();
 		if(retval != 1){
 			System.out.println("Something went wrong comms, abort!");
 			return;
 		}
-		
+
 		frontUltrasonic = new EV3UltrasonicSensor(SensorPort.S3);
 		leftTouch = new EV3TouchSensor(SensorPort.S1);
 		rightTouch = new EV3TouchSensor(SensorPort.S2);
 		gyroSensor = new EV3GyroSensor(SensorPort.S4);
-			
-		slaveSensorManager = new SlaveSensorManager(writer, frontUltrasonic, leftTouch, rightTouch, gyroSensor, 100);
+
+		slaveSensorManager = new SlaveSensorManager(writer, frontUltrasonic, leftTouch, rightTouch, gyroSensor, 10);
 		slaveSensorManager.start();
 		System.out.println("SSm started");
-		
+
 		while(true){
 			Thread.yield();
 		}
-		
+
 	}
 }'''}
 
@@ -525,147 +527,141 @@ public class MasterBruce {
 	}
 }'''}
 
-	def static createSensorUpdater(){'''package root;
-			
-	import java.io.IOException;
-	import java.util.Arrays;
-	
-	import lejos.hardware.Sound;
-	import lejos.hardware.lcd.LCD;
-	
-	public class SensorUpdater extends Thread{
-	
-		private BTConReader reader;
-		private SensorManager sMgr;
-		private boolean running = false;
-		private float[] floats;
-		private String readValue;
-	
-	
-		public SensorUpdater(SensorManager sM, BTConReader rdr){
-			this.sMgr = sM;
-			this.reader = rdr;
-		}
-	
-		@Override
-		public void run(){
-			running = true;
-			while(running){
-				try {
-					Thread.yield();
-					readValue = reader.readThatLine();
-					floats = parseFloats(readValue);
-					sMgr.updateSlaveDevices(floats);
-				} catch (IOException e) {
-					e.printStackTrace();
-					Sound.buzz();
-					return;
-				}
-			}
-		}
-	
-		public float[] parseFloats(String s){
-			float[] flts = new float[4];
-			if(!s.isEmpty()){			
-				String[] strings = s.split(" ");
-				for (int i = 0; i < strings.length; i++){
-					flts[i] = Float.parseFloat(strings[i]);
-				}
-			}
-			return flts;
-		}
-	
-	}'''}
+	def static createSensorUpdater(){'''
+package root;
 
-	def static createSlaveSensorManager(){'''package root;
-	
-	import java.io.PrintWriter;
-	import java.util.Arrays;
-	
-	import lejos.hardware.sensor.EV3GyroSensor;
-	import lejos.hardware.sensor.EV3TouchSensor;
-	import lejos.hardware.sensor.EV3UltrasonicSensor;
-	import lejos.robotics.SampleProvider;
-	
-	public class SlaveSensorManager extends Thread{
-		
-		private PrintWriter writer;
-		private EV3UltrasonicSensor frontUltrasonic = null;
-		private EV3TouchSensor leftTouch = null;
-		private EV3TouchSensor rightTouch = null;
-		private EV3GyroSensor gyroSensor = null;
-		private int period;
-		private boolean running = false;
-		SampleProvider gyroSampleProvider;
-		SampleProvider leftBumperSampleProvider;
-		SampleProvider rightBumperSampleProvider;
-		SampleProvider frontUltrasonicSampleProvider;
-		float[] gyroSamples;
-		float[] leftBumperSamples;
-		float[] rightBumperSamples;
-		float[] frontUltrasonicSamples;
-		float[] arrayToSend;
-		
-		public SlaveSensorManager(PrintWriter writer, EV3UltrasonicSensor frontU, EV3TouchSensor leftT, EV3TouchSensor rightT, EV3GyroSensor gyroS, int period){
-			this.writer = writer;
-			this.frontUltrasonic = frontU;
-			frontUltrasonicSampleProvider = frontUltrasonic.getDistanceMode();
-			frontUltrasonicSamples = new float[frontUltrasonicSampleProvider.sampleSize()];
-			this.leftTouch = leftT;
-			leftBumperSampleProvider = leftTouch.getTouchMode();
-			leftBumperSamples = new float[leftBumperSampleProvider.sampleSize()];
-			this.rightTouch = rightT;
-			rightBumperSampleProvider = rightTouch.getTouchMode();
-			rightBumperSamples = new float[rightBumperSampleProvider.sampleSize()];
-			this.gyroSensor = gyroS;
-			gyroSampleProvider = gyroSensor.getAngleMode();
-			gyroSamples = new float[gyroSampleProvider.sampleSize()];
-			this.period = period;
-		}
-		
-		public void run(){
-			running = true;
-			while(running){
-				arrayToSend = readValues();
-				this.transmit(serializeFloats(arrayToSend));
-				waitMs(period);
-			}
-		}
-		
-		public void waitMs(int waitTime) {
-			long startTime = System.currentTimeMillis();
-			long curTime = startTime;
-			while(curTime < startTime + waitTime){
-				curTime = System.currentTimeMillis();
+import java.io.IOException;
+import lejos.hardware.Sound;
+
+public class SensorUpdater extends Thread{
+
+	private BTConReader reader;
+	private SensorManager sMgr;
+	private boolean running = false;
+	private float[] floats;
+	private String readValue;
+
+
+	public SensorUpdater(SensorManager sM, BTConReader rdr){
+		this.sMgr = sM;
+		this.reader = rdr;
+	}
+
+	@Override
+	public void run(){
+		running = true;
+		while(running){
+			try {
 				Thread.yield();
+				readValue = reader.readThatLine();
+				floats = parseFloats(readValue);
+				sMgr.updateSlaveDevices(floats);
+			} catch (IOException e) {
+				e.printStackTrace();
+				Sound.buzz();
+				return;
 			}
 		}
-		
-		public void transmit(String s){
-			if(s != null){
-				writer.println(s);
-				writer.flush();
+	}
+
+	public float[] parseFloats(String s){
+		float[] flts = new float[4];
+		if(!s.isEmpty()){			
+			String[] strings = s.split(" ");
+			for (int i = 0; i < strings.length; i++){
+				try{
+					flts[i] = Float.parseFloat(strings[i]);
+				}catch (NumberFormatException e) {
+					flts[2] = Float.POSITIVE_INFINITY;
+				}catch (NullPointerException e) {
+					flts[2] = Float.POSITIVE_INFINITY;
+				}
 			}
 		}
-		
-		public float[] readValues(){
-			frontUltrasonic.fetchSample(frontUltrasonicSamples, 0);
-			leftTouch.fetchSample(leftBumperSamples, 0);
-			rightTouch.fetchSample(rightBumperSamples, 0);
-			gyroSensor.fetchSample(gyroSamples, 0);
-			float[] floats = {leftBumperSamples[0], rightBumperSamples[0], frontUltrasonicSamples[0], gyroSamples[0]};
-			return floats;
+		return flts;
+	}
+}'''}
+
+	def static createSlaveSensorManager(){'''
+package root;
+
+import java.io.PrintWriter;
+
+import lejos.hardware.sensor.EV3GyroSensor;
+import lejos.hardware.sensor.EV3TouchSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
+import lejos.robotics.SampleProvider;
+
+public class SlaveSensorManager extends Thread{
+
+	private PrintWriter writer;
+	private EV3UltrasonicSensor frontUltrasonic = null;
+	private EV3TouchSensor leftTouch = null;
+	private EV3TouchSensor rightTouch = null;
+	private EV3GyroSensor gyroSensor = null;
+	private int period;
+	private boolean running = false;
+	SampleProvider gyroSampleProvider;
+	SampleProvider leftBumperSampleProvider;
+	SampleProvider rightBumperSampleProvider;
+	SampleProvider frontUltrasonicSampleProvider;
+	float[] gyroSamples;
+	float[] leftBumperSamples;
+	float[] rightBumperSamples;
+	float[] frontUltrasonicSamples;
+	float[] arrayToSend;
+
+	public SlaveSensorManager(PrintWriter writer, EV3UltrasonicSensor frontU, EV3TouchSensor leftT, EV3TouchSensor rightT, EV3GyroSensor gyroS, int period){
+		this.writer = writer;
+		this.frontUltrasonic = frontU;
+		frontUltrasonicSampleProvider = frontUltrasonic.getDistanceMode();
+		frontUltrasonicSamples = new float[frontUltrasonicSampleProvider.sampleSize()];
+		this.leftTouch = leftT;
+		leftBumperSampleProvider = leftTouch.getTouchMode();
+		leftBumperSamples = new float[leftBumperSampleProvider.sampleSize()];
+		this.rightTouch = rightT;
+		rightBumperSampleProvider = rightTouch.getTouchMode();
+		rightBumperSamples = new float[rightBumperSampleProvider.sampleSize()];
+		this.gyroSensor = gyroS;
+		gyroSampleProvider = gyroSensor.getAngleMode();
+		gyroSamples = new float[gyroSampleProvider.sampleSize()];
+		this.period = period;
+	}
+
+	public void run(){
+		running = true;
+		while(running){
+			arrayToSend = readValues();
+			this.transmit(serializeFloats(arrayToSend));
+			AuxMethods.waitMs(period);
 		}
-		
-		public String serializeFloats(float[] floats){
-			String s = Float.toString(floats[0]);
-			for (int i = 1; i < floats.length; i++){
-				s = s + " " + Float.toString(floats[i]);
-			}
-			return s;
+	}
+
+	public void transmit(String s){
+		if(s != null){
+			writer.println(s);
+			writer.flush();
 		}
-		
-	}'''}
+	}
+
+	public float[] readValues(){
+		frontUltrasonicSampleProvider.fetchSample(frontUltrasonicSamples, 0);
+		leftBumperSampleProvider.fetchSample(leftBumperSamples, 0);
+		rightBumperSampleProvider.fetchSample(rightBumperSamples, 0);
+		gyroSampleProvider.fetchSample(gyroSamples, 0);
+		float[] floats = {leftBumperSamples[0], rightBumperSamples[0], frontUltrasonicSamples[0], gyroSamples[0]};
+		return floats;
+	}
+
+	public String serializeFloats(float[] floats){
+		String s = Float.toString(floats[0]);
+		for (int i = 1; i < floats.length; i++){
+			s = s + " " + Float.toString(floats[i]);
+		}
+		return s;
+	}
+
+}'''}
 	
 	def static createBTConReader(){'''package root;
 	
@@ -702,159 +698,157 @@ public class MasterBruce {
 		}
 	}'''}
 	
-	def static createBetterArbitrator(){'''package root;
-	import lejos.robotics.subsumption.Arbitrator;
-	import lejos.robotics.subsumption.Behavior;
-	
+	def static createBetterArbitrator(){'''
+package root;
+import lejos.robotics.subsumption.Behavior;
+
+/**
+ *An  Arbitrator object  manages a behavior control system by starting and stopping individual  behaviors  
+ *<br>  by the calling the <code>action()</code> and <code>suppress()</code> methods on them. 
+ *<br>  These Behavior objects are stored in an array, in order of increasing priority. 
+ *<br>  Arbitrator  has three major responsibilities: <br> 
+ * 1. Determine the highest priority  behavior among those that returns <b> true </b> to <code>takeControl() </code>. <br>   
+ * 2. Suppress the active behavior if its priority is less than highest
+ * priority.   These two taska are performed the Arbitrator's internal Monitor thread.<br>   
+ * 3. When the <code>action()</code> method exits, call <code> action() </code>on the Behavior of highest priority. <br>
+ *       This task is  performed by the Arbitrator main thread. 
+ * <br>  The Arbitrator assumes that a Behavior is no longer active when <code>action()</code> exits,
+ * <br>  therefore it will only call <code>suppress()</code> on the active Behavior i.e.  whose <code>action()</code> method is running.
+ * <br>  It can make consecutive calls of <code> action() </code>on the same Behavior.
+ * <br>  Requirements for a Behavior:
+ * <br>    When <code>suppress()</code> is called, terminate <code> action() </code>immediately.
+ * <br>    When<code> action() </code>exits, the robot is in a safe state (e.g. motors stopped)
+ * <br>    When the behavior should take control,  the <code> takeControl() </code> should continue to return <b> true </b>
+ * <br>    until its action starts. 
+ * <br> After your code instantiates the Arbitrator,  it should call <code>go() </code>to start it running.
+ * <br>    
+ * @see Behavior
+ * @author Roger Glassey
+ */
+public class BetterArbitrator
+{
+
+	private final int NONE = -1;
+	private Behavior[] _behavior;
+	// highest priority behavior that wants control ; set by start() used by monitor
+	private int _highestPriority = NONE;
+	private int _active = NONE; //  active behavior; set by monitor, used by start();
+	private boolean _returnWhenInactive;
+	public boolean keepRunning = true;
 	/**
-	 *An  Arbitrator object  manages a behavior control system by starting and stopping individual  behaviors  
-	 *<br>  by the calling the <code>action()</code> and <code>suppress()</code> methods on them. 
-	 *<br>  These Behavior objects are stored in an array, in order of increasing priority. 
-	 *<br>  Arbitrator  has three major responsibilities: <br> 
-	 * 1. Determine the highest priority  behavior among those that returns <b> true </b> to <code>takeControl() </code>. <br>   
-	 * 2. Suppress the active behavior if its priority is less than highest
-	 * priority.   These two taska are performed the Arbitrator's internal Monitor thread.<br>   
-	 * 3. When the <code>action()</code> method exits, call <code> action() </code>on the Behavior of highest priority. <br>
-	 *       This task is  performed by the Arbitrator main thread. 
-	 * <br>  The Arbitrator assumes that a Behavior is no longer active when <code>action()</code> exits,
-	 * <br>  therefore it will only call <code>suppress()</code> on the active Behavior i.e.  whose <code>action()</code> method is running.
-	 * <br>  It can make consecutive calls of <code> action() </code>on the same Behavior.
-	 * <br>  Requirements for a Behavior:
-	 * <br>    When <code>suppress()</code> is called, terminate <code> action() </code>immediately.
-	 * <br>    When<code> action() </code>exits, the robot is in a safe state (e.g. motors stopped)
-	 * <br>    When the behavior should take control,  the <code> takeControl() </code> should continue to return <b> true </b>
-	 * <br>    until its action starts. 
-	 * <br> After your code instantiates the Arbitrator,  it should call <code>go() </code>to start it running.
-	 * <br>    
-	 * @see Behavior
-	 * @author Roger Glassey
+	 * Monitor is an inner class.  It polls the behavior array to find the behavior of hightst
+	 * priority.  If higher than the active behavior, it calls active.suppress()
 	 */
-	public class BetterArbitrator
+	private Monitor monitor;
+
+	/**
+	 * Allocates an Arbitrator object and initializes it with an array of
+	 * Behavior objects. The index of a behavior in this array is its priority level, so 
+	 * the behavior of the largest index has the highest the priority level. 
+	 * The behaviors in an Arbitrator can not
+	 * be changed once the arbitrator is initialized.<BR>
+	 * <B>NOTE:</B> Once the Arbitrator is initialized, the method go() must be
+	 * called to begin the arbitration.
+	 * @param behaviorList an array of Behavior objects.
+	 * @param returnWhenInactive if <B>true</B>, the <B>go()</B> method returns when no Behavior is active.
+	 */
+	public BetterArbitrator(Behavior[] behaviorList, boolean returnWhenInactive)
 	{
-	
-	  private final int NONE = -1;
-	  private Behavior[] _behavior;
-	  // highest priority behavior that wants control ; set by start() used by monitor
-	  private int _highestPriority = NONE;
-	  private int _active = NONE; //  active behavior; set by monitor, used by start();
-	  private boolean _returnWhenInactive;
-	  public boolean keepRunning = true;
-	  /**
-	   * Monitor is an inner class.  It polls the behavior array to find the behavior of hightst
-	   * priority.  If higher than the active behavior, it calls active.suppress()
-	   */
-	  private Monitor monitor;
-	
-	  /**
-	   * Allocates an Arbitrator object and initializes it with an array of
-	   * Behavior objects. The index of a behavior in this array is its priority level, so 
-	   * the behavior of the largest index has the highest the priority level. 
-	   * The behaviors in an Arbitrator can not
-	   * be changed once the arbitrator is initialized.<BR>
-	   * <B>NOTE:</B> Once the Arbitrator is initialized, the method go() must be
-	   * called to begin the arbitration.
-	   * @param behaviorList an array of Behavior objects.
-	   * @param returnWhenInactive if <B>true</B>, the <B>go()</B> method returns when no Behavior is active.
-	   */
-	  public BetterArbitrator(Behavior[] behaviorList, boolean returnWhenInactive)
-	  {
-	    _behavior = behaviorList;
-	    _returnWhenInactive = returnWhenInactive;
-	    monitor = new Monitor();
-	    monitor.setDaemon(true);
+		_behavior = behaviorList;
+		_returnWhenInactive = returnWhenInactive;
+		monitor = new Monitor();
+		monitor.setDaemon(true);
 		System.out.println("Arbitrator created");
-	  }
-	
-	  /**
-	   * Same as Arbitrator(behaviorList, false) Arbitrator start() never exits
-	   * @param behaviorList An array of Behavior objects.
-	   */
-	  public BetterArbitrator(Behavior[] behaviorList)
-	  {
-	    this(behaviorList, false);
-	  }
-	
-	  /**
-	   * This method starts the arbitration of Behaviors and runs an endless loop.  <BR>
-	   * Note: Arbitrator does not run in a separate thread. The go()
-	   * method will not return unless <br>1. <code> no action() </code>method is running  and
-	   * <br>2. no behavior <code> takeControl() </code> returns <B> true </B>  and  
-	   * <br> 3. the <B>returnWhenInacative </B> flag is true,
-	   */
-	  public void go()
-	  {
-	
-	    monitor.start();
-	    while (_highestPriority == NONE)
-	    {
-	      Thread.yield();//wait for some behavior to take control                    
-	    }
-	    while (keepRunning)
-	    {
-	      synchronized (monitor)
-	      {
-	        if (_highestPriority > NONE)
-	        {
-	          _active = _highestPriority;
-	        }
-	        else if (_returnWhenInactive)
-	        {// no behavior wants to run
-	          monitor.more = false;//9 shut down monitor thread
-	          return;
-	        }
-	      }// monitor released before action is called
-	      if (_active != NONE)  //_highestPrioirty could be NONE
-	      {
-	        _behavior[_active].action();
-	        _active = NONE;  // no active behavior at the moment
-	      }
-	      Thread.yield();
-	    }
-	  }
-	
-	  public void stop() {
-		  keepRunning = false;
-	  }
-	  
-	  /**
-	   * Finds the highest priority behavior that returns <B>true </B> to <code> takeControl()</code>;
-	   * If this priority is higher than the active behavior, it calls active.suppress().
-	   */
-	  private class Monitor extends Thread
-	  {
-	
-	    boolean more = true;
-	    int maxPriority = _behavior.length - 1;
-	
-	    public void run()
-	    {
-	      while (keepRunning)
-	      {
-	        //FIND HIGHEST PRIORITY BEHAVIOR THAT WANTS CONTROL
-	        synchronized (this)
-	        {
-	           _highestPriority = NONE; // -1
-	          for (int i = maxPriority; i > _active; i--) // only behaviors with higher priority are interesting
-	          {
-	            if (_behavior[i].takeControl())
-	            {
-	              _highestPriority = i;
-	              break;
-	            }
-	          }
-	          int active = _active; // local copy in case _active is set to NONE by the primary thread
-	          if (_active != NONE && _highestPriority > _active)
-	          {
-	            _behavior[active].suppress();
-	          }
-	        }// end synchronize block - main thread can run now
-	        Thread.yield();
-	      }
-	    }
-	  }
 	}
-	  
-	'''
-		
+
+	/**
+	 * Same as Arbitrator(behaviorList, false) Arbitrator start() never exits
+	 * @param behaviorList An array of Behavior objects.
+	 */
+	public BetterArbitrator(Behavior[] behaviorList)
+	{
+		this(behaviorList, true);
 	}
+
+	/**
+	 * This method starts the arbitration of Behaviors and runs an endless loop.  <BR>
+	 * Note: Arbitrator does not run in a separate thread. The go()
+	 * method will not return unless <br>1. <code> no action() </code>method is running  and
+	 * <br>2. no behavior <code> takeControl() </code> returns <B> true </B>  and  
+	 * <br> 3. the <B>returnWhenInacative </B> flag is true,
+	 */
+	public void go()
+	{
+
+		monitor.start();
+		while (_highestPriority == NONE)
+		{
+			Thread.yield();//wait for some behavior to take control                    
+		}
+		while (keepRunning)
+		{
+			synchronized (monitor)
+			{
+				if (_highestPriority > NONE)
+				{
+					_active = _highestPriority;
+				}
+				else if (_returnWhenInactive)
+				{// no behavior wants to run
+					//keepRunning = false;
+					return;
+				}
+			}// monitor released before action is called
+			if (_active != NONE)  //_highestPrioirty could be NONE
+			{
+				_behavior[_active].action();
+				_active = NONE;  // no active behavior at the moment
+			}
+			Thread.yield();
+		}
+	}
+
+	public void stop() {
+		synchronized (this) {
+			_returnWhenInactive = true;
+			keepRunning = false;			
+		}
+	}
+
+	/**
+	 * Finds the highest priority behavior that returns <B>true </B> to <code> takeControl()</code>;
+	 * If this priority is higher than the active behavior, it calls active.suppress().
+	 */
+	private class Monitor extends Thread
+	{
+
+		int maxPriority = _behavior.length - 1;
+
+		public void run()
+		{
+			while (keepRunning)
+			{
+				//FIND HIGHEST PRIORITY BEHAVIOR THAT WANTS CONTROL
+				synchronized (this)
+				{
+					_highestPriority = NONE; // -1
+					for (int i = maxPriority; i > NONE; i--) // only behaviors with higher priority are interesting
+					{
+						if (_behavior[i].takeControl())
+						{
+							_highestPriority = i;
+							break;
+						}
+					}
+					int active = _active; // local copy in case _active is set to NONE by the primary thread
+					if (_active != NONE && _highestPriority > _active)
+					{
+						_behavior[active].suppress();
+					}
+				}// end synchronize block - main thread can run now
+				Thread.yield();
+			}
+		}
+	}
+}'''}
 }
