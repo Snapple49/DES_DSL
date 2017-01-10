@@ -100,7 +100,7 @@ public class «t.name» implements Behavior{
 				case RIGHTTOUCH : {sensor = "sensorManager.getRightTouch()"}
 				default : {sensor = ""}
 			}
-			if (trig.dist == null){
+			if (trig.color != null){
 				switch (trig.color.colorName) {
 					case WHITE : {
 						switch (trig.sensor.sensorType){
@@ -121,12 +121,14 @@ public class «t.name» implements Behavior{
 					case RED: {value = " == Color.RED"}
 					default : {value = ""}
 				}
-			}else{
+			}else if (trig.dist != null){
 				switch (trig.dist.rangeBool.boolType) {
 					case G: {value = " > " + (trig.dist.distance as float) /100}
 					case L: {value = " < " + (trig.dist.distance as float) /100}
 					default : {value = ""}
 				}
+			}else{
+				value = " > 0"
 			}
 			if(trig.neg != null){
 				negationOpen = "!("
