@@ -56,7 +56,7 @@ public class Goal implements Behavior{
 		«BehaviorMaker.actionMaker(g.finishActions)»
 		leftMotor.stop(true);
 		rightMotor.stop(true);
-		armMotor.stop();
+		armMotor.flt();
 		parent.done = true;
 		parent.StopArbitrator();
 	}

@@ -16,8 +16,10 @@ class BehaviorMaker {
 	static String action = ""
 	static String actions = ""
 	static String prebool = ""
+	static String negationOpen
+	static String negationClose
 	static int onlyOnce = 0
-	
+		
 	
 	def static makeBehaviorClass(Task t, String missionName){'''
 package root.«missionName»;
@@ -68,13 +70,11 @@ public class «t.name» implements Behavior{
 	public void action() {
 		suppressed = false;
 		«actionMaker(t.actionList)»
+		
 	}
 
 	@Override
 	public void suppress() {
-		leftMotor.stop(true);
-		rightMotor.stop(true);
-		armMotor.stop();
 		suppressed = true;
 	}
 	
@@ -86,6 +86,9 @@ public class «t.name» implements Behavior{
 		value = ""
 		sensor = ""
 		prebool = ""
+		negationOpen = ""
+		negationClose = ""
+		
 		if(trig.sensor != null){//trig is sensor	
 			switch (trig.sensor.sensorType) {
 				case LEFTLIGHT: {sensor = "sensorManager.getLeftLight()"}
@@ -108,8 +111,8 @@ public class «t.name» implements Behavior{
 					}
 					case BLACK : {
 						switch (trig.sensor.sensorType){
-							case LEFTLIGHT: {value = " > sensorManager.leftBlackThreshold"}
-							case RIGHTLIGHT: {value = " > sensorManager.rightBlackThreshold"}
+							case LEFTLIGHT: {value = " < sensorManager.leftBlackThreshold"}
+							case RIGHTLIGHT: {value = " < sensorManager.rightBlackThreshold"}
 							default: {value = " == Color.BLACK"}
 						}
 					}
@@ -124,6 +127,10 @@ public class «t.name» implements Behavior{
 					case L: {value = " < " + (trig.dist.distance as float) /100}
 					default : {value = ""}
 				}
+			}
+			if(trig.neg != null){
+				negationOpen = "!("
+				negationClose = ")"
 			}
 		}
 		else{ //trig is flag
@@ -145,7 +152,7 @@ public class «t.name» implements Behavior{
 			}
 		}
 		
-		return prebool + sensor + value
+		return prebool + negationOpen + sensor + value + negationClose
 	}
 	
 	def static toFlag(Trigger trig){
@@ -161,7 +168,7 @@ public class «t.name» implements Behavior{
 		if(act.moveDir != null){ // action is movement
 			action = action +
 					'''
-		AuxMethods.setMotorSpeed(leftMotor, SpeedLevel.''' + getSpeed(act.speed) + ''');
+AuxMethods.setMotorSpeed(leftMotor, SpeedLevel.''' + getSpeed(act.speed) + ''');
 AuxMethods.setMotorSpeed(rightMotor, SpeedLevel.''' + getSpeed(act.speed) + ''');
 '''
 			switch (act.moveDir.dir) {
@@ -221,7 +228,7 @@ rightMotor.backward();
 				action = action + ''' = true;
 				'''
 			}else{
-				action = action + '''= false;
+				action = action + ''' = false;
 				'''
 			}
 		}else if(act.sound != null){ //action is sound
@@ -257,7 +264,10 @@ rightMotor.backward();
 				}
 				actions = actions + '''while(!suppressed){
 	Thread.yield();
-}'''
+}
+leftMotor.stop(true);
+rightMotor.stop(true);
+armMotor.flt();'''
 			}
 			default: {
 				actions = actions + '''while(!suppressed){
@@ -266,6 +276,9 @@ rightMotor.backward();
 					actions = actions + toAction(a)
 				}
 				actions = actions + '''
+leftMotor.stop(true);
+rightMotor.stop(true);
+armMotor.flt();
 break;
 }'''				
 			}

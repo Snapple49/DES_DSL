@@ -446,36 +446,35 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cBoolTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cBoolTypeBoolParserRuleCall_0_0 = (RuleCall)cBoolTypeAssignment_0.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
-		private final Assignment cNegAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
-		private final RuleCall cNegNegationParserRuleCall_1_0_0_0 = (RuleCall)cNegAssignment_1_0_0.eContents().get(0);
-		private final Assignment cFlagAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
-		private final CrossReference cFlagFlagCrossReference_1_0_1_0 = (CrossReference)cFlagAssignment_1_0_1.eContents().get(0);
-		private final RuleCall cFlagFlagIDTerminalRuleCall_1_0_1_0_1 = (RuleCall)cFlagFlagCrossReference_1_0_1_0.eContents().get(1);
-		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
-		private final Assignment cSensorAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
-		private final RuleCall cSensorSensorParserRuleCall_1_1_0_0 = (RuleCall)cSensorAssignment_1_1_0.eContents().get(0);
-		private final Alternatives cAlternatives_1_1_1 = (Alternatives)cGroup_1_1.eContents().get(1);
-		private final Group cGroup_1_1_1_0 = (Group)cAlternatives_1_1_1.eContents().get(0);
-		private final Keyword cIsKeyword_1_1_1_0_0 = (Keyword)cGroup_1_1_1_0.eContents().get(0);
-		private final Assignment cColorAssignment_1_1_1_0_1 = (Assignment)cGroup_1_1_1_0.eContents().get(1);
-		private final RuleCall cColorColorParserRuleCall_1_1_1_0_1_0 = (RuleCall)cColorAssignment_1_1_1_0_1.eContents().get(0);
-		private final Group cGroup_1_1_1_1 = (Group)cAlternatives_1_1_1.eContents().get(1);
-		private final Keyword cDistanceKeyword_1_1_1_1_0 = (Keyword)cGroup_1_1_1_1.eContents().get(0);
-		private final Assignment cDistAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
-		private final RuleCall cDistDistanceParserRuleCall_1_1_1_1_1_0 = (RuleCall)cDistAssignment_1_1_1_1_1.eContents().get(0);
-		private final Group cGroup_1_1_1_2 = (Group)cAlternatives_1_1_1.eContents().get(2);
-		private final Keyword cTouchingKeyword_1_1_1_2_0 = (Keyword)cGroup_1_1_1_2.eContents().get(0);
-		private final Assignment cTouchingAssignment_1_1_1_2_1 = (Assignment)cGroup_1_1_1_2.eContents().get(1);
-		private final RuleCall cTouchingBoolParserRuleCall_1_1_1_2_1_0 = (RuleCall)cTouchingAssignment_1_1_1_2_1.eContents().get(0);
+		private final Assignment cNegAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNegNegationParserRuleCall_1_0 = (RuleCall)cNegAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cFlagAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final CrossReference cFlagFlagCrossReference_2_0_0 = (CrossReference)cFlagAssignment_2_0.eContents().get(0);
+		private final RuleCall cFlagFlagIDTerminalRuleCall_2_0_0_1 = (RuleCall)cFlagFlagCrossReference_2_0_0.eContents().get(1);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Assignment cSensorAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
+		private final RuleCall cSensorSensorParserRuleCall_2_1_0_0 = (RuleCall)cSensorAssignment_2_1_0.eContents().get(0);
+		private final Alternatives cAlternatives_2_1_1 = (Alternatives)cGroup_2_1.eContents().get(1);
+		private final Group cGroup_2_1_1_0 = (Group)cAlternatives_2_1_1.eContents().get(0);
+		private final Keyword cIsKeyword_2_1_1_0_0 = (Keyword)cGroup_2_1_1_0.eContents().get(0);
+		private final Assignment cColorAssignment_2_1_1_0_1 = (Assignment)cGroup_2_1_1_0.eContents().get(1);
+		private final RuleCall cColorColorParserRuleCall_2_1_1_0_1_0 = (RuleCall)cColorAssignment_2_1_1_0_1.eContents().get(0);
+		private final Group cGroup_2_1_1_1 = (Group)cAlternatives_2_1_1.eContents().get(1);
+		private final Keyword cDistanceKeyword_2_1_1_1_0 = (Keyword)cGroup_2_1_1_1.eContents().get(0);
+		private final Assignment cDistAssignment_2_1_1_1_1 = (Assignment)cGroup_2_1_1_1.eContents().get(1);
+		private final RuleCall cDistDistanceParserRuleCall_2_1_1_1_1_0 = (RuleCall)cDistAssignment_2_1_1_1_1.eContents().get(0);
+		private final Group cGroup_2_1_1_2 = (Group)cAlternatives_2_1_1.eContents().get(2);
+		private final Keyword cTouchingKeyword_2_1_1_2_0 = (Keyword)cGroup_2_1_1_2.eContents().get(0);
+		private final Assignment cTouchingAssignment_2_1_1_2_1 = (Assignment)cGroup_2_1_1_2.eContents().get(1);
+		private final RuleCall cTouchingBoolParserRuleCall_2_1_1_2_1_0 = (RuleCall)cTouchingAssignment_2_1_1_2_1.eContents().get(0);
 		
 		//Trigger:
-		//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching'
-		//	touching=Bool));
+		//	boolType=Bool?
+		//	neg=Negation? (flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool));
 		@Override public ParserRule getRule() { return rule; }
 		
-		//boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching'
+		//boolType=Bool? neg=Negation? (flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching'
 		//touching=Bool))
 		public Group getGroup() { return cGroup; }
 		
@@ -485,74 +484,71 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Bool
 		public RuleCall getBoolTypeBoolParserRuleCall_0_0() { return cBoolTypeBoolParserRuleCall_0_0; }
 		
-		//(neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool))
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-		
-		//neg=Negation? flag=[Flag]
-		public Group getGroup_1_0() { return cGroup_1_0; }
-		
 		//neg=Negation?
-		public Assignment getNegAssignment_1_0_0() { return cNegAssignment_1_0_0; }
+		public Assignment getNegAssignment_1() { return cNegAssignment_1; }
 		
 		//Negation
-		public RuleCall getNegNegationParserRuleCall_1_0_0_0() { return cNegNegationParserRuleCall_1_0_0_0; }
+		public RuleCall getNegNegationParserRuleCall_1_0() { return cNegNegationParserRuleCall_1_0; }
+		
+		//(flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool))
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//flag=[Flag]
-		public Assignment getFlagAssignment_1_0_1() { return cFlagAssignment_1_0_1; }
+		public Assignment getFlagAssignment_2_0() { return cFlagAssignment_2_0; }
 		
 		//[Flag]
-		public CrossReference getFlagFlagCrossReference_1_0_1_0() { return cFlagFlagCrossReference_1_0_1_0; }
+		public CrossReference getFlagFlagCrossReference_2_0_0() { return cFlagFlagCrossReference_2_0_0; }
 		
 		//ID
-		public RuleCall getFlagFlagIDTerminalRuleCall_1_0_1_0_1() { return cFlagFlagIDTerminalRuleCall_1_0_1_0_1; }
+		public RuleCall getFlagFlagIDTerminalRuleCall_2_0_0_1() { return cFlagFlagIDTerminalRuleCall_2_0_0_1; }
 		
 		//sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool)
-		public Group getGroup_1_1() { return cGroup_1_1; }
+		public Group getGroup_2_1() { return cGroup_2_1; }
 		
 		//sensor=Sensor
-		public Assignment getSensorAssignment_1_1_0() { return cSensorAssignment_1_1_0; }
+		public Assignment getSensorAssignment_2_1_0() { return cSensorAssignment_2_1_0; }
 		
 		//Sensor
-		public RuleCall getSensorSensorParserRuleCall_1_1_0_0() { return cSensorSensorParserRuleCall_1_1_0_0; }
+		public RuleCall getSensorSensorParserRuleCall_2_1_0_0() { return cSensorSensorParserRuleCall_2_1_0_0; }
 		
 		//('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool)
-		public Alternatives getAlternatives_1_1_1() { return cAlternatives_1_1_1; }
+		public Alternatives getAlternatives_2_1_1() { return cAlternatives_2_1_1; }
 		
 		//'is' color=Color
-		public Group getGroup_1_1_1_0() { return cGroup_1_1_1_0; }
+		public Group getGroup_2_1_1_0() { return cGroup_2_1_1_0; }
 		
 		//'is'
-		public Keyword getIsKeyword_1_1_1_0_0() { return cIsKeyword_1_1_1_0_0; }
+		public Keyword getIsKeyword_2_1_1_0_0() { return cIsKeyword_2_1_1_0_0; }
 		
 		//color=Color
-		public Assignment getColorAssignment_1_1_1_0_1() { return cColorAssignment_1_1_1_0_1; }
+		public Assignment getColorAssignment_2_1_1_0_1() { return cColorAssignment_2_1_1_0_1; }
 		
 		//Color
-		public RuleCall getColorColorParserRuleCall_1_1_1_0_1_0() { return cColorColorParserRuleCall_1_1_1_0_1_0; }
+		public RuleCall getColorColorParserRuleCall_2_1_1_0_1_0() { return cColorColorParserRuleCall_2_1_1_0_1_0; }
 		
 		//'distance' dist=Distance
-		public Group getGroup_1_1_1_1() { return cGroup_1_1_1_1; }
+		public Group getGroup_2_1_1_1() { return cGroup_2_1_1_1; }
 		
 		//'distance'
-		public Keyword getDistanceKeyword_1_1_1_1_0() { return cDistanceKeyword_1_1_1_1_0; }
+		public Keyword getDistanceKeyword_2_1_1_1_0() { return cDistanceKeyword_2_1_1_1_0; }
 		
 		//dist=Distance
-		public Assignment getDistAssignment_1_1_1_1_1() { return cDistAssignment_1_1_1_1_1; }
+		public Assignment getDistAssignment_2_1_1_1_1() { return cDistAssignment_2_1_1_1_1; }
 		
 		//Distance
-		public RuleCall getDistDistanceParserRuleCall_1_1_1_1_1_0() { return cDistDistanceParserRuleCall_1_1_1_1_1_0; }
+		public RuleCall getDistDistanceParserRuleCall_2_1_1_1_1_0() { return cDistDistanceParserRuleCall_2_1_1_1_1_0; }
 		
 		//'touching' touching=Bool
-		public Group getGroup_1_1_1_2() { return cGroup_1_1_1_2; }
+		public Group getGroup_2_1_1_2() { return cGroup_2_1_1_2; }
 		
 		//'touching'
-		public Keyword getTouchingKeyword_1_1_1_2_0() { return cTouchingKeyword_1_1_1_2_0; }
+		public Keyword getTouchingKeyword_2_1_1_2_0() { return cTouchingKeyword_2_1_1_2_0; }
 		
 		//touching=Bool
-		public Assignment getTouchingAssignment_1_1_1_2_1() { return cTouchingAssignment_1_1_1_2_1; }
+		public Assignment getTouchingAssignment_2_1_1_2_1() { return cTouchingAssignment_2_1_1_2_1; }
 		
 		//Bool
-		public RuleCall getTouchingBoolParserRuleCall_1_1_1_2_1_0() { return cTouchingBoolParserRuleCall_1_1_1_2_1_0; }
+		public RuleCall getTouchingBoolParserRuleCall_2_1_1_2_1_0() { return cTouchingBoolParserRuleCall_2_1_1_2_1_0; }
 	}
 	public class DistanceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "des.missionrobot.RobotDSL.Distance");
@@ -1242,8 +1238,8 @@ public class RobotDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Trigger:
-	//	boolType=Bool? (neg=Negation? flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching'
-	//	touching=Bool));
+	//	boolType=Bool?
+	//	neg=Negation? (flag=[Flag] | sensor=Sensor ('is' color=Color | 'distance' dist=Distance | 'touching' touching=Bool));
 	public TriggerElements getTriggerAccess() {
 		return pTrigger;
 	}

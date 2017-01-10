@@ -38,7 +38,8 @@ Action:
 
 Trigger: 
 	(boolType = Bool)? 
-	((neg = Negation)? flag = [Flag] |
+	(neg = Negation)? 
+	(flag = [Flag] |
 	sensor = Sensor
 	(('is' color = Color) | ('distance' dist = Distance ) | ('touching' touching = Bool)))
 ;

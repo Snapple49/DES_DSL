@@ -49,5 +49,6 @@ public class TestStuff {
 		dest = parseFloats(packet);
 		System.out.println("Src:" + src.toString() + " Dest: " + dest.toString() + " packet:" + packet + " Equals:" + Arrays.equals(dest, expected));
 		*/
+		System.out.println(!(8<3) || true && false);
 	}
 }

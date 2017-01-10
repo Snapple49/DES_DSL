@@ -476,14 +476,14 @@ public class MasterBruce {
 		int i = 0;
 
 		while(true){
-			LCD.drawString("Missionset DESSY", 0, 0);
+			LCD.drawString("Missionset «missionSet»", 0, 0);
 			LCD.drawString("Empty", 2, 1);
 			LCD.drawString("Empty", 2, 2);
 			LCD.drawString("Empty", 2, 3);
-			LCD.drawString("          ", 2, 1);
-			LCD.drawString("FindLakes", 2, 1);
-			LCD.drawString("          ", 2, 2);
-			LCD.drawString("DieInstantly", 2, 2);
+			«FOR m : mL»
+				LCD.drawString("          ", 2, «mL.indexOf(m)+1»);
+				LCD.drawString("«m.name»", 2, «mL.indexOf(m)+1»);
+			«ENDFOR»
 			LCD.drawString("Calibrate sensor", 2, 4);
 			LCD.drawString(">", 0, i + 1);
 			if(Button.DOWN.isDown()){
@@ -495,18 +495,22 @@ public class MasterBruce {
 			}else if(Button.ENTER.isDown()){
 				switch (i) {
 				case 0:
-					missions[i] = new FindLakes(sensorManager, leftMotor, rightMotor, armMotor);
+					«IF mL.length >= 1»missions[i] = new «mL.get(0).name»(sensorManager, leftMotor, rightMotor, armMotor);
 					AuxMethods.clearScreen();
 					missions[i].RunArbitrator();
-					AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);
+					AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);«ENDIF»
 					break;
 				case 1:
-					missions[i] = new DieInstantly(sensorManager, leftMotor, rightMotor, armMotor);
+					«IF mL.length >= 2»missions[i] = new «mL.get(1).name»(sensorManager, leftMotor, rightMotor, armMotor);
 					AuxMethods.clearScreen();
 					missions[i].RunArbitrator();
-					AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);
+					AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);«ENDIF»
 					break;
 				case 2:
+					«IF mL.length >= 3»missions[i] = new «mL.get(2).name»(sensorManager, leftMotor, rightMotor, armMotor);
+					AuxMethods.clearScreen();
+					missions[i].RunArbitrator();
+					AuxMethods.resetAll(leftMotor, rightMotor, armMotor, missions[i]);«ENDIF»
 					break;
 				case 3:
 					AuxMethods.calibrate(sensorManager);

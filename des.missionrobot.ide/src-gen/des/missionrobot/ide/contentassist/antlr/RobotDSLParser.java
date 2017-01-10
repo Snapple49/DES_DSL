@@ -37,8 +37,8 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
 					put(grammarAccess.getActionAccess().getAlternatives_1_2(), "rule__Action__Alternatives_1_2");
-					put(grammarAccess.getTriggerAccess().getAlternatives_1(), "rule__Trigger__Alternatives_1");
-					put(grammarAccess.getTriggerAccess().getAlternatives_1_1_1(), "rule__Trigger__Alternatives_1_1_1");
+					put(grammarAccess.getTriggerAccess().getAlternatives_2(), "rule__Trigger__Alternatives_2");
+					put(grammarAccess.getTriggerAccess().getAlternatives_2_1_1(), "rule__Trigger__Alternatives_2_1_1");
 					put(grammarAccess.getDirectionValAccess().getAlternatives(), "rule__DirectionVal__Alternatives");
 					put(grammarAccess.getSpeedValAccess().getAlternatives(), "rule__SpeedVal__Alternatives");
 					put(grammarAccess.getArmOpTypeAccess().getAlternatives(), "rule__ArmOpType__Alternatives");
@@ -63,11 +63,10 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionAccess().getGroup_3(), "rule__Action__Group_3__0");
 					put(grammarAccess.getActionAccess().getGroup_4(), "rule__Action__Group_4__0");
 					put(grammarAccess.getTriggerAccess().getGroup(), "rule__Trigger__Group__0");
-					put(grammarAccess.getTriggerAccess().getGroup_1_0(), "rule__Trigger__Group_1_0__0");
-					put(grammarAccess.getTriggerAccess().getGroup_1_1(), "rule__Trigger__Group_1_1__0");
-					put(grammarAccess.getTriggerAccess().getGroup_1_1_1_0(), "rule__Trigger__Group_1_1_1_0__0");
-					put(grammarAccess.getTriggerAccess().getGroup_1_1_1_1(), "rule__Trigger__Group_1_1_1_1__0");
-					put(grammarAccess.getTriggerAccess().getGroup_1_1_1_2(), "rule__Trigger__Group_1_1_1_2__0");
+					put(grammarAccess.getTriggerAccess().getGroup_2_1(), "rule__Trigger__Group_2_1__0");
+					put(grammarAccess.getTriggerAccess().getGroup_2_1_1_0(), "rule__Trigger__Group_2_1_1_0__0");
+					put(grammarAccess.getTriggerAccess().getGroup_2_1_1_1(), "rule__Trigger__Group_2_1_1_1__0");
+					put(grammarAccess.getTriggerAccess().getGroup_2_1_1_2(), "rule__Trigger__Group_2_1_1_2__0");
 					put(grammarAccess.getDistanceAccess().getGroup(), "rule__Distance__Group__0");
 					put(grammarAccess.getTimeAccess().getGroup(), "rule__Time__Group__0");
 					put(grammarAccess.getMissionsAccess().getNameAssignment_1(), "rule__Missions__NameAssignment_1");
@@ -95,12 +94,12 @@ public class RobotDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActionAccess().getBoolAssignment_4_3(), "rule__Action__BoolAssignment_4_3");
 					put(grammarAccess.getActionAccess().getCentAssignment_5(), "rule__Action__CentAssignment_5");
 					put(grammarAccess.getTriggerAccess().getBoolTypeAssignment_0(), "rule__Trigger__BoolTypeAssignment_0");
-					put(grammarAccess.getTriggerAccess().getNegAssignment_1_0_0(), "rule__Trigger__NegAssignment_1_0_0");
-					put(grammarAccess.getTriggerAccess().getFlagAssignment_1_0_1(), "rule__Trigger__FlagAssignment_1_0_1");
-					put(grammarAccess.getTriggerAccess().getSensorAssignment_1_1_0(), "rule__Trigger__SensorAssignment_1_1_0");
-					put(grammarAccess.getTriggerAccess().getColorAssignment_1_1_1_0_1(), "rule__Trigger__ColorAssignment_1_1_1_0_1");
-					put(grammarAccess.getTriggerAccess().getDistAssignment_1_1_1_1_1(), "rule__Trigger__DistAssignment_1_1_1_1_1");
-					put(grammarAccess.getTriggerAccess().getTouchingAssignment_1_1_1_2_1(), "rule__Trigger__TouchingAssignment_1_1_1_2_1");
+					put(grammarAccess.getTriggerAccess().getNegAssignment_1(), "rule__Trigger__NegAssignment_1");
+					put(grammarAccess.getTriggerAccess().getFlagAssignment_2_0(), "rule__Trigger__FlagAssignment_2_0");
+					put(grammarAccess.getTriggerAccess().getSensorAssignment_2_1_0(), "rule__Trigger__SensorAssignment_2_1_0");
+					put(grammarAccess.getTriggerAccess().getColorAssignment_2_1_1_0_1(), "rule__Trigger__ColorAssignment_2_1_1_0_1");
+					put(grammarAccess.getTriggerAccess().getDistAssignment_2_1_1_1_1(), "rule__Trigger__DistAssignment_2_1_1_1_1");
+					put(grammarAccess.getTriggerAccess().getTouchingAssignment_2_1_1_2_1(), "rule__Trigger__TouchingAssignment_2_1_1_2_1");
 					put(grammarAccess.getDistanceAccess().getRangeBoolAssignment_0(), "rule__Distance__RangeBoolAssignment_0");
 					put(grammarAccess.getDistanceAccess().getDistanceAssignment_2(), "rule__Distance__DistanceAssignment_2");
 					put(grammarAccess.getFlagAccess().getNameAssignment(), "rule__Flag__NameAssignment");

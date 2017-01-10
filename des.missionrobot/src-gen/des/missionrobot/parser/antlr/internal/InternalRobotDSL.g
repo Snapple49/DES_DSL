@@ -764,37 +764,35 @@ ruleTrigger returns [EObject current=null]
 		)?
 		(
 			(
+				{
+					newCompositeNode(grammarAccess.getTriggerAccess().getNegNegationParserRuleCall_1_0());
+				}
+				lv_neg_1_0=ruleNegation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTriggerRule());
+					}
+					set(
+						$current,
+						"neg",
+						lv_neg_1_0,
+						"des.missionrobot.RobotDSL.Negation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
 				(
-					(
-						{
-							newCompositeNode(grammarAccess.getTriggerAccess().getNegNegationParserRuleCall_1_0_0_0());
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getTriggerRule());
 						}
-						lv_neg_1_0=ruleNegation
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getTriggerRule());
-							}
-							set(
-								$current,
-								"neg",
-								lv_neg_1_0,
-								"des.missionrobot.RobotDSL.Negation");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)?
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getTriggerRule());
-							}
-						}
-						otherlv_2=RULE_ID
-						{
-							newLeafNode(otherlv_2, grammarAccess.getTriggerAccess().getFlagFlagCrossReference_1_0_1_0());
-						}
-					)
+					}
+					otherlv_2=RULE_ID
+					{
+						newLeafNode(otherlv_2, grammarAccess.getTriggerAccess().getFlagFlagCrossReference_2_0_0());
+					}
 				)
 			)
 			    |
@@ -802,7 +800,7 @@ ruleTrigger returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorParserRuleCall_1_1_0_0());
+							newCompositeNode(grammarAccess.getTriggerAccess().getSensorSensorParserRuleCall_2_1_0_0());
 						}
 						lv_sensor_3_0=ruleSensor
 						{
@@ -822,12 +820,12 @@ ruleTrigger returns [EObject current=null]
 					(
 						otherlv_4='is'
 						{
-							newLeafNode(otherlv_4, grammarAccess.getTriggerAccess().getIsKeyword_1_1_1_0_0());
+							newLeafNode(otherlv_4, grammarAccess.getTriggerAccess().getIsKeyword_2_1_1_0_0());
 						}
 						(
 							(
 								{
-									newCompositeNode(grammarAccess.getTriggerAccess().getColorColorParserRuleCall_1_1_1_0_1_0());
+									newCompositeNode(grammarAccess.getTriggerAccess().getColorColorParserRuleCall_2_1_1_0_1_0());
 								}
 								lv_color_5_0=ruleColor
 								{
@@ -848,12 +846,12 @@ ruleTrigger returns [EObject current=null]
 					(
 						otherlv_6='distance'
 						{
-							newLeafNode(otherlv_6, grammarAccess.getTriggerAccess().getDistanceKeyword_1_1_1_1_0());
+							newLeafNode(otherlv_6, grammarAccess.getTriggerAccess().getDistanceKeyword_2_1_1_1_0());
 						}
 						(
 							(
 								{
-									newCompositeNode(grammarAccess.getTriggerAccess().getDistDistanceParserRuleCall_1_1_1_1_1_0());
+									newCompositeNode(grammarAccess.getTriggerAccess().getDistDistanceParserRuleCall_2_1_1_1_1_0());
 								}
 								lv_dist_7_0=ruleDistance
 								{
@@ -874,12 +872,12 @@ ruleTrigger returns [EObject current=null]
 					(
 						otherlv_8='touching'
 						{
-							newLeafNode(otherlv_8, grammarAccess.getTriggerAccess().getTouchingKeyword_1_1_1_2_0());
+							newLeafNode(otherlv_8, grammarAccess.getTriggerAccess().getTouchingKeyword_2_1_1_2_0());
 						}
 						(
 							(
 								{
-									newCompositeNode(grammarAccess.getTriggerAccess().getTouchingBoolParserRuleCall_1_1_1_2_1_0());
+									newCompositeNode(grammarAccess.getTriggerAccess().getTouchingBoolParserRuleCall_2_1_1_2_1_0());
 								}
 								lv_touching_9_0=ruleBool
 								{
