@@ -67,13 +67,6 @@ class RobotDSLValidator extends AbstractRobotDSLValidator {
 	}
 	
 	@Check
-	def checkMoveDirCorrect(Action a){
-		if(a.moveDir == DirectionVal.LEFT || a.moveDir == DirectionVal.RIGHT){
-			warning('Move can have directions \'forward\' or \'backward\'', null)
-		}
-	}
-	
-	@Check
 	def checkTurnDirCorrect(Action a){
 		if(a.turnDir == DirectionVal.FORWARD || a.moveDir == DirectionVal.BACKWARD){
 			warning('Turn can have directions \'left\' or \'right\'', null)

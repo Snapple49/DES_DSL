@@ -59,13 +59,6 @@ public class RobotDSLValidator extends AbstractRobotDSLValidator {
   }
   
   @Check
-  public void checkMoveDirCorrect(final Action a) {
-    if ((Objects.equal(a.getMoveDir(), DirectionVal.LEFT) || Objects.equal(a.getMoveDir(), DirectionVal.RIGHT))) {
-      this.warning("Move can have directions \'forward\' or \'backward\'", null);
-    }
-  }
-  
-  @Check
   public void checkTurnDirCorrect(final Action a) {
     if ((Objects.equal(a.getTurnDir(), DirectionVal.FORWARD) || Objects.equal(a.getMoveDir(), DirectionVal.BACKWARD))) {
       this.warning("Turn can have directions \'left\' or \'right\'", null);

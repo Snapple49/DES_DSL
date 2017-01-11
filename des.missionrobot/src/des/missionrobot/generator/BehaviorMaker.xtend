@@ -127,7 +127,7 @@ public class «t.name» implements Behavior{
 					case L: {value = " < " + (trig.dist.distance as float) /100}
 					default : {value = ""}
 				}
-			}else if(trig.touching != null){will this always be true?
+			}else if(trig.touching != null){//work pls
 				value = " > 0"
 			}else if(trig.degrees != 0){
 				if(trig.degrees < 0){
@@ -188,6 +188,26 @@ rightMotor.forward();
 					'''
 				}
 				case BACKWARD:{
+					action = action +					
+					'''
+leftMotor.backward();
+rightMotor.backward();
+					'''
+				}case LEFT:{
+					action = action +
+					'''
+					leftMotor.setSpeed(leftMotor.getRotationSpeed()*0.8f);
+'''
+					action = action +					
+					'''
+leftMotor.backward();
+rightMotor.backward();
+					'''
+				}case RIGHT:{
+					action = action +
+					'''
+					rightMotor.setSpeed(rightMotor.getRotationSpeed()*0.8f);
+'''
 					action = action +					
 					'''
 leftMotor.backward();
